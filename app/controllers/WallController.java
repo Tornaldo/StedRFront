@@ -2,7 +2,7 @@ package controllers;
 
 import java.util.List;
 
-import models.Wall;
+import models.WallModel;
 import play.*;
 import play.libs.Json;
 import play.mvc.*;
@@ -10,7 +10,7 @@ import play.mvc.*;
 public class WallController extends Controller {
 	
 	public static Result listWallsInJson() {
-		List<Wall> walls = Wall.findAll();
+		List<WallModel> walls = WallModel.findAll();
 		return ok(Json.toJson(walls));
 	}
 }

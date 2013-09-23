@@ -6,14 +6,14 @@ import play.db.ebean.*;
 import com.avaje.ebean.*;
 
 @Entity
-public class Wall extends Model {
+public class WallModel extends Model {
 	@Id
 	public Long id;
 	public String name;
 	
-	public static Model.Finder<Long, Wall> find = new Model.Finder<>(Long.class, Wall.class);
+	public static Model.Finder<Long, WallModel> find = new Model.Finder<>(Long.class, WallModel.class);
 	
-	public static List<Wall> findAll() {
+	public static List<WallModel> findAll() {
 		return find.findList();
 	}
 }
