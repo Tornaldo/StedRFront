@@ -265,7 +265,7 @@ Sum & 300 & 200 & 200 & 200 & 200 & 200
 \caption{Time sheet per phase}
 \end{table}
 
-\section{Risks}
+\section{Risks}\label{sec:risk_assessment}
 
 \begin{table}[H]
 \centering
@@ -498,16 +498,14 @@ All code will be tracked with git and checked in continuously in order to always
 
 \chapter{Preliminary study}
 
-%FIXME LATEX: there is a section missing between chapter and subsection...
-
-\subsection{Current situation}
+\section{Current situation}
 Cultural Heritage is the legacy of physical artifacts and non physical attributes of a group or society that are inherited from past generations. Cultural Heritage can be divided into three main categories; tangible culture, intangible culture and natural heritage [1]. The system will mainly focus on the ``culture in the landscape'', i.e. the discovery of cultural memories that we meet when walking around in cities, in villages and in the nature.
 
 An important aspect in cultural heritage is preservation, the task to preserve and protect buildings, objects, landscapes and other important cultural artifacts. One thing is to physically protect these artifacts, but another important aspect is to educate today's generation and help them discover and learn about our cultural heritage to both enrich and preserve our legacy for future generations.
 
 This section will give the reader a better understanding of the current situation in how cultural heritage is preserved today. It will also take a look at existing mobile applications that helps people discover and learn about cultural heritage.
 
-\subsubsection{Cultural Heritage today}
+\subsection{Cultural Heritage today}
 The most famous organization working with cultural heritage is UNESCO. The United Nations Education, Scientific and Cultural Organization is an agency of the UN (United Nations), working for peace and security through international collaboration in education, science and culture [2]. UNESCO World Heritage Committee is responsible for establishing  the famous list of UNESCO World Heritage Sights, which today contains 981 properties (September 2013), that includes cultural, natural and mixed properties [3]. 
 
 There are seven listings in Norway that the UNESCO World Heritage Committee consider having outstanding universal value, that is;
@@ -524,7 +522,7 @@ There are seven listings in Norway that the UNESCO World Heritage Committee cons
 
 These are really marvelous pieces of cultural heritage, but is that it? Norway has only seven sights that are considered as cultural heritage and worth a visit? Of course not, our scope is way bigger than that! It is up to the users to decide what cultural heritage is.
 
-\subsubsection{Existing systems}
+\subsection{Existing systems}
 In 2004 The Directorate for Cultural Heritage in Norway (Riksantikvaren) launched a database, called Askeladden, over protected cultural heritage sights and cultural environments in Norway. The problem was that it was only available to agencies involved in cultural heritage management, and not to the public. However,  in 2009, parts of the database was finally made available through the website Kulturminnesøk (kulturminnesok.no), and today, after a bigger upgrade in 2012, it contains over 150 000 sights.
 
 \begin{figure}[H]
@@ -541,7 +539,7 @@ In 2004 The Directorate for Cultural Heritage in Norway (Riksantikvaren) launche
       \label{fig:pre_kulturTrondheim}
 \end{figure}
 
-As you can see in Figure\ref{fig:pre_kulturoversikt}, sights from all over Norway is represented. We can either press the red circles, zoom in manually or search by text to find places we want to take a closer look at. If we zoom in over Trondheim, as Figure~\ref{fig:pre_kulturTrondheim} shows, there are plenty of sights all over the city. Every sight is marked with a symbol, which tells the user if it is a building location, religious place, archaeological memory or technical/industrial memory. If you click on a symbol, a small info display appears, Figure~\ref{fig:pre_kulturInfo}, that informs the user what type of cultural heritage it is, its conservation status, dating and municipality. If the user wants more info, the user can press the ``Mer info'' (More info)-text, and  a new sight appears, Figure~\ref{fig:pre_kulturMoreInfo}, where a picture, if available, and a some more info appears. It is also possible to comment and like (as in Facebook) the site.
+As you can see in Figure~\ref{fig:pre_kulturoversikt}, sights from all over Norway is represented. We can either press the red circles, zoom in manually or search by text to find places we want to take a closer look at. If we zoom in over Trondheim, as Figure~\ref{fig:pre_kulturTrondheim} shows, there are plenty of sights all over the city. Every sight is marked with a symbol, which tells the user if it is a building location, religious place, archaeological memory or technical/industrial memory. If you click on a symbol, a small info display appears, Figure~\ref{fig:pre_kulturInfo}, that informs the user what type of cultural heritage it is, its conservation status, dating and municipality. If the user wants more info, the user can press the ``Mer info'' (More info)-text, and  a new sight appears, Figure~\ref{fig:pre_kulturMoreInfo}, where a picture, if available, and a some more info appears. It is also possible to comment and like (as in Facebook) the site.
 
 \begin{figure}[H]
       \centering
@@ -586,7 +584,7 @@ If we press one of the stories, Regalierommet for instance, shown in Figure~\ref
       \label{fig:pre_fortaltRegalierommet}
 \end{figure}
 
-\subsubsection{Edge dominant systems}
+\subsection{Edge dominant systems}
 An edge dominant system is one that almost entirely depends on input from users. Well known edge dominant systems today are Facebook, Twitter, YouTube, Wikipedia, etc., all of which have created enormous value by their users. 
 
 Almost all edge dominant systems today share a common ecosystem structure, called a ``Metropolis'' structure, by analogy with a city, as shown in Figure~\ref{fig:pre_edgeMetropolis}.
@@ -606,7 +604,7 @@ The metropolis structure divides the communities of stakeholders in an edge domi
   \item In the middle we have the core that keeps the metropolis together. This is the software that provides its services through a set of APIs that the prosumers and developers can use to produce new software and content for the masses to use.
 \end{itemize}
 
-\section{Existing mobile applications}
+\section{Existing mobile applications}\label{sec:prestudy_existing_apps}
 In the previous sections we have learned that there already are already systems that helps the public in finding cultural heritage. In this section we will look at some existing mobile applications which in many ways works quite similar to the systems above. It is important to look at these systems to get an idea of how others have done it before us, both to get inspired and to find weaknesses with this kind of applications. First we will take a look at Kulturminnesøk's mobile application, then at two danish solutions.
 
 \subsection{Kulturminnesøk app}
@@ -992,7 +990,7 @@ As customer requested, the front end application shall be developed in order to 
 Quality attribute scenario to evaluate the system shall be determined later.
 
 \subsubsection{Usability}\label{sec:usability}
-From the description of typical usage (mentioned in \ref{sec:srs-usercharacteristics}) and characteristic problems listed in \ref{sec:srs-webapplicationfrontend}, we came up with several usability scenarios that shall evaluate the usability quality of the software system. As usability is a big concern in this project, usability scenarios and tests shall be included in the report under Test Procedures Specification.  % FIXME SIMON: link to relevant part of Test Procedures Specification
+From the description of typical usage (mentioned in \ref{sec:srs-usercharacteristics}) and characteristic problems listed in \ref{sec:srs-webapplicationfrontend}, we came up with several usability scenarios that shall evaluate the usability quality of the software system. As usability is a big concern in this project, usability scenarios and tests shall be included in the report under Test Procedures Specification.  % FIXME SIMON: once usabilitz tests are prepared, put refs to them (link to Test Procedures Specification)
 
 These scenarios shall evaluate, whether the application suits the needs of the audience in the means of usability. These shall be derived from use cases and requirements.
 
@@ -1024,7 +1022,7 @@ Same categorization as in Functions.
 \end{figure}
 
 
-\chapter{Architecture}
+\chapter{Architecture}\label{chap:architecture}
 
 \section{Architectural drivers} \label{sec:architecture_drivers}
 In the following the document, the following items have been used as the main drivers for the architecture.
@@ -1220,7 +1218,7 @@ Apart from black-box testing, we shall perform a code inspection to assure desir
 
 All testing shall be done according to the time plan specified in the schedule table below.
 
-Testing of the user interface shall be done by intended users of the system by means of usability testing. %FIXME SIMON: TBD
+Testing of the user interface shall be done by intended users of the system by means of usability testing. %FIXME SIMON: TBD usability testing
 
 \subsection{Item pass and fail criteria}
 Meeting the preconditions for each test and receiving a corresponding expected result are criteria for successful passing the test. The test is evaluated as failed otherwise.
@@ -1329,7 +1327,7 @@ In case the functional requirements are a subject to change in the future, the d
 
 \subsection{Risks and contingencies}
 
-%FIXME SIMON: link to our general risk assessment chapter
+As far as we are aware, there are no risks related to testing but those mentioned in \ref{sec:risk_assessment} as general risks for this project.
 
 \subsection{Approvals}
 
@@ -1361,7 +1359,7 @@ The table \ref{tab:test_plan_approvals} lists approvals of completed tasks.
 The aim of this first sprint is to establish a baseline, in terms of technology but also with regard to the social aspects of executing a sprint as well as the amount of work being manageable within the timespan of the sprint.
 
 \subsection{Requirements}
-The server as well as the client should have a base satisfying the architectural drivers listed in chapter 5 - Architecture %FIXME SIMON: link
+The server as well as the client should have a base satisfying the architectural drivers listed in \ref{sec:architecture_drivers}.
 
 \subsection{Pre study}
 
@@ -1449,10 +1447,10 @@ The customer wanted to focus more on the use of filtering on tags and metadata.
       \label{fig:phases_sprint1_uiVersionOneTempPings}
 \end{figure}
 
-\textit{Look at walls}\\
+\textit{Look at walls}
 The main function of the application is to access a wall and browse user created information, that could be stories, pictures, links to other resources, etc.. Two possible solution were suggested; a wall that displayed both user created stories and information from multiple data sources as in Figure~\ref{fig:phases_sprint1_uiVersionOneSimpleWall}, for instance, Instagram, Wikipedia, YouTube, Twitter, Google, Flickr, etc., and a more simple version where the focus was on user created data, thus stories and pictures, as in Figure~\ref{fig:phases_sprint1_uiVersionOneMultipleDataSoruces}.
 
-The idea of using multiple data sources came from the danish mobile application, Kulturarv, or Cultural Heritage (chapter 3 - preliminary study), which blends data from a main database with other geo location data sources like Instagram, Flickr, Wikipedia and Twitter. The customer had not thought about the idea of using multiple data sources, and were therefore quite surprised by the solution. The group and customer agreed that the use of multiple data sources were out of the scope, and decided to focus on the more simple version. %FIXME SIMON: link chapter 3
+The idea of using multiple data sources came from the danish mobile application, Kulturarv, or Cultural Heritage (both mentioned in \ref{sec:prestudy_existing_apps}), which blends data from a main database with other geo location data sources like Instagram, Flickr, Wikipedia and Twitter. The customer had not thought about the idea of using multiple data sources, and were therefore quite surprised by the solution. The group and customer agreed that the use of multiple data sources were out of the scope, and decided to focus on the more simple version.
 
 \begin{figure}[H]
       \centering
