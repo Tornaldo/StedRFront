@@ -541,7 +541,7 @@ In 2004 The Directorate for Cultural Heritage in Norway (Riksantikvaren) launche
       \label{fig:pre_kulturTrondheim}
 \end{figure}
 
-As you can see in figure 1, sights from all over Norway is represented. We can either press the red circles, zoom in manually or search by text to find places we want to take a closer look at. If we zoom in over Trondheim, as figure 2 shows, there are plenty of sights all over the city. Every sight is marked with a symbol, which tells the user if it is a building location, religious place, archaeological memory or technical/industrial memory. If you click on a symbol, a small info display appears, figure 3, that informs the user what type of cultural heritage it is, its conservation status, dating and municipality. If the user wants more info, the user can press the ``Mer info'' (More info)-text, and  a new sight appears, figure 4, where a picture, if available, and a some more info appears. It is also possible to comment and like (as in Facebook) the site.
+As you can see in Figure\ref{fig:pre_kulturoversikt}, sights from all over Norway is represented. We can either press the red circles, zoom in manually or search by text to find places we want to take a closer look at. If we zoom in over Trondheim, as Figure~\ref{fig:pre_kulturTrondheim} shows, there are plenty of sights all over the city. Every sight is marked with a symbol, which tells the user if it is a building location, religious place, archaeological memory or technical/industrial memory. If you click on a symbol, a small info display appears, Figure~\ref{fig:pre_kulturInfo}, that informs the user what type of cultural heritage it is, its conservation status, dating and municipality. If the user wants more info, the user can press the ``Mer info'' (More info)-text, and  a new sight appears, Figure~\ref{fig:pre_kulturMoreInfo}, where a picture, if available, and a some more info appears. It is also possible to comment and like (as in Facebook) the site.
 
 \begin{figure}[H]
       \centering
@@ -557,7 +557,7 @@ As you can see in figure 1, sights from all over Norway is represented. We can e
       \label{fig:pre_kulturMoreInfo}
 \end{figure}
 
-Kulturminnesøk can be considered a partly edge dominant system (will be explained next section), since everyone can register and add their own cultural heritage sight. There is about 1500 sights that users have added. Users have added everything from swimming halls to archaeological memories. We call it just partly edge dominant, since only 1% of the content is added by the public.
+Kulturminnesøk can be considered a partly edge dominant system (will be explained next section), since everyone can register and add their own cultural heritage sight. There is about 1500 sights that users have added. Users have added everything from swimming halls to archaeological memories. We call it just partly edge dominant, since only 1\% of the content is added by the public.
 
 \begin{figure}[H]
       \centering
@@ -568,9 +568,9 @@ Kulturminnesøk can be considered a partly edge dominant system (will be explain
 
 Another edge dominant cultural heritage system is ``digitalt fortalt'', or digitally told. Digitalt fortalt is a website where users, cultural institutions or private persons, can register and add stories related to cultural heritage. Users have added stories about everything from clothespins to protected buildings, and today there are over 3000 stories. 
 
-To read a story you can either search, by pressing one of the popular tags or simply search from the search field, or browse on the front page, in last told stories, popular stories, last commented stories or among the most  read stories. If we search on ``Trondheim'' in the search field, we get 135 hits. The stories is placed in a grid system, and every story is represented in a little box, with a title, a picture (a play-sign if a sound is attached to the story), author and location. Some stories are also linked to a date or a period. The search result is shown in figure 6.
+To read a story you can either search, by pressing one of the popular tags or simply search from the search field, or browse on the front page, in last told stories, popular stories, last commented stories or among the most  read stories. If we search on ``Trondheim'' in the search field, we get 135 hits. The stories is placed in a grid system, and every story is represented in a little box, with a title, a picture (a play-sign if a sound is attached to the story), author and location. Some stories are also linked to a date or a period. The search result is shown in Figure~\ref{fig:pre_fortaltTrondheim}.
 
-If we press one of the stories, Regalierommet for instance, shown in figure 7, a page with a media slider and information appears. In this case the story is represented as sound and pictures. The information below the media slider says something about why it was made, and some information about the creators. In other stories there are typically one or more pictures and the story represented with text.
+If we press one of the stories, Regalierommet for instance, shown in Figure~\ref{fig:pre_fortaltRegalierommet}, a page with a media slider and information appears. In this case the story is represented as sound and pictures. The information below the media slider says something about why it was made, and some information about the creators. In other stories there are typically one or more pictures and the story represented with text.
 
 \begin{figure}[H]
       \centering
@@ -741,13 +741,13 @@ The customer have experience with SCRUM and suggested the methodology to be used
 \section{Introduction}
 
 \subsection{Purpose}
-The purpose of this document (SRS) is to collect and analyze the requirements for VirtualWall software system. The requirements formalization as presented is a result of a joint effort of the customer and the development team. It serves as a description of what customer is expecting the system to be like, it presents the systems features and functionalities.
+The purpose of this document (System Requirements Specification, hereinafter SRS) is to collect and analyze the requirements for VirtualWall software system. The requirements formalization as presented is a result of a joint effort of the customer and the development team. It serves as a description of what customer is expecting the system to be like, it presents the systems features and functionalities.
 
 The intended audience of this document shall be:
 
 \begin{enumerate}
   \item development team (students)
-  \item customer (SINTEF, STFK)
+  \item customer (SINTEF ICT, eTrøndelag/Sør-Trøndelag fylkeskommune)
   \item course responsibles (advisor, etc.)
 \end{enumerate}
 
@@ -1361,7 +1361,7 @@ The table \ref{tab:test_plan_approvals} lists approvals of completed tasks.
 The aim of this first sprint is to establish a baseline, in terms of technology but also with regard to the social aspects of executing a sprint as well as the amount of work being manageable within the timespan of the sprint.
 
 \subsection{Requirements}
-The server as well as the client should have a base satisfying the architectural drivers listed in chapter 5 - Architecture
+The server as well as the client should have a base satisfying the architectural drivers listed in chapter 5 - Architecture %FIXME SIMON: link
 
 \subsection{Pre study}
 
@@ -1438,7 +1438,7 @@ The customer prefered the hidden side menu.
 \textit{Browsing walls}\\
 An important function is to let the user browse and find walls. The most obvious solutions, to use a map and/or a list, were discussed, but no solution was determined. 
 
-Another important function is to filter or sort the walls. In a list it is easy to sort the walls on, for instance, popularity or the distance to your location using GPS tracking. There were suggested to use some kind of temperature pins in a map, where the pins shows the user how popular the different places are by using colors. The user could also decide to only see the most popular places by excluding the more cold colored walls, as figure 2 shows. The temperature pins were just one of many suggestion on how to represent walls on a map, others where to use symbols or icons, one colored pins and images. 
+Another important function is to filter or sort the walls. In a list it is easy to sort the walls on, for instance, popularity or the distance to your location using GPS tracking. There were suggested to use some kind of temperature pins in a map, where the pins shows the user how popular the different places are by using colors. The user could also decide to only see the most popular places by excluding the more cold colored walls, as Figure~\ref{fig:phases_sprint1_uiVersionOneTempPings} shows. The temperature pins were just one of many suggestion on how to represent walls on a map, others where to use symbols or icons, one colored pins and images.
 
 The customer wanted to focus more on the use of filtering on tags and metadata.
 
@@ -1450,9 +1450,9 @@ The customer wanted to focus more on the use of filtering on tags and metadata.
 \end{figure}
 
 \textit{Look at walls}\\
-The main function of the application is to access a wall and browse user created information, that could be stories, pictures, links to other resources, etc.. Two possible solution were suggested; a wall that displayed both user created stories and information from multiple data sources (figure 3), for instance, Instagram, Wikipedia, YouTube, Twitter, Google, Flickr, etc., and a more simple version where the focus was on user created data, thus stories and pictures (figure 4). 
+The main function of the application is to access a wall and browse user created information, that could be stories, pictures, links to other resources, etc.. Two possible solution were suggested; a wall that displayed both user created stories and information from multiple data sources as in Figure~\ref{fig:phases_sprint1_uiVersionOneSimpleWall}, for instance, Instagram, Wikipedia, YouTube, Twitter, Google, Flickr, etc., and a more simple version where the focus was on user created data, thus stories and pictures, as in Figure~\ref{fig:phases_sprint1_uiVersionOneMultipleDataSoruces}.
 
-The idea of using multiple data sources came from the danish mobile application, Kulturarv, or Cultural Heritage (chapter 3 - preliminary study), which blends data from a main database with other geo location data sources like Instagram, Flickr, Wikipedia and Twitter. The customer had not thought about the idea of using multiple data sources, and were therefore quite surprised by the solution. The group and customer agreed that the use of multiple data sources were out of the scope, and decided to focus on the more simple version.
+The idea of using multiple data sources came from the danish mobile application, Kulturarv, or Cultural Heritage (chapter 3 - preliminary study), which blends data from a main database with other geo location data sources like Instagram, Flickr, Wikipedia and Twitter. The customer had not thought about the idea of using multiple data sources, and were therefore quite surprised by the solution. The group and customer agreed that the use of multiple data sources were out of the scope, and decided to focus on the more simple version. %FIXME SIMON: link chapter 3
 
 \begin{figure}[H]
       \centering
