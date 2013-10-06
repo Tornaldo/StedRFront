@@ -18,6 +18,7 @@
 \usepackage{microtype}
 \usepackage[utf8]{inputenc}
 
+\bibliographystyle{unsrt}
 
 \begin{document}
 
@@ -449,7 +450,7 @@ An important aspect in cultural heritage is preservation, the task to preserve a
 This section will give the reader a better understanding of the current situation in how cultural heritage is preserved today. It will also take a look at existing mobile applications that helps people discover and learn about cultural heritage.
 
 \subsection{Cultural Heritage today}
-The most famous organization working with cultural heritage is UNESCO. The United Nations Education, Scientific and Cultural Organization is an agency of the UN (United Nations), working for peace and security through international collaboration in education, science and culture [2]. UNESCO World Heritage Committee is responsible for establishing  the famous list of UNESCO World Heritage Sights, which today contains 981 properties (September 2013), that includes cultural, natural and mixed properties [3]. 
+The most famous organization working with cultural heritage is UNESCO. The United Nations Education, Scientific and Cultural Organization is an agency of the UN (United Nations), working for peace and security through international collaboration in education, science and culture [2]. UNESCO World Heritage Committee is responsible for establishing  the famous list of UNESCO World Heritage Sights, which today contains 981 properties (September 2013), that includes cultural, natural and mixed properties [3]. %FIXME what is this?
 
 There are seven listings in Norway that the UNESCO World Heritage Committee consider having outstanding universal value, that is;
 
@@ -633,16 +634,14 @@ We see that every applications has their own advantages, and we hope that we can
 There are different ways of approaching a project. Two of the more commonly used methods is Waterfall and SCRUM.
 
 \subsection{Waterfall}
-The Waterfall model is derived from general system engineering processes. (Sommerville I. Software engineering. 9.ed. USA: Pearson Education, Inc.; 2011. p. 30-32) The work done in a Waterfall model is partitioned in activities. The activities are done sequentially, only when the prior is done, can the consecutive start.
+The Waterfall model \cite[p. 30-32]{Sommerville10}  is derived from general system engineering processes.The work done in a Waterfall model is partitioned in activities. The activities are done sequentially, only when the prior is done, can the consecutive start. %FIXME cite
 
 \begin{figure}[H]
       \centering
       \includegraphics[width=0.8\textwidth]{Figures/Prestudy/Waterfall.png}
-      \caption{The Waterfall process}
+      \caption{The Waterfall process \cite{wikipedia:waterfall}}
       \label{fig:pre_waterfall}
 \end{figure}
-
-%(Paul Smith. Waterfall model (1).svg [Internet]. Wikipedia; 08.03.2008 [09.08.2011; 09.09.2013]. Available from: %upload.wikimedia.org/wikipedia/commons/0/06/Waterfall_model_%281%29.svg )
 
 Every phase produces one or several documents to be passed on to the next phase. These documents needs approval before a phase is considered completed, and the next might start.
 
@@ -651,13 +650,11 @@ Waterfall makes good sense in larger manufacturing environments where certificat
 In the original publication about Waterfall for software systems, the author raises some limitations of the model and suggests some project owner involvement.
 
 \begin{quotation}
-For some reason what a software design is going to do is subject to wide interpretation even after previous agreement. It is important to involve the customer in a formal way so that he has committed himself at earlier points before final delivery. To give the contractor free rein between requirement definition and operation is inviting trouble. (Royce WW. 1970, p. 335)
+For some reason what a software design is going to do is subject to wide interpretation even after previous agreement. It is important to involve the customer in a formal way so that he has committed himself at earlier points before final delivery. To give the contractor free rein between requirement definition and operation is inviting trouble. \cite[p. 335]{DBLP:conf/icse/Royce87}
 \end{quotation}
 
-%(Royce WW. Managing the development of large software systems [Internett]; 1970 [09.09.2013]. Availiable from: %leadinganswers.typepad.com/leading_answers/files/original_waterfall_paper_winston_royce.pdf )
-
 \subsection{SCRUM}
-In accordance with the statement from Royce above, SCRUM strive to involve the customer throughout the whole development process. This is done by doing only the strictly required planning and specification writing up front, and then working iteratively with the project together with the customer in sprints. A sprint could last from 2 - 4 weeks (Sommerville I. Software engineering. 9.ed. USA: Pearson Education, Inc.; 2011. p. 73) and by the end the work is review and result presented for the customer. For each sprint the customer sees the current state of the project and participates in specifying what to do for the next sprint.
+In accordance with the statement from Royce above, SCRUM strive to involve the customer throughout the whole development process. This is done by doing only the strictly required planning and specification writing up front, and then working iteratively with the project together with the customer in sprints. According to \cite[p. 73]{Sommerville10} sprint could last from 2 - 4 weeks and by the end the work is review and result presented for the customer. For each sprint the customer sees the current state of the project and participates in specifying what to do for the next sprint.
 
 \begin{figure}[H]
       \centering
@@ -665,8 +662,6 @@ In accordance with the statement from Royce above, SCRUM strive to involve the c
       \caption{The SCRUM process}
       \label{fig:pre_scrum}
 \end{figure}
-
-(Sommerville I. Software engineering. 9.ed. USA: Pearson Education, Inc.; 2011. p. 73)
 
 This use of continuous customer involvement, helps clarifying misunderstandings and correcting errors on both the customers and contractors side during the process. The fact that this might be caught earlier, means that the project is more likely to deliver on time and on budget.
 
@@ -679,6 +674,9 @@ Given the uncertainties surrounding the concrete goal and plan behind the projec
 The customer have experience with SCRUM and suggested the methodology to be used. It will also make it easier to produce a good end project, knowing that we are allowed to refine our documents, requirements and such during the lifetime of the project.
 
 \chapter{Requirements} \label{chap:req}
+
+This chapter is a System Requirements Specification document in the terms of practice recommended by IEEE 830 \cite{ieee830}.
+
 \section{Introduction}
 
 \subsection{Purpose}
@@ -971,7 +969,7 @@ End users are mostly concerned about the ease of use of the system. This include
 The course staff is mostly concerned about the quality of the documentation and its readability.
 
 \section{Selection of Architectural views}
-``The 4+1 View Model of Software Architecture'' (Philippe Kruchten: The 4+1 View Model of Architecture. IEEE Software 12(6): 42-50 (1995)) outlines several ways of presenting different aspects of the architecture, useful to different persons. The article uses a variant of Booch syntax to visualize the views, but in this document we will use standard UML diagrams.
+``The 4+1 View Model of Software Architecture'' \cite{Kruchten:1995:VMA:624610.625529} outlines several ways of presenting different aspects of the architecture, useful to different persons. The article uses a variant of Booch syntax to visualize the views, but in this document we will use standard UML diagrams.
 
 This description will focus on the first three views, logical, process and development view.
 
@@ -1089,7 +1087,7 @@ CONTROLLERS represents the classes that handles the requests and returns data to
 
 \section{Test plan}
 
-The items and the form and content of the each test document is based on the IEEE829. So according to the definition of test plan in IEEE829 standard: ``The test plan prescribes the scope, approach, resources, and schedule of the testing activities. It identifies the items to be tested, the features to be tested, the testing tasks to be performed, the personnel responsible for each task, and the risks associated with the plan''.
+The items and the form and content of the each test document is based on the IEEE Standard 829 \cite{ieee829}. So according to the definition of test plan in the standard: ``The test plan prescribes the scope, approach, resources, and schedule of the testing activities. It identifies the items to be tested, the features to be tested, the testing tasks to be performed, the personnel responsible for each task, and the risks associated with the plan''.
 
 \subsection{Test plan identifier}
 Let this test plan to be identified as ``VirtualWall\_TESTPLAN\_1''.
@@ -1283,10 +1281,10 @@ This is the pre study done for the server in sprint 1.
 \textbf{Extensible Markup Language (XML) vs JavaScript Object Notation (JSON)}\\
 XML is a extensible markup language created by the World Wide Web Consortium (W3C). It is made to be both human and machine readable. It consists of a developer defined set of nested elements that may contain data or new elements.
 
-JSON is based on two structures: a collection of name-value pairs, and an ordered list of values (json.org/). The format is made to be human readable and easily parsed and created by computers. It is based on a subset of the JavaScript programming language, and because the customer has asked for HTML5 to be used for the app JSON makes sense as that will be easier to use together with JavaScript than XML.
+JSON \cite{json} is based on two structures: a collection of name-value pairs, and an ordered list of values. The format is made to be human readable and easily parsed and created by computers. It is based on a subset of the JavaScript programming language, and because the customer has asked for HTML5 to be used for the app JSON makes sense as that will be easier to use together with JavaScript than XML.
 
 \textbf{Representational State Transfer (REST) vs Simple Object Access Protocol (SOAP)}\\
-REST is an architectural style that is stateless at its heart, which leads to better visibility, reliability, and scalability (www.ics.uci.edu/\~fielding/pubs/dissertation/rest\_arch\_style.htm). REST was developed in parallel with HTTP/1.1 and the largest system following this architectural style is the internet (en.wikipedia.org/wiki/Representational\_state\_transfer). REST is also a good match for data driven applications as the way you handle a REST services is by utilizing the verbs GET, POST, DELETE, PUT, PATCH.
+REST \cite{rest} is an architectural style that is stateless at its heart, which leads to better visibility, reliability, and scalability. REST was developed in parallel with HTTP/1.1 and the largest system following this architectural style is the internet (according to \cite{wikipedia:rest}). REST is also a good match for data driven applications as the way you handle a REST services is by utilizing the verbs GET, POST, DELETE, PUT, PATCH.
 
 SOAP is much more flexible than REST, but also much more complex. While REST is primarily data driven through resources, SOAP is logic oriented through operations. SOAP is also a better choice for making stateful web services. All communication with a SOAP service happens through XML.
 
@@ -1304,12 +1302,12 @@ The extensive documentation and speed of development made us choose Play! Framew
 \textbf{MySQL vs Postgres}\\
 The database system most known to the developers is MySQL as this has been used in several earlier courses. Both systems are highly capable relational databases with good coverage of features and excellent performance. There are, however, particularly one issue that separates them, and make one stand out as our database of choice.
 
-In April 2009 Oracle bought Sun (www.oracle.com/us/corporate/press/018363), and by that gained control of MySQL. Initially Oracle promised that MySQL would prevail and that it and its coming features would stay open source (www.oracle.com/us/corporate/press/042364). The situation today shows that they have not honored that promise, and several different versions of MySQL are availiable (www.mysql.com/products/). This serves to show that the future of MySQL is uncertain, and as such our choice falls on Postgres.
+In April 2009 Oracle bought Sun \cite{sun}, and by that gained control of MySQL. Initially Oracle promised that MySQL would prevail and that it and its coming features would stay open source \cite{mysql}. The situation today shows that they have not honored that promise, and several different versions of MySQL are availiable \cite{mysqlproducts}. This serves to show that the future of MySQL is uncertain, and as such our choice falls on Postgres.
 
 \subsubsection{Client}
 The client requested use of HTML5 on the client side, so that the prototype could be tested by the whole of the test group without having to hand out phones of a specific type, but rather let the test objects use their own devices.
 
-When it comes to real cross platform HTML5 apps, that is to say no need for native code at all, Apache Cordova is a very useful project. Apache Cordova is what was earlier known as PhoneGap. The code was contributed to The Apache Software Foundation in 2011, at the same time Adobe acquired PhoneGaps creators Nitobi. (phonegap.com/about/)
+When it comes to real cross platform HTML5 apps, that is to say no need for native code at all, Apache Cordova is a very useful project. Apache Cordova is what was earlier known as PhoneGap \cite{phonegap}. The code was contributed to The Apache Software Foundation in 2011, at the same time Adobe acquired PhoneGaps creators Nitobi.
 
 The way Cordova works is that it exposes native interfaces through JavaScript libraries, so that local web clients might use native features like gyroscope, accelerometer, etc. When the application is built using web technologies, it is compiled into a native webcontainer. In order to do this, one needs to have access to the platform one compiles for. For Android, you need the Android SDK. For iOS, you need an Apple computer and Xcode. For Blackberry you need WebWorks SDK.
 
@@ -1433,6 +1431,8 @@ We did not manage to finish all the predefined tasks for this sprint. This was p
 \section{Finalization}
 
 \chapter{Evaluation}
+
+\bibliography{bibliography}
 
 \appendix
 \chapter{Assignment}
