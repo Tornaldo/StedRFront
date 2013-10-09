@@ -13,8 +13,8 @@ public class WallController extends Controller {
 		return ok(Json.toJson(walls));
 	}
 	
-	public static Result listWallsForLocation(Double latitude, Double longitude) {
-		System.out.println("lat: " + latitude + " long: " + longitude);
+	public static Result listWallsForLocation(Double startLatitude, Double startLongitude, Double stopLatitude, Double stopLongitude) {
+		System.out.println("lat: " + startLatitude + " long: " + startLongitude);
 		
 		List<WallModel> walls = WallModel.findAll();
 		return ok(Json.toJson(walls));
