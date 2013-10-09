@@ -1,15 +1,30 @@
 package models;
 
 import java.util.List;
-import javax.persistence.*;
-import play.db.ebean.*;
-import com.avaje.ebean.*;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import play.db.ebean.Model;
 
 @Entity
+@Table(name="wall")
 public class WallModel extends Model {
 	@Id
-	public Long id;
+	public Long wallId;
+	
+	public Double latitude;
+	
+	public Double longitude;
+	
 	public String name;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	public List<Picture> pictures;
 	
 	public static Model.Finder<Long, WallModel> find = new Model.Finder<>(Long.class, WallModel.class);
 	

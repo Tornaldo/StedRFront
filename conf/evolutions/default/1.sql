@@ -3,32 +3,37 @@
 
 # --- !Ups
 
-create table wall (
+create table picture (
   id                        bigint not null,
-  name                      varchar(255),
-  constraint pk_wall primary key (id))
+  wall_model_wall_id        bigint not null,
+  url                       varchar(255),
+  constraint pk_picture primary key (id))
 ;
 
-create table wall_model (
-  id                        bigint not null,
+create table wall (
+  wall_id                   bigint not null,
+  latitude                  float,
+  longitude                 float,
   name                      varchar(255),
-  constraint pk_wall_model primary key (id))
+  constraint pk_wall primary key (wall_id))
 ;
+
+create sequence picture_seq;
 
 create sequence wall_seq;
 
-create sequence wall_model_seq;
-
+alter table picture add constraint fk_picture_wall_1 foreign key (wall_model_wall_id) references wall (wall_id);
+create index ix_picture_wall_1 on picture (wall_model_wall_id);
 
 
 
 # --- !Downs
 
+drop table if exists picture cascade;
+
 drop table if exists wall cascade;
 
-drop table if exists wall_model cascade;
+drop sequence if exists picture_seq;
 
 drop sequence if exists wall_seq;
-
-drop sequence if exists wall_model_seq;
 

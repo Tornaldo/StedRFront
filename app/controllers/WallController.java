@@ -1,11 +1,10 @@
 package controllers;
-
 import java.util.List;
 
 import models.WallModel;
-import play.*;
 import play.libs.Json;
-import play.mvc.*;
+import play.mvc.Controller;
+import play.mvc.Result;
 
 public class WallController extends Controller {
 	
