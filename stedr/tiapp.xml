@@ -2,11 +2,11 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>no.ntnu.stedr</id>
     <name>Stedr</name>
-    <version>1.0</version>
-    <publisher>Christian</publisher>
+    <version>0.1</version>
+    <publisher>Group 2</publisher>
     <url>http://</url>
-    <description>not specified</description>
-    <copyright>2013 by Christian</copyright>
+    <description>An application to help people discover cultural heritage</description>
+    <copyright>2013 by Group 2</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
     <prerendered-icon>false</prerendered-icon>
