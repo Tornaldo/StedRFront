@@ -4,10 +4,10 @@
 # --- !Ups
 
 create table picture (
-  id                        bigint not null,
+  pictureid                 bigint not null,
   wall_model_wall_id        bigint not null,
   url                       varchar(255),
-  constraint pk_picture primary key (id))
+  constraint pk_picture primary key (pictureid))
 ;
 
 create table wall (
