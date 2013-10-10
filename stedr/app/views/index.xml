@@ -1,5 +1,8 @@
 <Alloy>
-	<Window class="container">
-		<Label id="label" onClick="doClick">Hello, World</Label>
+	<Collection src="wall">
+	<Window class="container" title="Walls">
+		<TableView dataCollection="wall">
+			<TableViewRow title="{title}" />
+		</TableView>
 	</Window>
 </Alloy>
