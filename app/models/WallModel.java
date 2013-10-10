@@ -29,7 +29,7 @@ public class WallModel extends Model {
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	public List<Picture> pictures;
 	
-	public static Model.Finder<Long, WallModel> find = new Model.Finder<>(Long.class, WallModel.class);
+	public static Model.Finder<Long, WallModel> find = new Model.Finder<Long, WallModel>(Long.class, WallModel.class);
 	
 	public static List<WallModel> findAll() {
 		return find.findList();
