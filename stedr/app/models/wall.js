@@ -7,7 +7,7 @@ exports.definition = {
 			"latitude"		: "double",
 			"longitude"		: "double",
 		},
-		"URL" 		: "",
+		"URL" 		: "http://api.server.com:9000/walls.json",
 		"adapter" 	: {
 			"type"	: "restapi",
 			"collection_name" : "wallsCollection",
