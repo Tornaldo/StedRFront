@@ -10,7 +10,7 @@ exports.definition = {
 		"URL" 		: "http://api.server.com:9000/walls.json",
 		"adapter" 	: {
 			"type"	: "restapi",
-			"collection_name" : "wallsCollection",
+			"collection_name" : "wall",
 			"idAttribute" : "wallId" 
 		}
 	},
