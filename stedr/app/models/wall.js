@@ -2,12 +2,12 @@ exports.definition = {
 	config : {
 		"columns"	: {
 			"wallId" 		: "int",
-			"title" 		: "string",
+			"name"	 		: "string",
 			"description"	: "string",
 			"latitude"		: "double",
 			"longitude"		: "double",
 		},
-		"URL" 		: "http://api.server.com:9000/walls.json",
+		"URL" 		: "http://stedr.herokuapp.com/walls.json",
 		"adapter" 	: {
 			"type"	: "restapi",
 			"collection_name" : "wall",

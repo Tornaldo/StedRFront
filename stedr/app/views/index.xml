@@ -2,7 +2,7 @@
 	<Collection src="wall">
 	<Window class="container" title="Walls">
 		<TableView dataCollection="wall">
-			<TableViewRow title="{title}" />
+			<TableViewRow title="{name}" />
 		</TableView>
 	</Window>
 </Alloy>

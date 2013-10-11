@@ -4,7 +4,7 @@ $.index.open();
 function transformFunction(model) {
 	Ti.API.log(model);
 	var transform = model.toJSON();
-	transform.title = '[' + transform.title + ']';
+	transform.name = '[' + transform.name + ']';
 	return transform;
 };
 
