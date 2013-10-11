@@ -30,3 +30,4 @@ wall.fetch({
 $.index.addEventListener('close', function() {
 	$.destroy();
 });
+

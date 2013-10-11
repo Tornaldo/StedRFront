@@ -1,8 +1,26 @@
 <Alloy>
 	<Collection src="wall">
-	<Window class="container" title="Walls">
-		<TableView dataCollection="wall">
-			<TableViewRow title="{name}" />
-		</TableView>
-	</Window>
+	<TabGroup>
+		<Tab title="List">
+			<Window class="container" title="Walls">
+				<TableView dataCollection="wall">
+					<TableViewRow class="tableView" title="{name}" />
+				</TableView>
+			</Window>
+		</Tab>
+		<Tab title="Map">
+			<Window title="Wall">
+				<View id="mapview" ns="Ti.Map" 
+           		 animate="true" regionFit="true" userLocation="true"
+           		 mapType="Ti.Map.STANDARD_TYPE" >
+
+		            <Annotation id="mountainView"
+		              latitude="37.390749" longitude="-122.081651"
+		              title="Appcelerator Headquarters" subtitle="Mountain View, CA"
+		              pincolor="Titanium.Map.ANNOTATION_RED"
+		              myid="1"/>
+       			</View>
+			</Window>
+		</Tab>	
+	</TabGroup>
 </Alloy>
