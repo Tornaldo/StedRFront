@@ -1,0 +1,18 @@
+<Alloy>
+	<Window title="Wall">
+		<View id="mapview" 
+			ns="Ti.Map" 
+		 	animate="true" 
+		 	regionFit="true" 
+		 	userLocation="true"
+		 	mapType="Ti.Map.STANDARD_TYPE"
+		 	onComplete="createAnnotations" >
+	
+	        <Annotation id="mountainView"
+	          latitude="37.390749" longitude="-122.081651"
+	          title="Appcelerator Headquarters" subtitle="Mountain View, CA"
+	          pincolor="Titanium.Map.ANNOTATION_RED"
+	          myid="1"/>
+		</View>
+	</Window>
+</Alloy>

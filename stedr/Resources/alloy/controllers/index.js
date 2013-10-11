@@ -14,6 +14,10 @@ function Controller() {
         }
         $.__views.__alloyId6.setData(rows);
     }
+    function startMap() {
+        var map = Alloy.createController("map").getView();
+        map.open();
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -21,6 +25,7 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
+    var __defers = {};
     Alloy.Collections.instance("wall");
     $.__views.index = Ti.UI.createTabGroup({
         id: "index"
@@ -43,30 +48,14 @@ function Controller() {
     });
     $.__views.index.addTab($.__views.__alloyId4);
     $.__views.__alloyId13 = Ti.UI.createWindow({
-        title: "Wall",
         id: "__alloyId13"
     });
-    var __alloyId14 = [];
-    $.__views.mountainView = Ti.Map.createAnnotation({
-        latitude: 37.390749,
-        longitude: -122.081651,
-        id: "mountainView",
-        title: "Appcelerator Headquarters",
-        subtitle: "Mountain View, CA",
-        pincolor: Titanium.Map.ANNOTATION_RED,
-        myid: "1"
+    $.__views.mapButton = Ti.UI.createButton({
+        title: "MAP",
+        id: "mapButton"
     });
-    __alloyId14.push($.__views.mountainView);
-    $.__views.mapview = Ti.Map.createView({
-        annotations: __alloyId14,
-        id: "mapview",
-        ns: Ti.Map,
-        animate: "true",
-        regionFit: "true",
-        userLocation: "true",
-        mapType: Ti.Map.STANDARD_TYPE
-    });
-    $.__views.__alloyId13.add($.__views.mapview);
+    $.__views.__alloyId13.add($.__views.mapButton);
+    startMap ? $.__views.mapButton.addEventListener("click", startMap) : __defers["$.__views.mapButton!click!startMap"] = true;
     $.__views.__alloyId12 = Ti.UI.createTab({
         window: $.__views.__alloyId13,
         title: "Map",
@@ -92,6 +81,7 @@ function Controller() {
     $.index.addEventListener("close", function() {
         $.destroy();
     });
+    __defers["$.__views.mapButton!click!startMap"] && $.__views.mapButton.addEventListener("click", startMap);
     _.extend($, exports);
 }
 

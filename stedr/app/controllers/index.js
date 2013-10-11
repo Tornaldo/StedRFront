@@ -31,3 +31,7 @@ $.index.addEventListener('close', function() {
 	$.destroy();
 });
 
+function startMap(){
+	var map = Alloy.createController('map').getView();
+	map.open();
+}
