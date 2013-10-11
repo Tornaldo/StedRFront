@@ -1,4 +1,15 @@
 function Controller() {
+    function createAnnotations() {
+        var home = Titanium.Map.createAnnotation({
+            latitude: 63.432758,
+            longitude: 10.352254,
+            title: "Odds home",
+            subtitle: "Ingrids home too",
+            pincolor: Titanium.Map.ANNOTATION_GREEN
+        });
+        mapview.annotations = [ home ];
+        Ti.API.error("OK");
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "map";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -6,34 +17,22 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.map = Ti.UI.createWindow({
+    var __defers = {};
+    $.__views.mapWin = Ti.UI.createWindow({
         title: "Wall",
-        id: "map"
+        id: "mapWin"
     });
-    $.__views.map && $.addTopLevelView($.__views.map);
-    var __alloyId14 = [];
-    $.__views.mountainView = Ti.Map.createAnnotation({
-        latitude: 37.390749,
-        longitude: -122.081651,
-        id: "mountainView",
-        title: "Appcelerator Headquarters",
-        subtitle: "Mountain View, CA",
-        pincolor: Titanium.Map.ANNOTATION_RED,
-        myid: "1"
-    });
-    __alloyId14.push($.__views.mountainView);
-    $.__views.mapview = Ti.Map.createView({
-        annotations: __alloyId14,
-        id: "mapview",
-        ns: Ti.Map,
-        animate: "true",
-        regionFit: "true",
-        userLocation: "true",
-        mapType: Ti.Map.STANDARD_TYPE
-    });
-    $.__views.map.add($.__views.mapview);
+    $.__views.mapWin && $.addTopLevelView($.__views.mapWin);
+    createAnnotations ? $.__views.mapWin.addEventListener("click", createAnnotations) : __defers["$.__views.mapWin!click!createAnnotations"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var mapview = Titanium.Map.createView({
+        mapType: Titanium.Map.STANDARD_TYPE,
+        animate: true,
+        userLocation: true
+    });
+    $.mapWin.add(mapview);
+    __defers["$.__views.mapWin!click!createAnnotations"] && $.__views.mapWin.addEventListener("click", createAnnotations);
     _.extend($, exports);
 }
 
