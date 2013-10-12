@@ -1,14 +1,15 @@
 function Controller() {
     function createAnnotations() {
-        var home = Titanium.Map.createAnnotation({
-            latitude: 63.432758,
-            longitude: 10.352254,
-            title: "Odds home",
-            subtitle: "Ingrids home too",
-            pincolor: Titanium.Map.ANNOTATION_GREEN
+        var wallList = [];
+        var x = Titanium.Map.createAnnotation({
+            latitude: 52.702187,
+            longitude: 10.228271,
+            title: "somewhere in Deutschland",
+            pincolor: Titanium.Map.ANNOTATION_RED
         });
-        mapview.annotations = [ home ];
-        Ti.API.error("OK");
+        wallList.push[x];
+        mapview.annotations = wallList;
+        Ti.API.info("hei");
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "map";
@@ -23,7 +24,7 @@ function Controller() {
         id: "mapWin"
     });
     $.__views.mapWin && $.addTopLevelView($.__views.mapWin);
-    createAnnotations ? $.__views.mapWin.addEventListener("click", createAnnotations) : __defers["$.__views.mapWin!click!createAnnotations"] = true;
+    createAnnotations ? $.__views.mapWin.addEventListener("open", createAnnotations) : __defers["$.__views.mapWin!open!createAnnotations"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     var mapview = Titanium.Map.createView({
@@ -32,7 +33,7 @@ function Controller() {
         userLocation: true
     });
     $.mapWin.add(mapview);
-    __defers["$.__views.mapWin!click!createAnnotations"] && $.__views.mapWin.addEventListener("click", createAnnotations);
+    __defers["$.__views.mapWin!open!createAnnotations"] && $.__views.mapWin.addEventListener("open", createAnnotations);
     _.extend($, exports);
 }
 
