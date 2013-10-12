@@ -12,6 +12,7 @@ function filterFunction(collection) {
 	return collection;
 }
 
+//Need something like this: http://docs.appcelerator.com/titanium/latest/#!/api/Alloy.Collections-method-instance (Singleton instance)
 var wall = Alloy.Collections.wall;
 wall.fetch({
 	success : function(){
