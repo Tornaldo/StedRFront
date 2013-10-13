@@ -7,7 +7,7 @@ exports.definition = {
 			"latitude"		: "double",
 			"longitude"		: "double",
 		},
-		"URL" 		: "http://stedr.herokuapp.com/walls.json",
+		"URL" 		: "http://stedr.herokuapp.com/allwalls.json",
 		"adapter" 	: {
 			"type"	: "restapi",
 			"collection_name" : "wall",
