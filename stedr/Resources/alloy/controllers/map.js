@@ -4,12 +4,12 @@ function Controller() {
         var x = Titanium.Map.createAnnotation({
             latitude: 52.702187,
             longitude: 10.228271,
-            title: "somewhere in Deutschland",
-            pincolor: Titanium.Map.ANNOTATION_RED
+            title: "Somewhere in Deutschland",
+            pincolor: Titanium.Map.ANNOTATION_RED,
+            leftButton: "/images/buttonimage.jpg"
         });
         wallList.push[x];
-        mapview.annotations = wallList;
-        Ti.API.info("hei");
+        mapview.annotations = [ x ];
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "map";
@@ -33,6 +33,13 @@ function Controller() {
         userLocation: true
     });
     $.mapWin.add(mapview);
+    mapview.addEventListener("click", function(evt) {
+        Ti.API.info("Annotation " + evt.title);
+        if ("leftPane" == evt.clicksource) {
+            var wall = Alloy.createController("stedrWall").getView();
+            wall.open();
+        }
+    });
     __defers["$.__views.mapWin!open!createAnnotations"] && $.__views.mapWin.addEventListener("open", createAnnotations);
     _.extend($, exports);
 }
