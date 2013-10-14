@@ -1,0 +1,16 @@
+<Alloy>
+	<TabGroup>
+		<Tab title="Wall">
+			<Window title="Tab 1">
+				<Label id="wallTitle" >TITLE OF WALL</Label>
+				<ImageView id="wallImages"></ImageView>
+				<Label id="wallDesc">Descripton</Label>
+			</Window>
+		</Tab>
+		<Tab title="Stories">
+			<Window title="Tab 2">
+				<Label>Stories</Label>
+			</Window>
+		</Tab>
+	</TabGroup>
+</Alloy>
