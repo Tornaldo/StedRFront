@@ -1,10 +1,12 @@
 var mapview = Titanium.Map.createView({
 	mapType : Titanium.Map.STANDARD_TYPE,
 	animate : true,
-	userLocation : true,
+	userLocation : false,
 });
 
 $.mapWin.add(mapview);
+
+var wallTitle = null;
 
 mapview.addEventListener('click', function(evt) {
 	Ti.API.info("Annotation " + evt.title);
@@ -15,16 +17,19 @@ mapview.addEventListener('click', function(evt) {
 });
 
 function createAnnotations() {
-	var wallList = [];
-
-	//Won't work
-	// for (var x in $.wall) {
-	// var mapAnnotation = Titanium.Map.createAnnotation({
-	// latitude : x.get('latitude'),
-	// longitude : x.get('longitude'),
-	// pincolor : Titanium.Map.ANNOTATION_GREEN
-	// });
-	// wallList.push[mapAnnotation];
+	var wallList = new Array();
+	// var q = Alloy.Collections.wall;
+	// q.fetch();
+	// Ti.API.info(q);
+	// for (var i in q) {
+		// var mapAnnotation = Titanium.Map.createAnnotation({
+			// latitude : i.latitude,
+			// longitude : i.longitude,
+			// pincolor : Titanium.Map.ANNOTATION_GREEN
+		// });
+		// Ti.API.info(mapAnnotation);
+		// Ti.API.info(i.name);
+		// wallList.push(mapAnnotation);
 	// }
 
 	var x = Titanium.Map.createAnnotation({
@@ -34,6 +39,19 @@ function createAnnotations() {
 		pincolor : Titanium.Map.ANNOTATION_RED,
 		leftButton : "/images/buttonimage.jpg",
 	});
-	wallList.push[x];
-	mapview.annotations = [x];
+	var y = Titanium.Map.createAnnotation({
+		latitude : 63.428283,
+		longitude : 10.395041,
+		title : "Trondheim",
+		pincolor : Titanium.Map.ANNOTATION_RED,
+		leftButton : "/images/buttonimage.jpg",
+		
+	});
+	wallList.push(x);
+	wallList.push(y);
+	Ti.API.info(wallList.length);
+	for (var i in wallList) {
+		Ti.API.info(i.title);
+	}
+	mapview.annotations = wallList;
 }
