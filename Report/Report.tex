@@ -1403,6 +1403,11 @@ We did not manage to finish all the predefined tasks for this sprint. This was p
 \subsection{Requirements}
 \subsection{Pre study}
 \subsection{Implementation}
+
+\subsubsection{Server}
+
+In this sprint the requirements for the overall workings of the system seemed to be somewhat stable so we designed a data model and implemented it on the server side. This turned out to be a wrong assumption later on.
+
 \subsection{Testing}
 \subsection{Review}
 \subsection{Phase evaluation}
@@ -1410,8 +1415,42 @@ We did not manage to finish all the predefined tasks for this sprint. This was p
 \section{Sprint 3}
 \subsection{Introduction}
 \subsection{Requirements}
+
 \subsection{Pre study}
+
+\subsubsection{Map views, coordinates and projections} \label{sec:spr3_maps}
+
+One of the main features of the application is to show user location of various virtual walls on a map. Since we decided to use Titanium frameworkk for the development of the mobile application, we are using its own map view (\texttt{Titanium.Map.View}) for the display of maps and locations of walls upon them.
+
+The database is now featuring just a few walls, but it is supposed to host much more of them in the future and it would not be optimal for the performance and operational reasons (such as costs of data transfers on mobil internet) to fetch all the walls when user is using the application.
+
+The user is only interested in walls he could actually see on the map, so we decided to take an approach where we fetch the data from the server while filtering it upon geographic coordinates. The map view supplies us with a geogaphical coordinates of the center of the displayed map and with west-to-east distance and noth-to-south distance. This makes it possible to compute the coordinates of the north-west (i.e. top-left) corner of the map view, and the south-east (i.e. bottom-right) corner of the map view. Then the application fetches the data from the server, asking it to filter only those walls, which have coordinates in the rectange defined by those two corners.
+
+It is a well-known fact that planet Earth is not flat. For this reason, various map projections are used to transform the surface of Earth (3D) onto a plane (2D). Google Maps, which provide the map tiles for the map view, are using a variant of so called Mercator \footnote{Named after Flemish geographer and cartographer Gerardus Mercator, who firstly used it in 1569 for his map titled \emph{Nova et Aucta Orbis Terrae Descriptio ad Usum Navigantium Emendate Accommodata}, which is Latin for \emph{New and more complete representation of the terrestrial globe properly adapted for use in navigation}.} projection. This map projection was used in naval navigation for showing constant bearings (\emph{loxodromes}, also known as \emph{rhumb lines}) as straight lines on the map. \cite{progonos:mercator,radicalcartography} 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/Prestudy/mercator.png}
+    \caption{Mercator cylindrical map projection basics. \cite{wikipedia:mercator}}
+    \label{fig:mercator}
+\end{figure}
+
+As seen in \ref{fig:mercator}, it is a cylindrical conformal projection, so it preserves local angles (which is actually one of the reasons Google Maps use it), but is unfit for use in high-latitudes as the map extends infinitely North and South (so called \emph{polar exaggeration}). This shall be fine for use until we need to add a wall for a location near to one of the geographic poles (which are streched infinitely along the top and bottom edges of the map). This could be a problem is we want to add a wall for example for the Amundsen–Scott South Pole Station located just few meters from the geographical souch pole and which would and stretch widely east to west. \cite{progonos:mercator,radicalcartography} 
+
 \subsection{Implementation}
+
+\subsubsection{Server}
+
+Upon receiving changes proposed by customer, the data model was stashed and reworked to acomodate the proposed changes. As the concept of walls and stories finally settled down, we were able to implement API for retrieving walls based on geographic coordinates and to retrieve stories on walls.
+
+As requested in the last batch of change requests from customer, stories shall be stored in an external database called \emph{Digitalt Fortalt}. This database provides an API for search which we call to retrieve the stories. Our application does not write any data to \emph{Digitalt Fortalt}, stories need to be created manually on their website.
+
+Walls on the other hand shall be stored in out system database. We now store each wall with its geographic coordinates in a database table and filter as described in \ref{sec:spr3_maps}. 
+
+Data stored in our database are retrieved by classes in the \texttt{models} package. The models are extending \texttt{play.db.ebean.Model} class and use standard JPA\footnote{Java Persistence API} annotations.
+
+The data from \emph{Digitalt Fortalt} are retrieved from the API by classes in the \texttt{retrievers} package. The data are fetched and parsed by using the \emph{jsoup} Java HTML parser. We found this library to be more usable than \emph{DOM} and \emph{SAX} parser implementations in Java (due to various reasons such as usage of \texttt{Iterable} interface, which make the work with collection-like structures much easier).
+
 \subsection{Testing}
 \subsection{Review}
 \subsection{Phase evaluation}
