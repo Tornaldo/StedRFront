@@ -1,25 +1,29 @@
 function Controller() {
     function createAnnotations() {
+        Ti.API.info("START CREATING PINS");
         var wallList = new Array();
-        var x = Titanium.Map.createAnnotation({
-            latitude: 52.702187,
-            longitude: 10.228271,
-            title: "Somewhere in Deutschland",
-            pincolor: Titanium.Map.ANNOTATION_RED,
-            leftButton: "/images/buttonimage.jpg"
+        var walls = Alloy.Collections.wall;
+        walls.fetch({
+            success: function() {
+                _.each(walls.models, function(element) {
+                    Ti.API.info(element.get("latitude"));
+                    var mapAnnotation = Titanium.Map.createAnnotation({
+                        title: element.get("name"),
+                        latitude: element.get("latitude"),
+                        longitude: element.get("longitude"),
+                        pincolor: Titanium.Map.ANNOTATION_GREEN,
+                        leftButton: "/images/buttonimage.jpg"
+                    });
+                    Ti.API.info(mapAnnotation);
+                    wallList.push(mapAnnotation);
+                });
+                mapview.annotations = wallList;
+            },
+            error: function() {
+                Ti.API.error("hmm - this is not good!");
+            }
         });
-        var y = Titanium.Map.createAnnotation({
-            latitude: 63.428283,
-            longitude: 10.395041,
-            title: "Trondheim",
-            pincolor: Titanium.Map.ANNOTATION_RED,
-            leftButton: "/images/buttonimage.jpg"
-        });
-        wallList.push(x);
-        wallList.push(y);
-        Ti.API.info(wallList.length);
-        for (var i in wallList) Ti.API.info(i.title);
-        mapview.annotations = wallList;
+        Ti.API.info("STOP CREATING PINS");
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "map";
@@ -45,7 +49,10 @@ function Controller() {
     $.mapWin.add(mapview);
     mapview.addEventListener("click", function(evt) {
         Ti.API.info("Annotation " + evt.title);
-        "leftPane" == evt.clicksource && $stedrWall.open();
+        if ("leftButton" == evt.clicksource) {
+            var wall = Alloy.createController("stedrWall").getView();
+            wall.open();
+        }
     });
     __defers["$.__views.mapWin!open!createAnnotations"] && $.__views.mapWin.addEventListener("open", createAnnotations);
     _.extend($, exports);

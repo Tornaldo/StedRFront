@@ -18,6 +18,15 @@ function Controller() {
         id: "wallTitle"
     });
     $.__views.__alloyId15.add($.__views.wallTitle);
+    $.__views.wallImages = Ti.UI.createImageView({
+        id: "wallImages"
+    });
+    $.__views.__alloyId15.add($.__views.wallImages);
+    $.__views.wallDesc = Ti.UI.createLabel({
+        text: "Descripton",
+        id: "wallDesc"
+    });
+    $.__views.__alloyId15.add($.__views.wallDesc);
     $.__views.__alloyId14 = Ti.UI.createTab({
         window: $.__views.__alloyId15,
         title: "Wall",
