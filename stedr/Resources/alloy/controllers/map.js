@@ -1,20 +1,19 @@
 function Controller() {
     function createAnnotations() {
-        Ti.API.info("START CREATING PINS");
         var wallList = new Array();
         var walls = Alloy.Collections.wall;
         walls.fetch({
             success: function() {
                 _.each(walls.models, function(element) {
-                    Ti.API.info(element.get("latitude"));
+                    Ti.API.info(element.get("wallId"));
                     var mapAnnotation = Titanium.Map.createAnnotation({
                         title: element.get("name"),
                         latitude: element.get("latitude"),
                         longitude: element.get("longitude"),
                         pincolor: Titanium.Map.ANNOTATION_GREEN,
-                        leftButton: "/images/buttonimage.jpg"
+                        leftButton: "/images/buttonimage.jpg",
+                        model: element.get("wallId")
                     });
-                    Ti.API.info(mapAnnotation);
                     wallList.push(mapAnnotation);
                 });
                 mapview.annotations = wallList;
@@ -23,12 +22,11 @@ function Controller() {
                 Ti.API.error("hmm - this is not good!");
             }
         });
-        Ti.API.info("STOP CREATING PINS");
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "map";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
-    arguments[0] ? arguments[0]["$model"] : null;
+    var $model = arguments[0] ? arguments[0]["$model"] : null;
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
@@ -44,12 +42,14 @@ function Controller() {
     var mapview = Titanium.Map.createView({
         mapType: Titanium.Map.STANDARD_TYPE,
         animate: true,
+        regionFit: true,
         userLocation: false
     });
     $.mapWin.add(mapview);
     mapview.addEventListener("click", function(evt) {
-        Ti.API.info("Annotation " + evt.title);
         if ("leftButton" == evt.clicksource) {
+            Ti.API.info(evt.title);
+            Ti.API.info($model);
             var wall = Alloy.createController("stedrWall").getView();
             wall.open();
         }
