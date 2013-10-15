@@ -1,5 +1,4 @@
 <Alloy>
-	<Model id="wallModel" scr="wall" instance="true">
 	<TabGroup>
 		<Tab title="Wall">
 			<Window title="Tab 1" onOpen="setUp">

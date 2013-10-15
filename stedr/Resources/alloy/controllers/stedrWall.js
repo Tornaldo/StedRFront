@@ -3,7 +3,7 @@ function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "stedrWall";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
-    var $model = arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["$model"] : null;
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
@@ -20,8 +20,7 @@ function Controller() {
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#000",
-        id: "wallTitle",
-        text: "undefined" != typeof $model.__transform["title"] ? $model.__transform["title"] : $model.get("title")
+        id: "wallTitle"
     });
     $.__views.__alloyId15.add($.__views.wallTitle);
     $.__views.wallImages = Ti.UI.createImageView({
@@ -32,8 +31,7 @@ function Controller() {
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#000",
-        id: "wallDesc",
-        text: "undefined" != typeof $model.__transform["description"] ? $model.__transform["description"] : $model.get("description")
+        id: "wallDesc"
     });
     $.__views.__alloyId15.add($.__views.wallDesc);
     $.__views.__alloyId14 = Ti.UI.createTab({
