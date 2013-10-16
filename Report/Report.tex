@@ -1883,7 +1883,7 @@ As requested in the last batch of change requests from customer, stories shall b
 
 Walls on the other hand shall be stored in out system database. We now store each wall with its geographic coordinates in a database table and filter as described in \ref{sec:spr3_maps}. 
 
-Data stored in our database are retrieved by classes in the \texttt{models} package. The models are extending \texttt{play.db.ebean.Model} class and use standard JPA\footnote{Java Persistence API} annotations.
+Data stored in our database are retrieved by classes in the \texttt{models} package. The models are extending \texttt{play.db.ebean.Model} class and use standard JPA\footnote{Java Persistence API} annotations to indicate relationships between entities.
 
 The data from \emph{Digitalt Fortalt} are retrieved from the API by classes in the \texttt{retrievers} package. The data are fetched and parsed by using the \emph{jsoup} Java HTML parser. We found this library to be more usable than \emph{DOM} and \emph{SAX} parser implementations in Java (due to various reasons such as usage of \texttt{Iterable} interface, which make the work with collection-like structures much easier).
 
