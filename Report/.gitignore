@@ -5,7 +5,7 @@
 *.gz
 *.toc
 *.bst
-*.pdf
+Report.pdf
 *.lof
 *.lot
 *.blg
