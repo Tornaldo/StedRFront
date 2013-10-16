@@ -6,7 +6,7 @@ var mapview = Titanium.Map.createView({
 	mapType : Titanium.Map.STANDARD_TYPE,
 	animate : true,
 	regionFit : true,
-	userLocation : false,
+	userLocation : true,
 });
 
 $.mapWin.add(mapview);
@@ -21,6 +21,15 @@ mapview.addEventListener('click', function(evt) {
 	}
 });
 
+var anotationView = Titanium.UI.createView({
+				borderRadius : 5,
+				backgroundColor : 'red',
+				width : 500,
+				height : 500
+			});
+
+var pinColor = Titanium.Map.ANNOTATION_PURPLE;
+
 var wallCollection = Alloy.Collections.wall;
 wallCollection.fetch({
 	success : function() {
@@ -29,8 +38,8 @@ wallCollection.fetch({
 				title : element.get('name'),
 				latitude : element.get('latitude'),
 				longitude : element.get('longitude'),
-				pincolor : Titanium.Map.ANNOTATION_GREEN,
-				leftButton : "/images/buttonimage.jpg",
+				pincolor : pinColor,
+				customView : anotationView,
 				id : index
 			});
 			wallList.push(mapAnnotation);
@@ -45,4 +54,4 @@ wallCollection.fetch({
 
 $.index.addEventListener('close', function() {
 	$.destroy();
-});
+}); 

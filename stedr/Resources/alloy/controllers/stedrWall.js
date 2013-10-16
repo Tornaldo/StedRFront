@@ -16,6 +16,7 @@ function Controller() {
     $.__views.wallTitle = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
+        top: true,
         color: "#000",
         id: "wallTitle"
     });
@@ -27,6 +28,7 @@ function Controller() {
     $.__views.wallDesc = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
+        top: true,
         color: "#000",
         id: "wallDesc",
         text: "undefined" != typeof $model.__transform["name"] ? $model.__transform["name"] : $model.get("name")
@@ -46,6 +48,7 @@ function Controller() {
     $.__views.storyLabel = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
+        top: true,
         color: "#000",
         id: "storyLabel"
     });
