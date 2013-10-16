@@ -1,0 +1,7 @@
+<Alloy>
+	<Window 
+		title="Wall" 
+		id="mapWin"
+		onOpen="createAnnotations">
+	</Window>
+</Alloy>

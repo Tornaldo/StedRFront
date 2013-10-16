@@ -1,0 +1,17 @@
+<Alloy>
+	<Model id="wallModel" src="wall" instance="true"> 
+	<TabGroup>
+		<Tab title="Wall">
+			<Window id="welcomeWall" model="$.wallModel" title="{$.wallModel.name}" dataTransform="dataTransformation">
+				<Label id="wallTitle" model="$.wallModel" text="{$.wallModel.name}"></Label>
+				<ImageView id="wallImages"></ImageView>
+				<Label id="wallDesc" text=""></Label>
+			</Window>
+		</Tab>
+		<Tab title="Stories">
+			<Window title="Stories">
+				<Label></Label>
+			</Window>
+		</Tab>
+	</TabGroup>
+</Alloy>

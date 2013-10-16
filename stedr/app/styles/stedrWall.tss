@@ -1,0 +1,19 @@
+"Label": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: "#000"
+}
+
+"Tab": {
+	title: 20,
+	color: "#00ff00"
+}
+
+"#wallTitle":{
+}
+
+"#wallImages":{
+}
+
+"#wallDesc":{
+}

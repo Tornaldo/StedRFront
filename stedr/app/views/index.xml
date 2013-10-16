@@ -1,0 +1,19 @@
+<Alloy>
+	<Collection src="wall">
+	<TabGroup>
+		<Tab title="List">
+			<Window class="container" title="Walls">
+				<TableView dataCollection="wall">
+					<TableViewRow class="tableView" title="{name}" />
+				</TableView>
+			</Window>
+		</Tab>
+		<Tab title="Map">
+			<Window>
+				<Button id="mapButton" onClick="startMap">
+					MAP
+				</Button>
+			</Window>
+		</Tab>	
+	</TabGroup>
+</Alloy>
