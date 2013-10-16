@@ -1,37 +1,48 @@
 $.index.open();
 
+var wallList = new Array();
 
-function transformFunction(model) {
-	Ti.API.log(model);
-	var transform = model.toJSON();
-	transform.name = '[' + transform.name + ']';
-	return transform;
-};
-
-function filterFunction(collection) {
-	return collection;
-}
-
-var wall = Alloy.Collections.wall;
-wall.fetch({
-	success : function(){
-		// Here we goes through all the models, so any custom logic should be done here
-        _.each(wall.models, function(element, index, list){
-            
-        });
-        Ti.API.log(wall);
-    },
-    error : function(){
-        Ti.API.error("hmm - this is not good!");
-    }
+var mapview = Titanium.Map.createView({
+	mapType : Titanium.Map.STANDARD_TYPE,
+	animate : true,
+	regionFit : true,
+	userLocation : false,
 });
 
+$.mapWin.add(mapview);
+
+mapview.addEventListener('click', function(evt) {
+	if (evt.clicksource == 'leftButton') {
+		var stedrWallController = Alloy.createController('stedrWall', {
+			data : wallCollection.get(evt.annotation.id),
+			"$model" : wallCollection.get(evt.annotation.id)
+		});
+		stedrWallController.getView().open();
+	}
+});
+
+var wallCollection = Alloy.Collections.wall;
+wallCollection.fetch({
+	success : function() {
+		_.each(wallCollection.models, function(element, index, list) {
+			var mapAnnotation = Titanium.Map.createAnnotation({
+				title : element.get('name'),
+				latitude : element.get('latitude'),
+				longitude : element.get('longitude'),
+				pincolor : Titanium.Map.ANNOTATION_GREEN,
+				leftButton : "/images/buttonimage.jpg",
+				id : index
+			});
+			wallList.push(mapAnnotation);
+		});
+		mapview.annotations = wallList;
+		Ti.API.log(wallCollection);
+	},
+	error : function() {
+		Ti.API.error("hmm - this is not good!");
+	}
+});
 
 $.index.addEventListener('close', function() {
 	$.destroy();
 });
-
-function startMap(){
-	var map = Alloy.createController('map').getView();
-	map.open();
-}

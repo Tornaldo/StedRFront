@@ -9,10 +9,7 @@
 			</Window>
 		</Tab>
 		<Tab title="Map">
-			<Window>
-				<Button id="mapButton" onClick="startMap">
-					MAP
-				</Button>
+			<Window title="Wall" id="mapWin">
 			</Window>
 		</Tab>	
 	</TabGroup>

@@ -14,10 +14,6 @@ function Controller() {
         }
         $.__views.__alloyId6.setData(rows);
     }
-    function startMap() {
-        var map = Alloy.createController("map").getView();
-        map.open();
-    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -25,7 +21,6 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    var __defers = {};
     Alloy.Collections.instance("wall");
     $.__views.index = Ti.UI.createTabGroup({
         id: "index"
@@ -47,17 +42,12 @@ function Controller() {
         id: "__alloyId4"
     });
     $.__views.index.addTab($.__views.__alloyId4);
-    $.__views.__alloyId13 = Ti.UI.createWindow({
-        id: "__alloyId13"
+    $.__views.mapWin = Ti.UI.createWindow({
+        title: "Wall",
+        id: "mapWin"
     });
-    $.__views.mapButton = Ti.UI.createButton({
-        title: "MAP",
-        id: "mapButton"
-    });
-    $.__views.__alloyId13.add($.__views.mapButton);
-    startMap ? $.__views.mapButton.addEventListener("click", startMap) : __defers["$.__views.mapButton!click!startMap"] = true;
     $.__views.__alloyId12 = Ti.UI.createTab({
-        window: $.__views.__alloyId13,
+        window: $.__views.mapWin,
         title: "Map",
         id: "__alloyId12"
     });
@@ -68,11 +58,39 @@ function Controller() {
     };
     _.extend($, $.__views);
     $.index.open();
-    var wall = Alloy.Collections.wall;
-    wall.fetch({
+    var wallList = new Array();
+    var mapview = Titanium.Map.createView({
+        mapType: Titanium.Map.STANDARD_TYPE,
+        animate: true,
+        regionFit: true,
+        userLocation: false
+    });
+    $.mapWin.add(mapview);
+    mapview.addEventListener("click", function(evt) {
+        if ("leftButton" == evt.clicksource) {
+            var stedrWallController = Alloy.createController("stedrWall", {
+                data: wallCollection.get(evt.annotation.id),
+                $model: wallCollection.get(evt.annotation.id)
+            });
+            stedrWallController.getView().open();
+        }
+    });
+    var wallCollection = Alloy.Collections.wall;
+    wallCollection.fetch({
         success: function() {
-            _.each(wall.models, function() {});
-            Ti.API.log(wall);
+            _.each(wallCollection.models, function(element, index) {
+                var mapAnnotation = Titanium.Map.createAnnotation({
+                    title: element.get("name"),
+                    latitude: element.get("latitude"),
+                    longitude: element.get("longitude"),
+                    pincolor: Titanium.Map.ANNOTATION_GREEN,
+                    leftButton: "/images/buttonimage.jpg",
+                    id: index
+                });
+                wallList.push(mapAnnotation);
+            });
+            mapview.annotations = wallList;
+            Ti.API.log(wallCollection);
         },
         error: function() {
             Ti.API.error("hmm - this is not good!");
@@ -81,7 +99,6 @@ function Controller() {
     $.index.addEventListener("close", function() {
         $.destroy();
     });
-    __defers["$.__views.mapButton!click!startMap"] && $.__views.mapButton.addEventListener("click", startMap);
     _.extend($, exports);
 }
 
