@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>no.ntnu.stedr</id>
     <name>Stedr</name>
-    <version>0.1</version>
+    <version>1.0</version>
     <publisher>Group 2</publisher>
     <url>http://</url>
     <description>An application to help people discover cultural heritage</description>
