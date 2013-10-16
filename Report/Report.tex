@@ -1636,13 +1636,13 @@ The table \ref{tab:test_plan_approvals} lists approvals of completed tasks.
 \section{Planning}
 
 \section{Sprint 1}
-\subsection{Introduction}
+\subsection{S1: Introduction}
 The aim of this first sprint is to establish a baseline, in terms of technology but also with regard to the social aspects of executing a sprint as well as the amount of work being manageable within the timespan of the sprint.
 
-\subsection{Requirements}
+\subsection{S1: Requirements}
 The server as well as the client should have a base satisfying the architectural drivers listed in \ref{sec:architecture_drivers}.
 
-\subsection{Pre study}
+\subsection{S1: Pre study}
 
 \subsubsection{Server}
 This is the pre study done for the server in sprint 1.
@@ -1750,24 +1750,24 @@ The idea of using multiple data sources came from the danish mobile application,
 \textbf{Version two}\\
 TBA
 
-\subsection{Implementation}
+\subsection{S1: Implementation}
 
 \subsubsection{Server}
 During this period only the most basic proof of concept was developed for the server. A RESTful access point was made for the developed, with a database. All the basic groundwork was put in place, except for authentication, to develop the rest of the service.
 
-\subsection{Testing}
+\subsection{S1: Testing}
 This sprint no formal testing was done, only functional tests on the server and discussions around the user interface.
 
-\subsection{Review}
+\subsection{S1: Review}
 We did not manage to finish all the predefined tasks for this sprint. This was partly due to the absence of two group members during most of the sprint period. The delay was also partly due to inexperience with mobile JavaScript frameworks and the lack of real documentation for most of them.
 
 \section{Sprint 2}
-\subsection{Introduction}
+\subsection{S2: Introduction}
 The goal of the second sprint was initially to build upon the bases put in place by sprint one, but due to a steep learning curve in JavaScript and lack of real documentation for most frameworks this was not the case.
 
 The server has seen development based upon what was done in sprint one, but the client has started from scratch.
 
-\subsection{Sprint backlog}
+\subsection{S2: Backlog}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{| l | l |}
@@ -1791,9 +1791,9 @@ The server has seen development based upon what was done in sprint one, but the 
 	\caption{Backlog for sprint 2.}
 \end{table}
 
-\subsection{Requirements}
+\subsection{S2: Requirements}
 
-\subsection{Pre study}
+\subsection{S2: Pre study}
 
 \subsubsection{Client}
 
@@ -1826,7 +1826,7 @@ Appcelerator Titanium\footnote{http://www.appcelerator.com/titanium/} is a cross
 Titanium was chosen because of its framework, its documentation and the huge community that surrounds it.
 
 
-\subsection{Implementation}
+\subsection{S2: Implementation}
 
 \subsubsection{Server}
 
@@ -1894,10 +1894,10 @@ exports.definition = {
 };
 \end{lstlisting}
 
-\subsection{Testing}
+\subsection{S2: Testing}
 Only functional testing was done for this sprint as development went on. No systematic testing was executed.
 
-\subsection{Review}
+\subsection{S2: Review}
 Once again we would like to have reached a milestone farther ahead at this time, but we have had to spend a lot more time learning new mobile frameworks than we had expected. 
 
 Nevertheless, the group has seen increased participation during this sprint, and more group members has become more active. This has lead to us getting more done than in the earlier sprints, and we how this will also mean that we will get even more done in the coming sprints.
@@ -1907,10 +1907,10 @@ Some of our goals for this sprint was only reached for the server. The reason fo
 The architecture is only partially done, this is due to the change in mobile framework and requirements. Now that a mobile framework has been chosen and the requirements more stabilized, we hope to have the architecture finished within a relatively short amount of time.
 
 \section{Sprint 3}
-\subsection{Introduction}
-\subsection{Requirements}
+\subsection{S3: Introduction}
+\subsection{S3: Requirements}
 
-\subsection{Pre study}
+\subsection{S3: Pre study}
 
 \subsubsection{Map views, coordinates and projections} \label{sec:spr3_maps}
 
@@ -1931,7 +1931,7 @@ It is a well-known fact that planet Earth is not flat. For this reason, various 
 
 As seen in \ref{fig:mercator}, it is a cylindrical conformal projection, so it preserves local angles (which is actually one of the reasons Google Maps use it), but is unfit for use in high-latitudes as the map extends infinitely North and South (so called \emph{polar exaggeration}). This shall be fine for use until we need to add a wall for a location near to one of the geographic poles (which are streched infinitely along the top and bottom edges of the map). This could be a problem is we want to add a wall for example for the Amundsen–Scott South Pole Station located just few meters from the geographical souch pole and which would and stretch widely east to west. \cite{progonos:mercator,radicalcartography} 
 
-\subsection{Implementation}
+\subsection{S3: Implementation}
 
 \subsubsection{Server}
 
@@ -1945,29 +1945,29 @@ Data stored in our database are retrieved by classes in the \texttt{models} pack
 
 The data from \emph{Digitalt Fortalt} are retrieved from the API by classes in the \texttt{retrievers} package. The data are fetched and parsed by using the \emph{jsoup} Java HTML parser. We found this library to be more usable than \emph{DOM} and \emph{SAX} parser implementations in Java (due to various reasons such as usage of \texttt{Iterable} interface, which make the work with collection-like structures much easier).
 
-\subsection{Testing}
-\subsection{Review}
-\subsection{Phase evaluation}
+\subsection{S3: Testing}
+\subsection{S3: Review}
+\subsection{S3: Phase evaluation}
 
 \section{Sprint 4}
-\subsection{Introduction}
-\subsection{Requirements}
-\subsection{Pre study}
-\subsection{Implementation}
-\subsection{Testing}
-\subsection{Review}
-\subsection{Phase evaluation}
-
-\section{Sprint 5}
-\subsection{Introduction}
-\subsection{Requirements}
-\subsection{Pre study}
-\subsection{Implementation}
-\subsection{Testing}
-\subsection{Review}
-\subsection{Phase evaluation}
+\subsection{S4: Introduction}
+\subsection{S4: Requirements}
+\subsection{S4: Pre study}
+\subsection{S4: Implementation}
+\subsection{S4: Testing}
+\subsection{S4: Review}
+\subsection{S4: Phase evaluation}
 
 \section{Finalization}
+\subsection{F: Introduction}
+\subsection{F: Requirements}
+\subsection{F: Pre study}
+\subsection{F: Implementation}
+\subsection{F: Testing}
+\subsection{F: Review}
+\subsection{F: Phase evaluation}
+
+
 
 \chapter{Evaluation}
 
