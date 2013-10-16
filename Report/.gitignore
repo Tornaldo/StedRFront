@@ -5,3 +5,8 @@
 *.gz
 *.toc
 *.bst
+*.pdf
+*.lof
+*.lot
+*.blg
+*.bbl
