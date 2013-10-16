@@ -7,33 +7,34 @@ var mapview = Titanium.Map.createView({
 
 $.mapWin.add(mapview);
 
+var globalWall;
+
 mapview.addEventListener('click', function(evt) {
 	if (evt.clicksource == 'leftButton') {
-		Ti.API.info(evt.title);
-		Ti.API.info($model);
+		var stedrWallController = Alloy.createController('stedrWall', {
+			data : wallCollection.get(evt.annotation.id)
+		});		
 		var wall = Alloy.createController('stedrWall').getView();
 		wall.open();
 	}
 });
 
 var wallID;
-
+var wallCollection = Alloy.Collections.wall;
 
 function createAnnotations() {
 	var wallList = new Array();
-	var walls = Alloy.Collections.wall;
-	walls.fetch({
+	wallCollection.fetch({
 		success : function() {
 			// Here we goes through all the models, so any custom logic should be done here
-			_.each(walls.models, function(element, index, list) {
-				Ti.API.info(element.get('wallId'));
+			_.each(wallCollection.models, function(element, index, list) {
 				var mapAnnotation = Titanium.Map.createAnnotation({
 					title : element.get('name'),
 					latitude : element.get('latitude'),
 					longitude : element.get('longitude'),
 					pincolor : Titanium.Map.ANNOTATION_GREEN,
 					leftButton : "/images/buttonimage.jpg",
-					model : element.get('wallId')
+					id : index
 				});
 				wallList.push(mapAnnotation);
 			});

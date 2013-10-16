@@ -1,18 +1,16 @@
 function Controller() {
     function createAnnotations() {
         var wallList = new Array();
-        var walls = Alloy.Collections.wall;
-        walls.fetch({
+        wallCollection.fetch({
             success: function() {
-                _.each(walls.models, function(element) {
-                    Ti.API.info(element.get("wallId"));
+                _.each(wallCollection.models, function(element, index) {
                     var mapAnnotation = Titanium.Map.createAnnotation({
                         title: element.get("name"),
                         latitude: element.get("latitude"),
                         longitude: element.get("longitude"),
                         pincolor: Titanium.Map.ANNOTATION_GREEN,
                         leftButton: "/images/buttonimage.jpg",
-                        model: element.get("wallId")
+                        id: index
                     });
                     wallList.push(mapAnnotation);
                 });
@@ -26,7 +24,7 @@ function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "map";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
-    var $model = arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["$model"] : null;
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
@@ -48,12 +46,14 @@ function Controller() {
     $.mapWin.add(mapview);
     mapview.addEventListener("click", function(evt) {
         if ("leftButton" == evt.clicksource) {
-            Ti.API.info(evt.title);
-            Ti.API.info($model);
+            Alloy.createController("stedrWall", {
+                data: wallCollection.get(evt.annotation.id)
+            });
             var wall = Alloy.createController("stedrWall").getView();
             wall.open();
         }
     });
+    var wallCollection = Alloy.Collections.wall;
     __defers["$.__views.mapWin!open!createAnnotations"] && $.__views.mapWin.addEventListener("open", createAnnotations);
     _.extend($, exports);
 }
