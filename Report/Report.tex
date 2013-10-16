@@ -236,7 +236,7 @@ Kanaban is fairly simple, a project is represented by a board, the board contain
 
 Figure~\ref{fig:tools_trello} shows how we used it for document work. There are several lists; ``TODO'', ``In Progress'', ``Testing'' and ``Done'', which represents the workflow. We started by populating the ``TODO''-list, with all the appendices that were needed. Then we divided the different tasks between the group members, and started working. When a person worked on a task, then the corresponding card would be in the ``In progress'' list, when the task were finished, it was moved to the ``Testing'' list, for quality assurance. If it was approved, it was moved to ``Done'' list, if not, back in the ``In Progress'' list.
 
-\subsection{Allocated time}
+\subsection{Allocated man-hours}
 The course the project is part of amounts to 15 points of credit, which indicates that each member of the group should work for about 25 hours on the project each week. Given that the group consists of 4 members, and that the project run over 13 weeks, we get a total of allocated time that amounts to 25 x 4 x 13 = 1300 hours.
 
 Due to the diversity of the group, one in a full time job, the others attending different classes, the group has few meetings in person each week. As such, every group member is free to plan his own work each week, but has to meet at the weekly group meeting. As a result of this the group has only a few items on its weekly agenda: internal group meeting, meeting with advisor and meeting with customer.
@@ -1064,9 +1064,9 @@ Each part of the audience holds different stakes in the project, but all are int
 \subsection{Scope}
 This SRS document deals with the project Virtual walls – walls that tell us stories. This project shall result in developing a tool for working with so called virtual walls, creating and sharing stories on them.
 
-As presented by customer, the VirtualWall software system is going to be a complex system consisting of a number of subsystems including several content databases, a server backend and web application frontend.
+As presented by customer, the VirtualWall software system is going to be a complex system consisting of a number of subsystems including several content databases, a server backend and mobile application frontend.
 
-In the scope of this year's run of Customer Driven Project course, a prototype of a web application frontend and a basic server backend shall be developed.
+In the scope of this year's run of Customer Driven Project course, a prototype of a mobile application frontend and a basic server backend shall be developed.
 
 \subsection{Definitions, acronyms and abbreviations}
 
@@ -1115,11 +1115,11 @@ In the initial phase, the server will not be directly connectex to any external 
 \subsection{User Interfaces}
 Since the frontend of the whole system shall be developed in this project, the description of user interface shall be considerably stressed.
 
-We can characterize the nature of the system as crowdsourced (or edge-dominant, in general), as the content shall be generated and modified by users to some extent. Due to this, there is not going to be any backend for data entry, the only point where the system is exposed to human beings is the web application frontend.
+We can characterize the nature of the system as crowdsourced (or edge-dominant, in general), as the content shall be generated and modified by users to some extent. Due to this, there is not going to be any backend for data entry, the only point where the system is exposed to human beings is the mobile application frontend.
 
 Our key quality attribute, usability, relates tightly to user interfaces. For this reason, all usability-related requirements on user interface are listed in section \ref{sec:req_software_system_attributes} as quality attribute requirements.
 
-\subsubsection{Web application front end}\label{sec:req_webapplication_frontend}
+\subsubsection{Mobile application (frontend)}\label{sec:req_webapplication_frontend}
 As user requests that the initial prototype application shall be developed for use on tablets. Typical usage of the system suggests that it will be used in field, which implies using the application on smartphones and tablets.
 
 Both smartphones and tablet have some inherent characteristics that have to be respected when designing the user interface and the means of interacting with it.
@@ -1141,7 +1141,7 @@ We imply that the server and the client interoperate and are developed to work w
 \subsection{Communication interfaces}
 Another inherent characteristic of mobile devices (smartphones, tablets, etc.) is the unreliability and speed of network connection. Since this application is a part of a client-server system, the communication link between those is critical.
 
-The main issues with mobile data networks are frequent interruption, big latency and small bitrate. Sometimes the connection can as well be unavailable at all. This results in the data connection being slow and unreliable which has a great significance on the performance of the application and its usability. As developers of the web application, we need to take this into consideration.
+The main issues with mobile data networks are frequent interruption, big latency and small bitrate. Sometimes the connection can as well be unavailable at all. This results in the data connection being slow and unreliable which has a great significance on the performance of the application and its usability. As developers of the mobile application, we need to take this into consideration.
 
 There are several techniques how to deal with mentioned issues or at least mitigate their impact.
 
@@ -1173,19 +1173,17 @@ See chapter \ref{sec:req_usability} for requirements on usability.
 \subsection{Constraints}
 
 \subsubsection{HTML5 use}
-Since use on many different devices and platforms is expected and necessary, customer requested that the frontend would be a web application. As the system is crowdsourced and heavily relies on users, it it necessary that it interacts very well with the users and is visually appealing. Also, for reasons stated in \ref{sec:req_unavailability_of_connection}, local storage is necessary to enable off-line mode (in the future). This implies the use of cutting-edge technologies for the development.
+Since use on many different devices and platforms is expected and necessary, customer requested that the frontend would be a mobile application. As the system is crowdsourced and heavily relies on users, it it necessary that it interacts very well with the users and is visually appealing. Also, for reasons stated in \ref{sec:req_unavailability_of_connection}, local storage is necessary to enable off-line mode (in the future). This implies the use of cutting-edge technologies for the development.
 
 For this reason, customer suggests that the application will be developed in HTML5.
 
 \section{Specific requirements}\label{sec:req_specific_requirements}
 
 \subsection{External interfaces}
-As the application developed is going to be a client/server where the client is a web application, we will use HTTP protocol for data exchange. Data transferred over HTTP in our case will be in HTML and XML or JSON formats. This is to be determined later.
+As the application developed is going to be a client/server where the client is a mobile/web application, we will use HTTP protocol for data exchange. Data transferred over HTTP in our case will be in JSON format.
 
 \subsubsection{Virtual Wall Client/Server interface}
-VirtualWall client is a classic web application that runs in a web browser. This implies that is will be downloaded via HTTP as a HTML document.
-
-Once the web application is open in the browser, data transfers with the web server can be done using AJAX to retrieve the data in XML/JSON format from the server.
+VirtualWall client is a mobile that runs in a container similar to a web browser. Once the application is installed in the phone and open, data transfers with the web server can be done using AJAX to retrieve the data in JSON format from the server.
 
 Format of the messages shall be determined later.
 
@@ -1522,7 +1520,7 @@ Backend subsystem shall be deployed on a server running JRE 1.6 and an instance 
 
 Server computer needs to be connected to the Internet. Specified port shall be open for server to listen on and reachable from outer network (not blocked by a firewall, etc). %FIXME SIMON: mention port number once it's known
 
-Device to run the client needs to be equipped with a web browser to open the web application in. The device needs to be connected to the Internet.
+Device to run the client needs to be equipped Android or iOS mobile operating system. The device needs to be connected to the Internet.
 
 \subsection{Responsibles}
 
