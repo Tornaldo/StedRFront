@@ -16,6 +16,7 @@
 \usepackage{xcolor}
 \usepackage{avant}
 \usepackage{microtype}
+\usepackage{listings}
 \usepackage[utf8]{inputenc}
 
 \usepackage{titlesec}
@@ -1406,17 +1407,148 @@ We did not manage to finish all the predefined tasks for this sprint. This was p
 
 \section{Sprint 2}
 \subsection{Introduction}
+The goal of the second sprint was initially to build upon the bases put in place by sprint one, but due to a steep learning curve in JavaScript and lack of real documentation for most frameworks this was not the case.
+
+The server has seen development based upon what was done in sprint one, but the client has started from scratch.
+
+\subsection{Sprint backlog}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| l | l |}
+		\hline
+		Item 				& Outcome\\
+		\hline
+		Define the concept of story & Done\\
+		\hline
+		Define the main principles of UI & Done\\
+		\hline
+		Browse virtual walls & Done in server\\
+		\hline
+		Open a virtual wall & Done in server\\
+		\hline
+		Basic framework for app with support for communicating with server & Done\\
+		\hline
+		Architecture & Partly done\\
+		\hline
+	\end{tabular}
+	\label{tab:phase_sprint2_backlog}
+	\caption{Backlog for sprint 2.}
+\end{table}
+
 \subsection{Requirements}
+
 \subsection{Pre study}
+
+\subsubsection{Client}
+
+\textbf{The M project}\\
+Initially “The M project” \footnote{http://www.the-m-project.org/} came out quite good in comparisons of frameworks for client side development for mobile phones. This was due to it being lightweight and what seemed like usable documentation. Its described caracteristica also matched quite good with what we was looking for. Especially the MVC part and the native look and feel of the jQuery Mobile user interface. The MIT license was also very attractive, as it is compatible with the BSD license required for all code produced in this course.
+
+The reasons why The M project was not chosen in the end, surrounds two topics. First, the project has its own build system to help the developers develop more efficiently. Unfortunately this did not work, and produced unrunnable code. One could edit the files after each build in order to make them runnable, but 5 minutes extra per build to clean the code was just not acceptable.
+
+The second problem is of a more serious kind, both for this development team and for those that might follow at a later time. The documentation was vague at best and partly outdated.
+
+\textbf{Enyo}\\
+Enyo\footnote{http://enyojs.com/} was developed by HP for WebOS\cite{enyoHistory} and is at this time sponsored by LG. It has a very interesting approach to development, one develops features in the app as separate reusable components and glue them together. In that way it feels much more natural to develop in Enyo, and the documentation is excellent. The license, Apache 2.0, is also very attractive as it is compatible with BSD.
+
+The problem with Enyo was that the requirements specified modifiability as one very important factor to take into account. While components can make the app itself modifiable, Enyo does not support MVC in the components and as such one just moves the complexity one level down. When developing components we would still have to handle that lack of ability to structure the code in an efficient way.
+
+Adding support for MVC, or making it easy to use MVC in combination with the rest of the framework, is an ongoing effort at Enyo.
+
+The reason Enyo was not selected is that the MVC support has not yet stabilized, and the documentation is still a bit too thin on the matter.
+
+\textbf{Sencha Touch}\\
+Sencha Touch\footnote{http://www.sencha.com/products/touch/} has excellent documentation and a good community. The problem with Sencha is the incompatible license. Sencha uses the General Public License version 3, which is incompatible with the BSD license.\cite{flossLicense}
+
+\textbf{RhoMobile}\\
+RhoMobile is developed by Motorola Solutions\footnote{http://www.motorolasolutions.com/US-EN/Business+Product+and+Services/Software+and+Applications/RhoMobile+Suite} to help developers develop software across their different handheld devices. They have also added support for the mobile platforms. This framework has support for developing enterprise applications and has an attractive license in MIT.
+The reason this framework was not chosen, was because it uses Ruby as well as JavaScript. It was decided that learning one new language would be enough work, if not another one should be added on top.
+
+\textbf{Titanium}\\
+Appcelerator Titanium\footnote{http://www.appcelerator.com/titanium/} is a cross platform development framework for mobile and web. The development is done in JavaScript and XML. It is licensed under the Apache Public License version 2. Titanium is a "write once, adapt everywhere" framework\cite{titaniumCrossMobile}. That does not mean that it can’t run everywhere without adaption, but that in order to look native it needs adaption. Titanium has an excellent base of documentation and a mature framework supporting easy use of the model view controller architectural pattern.
+
+Titanium was chosen because of its framework, its documentation and the huge community that surrounds it.
+
+
 \subsection{Implementation}
 
 \subsubsection{Server}
 
 In this sprint the requirements for the overall workings of the system seemed to be somewhat stable so we designed a data model and implemented it on the server side. This turned out to be a wrong assumption later on.
 
+\subsubsection{Client}
+\textbf{Sync client}\\
+Titanium Alloy is backend agnostic. This means that most of the code does not know, nor need to know, what kind of backend is running. This is accomplished by utilizing an abstraction layer in Alloy called Sync. Sync provides an unified API that can be implemented for each type of backend.\\
+The API has the following methods:
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| l | l | l | l |}
+		\hline
+		Backbone Method & Sync CRUD Method & Equivalent HTTP Method & Equivalent SQL Method\\
+		\hline
+		Collection.fetch & read & GET & SELECT\\
+		\hline
+		Collection.create (id == null) or Collection.create (id != null) & create or update & POST or PUT & INSERT or UPDATE\\
+		\hline
+		Model.fetch & read	& GET & SELECT\\
+		\hline
+		Model.save (id == null) or Model.save (id != null) & create or update & POST or PUT & INSERT or UPDATE\\
+		\hline
+		Model.destroy & delete & DELETE & DELETE\\
+		\hline
+	\end{tabular}
+	\label{tab:phase_sprint2_model}
+	\caption{API for Sync in Alloy\cite{titaniumAlloySync}}
+\end{table}
+
+As the application makes use of REST server, a backend supporting REST was needed. Although a custom backend could have been created, it made more sense to reuse the implementation of others. The napp.alloy.adapter.restapi\footnote{https://github.com/viezel/napp.alloy.adapter.restapi} by Mads Møller was chosen due to its feature completeness and active development.
+
+\textbf{Models}\\
+Models in Titanium Alloy build upon Backbone.js\footnote{http://backbonejs.org/} \cite{titaniumAlloyModel}. Therefor the documentation for Backbone.js is relevant in addition to the documentation from Titanium.
+
+A basic model looks like this:
+\begin{lstlisting}
+exports.definition = {
+        config : {
+                "columns"        : {
+                        "wallId"                 : "int",
+                        "name"     	     : "string",
+                        "description"         : "string",
+                        "latitude"               : "double",
+                        "longitude"            : "double",
+                },
+                "URL"           : "http://stedr.herokuapp.com/walls.json",
+                "adapter"      : {
+                        "type"        : "restapi",
+                        "collection_name" : "wall",
+                        "idAttribute" : "wallId"
+                }
+        },
+        extendModel : function(Model) {
+                _.extend(Model.prototype, {
+                        // If adding and editing walls shall be allowed, the specific url must be added here
+                });
+                return Model;
+        },
+        extendCollection : function(Collection) {
+                _.extend(Collection.prototype, {});
+                return Collection;
+        }
+};
+\end{lstlisting}
+
 \subsection{Testing}
+Only functional testing was done for this sprint as development went on. No systematic testing was executed.
+
 \subsection{Review}
-\subsection{Phase evaluation}
+Once again we would like to have reached a milestone farther ahead at this time, but we have had to spend a lot more time learning new mobile frameworks than we had expected. 
+
+Nevertheless, the group has seen increased participation during this sprint, and more group members has become more active. This has lead to us getting more done than in the earlier sprints, and we how this will also mean that we will get even more done in the coming sprints.
+
+Some of our goals for this sprint was only reached for the server. The reason for this is the fact that the group members are more accustomed to Java than JavaScript, and the fact that Play! Framework has better documentation available than the mobile frameworks we have used.
+
+The architecture is only partially done, this is due to the change in mobile framework and requirements. Now that a mobile framework has been chosen and the requirements more stabilized, we hope to have the architecture finished within a relatively short amount of time.
 
 \section{Sprint 3}
 \subsection{Introduction}
