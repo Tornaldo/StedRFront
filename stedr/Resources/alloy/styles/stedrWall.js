@@ -5,7 +5,7 @@ module.exports = [ {
     style: {
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
-        top: 20,
+        top: 5,
         color: "#000",
         font: {
             fontFamily: "Helvetica",

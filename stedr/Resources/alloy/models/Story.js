@@ -3,7 +3,8 @@ exports.definition = {
         columns: {
             storyId: "int",
             category: "string",
-            title: "string"
+            title: "string",
+            pictures: "string"
         },
         URL: "http://stedr.herokuapp.com/stories.json",
         adapter: {

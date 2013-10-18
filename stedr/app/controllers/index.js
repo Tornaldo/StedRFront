@@ -18,6 +18,12 @@ if (OS_MOBILEWEB) {
 		userLocation : true,
 		mapType : MapModule.NORMAL_TYPE,
 		animate : true,
+		region : {
+			latitude : 63.427255,
+			longitude : 10.396545,
+			latitudeDelta : 0.01,
+			longitudeDelta : 0.01
+		},
 	});
 }
 

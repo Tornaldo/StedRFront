@@ -64,7 +64,13 @@ function Controller() {
     mapview = MapModule.createView({
         userLocation: true,
         mapType: MapModule.NORMAL_TYPE,
-        animate: true
+        animate: true,
+        region: {
+            latitude: 63.427255,
+            longitude: 10.396545,
+            latitudeDelta: .01,
+            longitudeDelta: .01
+        }
     });
     $.mapWin.add(mapview);
     mapview.addEventListener("click", function(evt) {
