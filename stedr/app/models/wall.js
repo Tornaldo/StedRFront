@@ -1,17 +1,18 @@
 exports.definition = {
 	config : {
-		"columns"	: {
-			"wallId" 		: "int",
-			"name"	 		: "string",
-			"description"	: "string",
-			"latitude"		: "double",
-			"longitude"		: "double",
+		"columns" : {
+			"wallId" : "int",
+			"name" : "string",
+			"description" : "string",
+			"latitude" : "double",
+			"longitude" : "double",
+			"pictures" : "list",
 		},
-		"URL" 		: "http://stedr.herokuapp.com/walls.json",
-		"adapter" 	: {
-			"type"	: "restapi",
+		"URL" : "http://stedr.herokuapp.com/walls.json",
+		"adapter" : {
+			"type" : "restapi",
 			"collection_name" : "wall",
-			"idAttribute" : "wallId" 
+			"idAttribute" : "wallId"
 		}
 	},
 	extendModel : function(Model) {

@@ -1,20 +1,23 @@
+".container": {
+	backgroundColor:"white"
+},
 "Label": {
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
-	top : true,
-	color: "#000"
-}
-
+	top : 20,
+	color: '#000',
+	font: {
+        fontFamily:'Helvetica',
+        fontSize: '30dp',
+        fontStyle: 'normal',
+        fontWeight: 'normal'
+   }
+},
 "Tab": {
-	title: 20,
-	color: "#00ff00"
-}
-
+	backgroundColor: '#9B8D8D',
+	backgroundSelectedColor: '#40B0D2',
+},
 "#wallTitle":{
-}
-
+},
 "#wallImages":{
-}
-
-"#wallDesc":{
 }

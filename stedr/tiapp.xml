@@ -42,15 +42,17 @@
             <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
             <!-- Specify OpenGL ES 2.0 as a requirement -->
             <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
-            <!-- Replace <com.domain.appid> with your application ID -->
             <uses-permission android:name="no.ntnu.stedr.permission.MAPS_RECEIVE"/>
             <permission
                 android:name="no.ntnu.stedr.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
             <application>
                 <!-- Replace "PASTE YOUR GOOGLE MAPS API KEY HERE" with the Google API key you obtained -->
                 <meta-data
-                    android:name="com.google.android.maps.v2.API_KEY" android:value="CC:E3:7F:08:FA:03:9C:88:07:BD:CB:AB:7B:88:61:F4:75:9D:47:9F"/>
+                    android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCjc2TQBE77zMrIgCZaRvq7wiEGrsGSW_s"/>
             </application>
+            <supports-screens android:anyDensity="true"
+            android:largeScreens="true" android:normalScreens="true"
+            android:smallScreens="false" android:xlargeScreens="true"/>
         </manifest>
     </android>
     <mobileweb>
