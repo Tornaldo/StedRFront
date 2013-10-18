@@ -9,6 +9,7 @@
 		</Tab>
 		<Tab title="Stories">
 			<Window id="storyTab" title="Stories">
+				<Require type="widget" src="tiflexigrid" id="st"/>
 				<Label id="storyLabel"></Label>
 			</Window>
 		</Tab>

@@ -50,6 +50,9 @@
                 <meta-data
                     android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCjc2TQBE77zMrIgCZaRvq7wiEGrsGSW_s"/>
             </application>
+            <supports-screens android:anyDensity="true"
+            android:largeScreens="true" android:normalScreens="true"
+            android:smallScreens="false" android:xlargeScreens="true"/>
         </manifest>
     </android>
     <mobileweb>
