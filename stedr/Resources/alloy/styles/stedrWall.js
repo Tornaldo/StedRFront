@@ -5,7 +5,7 @@ module.exports = [ {
     style: {
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
-        top: true,
+        top: 20,
         color: "#000",
         font: {
             fontFamily: "Helvetica",
@@ -19,8 +19,8 @@ module.exports = [ {
     priority: 1000.0007,
     key: "Tab",
     style: {
-        title: 40,
-        color: "#00ff00"
+        backgroundColor: "#9B8D8D",
+        backgroundSelectedColor: "#40B0D2"
     }
 }, {
     isClass: true,

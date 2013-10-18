@@ -4,7 +4,6 @@ var data = $model;
 
 Ti.API.info("Entering: " + data.get('name'));
 
-
 var imageUrlList = data.get('pictures');
 
 for(i = 0; i < imageUrlList.length; i++) {

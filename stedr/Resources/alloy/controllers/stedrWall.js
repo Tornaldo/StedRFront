@@ -11,13 +11,12 @@ function Controller() {
     });
     $.__views.welcomeWall = Ti.UI.createWindow({
         backgroundColor: "white",
-        id: "welcomeWall",
-        title: "Velkommen"
+        id: "welcomeWall"
     });
     $.__views.wallTitle = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
-        top: true,
+        top: 20,
         color: "#000",
         font: {
             fontFamily: "Helvetica",
@@ -37,9 +36,10 @@ function Controller() {
     });
     $.__views.welcomeWall.add($.__views.imageScroller);
     $.__views.__alloyId13 = Ti.UI.createTab({
-        title: "Wall",
-        color: "#00ff00",
+        backgroundColor: "#9B8D8D",
+        backgroundSelectedColor: "#40B0D2",
         window: $.__views.welcomeWall,
+        title: "Bilder",
         id: "__alloyId13"
     });
     $.__views.stedrWall.addTab($.__views.__alloyId13);
@@ -51,7 +51,7 @@ function Controller() {
     $.__views.storyLabel = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
-        top: true,
+        top: 20,
         color: "#000",
         font: {
             fontFamily: "Helvetica",
@@ -63,9 +63,10 @@ function Controller() {
     });
     $.__views.storyTab.add($.__views.storyLabel);
     $.__views.__alloyId15 = Ti.UI.createTab({
-        title: "Historier",
-        color: "#00ff00",
+        backgroundColor: "#9B8D8D",
+        backgroundSelectedColor: "#40B0D2",
         window: $.__views.storyTab,
+        title: "Historier",
         id: "__alloyId15"
     });
     $.__views.stedrWall.addTab($.__views.__alloyId15);

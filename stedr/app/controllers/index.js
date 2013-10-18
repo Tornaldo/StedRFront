@@ -1,8 +1,8 @@
 $.index.open();
 
-var wallList = new Array();
-
+//Android Google Maps v2 module
 var MapModule;
+
 var mapview;
 
 if (OS_MOBILEWEB) {
@@ -76,7 +76,6 @@ wallCollection.fetch({
 				});
 			}
 
-			wallList.push(mapAnnotation);
 			mapview.addAnnotation(mapAnnotation);
 		});
 		Ti.API.info(wallCollection);

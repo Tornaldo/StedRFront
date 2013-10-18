@@ -58,7 +58,6 @@ function Controller() {
     };
     _.extend($, $.__views);
     $.index.open();
-    var wallList = new Array();
     var MapModule;
     var mapview;
     MapModule = require("ti.map");
@@ -116,7 +115,6 @@ function Controller() {
                         id: element.get("wallId")
                     });
                 }
-                wallList.push(mapAnnotation);
                 mapview.addAnnotation(mapAnnotation);
             });
             Ti.API.info(wallCollection);
