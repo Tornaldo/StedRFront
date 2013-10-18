@@ -14,34 +14,6 @@ function Controller() {
         }
         $.__views.__alloyId6.setData(rows);
     }
-    function checkGooglePlayService() {
-        var MapModule = require("ti.map");
-        var rc = MapModule.isGooglePlayServicesAvailable();
-        switch (rc) {
-          case MapModule.SUCCESS:
-            Ti.API.info("Google Play services is installed.");
-            break;
-
-          case MapModule.SERVICE_MISSING:
-            Ti.API.info("Google Play services is missing. Please install Google Play services from the Google Play store.");
-            break;
-
-          case MapModule.SERVICE_VERSION_UPDATE_REQUIRED:
-            Ti.API.info("Google Play services is out of date. Please update Google Play services.");
-            break;
-
-          case MapModule.SERVICE_DISABLED:
-            Ti.API.info("Google Play services is disabled. Please enable Google Play services.");
-            break;
-
-          case MapModule.SERVICE_INVALID:
-            Ti.API.info("Google Play services cannot be authenticated. Reinstall Google Play services.");
-            break;
-
-          default:
-            Ti.API.info("Unknown error.");
-        }
-    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -49,7 +21,6 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    var __defers = {};
     Alloy.Collections.instance("wall");
     $.__views.index = Ti.UI.createTabGroup({
         id: "index"
@@ -75,7 +46,6 @@ function Controller() {
         title: "Wall",
         id: "mapWin"
     });
-    checkGooglePlayService ? $.__views.mapWin.addEventListener("open", checkGooglePlayService) : __defers["$.__views.mapWin!open!checkGooglePlayService"] = true;
     $.__views.__alloyId12 = Ti.UI.createTab({
         window: $.__views.mapWin,
         title: "Map",
@@ -89,16 +59,19 @@ function Controller() {
     _.extend($, $.__views);
     $.index.open();
     var wallList = new Array();
-    var MapModule = require("ti.map");
-    var mapview = MapModule.createView({
-        mapType: MapModule.TERRAIN_TYPE,
+    var MapModule;
+    var mapview;
+    MapModule = require("ti.map");
+    mapview = MapModule.createView({
+        userLocation: true,
+        mapType: MapModule.NORMAL_TYPE,
+        animate: true,
         region: {
             latitude: -33.87365,
             longitude: 151.20689,
             latitudeDelta: .1,
             longitudeDelta: .1
-        },
-        animate: true
+        }
     });
     $.mapWin.add(mapview);
     mapview.addEventListener("click", function(evt) {
@@ -120,6 +93,7 @@ function Controller() {
     wallCollection.fetch({
         success: function() {
             _.each(wallCollection.models, function(element, index) {
+                Ti.API.info(element.get("name"));
                 var mapAnnotation = Titanium.Map.createAnnotation({
                     title: element.get("name"),
                     latitude: element.get("latitude"),
@@ -139,7 +113,6 @@ function Controller() {
     $.index.addEventListener("close", function() {
         $.destroy();
     });
-    __defers["$.__views.mapWin!open!checkGooglePlayService"] && $.__views.mapWin.addEventListener("open", checkGooglePlayService);
     _.extend($, exports);
 }
 

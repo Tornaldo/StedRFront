@@ -9,7 +9,7 @@
 			</Window>
 		</Tab>
 		<Tab title="Map">
-			<Window title="Wall" id="mapWin" onOpen="checkGooglePlayService">
+			<Window title="Wall" id="mapWin">
 			</Window>
 		</Tab>	
 	</TabGroup>

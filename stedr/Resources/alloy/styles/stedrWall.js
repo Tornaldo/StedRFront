@@ -1,6 +1,6 @@
 module.exports = [ {
     isApi: true,
-    priority: 1000.0005,
+    priority: 1000.0007,
     key: "Label",
     style: {
         width: Ti.UI.SIZE,
@@ -10,7 +10,7 @@ module.exports = [ {
     }
 }, {
     isApi: true,
-    priority: 1000.0006,
+    priority: 1000.0008,
     key: "Tab",
     style: {
         title: 20,
@@ -18,17 +18,17 @@ module.exports = [ {
     }
 }, {
     isId: true,
-    priority: 100000.0007,
+    priority: 100000.0009,
     key: "wallTitle",
     style: {}
 }, {
     isId: true,
-    priority: 100000.0008,
+    priority: 100000.001,
     key: "wallImages",
     style: {}
 }, {
     isId: true,
-    priority: 100000.0009,
+    priority: 100000.0011,
     key: "wallDesc",
     style: {}
 } ];
