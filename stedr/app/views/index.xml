@@ -1,14 +1,14 @@
 <Alloy>
 	<Collection src="wall">
 	<TabGroup>
-		<Tab title="List">
+		<Tab title="Liste (Debug)">
 			<Window class="container" title="Walls">
 				<TableView dataCollection="wall">
 					<TableViewRow class="tableView" title="{name}" />
 				</TableView>
 			</Window>
 		</Tab>
-		<Tab title="Map">
+		<Tab title="Kart">
 			<Window title="Wall" id="mapWin">
 			</Window>
 		</Tab>	

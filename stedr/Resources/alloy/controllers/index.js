@@ -38,7 +38,7 @@ function Controller() {
     __alloyId10.on("fetch destroy change add remove reset", __alloyId11);
     $.__views.__alloyId4 = Ti.UI.createTab({
         window: $.__views.__alloyId5,
-        title: "List",
+        title: "Liste (Debug)",
         id: "__alloyId4"
     });
     $.__views.index.addTab($.__views.__alloyId4);
@@ -48,7 +48,7 @@ function Controller() {
     });
     $.__views.__alloyId12 = Ti.UI.createTab({
         window: $.__views.mapWin,
-        title: "Map",
+        title: "Kart",
         id: "__alloyId12"
     });
     $.__views.index.addTab($.__views.__alloyId12);
@@ -69,7 +69,10 @@ function Controller() {
     });
     $.mapWin.add(mapview);
     mapview.addEventListener("click", function(evt) {
-        if ("leftButton" == evt.clicksource) {
+        Ti.API.info(evt.type);
+        Ti.API.info(evt.clicksource);
+        if ("leftPane" == evt.clicksource) {
+            Ti.API.info("Trying to enter: " + wallCollection.get(evt.annotation.id).get("name"));
             var stedrWallController = Alloy.createController("stedrWall", {
                 data: wallCollection.get(evt.annotation.id),
                 $model: wallCollection.get(evt.annotation.id)
@@ -86,18 +89,33 @@ function Controller() {
     var wallCollection = Alloy.Collections.wall;
     wallCollection.fetch({
         success: function() {
-            _.each(wallCollection.models, function(element, index) {
+            _.each(wallCollection.models, function(element) {
                 Ti.API.info(element.get("name"));
-                var mapAnnotation = MapModule.createAnnotation({
+                if ("" == element.get("pictures")) var mapAnnotation = MapModule.createAnnotation({
                     title: element.get("name"),
                     latitude: element.get("latitude"),
                     longitude: element.get("longitude"),
                     pincolor: MapModule.ANNOTATION_AZURE,
                     leftView: Ti.UI.createButton({
-                        title: "Detail"
+                        title: "Besøk"
                     }),
-                    id: index
-                });
+                    id: element.get("wallId")
+                }); else {
+                    Ti.API.info(element.get("pictures")[0].url);
+                    var mapAnnotation = MapModule.createAnnotation({
+                        title: element.get("name"),
+                        latitude: element.get("latitude"),
+                        longitude: element.get("longitude"),
+                        pincolor: MapModule.ANNOTATION_AZURE,
+                        leftView: Ti.UI.createButton({
+                            title: "Besøk"
+                        }),
+                        rightView: Ti.UI.createImageView({
+                            image: element.get("pictures")[0].url
+                        }),
+                        id: element.get("wallId")
+                    });
+                }
                 wallList.push(mapAnnotation);
                 mapview.addAnnotation(mapAnnotation);
             });
