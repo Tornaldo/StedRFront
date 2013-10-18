@@ -1,14 +1,13 @@
 <Alloy>
 	<TabGroup>
 		<Tab title="Wall">
-			<Window id="welcomeWall" class="container" title="{name}">
-				<Label id="wallTitle"></Label>
-				<ImageView id="wallImages"></ImageView>
-				<Label id="wallDesc" text="{name}"></Label>
+			<Window id="welcomeWall" class="container" title="Velkommen">
+				<Label id="wallTitle" text="{name}"></Label>
+				<ScrollableView id="imageScroller" showPagingControl="true" ></ScrollableView>
 			</Window>
 		</Tab>
-		<Tab title="Stories">
-			<Window id="storyTab" title="Stories">
+		<Tab title="Historier">
+			<Window id="storyTab" class="container" title="Stories">
 				<Label id="storyLabel"></Label>
 			</Window>
 		</Tab>
