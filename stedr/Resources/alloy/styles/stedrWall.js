@@ -1,6 +1,10 @@
 module.exports = [ {
     isApi: true,
+<<<<<<< HEAD
+    priority: 1000.0005,
+=======
     priority: 1000.0006,
+>>>>>>> ae420d26b24cbdf2f91d42d925186a8d32ffcd25
     key: "Label",
     style: {
         width: Ti.UI.SIZE,
@@ -16,7 +20,11 @@ module.exports = [ {
     }
 }, {
     isApi: true,
+<<<<<<< HEAD
+    priority: 1000.0006,
+=======
     priority: 1000.0007,
+>>>>>>> ae420d26b24cbdf2f91d42d925186a8d32ffcd25
     key: "Tab",
     style: {
         backgroundColor: "#9B8D8D",
@@ -31,12 +39,27 @@ module.exports = [ {
     }
 }, {
     isId: true,
+<<<<<<< HEAD
+    priority: 100000.0007,
+=======
     priority: 100000.0008,
+>>>>>>> ae420d26b24cbdf2f91d42d925186a8d32ffcd25
     key: "wallTitle",
     style: {}
 }, {
     isId: true,
+<<<<<<< HEAD
+    priority: 100000.0008,
+    key: "wallImages",
+    style: {}
+}, {
+    isId: true,
+    priority: 100000.0009,
+    key: "wallDesc",
+    style: {}
+=======
     priority: 100000.0009,
     key: "wallImages",
     style: {}
+>>>>>>> ae420d26b24cbdf2f91d42d925186a8d32ffcd25
 } ];
