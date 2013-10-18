@@ -36,13 +36,6 @@ mapview.addEventListener('click', function(evt) {
 	}
 });
 
-var anotationView = Titanium.UI.createView({
-	borderRadius : 5,
-	backgroundColor : 'red',
-	width : 500,
-	height : 500
-});
-
 var wallCollection = Alloy.Collections.wall;
 wallCollection.fetch({
 	success : function() {

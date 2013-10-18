@@ -24,20 +24,18 @@ var items = [
 ];
 
 $.st.createGrid({
-    columns:3,              //NUMBER OF COLUMNS. DEFAULT IS 4.
+    columns:2,              //NUMBER OF COLUMNS. DEFAULT IS 4.
     space:10,               //SPACE BETWEEN EACH ELEMENT. DEFAULT IS 5.
     data:items,             //ARRAY WITH THE DATA TO DISPLAY. SEE SAMPLE DATA ABOVE.
     layout:'gallery',               //LAYOUT TYPE: gallery or customView. DEFAULT IS gallery.
     params:{
         padding:5,          //GALLERY ONLY.
-        showTitle:false,        //GALLERY ONLY. True or False
+        showTitle:true,        //GALLERY ONLY. True or False
         backgroundColor: '#eee',
         gridColor: '#ccc'
-    }
-    //width: 320                //OPTIONAL. SCREEN'S WIDTH TO ADJUST GRID.
+    },
+    width: 320              //OPTIONAL. SCREEN'S WIDTH TO ADJUST GRID.
 });
-
-$.storyTab.open();
 
 var data = $model;
 
