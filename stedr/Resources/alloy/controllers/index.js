@@ -65,13 +65,7 @@ function Controller() {
     mapview = MapModule.createView({
         userLocation: true,
         mapType: MapModule.NORMAL_TYPE,
-        animate: true,
-        region: {
-            latitude: -33.87365,
-            longitude: 151.20689,
-            latitudeDelta: .1,
-            longitudeDelta: .1
-        }
+        animate: true
     });
     $.mapWin.add(mapview);
     mapview.addEventListener("click", function(evt) {
@@ -94,16 +88,19 @@ function Controller() {
         success: function() {
             _.each(wallCollection.models, function(element, index) {
                 Ti.API.info(element.get("name"));
-                var mapAnnotation = Titanium.Map.createAnnotation({
+                var mapAnnotation = MapModule.createAnnotation({
                     title: element.get("name"),
                     latitude: element.get("latitude"),
                     longitude: element.get("longitude"),
-                    pincolor: Titanium.Map.ANNOTATION_GREEN,
+                    pincolor: MapModule.ANNOTATION_AZURE,
+                    leftView: Ti.UI.createButton({
+                        title: "Detail"
+                    }),
                     id: index
                 });
                 wallList.push(mapAnnotation);
+                mapview.addAnnotation(mapAnnotation);
             });
-            mapview.annotations = wallList;
             Ti.API.info(wallCollection);
         },
         error: function() {
