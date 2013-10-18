@@ -5,6 +5,7 @@ module.exports = [ {
     style: {
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
+        top: true,
         color: "#000"
     }
 }, {

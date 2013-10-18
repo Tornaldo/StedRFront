@@ -31,15 +31,71 @@
 
 \frontmatter
 
-\begingroup
-\thispagestyle{empty}
-\centering
-\vspace*{9cm}
-\par\normalfont\fontsize{35}{35}\sffamily\selectfont
-Virtual Walls - Walls that tell us stories\par
-\vspace*{1cm}
-{\Huge Odd Fredrik Rogstad\\Christian Frøystad\\Simon Stastny\\Knut Nergård}\par
-\endgroup
+\begin{titlepage}
+	
+	\begin{center}
+		
+		% \textbf{\textsc{\Large Norwegian University of Science and Technology}}
+		% \\[1.5cm]
+		
+		\textsc{\Large TDT4290 Customer Driven Project}
+		\\[1.5cm]
+		
+		\rule{\linewidth}{0.5mm}
+		\\[1cm]
+		
+		\textbf{\LARGE Virtual Walls - Walls that tell us stories}
+		\\[1cm]
+		
+		\rule{\linewidth}{0.5mm}
+		\\[1.5cm]
+		
+		\Large{  \today}
+		\\[1.5cm]
+		
+		\textsc{\Large Group 2}
+		\\[0.5cm]
+		
+		\Large
+		{
+			Odd Fredrik Rogstad \\
+			Christian Frøystad \\
+			Simon Stastny \\
+			Knut Nergård
+		}
+		\\[2cm]
+		
+		
+		\begin{figure}[hb]
+			\begin{minipage}[b]{0.45\linewidth}
+				\centering
+				\includegraphics[width=\textwidth]{images/ntnu_logo}
+			\end{minipage}
+			\hspace{0.5cm}
+			\begin{minipage}[b]{0.45\linewidth}
+				\centering
+				\includegraphics[width=\textwidth]{images/sintef}
+			\end{minipage}
+		\end{figure}
+		\begin{figure}[hb]
+			\begin{minipage}[b]{0.45\linewidth}
+				\centering
+				\includegraphics[width=\textwidth]{images/tagcloud}
+			\end{minipage}
+			\hspace{0.5cm}
+			\begin{minipage}[b]{0.35\linewidth}
+				\centering
+				\includegraphics[width=\textwidth]{images/stfk}
+			\end{minipage}
+		\end{figure}
+		\vfill
+		%\vfill 
+		
+	\end{center}
+		
+\end{titlepage}
+
+
 
 \chapter{Abstract}
 \begin{quotation}
@@ -47,6 +103,8 @@ The assignment relates to the EU-IST project TAG CLOUD. TAG CLOUD will develop i
 \end{quotation}
 
 The aim of this particular project is to develop a concept and a prototype that will make information about cultural heritage more accessible and fun! This will be accomplished by creating a mobile application that lets users consume content from cultural databases in an exploratory format.
+
+
 
 \tableofcontents
 \listoffigures
@@ -178,7 +236,7 @@ Kanaban is fairly simple, a project is represented by a board, the board contain
 
 Figure~\ref{fig:tools_trello} shows how we used it for document work. There are several lists; ``TODO'', ``In Progress'', ``Testing'' and ``Done'', which represents the workflow. We started by populating the ``TODO''-list, with all the appendices that were needed. Then we divided the different tasks between the group members, and started working. When a person worked on a task, then the corresponding card would be in the ``In progress'' list, when the task were finished, it was moved to the ``Testing'' list, for quality assurance. If it was approved, it was moved to ``Done'' list, if not, back in the ``In Progress'' list.
 
-\subsection{Allocated time}
+\subsection{Allocated man-hours}
 The course the project is part of amounts to 15 points of credit, which indicates that each member of the group should work for about 25 hours on the project each week. Given that the group consists of 4 members, and that the project run over 13 weeks, we get a total of allocated time that amounts to 25 x 4 x 13 = 1300 hours.
 
 Due to the diversity of the group, one in a full time job, the others attending different classes, the group has few meetings in person each week. As such, every group member is free to plan his own work each week, but has to meet at the weekly group meeting. As a result of this the group has only a few items on its weekly agenda: internal group meeting, meeting with advisor and meeting with customer.
@@ -1006,9 +1064,9 @@ Each part of the audience holds different stakes in the project, but all are int
 \subsection{Scope}
 This SRS document deals with the project Virtual walls – walls that tell us stories. This project shall result in developing a tool for working with so called virtual walls, creating and sharing stories on them.
 
-As presented by customer, the VirtualWall software system is going to be a complex system consisting of a number of subsystems including several content databases, a server backend and web application frontend.
+As presented by customer, the VirtualWall software system is going to be a complex system consisting of a number of subsystems including several content databases, a server backend and mobile application frontend.
 
-In the scope of this year's run of Customer Driven Project course, a prototype of a web application frontend and a basic server backend shall be developed.
+In the scope of this year's run of Customer Driven Project course, a prototype of a mobile application frontend and a basic server backend shall be developed.
 
 \subsection{Definitions, acronyms and abbreviations}
 
@@ -1057,11 +1115,11 @@ In the initial phase, the server will not be directly connectex to any external 
 \subsection{User Interfaces}
 Since the frontend of the whole system shall be developed in this project, the description of user interface shall be considerably stressed.
 
-We can characterize the nature of the system as crowdsourced (or edge-dominant, in general), as the content shall be generated and modified by users to some extent. Due to this, there is not going to be any backend for data entry, the only point where the system is exposed to human beings is the web application frontend.
+We can characterize the nature of the system as crowdsourced (or edge-dominant, in general), as the content shall be generated and modified by users to some extent. Due to this, there is not going to be any backend for data entry, the only point where the system is exposed to human beings is the mobile application frontend.
 
 Our key quality attribute, usability, relates tightly to user interfaces. For this reason, all usability-related requirements on user interface are listed in section \ref{sec:req_software_system_attributes} as quality attribute requirements.
 
-\subsubsection{Web application front end}\label{sec:req_webapplication_frontend}
+\subsubsection{Mobile application (frontend)}\label{sec:req_webapplication_frontend}
 As user requests that the initial prototype application shall be developed for use on tablets. Typical usage of the system suggests that it will be used in field, which implies using the application on smartphones and tablets.
 
 Both smartphones and tablet have some inherent characteristics that have to be respected when designing the user interface and the means of interacting with it.
@@ -1083,7 +1141,7 @@ We imply that the server and the client interoperate and are developed to work w
 \subsection{Communication interfaces}
 Another inherent characteristic of mobile devices (smartphones, tablets, etc.) is the unreliability and speed of network connection. Since this application is a part of a client-server system, the communication link between those is critical.
 
-The main issues with mobile data networks are frequent interruption, big latency and small bitrate. Sometimes the connection can as well be unavailable at all. This results in the data connection being slow and unreliable which has a great significance on the performance of the application and its usability. As developers of the web application, we need to take this into consideration.
+The main issues with mobile data networks are frequent interruption, big latency and small bitrate. Sometimes the connection can as well be unavailable at all. This results in the data connection being slow and unreliable which has a great significance on the performance of the application and its usability. As developers of the mobile application, we need to take this into consideration.
 
 There are several techniques how to deal with mentioned issues or at least mitigate their impact.
 
@@ -1115,19 +1173,17 @@ See chapter \ref{sec:req_usability} for requirements on usability.
 \subsection{Constraints}
 
 \subsubsection{HTML5 use}
-Since use on many different devices and platforms is expected and necessary, customer requested that the frontend would be a web application. As the system is crowdsourced and heavily relies on users, it it necessary that it interacts very well with the users and is visually appealing. Also, for reasons stated in \ref{sec:req_unavailability_of_connection}, local storage is necessary to enable off-line mode (in the future). This implies the use of cutting-edge technologies for the development.
+Since use on many different devices and platforms is expected and necessary, customer requested that the frontend would be a mobile application. As the system is crowdsourced and heavily relies on users, it it necessary that it interacts very well with the users and is visually appealing. Also, for reasons stated in \ref{sec:req_unavailability_of_connection}, local storage is necessary to enable off-line mode (in the future). This implies the use of cutting-edge technologies for the development.
 
 For this reason, customer suggests that the application will be developed in HTML5.
 
 \section{Specific requirements}\label{sec:req_specific_requirements}
 
 \subsection{External interfaces}
-As the application developed is going to be a client/server where the client is a web application, we will use HTTP protocol for data exchange. Data transferred over HTTP in our case will be in HTML and XML or JSON formats. This is to be determined later.
+As the application developed is going to be a client/server where the client is a mobile/web application, we will use HTTP protocol for data exchange. Data transferred over HTTP in our case will be in JSON format.
 
 \subsubsection{Virtual Wall Client/Server interface}
-VirtualWall client is a classic web application that runs in a web browser. This implies that is will be downloaded via HTTP as a HTML document.
-
-Once the web application is open in the browser, data transfers with the web server can be done using AJAX to retrieve the data in XML/JSON format from the server.
+VirtualWall client is a mobile that runs in a container similar to a web browser. Once the application is installed in the phone and open, data transfers with the web server can be done using AJAX to retrieve the data in JSON format from the server.
 
 Format of the messages shall be determined later.
 
@@ -1464,7 +1520,7 @@ Backend subsystem shall be deployed on a server running JRE 1.6 and an instance 
 
 Server computer needs to be connected to the Internet. Specified port shall be open for server to listen on and reachable from outer network (not blocked by a firewall, etc). %FIXME SIMON: mention port number once it's known
 
-Device to run the client needs to be equipped with a web browser to open the web application in. The device needs to be connected to the Internet.
+Device to run the client needs to be equipped Android or iOS mobile operating system. The device needs to be connected to the Internet.
 
 \subsection{Responsibles}
 
@@ -1578,13 +1634,13 @@ The table \ref{tab:test_plan_approvals} lists approvals of completed tasks.
 \section{Planning}
 
 \section{Sprint 1}
-\subsection{Introduction}
+\subsection{S1: Introduction}
 The aim of this first sprint is to establish a baseline, in terms of technology but also with regard to the social aspects of executing a sprint as well as the amount of work being manageable within the timespan of the sprint.
 
-\subsection{Requirements}
+\subsection{S1: Requirements}
 The server as well as the client should have a base satisfying the architectural drivers listed in \ref{sec:architecture_drivers}.
 
-\subsection{Pre study}
+\subsection{S1: Pre study}
 
 \subsubsection{Server}
 This is the pre study done for the server in sprint 1.
@@ -1692,24 +1748,24 @@ The idea of using multiple data sources came from the danish mobile application,
 \textbf{Version two}\\
 TBA
 
-\subsection{Implementation}
+\subsection{S1: Implementation}
 
 \subsubsection{Server}
 During this period only the most basic proof of concept was developed for the server. A RESTful access point was made for the developed, with a database. All the basic groundwork was put in place, except for authentication, to develop the rest of the service.
 
-\subsection{Testing}
+\subsection{S1: Testing}
 This sprint no formal testing was done, only functional tests on the server and discussions around the user interface.
 
-\subsection{Review}
+\subsection{S1: Review}
 We did not manage to finish all the predefined tasks for this sprint. This was partly due to the absence of two group members during most of the sprint period. The delay was also partly due to inexperience with mobile JavaScript frameworks and the lack of real documentation for most of them.
 
 \section{Sprint 2}
-\subsection{Introduction}
+\subsection{S2: Introduction}
 The goal of the second sprint was initially to build upon the bases put in place by sprint one, but due to a steep learning curve in JavaScript and lack of real documentation for most frameworks this was not the case.
 
 The server has seen development based upon what was done in sprint one, but the client has started from scratch.
 
-\subsection{Sprint backlog}
+\subsection{S2: Backlog}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{| l | l |}
@@ -1733,9 +1789,9 @@ The server has seen development based upon what was done in sprint one, but the 
 	\caption{Backlog for sprint 2.}
 \end{table}
 
-\subsection{Requirements}
+\subsection{S2: Requirements}
 
-\subsection{Pre study}
+\subsection{S2: Pre study}
 
 \subsubsection{Client}
 
@@ -1768,7 +1824,7 @@ Appcelerator Titanium\footnote{http://www.appcelerator.com/titanium/} is a cross
 Titanium was chosen because of its framework, its documentation and the huge community that surrounds it.
 
 
-\subsection{Implementation}
+\subsection{S2: Implementation}
 
 \subsubsection{Server}
 
@@ -1836,10 +1892,10 @@ exports.definition = {
 };
 \end{lstlisting}
 
-\subsection{Testing}
+\subsection{S2: Testing}
 Only functional testing was done for this sprint as development went on. No systematic testing was executed.
 
-\subsection{Review}
+\subsection{S2: Review}
 Once again we would like to have reached a milestone farther ahead at this time, but we have had to spend a lot more time learning new mobile frameworks than we had expected. 
 
 Nevertheless, the group has seen increased participation during this sprint, and more group members has become more active. This has lead to us getting more done than in the earlier sprints, and we how this will also mean that we will get even more done in the coming sprints.
@@ -1849,10 +1905,10 @@ Some of our goals for this sprint was only reached for the server. The reason fo
 The architecture is only partially done, this is due to the change in mobile framework and requirements. Now that a mobile framework has been chosen and the requirements more stabilized, we hope to have the architecture finished within a relatively short amount of time.
 
 \section{Sprint 3}
-\subsection{Introduction}
-\subsection{Requirements}
+\subsection{S3: Introduction}
+\subsection{S3: Requirements}
 
-\subsection{Pre study}
+\subsection{S3: Pre study}
 
 \subsubsection{Map views, coordinates and projections} \label{sec:spr3_maps}
 
@@ -1873,7 +1929,7 @@ It is a well-known fact that planet Earth is not flat. For this reason, various 
 
 As seen in \ref{fig:mercator}, it is a cylindrical conformal projection, so it preserves local angles (which is actually one of the reasons Google Maps use it), but is unfit for use in high-latitudes as the map extends infinitely North and South (so called \emph{polar exaggeration}). This shall be fine for use until we need to add a wall for a location near to one of the geographic poles (which are streched infinitely along the top and bottom edges of the map). This could be a problem is we want to add a wall for example for the Amundsen–Scott South Pole Station located just few meters from the geographical souch pole and which would and stretch widely east to west. \cite{progonos:mercator,radicalcartography} 
 
-\subsection{Implementation}
+\subsection{S3: Implementation}
 
 \subsubsection{Server}
 
@@ -1887,31 +1943,31 @@ Data stored in our database are retrieved by classes in the \texttt{models} pack
 
 The data from \emph{Digitalt Fortalt} are retrieved from the API by classes in the \texttt{retrievers} package. The data are fetched and parsed by using the \emph{jsoup} Java HTML parser. We found this library to be more usable than \emph{DOM} and \emph{SAX} parser implementations in Java (due to various reasons such as usage of \texttt{Iterable} interface, which make the work with collection-like structures much easier).
 
-\subsection{Testing}
-\subsection{Review}
-\subsection{Phase evaluation}
+\subsection{S3: Testing}
+\subsection{S3: Review}
+\subsection{S3: Phase evaluation}
 
 \section{Sprint 4}
-\subsection{Introduction}
-\subsection{Requirements}
-\subsection{Pre study}
-\subsection{Implementation}
-\subsection{Testing}
-\subsection{Review}
-\subsection{Phase evaluation}
-
-\section{Sprint 5}
-\subsection{Introduction}
-\subsection{Requirements}
-\subsection{Pre study}
-\subsection{Implementation}
-\subsection{Testing}
-\subsection{Review}
-\subsection{Phase evaluation}
+\subsection{S4: Introduction}
+\subsection{S4: Requirements}
+\subsection{S4: Pre study}
+\subsection{S4: Implementation}
+\subsection{S4: Testing}
+\subsection{S4: Review}
+\subsection{S4: Phase evaluation}
 
 \section{Finalization}
+\subsection{F: Introduction}
+\subsection{F: Requirements}
+\subsection{F: Pre study}
+\subsection{F: Implementation}
+\subsection{F: Testing}
+\subsection{F: Review}
+\subsection{F: Phase evaluation}
 
-\chapter{Evaluation}
+
+
+\chapter{Evaluation of the project}
 
 \bibliography{bibliography}
 
