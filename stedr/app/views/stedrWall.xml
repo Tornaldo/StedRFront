@@ -1,7 +1,7 @@
 <Alloy>
 	<TabGroup>
-		<Tab title="Wall">
-			<Window id="welcomeWall" class="container" title="Velkommen">
+		<Tab title="Bilder">
+			<Window id="welcomeWall" class="container">
 				<Label id="wallTitle" text="{name}"></Label>
 				<ScrollableView id="imageScroller" showPagingControl="true" ></ScrollableView>
 			</Window>
