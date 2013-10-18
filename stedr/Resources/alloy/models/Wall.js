@@ -5,7 +5,8 @@ exports.definition = {
             name: "string",
             description: "string",
             latitude: "double",
-            longitude: "double"
+            longitude: "double",
+            pictures: "list"
         },
         URL: "http://stedr.herokuapp.com/walls.json",
         adapter: {
