@@ -11,3 +11,6 @@
 // Alloy.Globals.someGlobalFunction = function(){};
 
 Alloy.Globals.baseServerUrl = "http://localhost:9000";
+
+Alloy.Collections.wall = Alloy.createCollection("wall");
+Alloy.Collections.story = Alloy.createCollection("story");
