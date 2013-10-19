@@ -5,7 +5,13 @@ module.exports = [ {
     style: {
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
-        color: "#000"
+        color: "#000",
+        font: {
+            fontFamily: "Helvetica",
+            fontSize: "20dp",
+            fontStyle: "normal",
+            fontWeight: "normal"
+        }
     }
 }, {
     isClass: true,
@@ -13,5 +19,17 @@ module.exports = [ {
     key: "container",
     style: {
         backgroundColor: "white"
+    }
+}, {
+    isClass: true,
+    priority: 10000.0012,
+    key: "tableView",
+    style: {
+        font: {
+            fontFamily: "Helvetica",
+            fontSize: "20dp",
+            fontStyle: "normal",
+            fontWeight: "normal"
+        }
     }
 } ];

@@ -6,125 +6,65 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    Alloy.Collections.instance("story");
-    $.__views.stedrWall = Ti.UI.createTabGroup({
-        id: "stedrWall"
-    });
-    $.__views.welcomeWall = Ti.UI.createWindow({
+    $.wallModel = Alloy.createModel("wall");
+    $.__views.mainStedrWindow = Ti.UI.createWindow({
         backgroundColor: "white",
-        id: "welcomeWall"
+        id: "mainStedrWindow"
     });
-    $.__views.wallTitle = Ti.UI.createLabel({
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        top: 5,
-        color: "#000",
+    $.__views.mainStedrWindow && $.addTopLevelView($.__views.mainStedrWindow);
+    $.__views.test1View = Ti.UI.createView({
+        borderColor: "green",
+        borderWidth: 3,
+        bottom: 1e3,
+        id: "test1View"
+    });
+    $.__views.mainStedrWindow.add($.__views.test1View);
+    $.__views.test2View = Ti.UI.createView({
+        borderColor: "green",
+        borderWidth: 3,
+        top: 300,
+        id: "test2View"
+    });
+    $.__views.mainStedrWindow.add($.__views.test2View);
+    $.__views.testLabel2 = Ti.UI.createLabel({
+        backgroundColor: "#9B8D8D",
+        backgroundSelectedColor: "#40B0D2",
+        left: 10,
         font: {
             fontFamily: "Helvetica",
-            fontSize: "30dp",
+            fontSize: "20dp",
             fontStyle: "normal",
             fontWeight: "normal"
         },
-        id: "wallTitle",
-        text: "undefined" != typeof $model.__transform["name"] ? $model.__transform["name"] : $model.get("name")
+        borderColor: "green",
+        borderWidth: 3,
+        id: "testLabel2",
+        text: "Bilder"
     });
-    $.__views.welcomeWall.add($.__views.wallTitle);
-    var __alloyId16 = [];
-    $.__views.imageScroller = Ti.UI.createScrollableView({
-        views: __alloyId16,
-        id: "imageScroller",
-        showPagingControl: "true"
-    });
-    $.__views.welcomeWall.add($.__views.imageScroller);
-    $.__views.__alloyId15 = Ti.UI.createTab({
+    $.__views.test2View.add($.__views.testLabel2);
+    $.__views.testLabel3 = Ti.UI.createLabel({
         backgroundColor: "#9B8D8D",
         backgroundSelectedColor: "#40B0D2",
-        window: $.__views.welcomeWall,
-        title: "Bilder",
-        id: "__alloyId15"
-    });
-    $.__views.stedrWall.addTab($.__views.__alloyId15);
-    $.__views.storyTab = Ti.UI.createWindow({
-        backgroundColor: "white",
-        id: "storyTab",
-        title: "Stories"
-    });
-    $.__views.storyLabel = Ti.UI.createLabel({
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        top: 5,
-        color: "#000",
+        right: 10,
         font: {
             fontFamily: "Helvetica",
-            fontSize: "30dp",
+            fontSize: "20dp",
             fontStyle: "normal",
             fontWeight: "normal"
         },
-        id: "storyLabel"
+        borderColor: "green",
+        borderWidth: 3,
+        id: "testLabel3",
+        text: "Historier"
     });
-    $.__views.storyTab.add($.__views.storyLabel);
-    $.__views.st = Alloy.createWidget("tiflexigrid", "widget", {
-        id: "st",
-        __parentSymbol: $.__views.storyTab
-    });
-    $.__views.st.setParent($.__views.storyTab);
-    $.__views.__alloyId17 = Ti.UI.createTab({
-        backgroundColor: "#9B8D8D",
-        backgroundSelectedColor: "#40B0D2",
-        window: $.__views.storyTab,
-        title: "Historier",
-        id: "__alloyId17"
-    });
-    $.__views.stedrWall.addTab($.__views.__alloyId17);
-    $.__views.stedrWall && $.addTopLevelView($.__views.stedrWall);
+    $.__views.test2View.add($.__views.testLabel3);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    arguments[0] || {};
-    var dataWallModel = $model;
-    Ti.API.info("Entering: " + dataWallModel.get("name"));
-    var imageUrlList = dataWallModel.get("pictures");
-    for (i = 0; imageUrlList.length > i; i++) {
-        var wallImage = Ti.UI.createImageView({
-            image: imageUrlList[i].url
-        });
-        $.imageScroller.addView(wallImage);
-    }
-    var items = [];
-    var storyCollection = Alloy.Collections.story;
-    storyCollection.fetch({
-        urlparams: {
-            wallId: $model.get("wallId")
-        },
-        success: function() {
-            _.each(storyCollection.models, function(element) {
-                items.push({
-                    title: element.get("title"),
-                    image: element.get("pictures")[0]
-                });
-            });
-            Ti.API.info(storyCollection);
-            $.st.createGrid({
-                columns: 2,
-                space: 10,
-                data: items,
-                layout: "gallery",
-                params: {
-                    padding: 5,
-                    showTitle: true,
-                    backgroundColor: "#eee",
-                    gridColor: "#ccc"
-                },
-                width: Titanium.Platform.DisplayCaps.platformWidth
-            });
-        },
-        error: function() {
-            Ti.API.error("hmm - this is not good!");
-        }
-    });
-    $.stedrWall.addEventListener("close", function() {
-        Ti.API.info("Destroying: " + dataWallModel.get("name"));
-        $.destroy();
-    });
+    Ti.API.info("Hello");
+    $.wallModel.set($model);
+    Ti.API.info("Entering: " + $.wallModel.get("title"));
+    var galleryController = Alloy.createController("pictureGallery");
+    $.test1View.add(galleryController.getView());
     _.extend($, exports);
 }
 

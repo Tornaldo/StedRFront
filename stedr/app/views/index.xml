@@ -4,7 +4,7 @@
 		<Tab title="Liste (Debug)">
 			<Window class="container" title="Walls">
 				<TableView dataCollection="wall">
-					<TableViewRow class="tableView" title="{name}" />
+					<TableViewRow class="tableView" title="{title}" />
 				</TableView>
 			</Window>
 		</Tab>

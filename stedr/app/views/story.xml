@@ -1,4 +1,7 @@
 <Alloy>
-	<View class="container">
-	</View>
+	<Collection src="story" />
+	<Window id="storyTab" class="container" title="Stories">
+		<Label id="storyLabel"></Label>
+		<Require type="widget" src="tiflexigrid" id="st"/>
+	</Window>
 </Alloy>

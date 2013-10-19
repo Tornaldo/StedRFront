@@ -8,7 +8,13 @@ function Controller() {
             var __alloyId8 = models[i];
             __alloyId8.__transform = {};
             var __alloyId9 = Ti.UI.createTableViewRow({
-                title: "undefined" != typeof __alloyId8.__transform["name"] ? __alloyId8.__transform["name"] : __alloyId8.get("name")
+                font: {
+                    fontFamily: "Helvetica",
+                    fontSize: "20dp",
+                    fontStyle: "normal",
+                    fontWeight: "normal"
+                },
+                title: "undefined" != typeof __alloyId8.__transform["title"] ? __alloyId8.__transform["title"] : __alloyId8.get("title")
             });
             rows.push(__alloyId9);
         }
@@ -76,8 +82,8 @@ function Controller() {
     mapview.addEventListener("click", function(evt) {
         Ti.API.info(evt.type);
         Ti.API.info(evt.clicksource);
-        if ("leftPane" == evt.clicksource) {
-            Ti.API.info("Trying to enter: " + wallCollection.get(evt.annotation.id).get("name"));
+        if ("infoWindow" == evt.clicksource || "leftPane" == evt.clicksource || "title" == evt.clicksource) {
+            Ti.API.info("Trying to enter: " + wallCollection.get(evt.annotation.id).get("title"));
             var stedrWallController = Alloy.createController("stedrWall", {
                 data: wallCollection.get(evt.annotation.id),
                 $model: wallCollection.get(evt.annotation.id)
@@ -89,35 +95,24 @@ function Controller() {
     wallCollection.fetch({
         success: function() {
             _.each(wallCollection.models, function(element) {
-                Ti.API.info(element.get("name"));
-                if ("" == element.get("pictures")) var mapAnnotation = MapModule.createAnnotation({
-                    title: element.get("name"),
+                Ti.API.info("Making annotation for " + element.get("title"));
+                Ti.API.info(JSON.stringify(element));
+                Ti.API.info(element.get("thumbnailUrl"));
+                var mapAnnotation = MapModule.createAnnotation({
+                    title: element.get("title"),
                     latitude: element.get("latitude"),
                     longitude: element.get("longitude"),
+                    rightView: Ti.UI.createImageView({
+                        image: element.get("thumbnailUrl")
+                    }),
                     pincolor: MapModule.ANNOTATION_AZURE,
                     leftView: Ti.UI.createButton({
                         title: "Besøk"
                     }),
-                    id: element.get("wallId")
-                }); else {
-                    Ti.API.info(element.get("pictures")[0].url);
-                    var mapAnnotation = MapModule.createAnnotation({
-                        title: element.get("name"),
-                        latitude: element.get("latitude"),
-                        longitude: element.get("longitude"),
-                        pincolor: MapModule.ANNOTATION_AZURE,
-                        leftView: Ti.UI.createButton({
-                            title: "Besøk"
-                        }),
-                        rightView: Ti.UI.createImageView({
-                            image: element.get("pictures")[0].url
-                        }),
-                        id: element.get("wallId")
-                    });
-                }
+                    id: element.get("id")
+                });
                 mapview.addAnnotation(mapAnnotation);
             });
-            Ti.API.info(wallCollection);
         },
         error: function() {
             Ti.API.error("hmm - this is not good!");

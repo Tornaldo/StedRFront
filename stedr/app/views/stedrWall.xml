@@ -1,17 +1,13 @@
 <Alloy>
-	<Collection src="story">
-	<TabGroup>
-		<Tab title="Bilder">
-			<Window id="welcomeWall" class="container">
-				<Label id="wallTitle" text="{name}"></Label>
-				<ScrollableView id="imageScroller" showPagingControl="true" ></ScrollableView>
-			</Window>
-		</Tab>
-		<Tab title="Historier">
-			<Window id="storyTab" class="container" title="Stories">
-				<Label id="storyLabel"></Label>
-				<Require type="widget" src="tiflexigrid" id="st"/>
-			</Window>
-		</Tab>
-	</TabGroup>
+	<Model src="wall" instance="true" id="wallModel">
+	<Window class="container" id="mainStedrWindow">
+		<View id="test1View" >
+			<!-- Wall pictures -->
+			<!-- <Require src="pictureGallery"></Require> -->
+		</View>
+		<View id="test2View">
+			<Label id="testLabel2" text="Bilder"></Label>
+			<Label id="testLabel3" text="Historier"></Label>
+		</View>
+	</Window>
 </Alloy>
