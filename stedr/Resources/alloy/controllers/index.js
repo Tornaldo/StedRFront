@@ -8,15 +8,17 @@ function Controller() {
             var __alloyId8 = models[i];
             __alloyId8.__transform = {};
             var __alloyId9 = Ti.UI.createTableViewRow({
-                title: "undefined" != typeof __alloyId8.__transform["name"] ? __alloyId8.__transform["name"] : __alloyId8.get("name")
+                font: {
+                    fontFamily: "Helvetica",
+                    fontSize: "20dp",
+                    fontStyle: "normal",
+                    fontWeight: "normal"
+                },
+                title: "undefined" != typeof __alloyId8.__transform["title"] ? __alloyId8.__transform["title"] : __alloyId8.get("title")
             });
             rows.push(__alloyId9);
         }
         $.__views.__alloyId6.setData(rows);
-    }
-    function startMap() {
-        var map = Alloy.createController("map").getView();
-        map.open();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
@@ -25,7 +27,6 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    var __defers = {};
     Alloy.Collections.instance("wall");
     $.__views.index = Ti.UI.createTabGroup({
         id: "index"
@@ -43,22 +44,17 @@ function Controller() {
     __alloyId10.on("fetch destroy change add remove reset", __alloyId11);
     $.__views.__alloyId4 = Ti.UI.createTab({
         window: $.__views.__alloyId5,
-        title: "List",
+        title: "Liste (Debug)",
         id: "__alloyId4"
     });
     $.__views.index.addTab($.__views.__alloyId4);
-    $.__views.__alloyId13 = Ti.UI.createWindow({
-        id: "__alloyId13"
+    $.__views.mapWin = Ti.UI.createWindow({
+        title: "Wall",
+        id: "mapWin"
     });
-    $.__views.mapButton = Ti.UI.createButton({
-        title: "MAP",
-        id: "mapButton"
-    });
-    $.__views.__alloyId13.add($.__views.mapButton);
-    startMap ? $.__views.mapButton.addEventListener("click", startMap) : __defers["$.__views.mapButton!click!startMap"] = true;
     $.__views.__alloyId12 = Ti.UI.createTab({
-        window: $.__views.__alloyId13,
-        title: "Map",
+        window: $.__views.mapWin,
+        title: "Kart",
         id: "__alloyId12"
     });
     $.__views.index.addTab($.__views.__alloyId12);
@@ -68,11 +64,55 @@ function Controller() {
     };
     _.extend($, $.__views);
     $.index.open();
-    var wall = Alloy.Collections.wall;
-    wall.fetch({
+    var MapModule;
+    var mapview;
+    MapModule = require("ti.map");
+    mapview = MapModule.createView({
+        userLocation: true,
+        mapType: MapModule.NORMAL_TYPE,
+        animate: true,
+        region: {
+            latitude: 63.427255,
+            longitude: 10.396545,
+            latitudeDelta: .01,
+            longitudeDelta: .01
+        }
+    });
+    $.mapWin.add(mapview);
+    mapview.addEventListener("click", function(evt) {
+        Ti.API.info(evt.type);
+        Ti.API.info(evt.clicksource);
+        if ("infoWindow" == evt.clicksource || "leftPane" == evt.clicksource || "title" == evt.clicksource) {
+            Ti.API.info("Trying to enter: " + wallCollection.get(evt.annotation.id).get("title"));
+            var stedrWallController = Alloy.createController("stedrWall", {
+                data: wallCollection.get(evt.annotation.id),
+                $model: wallCollection.get(evt.annotation.id)
+            });
+            stedrWallController.getView().open();
+        }
+    });
+    var wallCollection = Alloy.Collections.wall;
+    wallCollection.fetch({
         success: function() {
-            _.each(wall.models, function() {});
-            Ti.API.log(wall);
+            _.each(wallCollection.models, function(element) {
+                Ti.API.info("Making annotation for " + element.get("title"));
+                Ti.API.info(JSON.stringify(element));
+                Ti.API.info(element.get("thumbnailUrl"));
+                var mapAnnotation = MapModule.createAnnotation({
+                    title: element.get("title"),
+                    latitude: element.get("latitude"),
+                    longitude: element.get("longitude"),
+                    rightView: Ti.UI.createImageView({
+                        image: element.get("thumbnailUrl")
+                    }),
+                    pincolor: MapModule.ANNOTATION_AZURE,
+                    leftView: Ti.UI.createButton({
+                        title: "Besøk"
+                    }),
+                    id: element.get("id")
+                });
+                mapview.addAnnotation(mapAnnotation);
+            });
         },
         error: function() {
             Ti.API.error("hmm - this is not good!");
@@ -81,7 +121,6 @@ function Controller() {
     $.index.addEventListener("close", function() {
         $.destroy();
     });
-    __defers["$.__views.mapButton!click!startMap"] && $.__views.mapButton.addEventListener("click", startMap);
     _.extend($, exports);
 }
 

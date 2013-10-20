@@ -1,33 +1,72 @@
 module.exports = [ {
-    isApi: true,
-    priority: 1000.0005,
-    key: "Label",
+    isClass: true,
+    priority: 10000.0016,
+    key: "container",
     style: {
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        color: "#000"
-    }
-}, {
-    isApi: true,
-    priority: 1000.0006,
-    key: "Tab",
-    style: {
-        title: 20,
-        color: "#00ff00"
+        backgroundColor: "white"
     }
 }, {
     isId: true,
-    priority: 100000.0007,
-    key: "wallTitle",
-    style: {}
+    priority: 100000.0017,
+    key: "testLabel1",
+    style: {
+        font: {
+            fontFamily: "Helvetica",
+            fontSize: "20dp",
+            fontStyle: "normal",
+            fontWeight: "normal"
+        }
+    }
 }, {
     isId: true,
-    priority: 100000.0008,
-    key: "wallImages",
-    style: {}
+    priority: 100000.0018,
+    key: "testLabel2",
+    style: {
+        backgroundColor: "#9B8D8D",
+        backgroundSelectedColor: "#40B0D2",
+        left: 10,
+        font: {
+            fontFamily: "Helvetica",
+            fontSize: "20dp",
+            fontStyle: "normal",
+            fontWeight: "normal"
+        },
+        borderColor: "green",
+        borderWidth: 3
+    }
 }, {
     isId: true,
-    priority: 100000.0009,
-    key: "wallDesc",
-    style: {}
+    priority: 100000.0019,
+    key: "testLabel3",
+    style: {
+        backgroundColor: "#9B8D8D",
+        backgroundSelectedColor: "#40B0D2",
+        right: 10,
+        font: {
+            fontFamily: "Helvetica",
+            fontSize: "20dp",
+            fontStyle: "normal",
+            fontWeight: "normal"
+        },
+        borderColor: "green",
+        borderWidth: 3
+    }
+}, {
+    isId: true,
+    priority: 100000.002,
+    key: "test1View",
+    style: {
+        borderColor: "green",
+        borderWidth: 3,
+        bottom: 1e3
+    }
+}, {
+    isId: true,
+    priority: 100000.0021,
+    key: "test2View",
+    style: {
+        borderColor: "green",
+        borderWidth: 3,
+        top: 300
+    }
 } ];

@@ -1,18 +1,15 @@
 <Alloy>
 	<Collection src="wall">
 	<TabGroup>
-		<Tab title="List">
+		<Tab title="Liste (Debug)">
 			<Window class="container" title="Walls">
 				<TableView dataCollection="wall">
-					<TableViewRow class="tableView" title="{name}" />
+					<TableViewRow class="tableView" title="{title}" />
 				</TableView>
 			</Window>
 		</Tab>
-		<Tab title="Map">
-			<Window>
-				<Button id="mapButton" onClick="startMap">
-					MAP
-				</Button>
+		<Tab title="Kart">
+			<Window title="Wall" id="mapWin">
 			</Window>
 		</Tab>	
 	</TabGroup>

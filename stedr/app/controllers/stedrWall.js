@@ -1,17 +1,12 @@
-var args = arguments[0] || {};
+// var args = arguments[0] || {};
 
-$.wallModel = _.extend({}, $.wallModel, {
-	transform : function() {
-		return dataTransformation(this);
-	}
-});
+Ti.API.info("Hello");
 
-$.wallModel.set(args.data || {});
+// $.stedrWall.addEventListener('close', function() {
+	// Ti.API.info("Destroying: " + Alloy.Models.wall.get('name'));
+	// $.destroy();
+// });
 
-function dataTransformation(_model) {
-	Ti.API.info(_model.get('name'));
-	return {
-		name : _model.get('name')
-	};
-}
+$.wallModel.set($model);
 
+Ti.API.info("Entering: " + $.wallModel.get('title'));

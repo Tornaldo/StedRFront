@@ -1,19 +1,52 @@
-"Label": {
-	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
-	color: "#000"
-}
+".container": {
+	backgroundColor:"white"
+},
 
-"Tab": {
-	title: 20,
-	color: "#00ff00"
-}
+"#testLabel1":{
+	font: {
+        fontFamily:'Helvetica',
+        fontSize: '20dp',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+   }
+},
 
-"#wallTitle":{
-}
+"#testLabel2":{
+	backgroundColor:'#9B8D8D',
+	backgroundSelectedColor: '#40B0D2',
+	left: 10,
+	font: {
+        fontFamily:'Helvetica',
+        fontSize: '20dp',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+  },
+	borderColor: 'green',
+	borderWidth: 3,
+},
 
-"#wallImages":{
-}
+"#testLabel3":{
+	backgroundColor:'#9B8D8D',
+	backgroundSelectedColor: '#40B0D2',
+	right : 10,
+	font: {
+        fontFamily:'Helvetica',
+        fontSize: '20dp',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+  },
+   	borderColor: 'green',
+	borderWidth: 3,
+},
 
-"#wallDesc":{
+"#test1View":{
+	borderColor: 'green',
+	borderWidth: 3,
+	bottom:1000,
+},
+
+"#test2View":{
+	borderColor: 'green',
+	borderWidth: 3,
+	top:300
 }
