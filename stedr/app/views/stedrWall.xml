@@ -5,10 +5,10 @@
 			<!-- Wall pictures -->
 			<!-- <Require src="pictureGallery" id="pictureGallery"></Require> -->
 		</View>
-		<View id="storyAndPictureView" layout="vertical" height="50%">
-			<View id="labelView" layout="horizontal" height="10%">
-				<Label id="pictureTab" text="Bilder" touchEnabled="true"></Label>
-				<Label id="storyTab" text="Historier" touchEnabled="true"></Label>
+		<View id="storyAndPictureView" layout="vertical" height="50%" width="Ti.UI.Fill">
+			<View id="tabView" layout="horizontal" height="10%">
+				<Button id="pictureTab" title="Bilder" ></Button>
+				<Button id="storyTab" title="Historier"></Button>
 			</View>
 			<View id="storyOrPictureView" height="90%"></View>
 		</View>
