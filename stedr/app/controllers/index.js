@@ -11,6 +11,12 @@ if (OS_MOBILEWEB) {
 		animate : true,
 		regionFit : true,
 		userLocation : true,
+		region : {
+			latitude : 63.427255,
+			longitude : 10.396545,
+			latitudeDelta : 0.01,
+			longitudeDelta : 0.01
+		},
 	});
 } else {
 	MapModule = require('ti.map');
@@ -35,7 +41,6 @@ mapview.addEventListener('click', function(evt) {
 	if (evt.clicksource == 'infoWindow' || evt.clicksource == 'leftPane' || evt.clicksource == 'title') {
 		Ti.API.info("Trying to enter: " + wallCollection.get(evt.annotation.id).get('title'));
 		var stedrWallController = Alloy.createController('stedrWall', {
-			// data : wallCollection.get(evt.annotation.id),
 			"$model" : wallCollection.get(evt.annotation.id)
 		});
 		stedrWallController.getView().open();
@@ -47,20 +52,37 @@ wallCollection.fetch({
 	success : function() {
 		_.each(wallCollection.models, function(element, index, list) {
 			Ti.API.info("Making annotation for " + element.get('title'));
-			var mapAnnotation = MapModule.createAnnotation({
-				title : element.get('title'),
-				latitude : element.get('latitude'),
-				longitude : element.get('longitude'),
-				rightView : Ti.UI.createImageView({
-					image : element.get('thumbnailUrl'),
-				}),
+			if (OS_MOBILEWEB) {
+				var mapAnnotation = Titanium.Map.createAnnotation({
+					title : element.get('title'),
+					latitude : element.get('latitude'),
+					longitude : element.get('longitude'),
+					rightView : Ti.UI.createImageView({
+						image : element.get('thumbnailUrl'),
+					}),
 
-				pincolor : MapModule.ANNOTATION_AZURE,
-				leftView : Ti.UI.createButton({
-					title : 'Besøk'
-				}),
-				id : element.get('id'),
-			});
+					leftView : Ti.UI.createButton({
+						title : 'Besøk'
+					}),
+					id : element.get('id'),
+				});
+			} else {
+				var mapAnnotation = MapModule.createAnnotation({
+					title : element.get('title'),
+					latitude : element.get('latitude'),
+					longitude : element.get('longitude'),
+					rightView : Ti.UI.createImageView({
+						image : element.get('thumbnailUrl'),
+					}),
+
+					pincolor : MapModule.ANNOTATION_AZURE,
+					leftView : Ti.UI.createButton({
+						title : 'Besøk'
+					}),
+					id : element.get('id'),
+				});
+			}
+
 			mapview.addAnnotation(mapAnnotation);
 		});
 	},
@@ -73,28 +95,27 @@ $.index.addEventListener('close', function() {
 	$.destroy();
 });
 
-
 // function checkGooglePlayService() {
-	// var MapModule = require('ti.map');
-	// var rc = MapModule.isGooglePlayServicesAvailable();
-	// switch (rc) {
-		// case MapModule.SUCCESS:
-			// Ti.API.info('Google Play services is installed.');
-			// break;
-		// case MapModule.SERVICE_MISSING:
-			// Ti.API.info('Google Play services is missing. Please install Google Play services from the Google Play store.');
-			// break;
-		// case MapModule.SERVICE_VERSION_UPDATE_REQUIRED:
-			// Ti.API.info('Google Play services is out of date. Please update Google Play services.');
-			// break;
-		// case MapModule.SERVICE_DISABLED:
-			// Ti.API.info('Google Play services is disabled. Please enable Google Play services.');
-			// break;
-		// case MapModule.SERVICE_INVALID:
-			// Ti.API.info('Google Play services cannot be authenticated. Reinstall Google Play services.');
-			// break;
-		// default:
-			// Ti.API.info('Unknown error.');
-			// break;
-	// }
+// var MapModule = require('ti.map');
+// var rc = MapModule.isGooglePlayServicesAvailable();
+// switch (rc) {
+// case MapModule.SUCCESS:
+// Ti.API.info('Google Play services is installed.');
+// break;
+// case MapModule.SERVICE_MISSING:
+// Ti.API.info('Google Play services is missing. Please install Google Play services from the Google Play store.');
+// break;
+// case MapModule.SERVICE_VERSION_UPDATE_REQUIRED:
+// Ti.API.info('Google Play services is out of date. Please update Google Play services.');
+// break;
+// case MapModule.SERVICE_DISABLED:
+// Ti.API.info('Google Play services is disabled. Please enable Google Play services.');
+// break;
+// case MapModule.SERVICE_INVALID:
+// Ti.API.info('Google Play services cannot be authenticated. Reinstall Google Play services.');
+// break;
+// default:
+// Ti.API.info('Unknown error.');
+// break;
+// }
 // }

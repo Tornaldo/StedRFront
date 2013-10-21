@@ -12,7 +12,10 @@
 
 Alloy.Globals.baseServerUrl = "http://localhost:9000";
 
-Alloy.Globals.Map = require('ti.map');
+if(!OS_MOBILEWEB){
+	Alloy.Globals.Map = require('ti.map');
+}
+
 Alloy.Collections.wall = Alloy.createCollection('wall');
 Alloy.Collections.story = Alloy.createCollection('story');
 

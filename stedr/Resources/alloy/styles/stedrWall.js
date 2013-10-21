@@ -1,79 +1,66 @@
 module.exports = [ {
     isClass: true,
-    priority: 10000.0016,
+    priority: 10000.0018,
     key: "container",
     style: {
         backgroundColor: "white"
     }
 }, {
     isId: true,
-    priority: 100000.0017,
-    key: "testLabel1",
-    style: {
-        font: {
-            fontFamily: "Helvetica",
-            fontSize: "20dp",
-            fontStyle: "normal",
-            fontWeight: "normal"
-        }
-    }
-}, {
-    isId: true,
-    priority: 100000.0018,
-    key: "testLabel2",
-    style: {
-        backgroundColor: "#9B8D8D",
-        backgroundSelectedColor: "#40B0D2",
-        left: 10,
-        font: {
-            fontFamily: "Helvetica",
-            fontSize: "20dp",
-            fontStyle: "normal",
-            fontWeight: "bold"
-        },
-        borderColor: "green",
-        borderWidth: 3
-    }
-}, {
-    isId: true,
     priority: 100000.0019,
-    key: "testLabel3",
+    key: "pictureTab",
     style: {
         backgroundColor: "#9B8D8D",
         backgroundSelectedColor: "#40B0D2",
-        left: 10,
+        right: 10,
         font: {
             fontFamily: "Helvetica",
             fontSize: "20dp",
             fontStyle: "normal",
             fontWeight: "bold"
         },
-        borderColor: "green",
+        borderColor: "gray",
         borderWidth: 3
     }
 }, {
     isId: true,
     priority: 100000.002,
-    key: "test1View",
+    key: "storyTab",
+    style: {
+        backgroundColor: "#9B8D8D",
+        backgroundSelectedColor: "#40B0D2",
+        right: 10,
+        font: {
+            fontFamily: "Helvetica",
+            fontSize: "20dp",
+            fontStyle: "normal",
+            fontWeight: "bold"
+        },
+        borderColor: "pink",
+        borderWidth: 3
+    }
+}, {
+    isId: true,
+    priority: 100000.0021,
+    key: "pictureGallery",
     style: {
         borderColor: "green",
         borderWidth: 3
     }
 }, {
     isId: true,
-    priority: 100000.0021,
-    key: "test2View",
+    priority: 100000.0022,
+    key: "labelView",
     style: {
-        borderColor: "green",
-        borderWidth: 3,
-        top: 300
+        borderColor: "yellow",
+        borderWidth: 3
     }
 }, {
     isId: true,
-    priority: 100000.0022,
-    key: "test3View",
+    priority: 100000.0023,
+    key: "storyAndPictureView",
     style: {
-        borderColor: "green",
+        borderColor: "blue",
         borderWidth: 3
     }
 } ];

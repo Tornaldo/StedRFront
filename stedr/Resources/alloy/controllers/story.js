@@ -32,7 +32,7 @@ function Controller() {
                     image: element.get("pictures")[0]
                 });
             });
-            Ti.API.info(storyCollection);
+            Ti.API.info(JSON.stringify(storyCollection));
             $.st.createGrid({
                 columns: 2,
                 space: 10,

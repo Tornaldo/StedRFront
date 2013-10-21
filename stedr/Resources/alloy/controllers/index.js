@@ -95,6 +95,7 @@ function Controller() {
         success: function() {
             _.each(wallCollection.models, function(element) {
                 Ti.API.info("Making annotation for " + element.get("title"));
+                var mapAnnotation;
                 var mapAnnotation = MapModule.createAnnotation({
                     title: element.get("title"),
                     latitude: element.get("latitude"),

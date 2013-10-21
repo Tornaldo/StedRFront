@@ -84,6 +84,9 @@ function Controller() {
                     showTitle: options.showTitle || false
                 }).getView();
                 overlay.addEventListener("click", function(e) {
+                    Ti.API.info(e.type);
+                    Ti.API.info(e.clicksource);
+                    Ti.API.info(e.source.strImage);
                     exports.openModal(e.source.strImage);
                 });
                 break;
@@ -124,7 +127,9 @@ function Controller() {
             topView.visible = true;
             $.fgMain.add(topView);
         });
-        topView.addEventListener("click", function() {
+        topView.addEventListener("click", function(e) {
+            Ti.API.info(e.type);
+            Ti.API.info(e.clicksource);
             $.fgMain.remove(topView);
             overlay.animate({
                 opacity: 0,
