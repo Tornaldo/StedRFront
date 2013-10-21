@@ -10,67 +10,72 @@ function Controller() {
         backgroundColor: "white",
         layout: "vertical",
         exitOnClose: "false",
-        navBarHidden: "true",
+        navBarHidden: "false",
         id: "stedrWall"
     });
     $.__views.stedrWall && $.addTopLevelView($.__views.stedrWall);
-    $.__views.test1View = Ti.UI.createView({
+    $.__views.pictureGallery = Ti.UI.createView({
         borderColor: "green",
         borderWidth: 3,
-        id: "test1View"
+        id: "pictureGallery",
+        height: "50%"
     });
-    $.__views.stedrWall.add($.__views.test1View);
-    $.__views.test2View = Ti.UI.createView({
-        borderColor: "green",
+    $.__views.stedrWall.add($.__views.pictureGallery);
+    $.__views.storyAndPictureView = Ti.UI.createView({
+        borderColor: "blue",
         borderWidth: 3,
-        top: 300,
-        id: "test2View",
-        layout: "vertical"
+        id: "storyAndPictureView",
+        layout: "vertical",
+        height: "50%"
     });
-    $.__views.stedrWall.add($.__views.test2View);
+    $.__views.stedrWall.add($.__views.storyAndPictureView);
     $.__views.labelView = Ti.UI.createView({
+        borderColor: "yellow",
+        borderWidth: 3,
         id: "labelView",
-        layout: "horizontal"
+        layout: "horizontal",
+        height: "10%"
     });
-    $.__views.test2View.add($.__views.labelView);
-    $.__views.testLabel2 = Ti.UI.createLabel({
+    $.__views.storyAndPictureView.add($.__views.labelView);
+    $.__views.pictureTab = Ti.UI.createLabel({
         backgroundColor: "#9B8D8D",
         backgroundSelectedColor: "#40B0D2",
-        left: 10,
+        right: 10,
         font: {
             fontFamily: "Helvetica",
             fontSize: "20dp",
             fontStyle: "normal",
             fontWeight: "bold"
         },
-        borderColor: "green",
+        borderColor: "gray",
         borderWidth: 3,
-        id: "testLabel2",
-        text: "Bilder"
+        id: "pictureTab",
+        text: "Bilder",
+        touchEnabled: "true"
     });
-    $.__views.labelView.add($.__views.testLabel2);
-    $.__views.testLabel3 = Ti.UI.createLabel({
+    $.__views.labelView.add($.__views.pictureTab);
+    $.__views.storyTab = Ti.UI.createLabel({
         backgroundColor: "#9B8D8D",
         backgroundSelectedColor: "#40B0D2",
-        left: 10,
+        right: 10,
         font: {
             fontFamily: "Helvetica",
             fontSize: "20dp",
             fontStyle: "normal",
             fontWeight: "bold"
         },
-        borderColor: "green",
+        borderColor: "pink",
         borderWidth: 3,
-        id: "testLabel3",
-        text: "Historier"
+        id: "storyTab",
+        text: "Historier",
+        touchEnabled: "true"
     });
-    $.__views.labelView.add($.__views.testLabel3);
-    $.__views.test3View = Ti.UI.createView({
-        borderColor: "green",
-        borderWidth: 3,
-        id: "test3View"
+    $.__views.labelView.add($.__views.storyTab);
+    $.__views.storyOrPictureView = Ti.UI.createView({
+        id: "storyOrPictureView",
+        height: "90%"
     });
-    $.__views.test2View.add($.__views.test3View);
+    $.__views.storyAndPictureView.add($.__views.storyOrPictureView);
     exports.destroy = function() {};
     _.extend($, $.__views);
     Ti.API.info("Hello");
@@ -79,12 +84,16 @@ function Controller() {
     var pictureGalleryController = Alloy.createController("pictureGallery", {
         $model: $model
     });
-    $.test1View.add(pictureGalleryController.getView());
-    Ti.API.info("Starting picturegallery: " + $model.get("title"));
+    $.pictureGallery.add(pictureGalleryController.getView());
+    Ti.API.info("Starting storygallery: " + $model.get("title"));
     var storyGalleryController = Alloy.createController("story", {
         $model: $model
     });
-    $.test3View.add(storyGalleryController.getView());
+    $.storyOrPictureView.add(storyGalleryController.getView());
+    Ti.API.info("Starting instagramgallery: " + $model.get("title"));
+    Alloy.createController("instagramController", {
+        $model: $model
+    });
     $.stedrWall.addEventListener("close", function() {
         Ti.API.info("Destroying: " + $model.get("title"));
         $.destroy();

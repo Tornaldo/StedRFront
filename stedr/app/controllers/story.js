@@ -12,7 +12,7 @@ storyCollection.fetch({
 				image : element.get('pictures')[0]
 			});
 		});
-		Ti.API.info(storyCollection);
+		Ti.API.info(JSON.stringify(storyCollection));
 		$.st.createGrid({
 			columns : 2, //NUMBER OF COLUMNS. DEFAULT IS 4.
 			space : 10, //SPACE BETWEEN EACH ELEMENT. DEFAULT IS 5.
@@ -31,6 +31,11 @@ storyCollection.fetch({
 		Ti.API.error("hmm - this is not good!");
 	}
 });
+
+// $.story.addEventListener('click', function(evt) {
+	// Ti.API.info(evt.type);
+	// Ti.API.info(evt.clicksource);
+// });
 
 $.story.addEventListener('close', function() {
 	Ti.API.info("Destroying story: " + $model.get('title'));
