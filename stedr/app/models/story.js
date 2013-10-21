@@ -1,16 +1,22 @@
 exports.definition = {
 	config : {
 		"columns" : {
-			"storyId" : "int",
-			"category" : "string",
 			"title" : "string",
-			"pictures" : "string"
+			"ingress":"string",
+			"fortelling": "string",
+			"pictures" : "string",
+			"videos": "string",
+			"author" : "string",
+			"institution" : "string",
+			"tags": "string",
+			"language" : "string",
+			"category" : "string",
 		},
 		"URL" : "http://stedr.herokuapp.com/stories.json",
 		"adapter" : {
 			"type" : "restapi",
 			"collection_name" : "story",
-			"idAttribute" : "storyId"
+			"idAttribute" : "title"
 		}
 	},
 	extendModel : function(Model) {

@@ -1,24 +1,24 @@
 function Controller() {
-    function __alloyId11() {
-        __alloyId11.opts || {};
-        var models = __alloyId10.models;
+    function __alloyId7() {
+        __alloyId7.opts || {};
+        var models = __alloyId6.models;
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId8 = models[i];
-            __alloyId8.__transform = {};
-            var __alloyId9 = Ti.UI.createTableViewRow({
+            var __alloyId4 = models[i];
+            __alloyId4.__transform = {};
+            var __alloyId5 = Ti.UI.createTableViewRow({
                 font: {
                     fontFamily: "Helvetica",
                     fontSize: "20dp",
                     fontStyle: "normal",
                     fontWeight: "normal"
                 },
-                title: "undefined" != typeof __alloyId8.__transform["title"] ? __alloyId8.__transform["title"] : __alloyId8.get("title")
+                title: "undefined" != typeof __alloyId4.__transform["title"] ? __alloyId4.__transform["title"] : __alloyId4.get("title")
             });
-            rows.push(__alloyId9);
+            rows.push(__alloyId5);
         }
-        $.__views.__alloyId6.setData(rows);
+        $.__views.__alloyId2.setData(rows);
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
@@ -31,36 +31,36 @@ function Controller() {
     $.__views.index = Ti.UI.createTabGroup({
         id: "index"
     });
-    $.__views.__alloyId5 = Ti.UI.createWindow({
+    $.__views.__alloyId1 = Ti.UI.createWindow({
         backgroundColor: "white",
         title: "Walls",
-        id: "__alloyId5"
+        id: "__alloyId1"
     });
-    $.__views.__alloyId6 = Ti.UI.createTableView({
-        id: "__alloyId6"
+    $.__views.__alloyId2 = Ti.UI.createTableView({
+        id: "__alloyId2"
     });
-    $.__views.__alloyId5.add($.__views.__alloyId6);
-    var __alloyId10 = Alloy.Collections["wall"] || wall;
-    __alloyId10.on("fetch destroy change add remove reset", __alloyId11);
-    $.__views.__alloyId4 = Ti.UI.createTab({
-        window: $.__views.__alloyId5,
-        title: "Liste (Debug)",
-        id: "__alloyId4"
+    $.__views.__alloyId1.add($.__views.__alloyId2);
+    var __alloyId6 = Alloy.Collections["wall"] || wall;
+    __alloyId6.on("fetch destroy change add remove reset", __alloyId7);
+    $.__views.debugList = Ti.UI.createTab({
+        window: $.__views.__alloyId1,
+        id: "debugList",
+        title: "Liste (Debug)"
     });
-    $.__views.index.addTab($.__views.__alloyId4);
+    $.__views.index.addTab($.__views.debugList);
     $.__views.mapWin = Ti.UI.createWindow({
         title: "Wall",
         id: "mapWin"
     });
-    $.__views.__alloyId12 = Ti.UI.createTab({
+    $.__views.__alloyId8 = Ti.UI.createTab({
         window: $.__views.mapWin,
         title: "Kart",
-        id: "__alloyId12"
+        id: "__alloyId8"
     });
-    $.__views.index.addTab($.__views.__alloyId12);
+    $.__views.index.addTab($.__views.__alloyId8);
     $.__views.index && $.addTopLevelView($.__views.index);
     exports.destroy = function() {
-        __alloyId10.off("fetch destroy change add remove reset", __alloyId11);
+        __alloyId6.off("fetch destroy change add remove reset", __alloyId7);
     };
     _.extend($, $.__views);
     $.index.open();
@@ -85,7 +85,6 @@ function Controller() {
         if ("infoWindow" == evt.clicksource || "leftPane" == evt.clicksource || "title" == evt.clicksource) {
             Ti.API.info("Trying to enter: " + wallCollection.get(evt.annotation.id).get("title"));
             var stedrWallController = Alloy.createController("stedrWall", {
-                data: wallCollection.get(evt.annotation.id),
                 $model: wallCollection.get(evt.annotation.id)
             });
             stedrWallController.getView().open();
@@ -96,8 +95,6 @@ function Controller() {
         success: function() {
             _.each(wallCollection.models, function(element) {
                 Ti.API.info("Making annotation for " + element.get("title"));
-                Ti.API.info(JSON.stringify(element));
-                Ti.API.info(element.get("thumbnailUrl"));
                 var mapAnnotation = MapModule.createAnnotation({
                     title: element.get("title"),
                     latitude: element.get("latitude"),
@@ -115,7 +112,7 @@ function Controller() {
             });
         },
         error: function() {
-            Ti.API.error("hmm - this is not good!");
+            Ti.API.error("woops");
         }
     });
     $.index.addEventListener("close", function() {

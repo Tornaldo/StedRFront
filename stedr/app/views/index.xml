@@ -1,7 +1,7 @@
 <Alloy>
-	<Collection src="wall">
+	<Collection id="wallCollection" src="wall">
 	<TabGroup>
-		<Tab title="Liste (Debug)">
+		<Tab id="debugList" title="Liste (Debug)">
 			<Window class="container" title="Walls">
 				<TableView dataCollection="wall">
 					<TableViewRow class="tableView" title="{title}" />

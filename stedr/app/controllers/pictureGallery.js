@@ -1,13 +1,22 @@
-Ti.API.info("This is the gallery to "+ $.wallModel.get('title'));
+var imageUrlList = $model.get('pictureUrl');
 
-// var wall = Alloy.Models.instance('wall');
-// var imageUrlList = wall.get('pictures');
-// 
-// Ti.API.info("Pictures for: " + wall.get('name'));
-// 
+Ti.API.info("Pictures for: " + $model.get('title'));
+
+// If there is more than one picture (List)
 // for ( i = 0; i < imageUrlList.length; i++) {
-	// var wallImage = Ti.UI.createImageView({
-		// image : imageUrlList[i].url
-	// });
-	// $.imageScroller.addView(wallImage);
+// var wallImage = Ti.UI.createImageView({
+// image : imageUrlList[i].url
+// });
+// $.imageScroller.addView(wallImage);
 // }
+
+var wallImage = Ti.UI.createImageView({
+	image : imageUrlList
+});
+$.imageScroller.addView(wallImage); 
+
+
+$.imageScroller.addEventListener('close', function() {
+	Ti.API.info("Destroying gallery: " + $model.get('title'));
+	$.destroy();
+});

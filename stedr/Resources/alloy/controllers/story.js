@@ -7,27 +7,23 @@ function Controller() {
     var $ = this;
     var exports = {};
     Alloy.Collections.instance("story");
-    $.__views.storyTab = Ti.UI.createWindow({
-        id: "storyTab",
-        title: "Stories"
+    $.__views.story = Ti.UI.createWindow({
+        title: "Stories",
+        id: "story"
     });
-    $.__views.storyTab && $.addTopLevelView($.__views.storyTab);
-    $.__views.storyLabel = Ti.UI.createLabel({
-        id: "storyLabel"
-    });
-    $.__views.storyTab.add($.__views.storyLabel);
+    $.__views.story && $.addTopLevelView($.__views.story);
     $.__views.st = Alloy.createWidget("tiflexigrid", "widget", {
         id: "st",
-        __parentSymbol: $.__views.storyTab
+        __parentSymbol: $.__views.story
     });
-    $.__views.st.setParent($.__views.storyTab);
+    $.__views.st.setParent($.__views.story);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var items = [];
     var storyCollection = Alloy.Collections.story;
     storyCollection.fetch({
         urlparams: {
-            wallId: $model.get("wallId")
+            placeId: $model.get("id")
         },
         success: function() {
             _.each(storyCollection.models, function(element) {
@@ -54,6 +50,10 @@ function Controller() {
         error: function() {
             Ti.API.error("hmm - this is not good!");
         }
+    });
+    $.story.addEventListener("close", function() {
+        Ti.API.info("Destroying story: " + $model.get("title"));
+        $.destroy();
     });
     _.extend($, exports);
 }

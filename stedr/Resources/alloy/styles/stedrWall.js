@@ -29,7 +29,7 @@ module.exports = [ {
             fontFamily: "Helvetica",
             fontSize: "20dp",
             fontStyle: "normal",
-            fontWeight: "normal"
+            fontWeight: "bold"
         },
         borderColor: "green",
         borderWidth: 3
@@ -41,12 +41,12 @@ module.exports = [ {
     style: {
         backgroundColor: "#9B8D8D",
         backgroundSelectedColor: "#40B0D2",
-        right: 10,
+        left: 10,
         font: {
             fontFamily: "Helvetica",
             fontSize: "20dp",
             fontStyle: "normal",
-            fontWeight: "normal"
+            fontWeight: "bold"
         },
         borderColor: "green",
         borderWidth: 3
@@ -57,8 +57,7 @@ module.exports = [ {
     key: "test1View",
     style: {
         borderColor: "green",
-        borderWidth: 3,
-        bottom: 1e3
+        borderWidth: 3
     }
 }, {
     isId: true,
@@ -68,5 +67,13 @@ module.exports = [ {
         borderColor: "green",
         borderWidth: 3,
         top: 300
+    }
+}, {
+    isId: true,
+    priority: 100000.0022,
+    key: "test3View",
+    style: {
+        borderColor: "green",
+        borderWidth: 3
     }
 } ];

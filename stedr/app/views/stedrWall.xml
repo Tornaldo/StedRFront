@@ -1,13 +1,16 @@
 <Alloy>
-	<Model src="wall" instance="true" id="wallModel">
-	<Window class="container" id="mainStedrWindow">
+	<!-- Need to declare navBarHidden, so it becomes a heavy weight window that can capture back event -->
+	<Window class="container" layout="vertical" exitOnClose="false" navBarHidden="true">
 		<View id="test1View" >
 			<!-- Wall pictures -->
-			<!-- <Require src="pictureGallery"></Require> -->
+			<!-- <Require src="pictureGallery" id="pictureGallery"></Require> -->
 		</View>
-		<View id="test2View">
-			<Label id="testLabel2" text="Bilder"></Label>
-			<Label id="testLabel3" text="Historier"></Label>
+		<View id="test2View" layout="vertical">
+			<View id="labelView" layout="horizontal">
+				<Label id="testLabel2" text="Bilder"></Label>
+				<Label id="testLabel3" text="Historier"></Label>
+			</View>
+			<View id="test3View"></View>
 		</View>
 	</Window>
 </Alloy>

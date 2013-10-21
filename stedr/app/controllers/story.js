@@ -1,10 +1,9 @@
 var items = [];
 
-
 var storyCollection = Alloy.Collections.story;
 storyCollection.fetch({
 	urlparams : {
-		"wallId" : $model.get('wallId'),
+		"placeId" : $model.get('id'),
 	},
 	success : function() {
 		_.each(storyCollection.models, function(element, index, list) {
@@ -32,3 +31,9 @@ storyCollection.fetch({
 		Ti.API.error("hmm - this is not good!");
 	}
 });
+
+$.story.addEventListener('close', function() {
+	Ti.API.info("Destroying story: " + $model.get('title'));
+	$.destroy();
+});
+
