@@ -66,17 +66,11 @@ function Controller() {
     $.index.open();
     var MapModule;
     var mapview;
-    MapModule = require("ti.map");
-    mapview = MapModule.createView({
-        userLocation: true,
-        mapType: MapModule.NORMAL_TYPE,
+    mapview = Titanium.Map.createView({
+        mapType: Titanium.Map.STANDARD_TYPE,
         animate: true,
-        region: {
-            latitude: 63.427255,
-            longitude: 10.396545,
-            latitudeDelta: .01,
-            longitudeDelta: .01
-        }
+        regionFit: true,
+        userLocation: true
     });
     $.mapWin.add(mapview);
     mapview.addEventListener("click", function(evt) {
