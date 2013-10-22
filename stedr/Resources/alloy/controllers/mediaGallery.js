@@ -7,23 +7,34 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __alloyId10 = [];
-    $.__views.imageScroller = Ti.UI.createScrollableView({
+    $.__views.mediaScroller = Ti.UI.createScrollableView({
         views: __alloyId10,
-        id: "imageScroller",
+        id: "mediaScroller",
         showPagingControl: "true"
     });
-    $.__views.imageScroller && $.addTopLevelView($.__views.imageScroller);
+    $.__views.mediaScroller && $.addTopLevelView($.__views.mediaScroller);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var imageUrlList = $model.get("pictures");
-    Ti.API.info("Pictures for: " + $model.get("title"));
+    var videoUrlList = $model.get("videos");
+    Ti.API.info("Media for: " + $model.get("title"));
+    Ti.API.info(JSON.stringify($model.get("pictures")));
     for (i = 0; imageUrlList.length > i; i++) {
         var wallImage = Ti.UI.createImageView({
-            image: imageUrlList[i].url
+            image: imageUrlList[i]
         });
-        $.imageScroller.addView(wallImage);
+        $.mediaScroller.addView(wallImage);
     }
-    $.imageScroller.addEventListener("close", function() {
+    for (i = 0; videoUrlList.length > i; i++) {
+        var wallImage = Titanium.Media.createVideoPlayer({
+            url: videoUrlList[i],
+            backgroundColor: "blue",
+            movieControlMode: Titanium.Media.VIDEO_CONTROL_DEFAULT,
+            autoplay: false
+        });
+        $.mediaScroller.addView(wallImage);
+    }
+    $.mediaScroller.addEventListener("close", function() {
         Ti.API.info("Destroying gallery: " + $model.get("title"));
         $.destroy();
     });

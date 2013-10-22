@@ -8,6 +8,8 @@ var mediaGalleryController = Alloy.createController('mediaGallery', {
 });
 $.mediaGalleryStory.add(mediaGalleryController.getView());
 
+
+
 $.storyView.addEventListener('close', function() {
 	Ti.API.info("Destroying: " + $model.get('title'));
 	$.destroy();
