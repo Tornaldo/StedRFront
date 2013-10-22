@@ -1,5 +1,8 @@
 <Alloy>
 	<Window class="container" layout="vertical" exitOnClose="false" navBarHidden="false">
-		<Label text=""></Label>
+		<View id="mediaGalleryStory" height="50%">
+			<!-- Story media -->
+		</View>
+		<Label id="storyTitle"></Label>
 	</Window>>
 </Alloy>

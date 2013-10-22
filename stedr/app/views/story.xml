@@ -1,6 +1,5 @@
 <Alloy>
-	<Collection src="story" />
-	<Window class="container" title="Stories">
+	<Window class="container" title="Stories" >
 		<Require type="widget" src="tiflexigrid" id="st"/>
 	</Window>
 </Alloy>

@@ -1,6 +1,6 @@
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
-    this.__controllerPath = "pictureGallery";
+    this.__controllerPath = "mediaGallery";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     var $model = arguments[0] ? arguments[0]["$model"] : null;
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
@@ -15,12 +15,14 @@ function Controller() {
     $.__views.imageScroller && $.addTopLevelView($.__views.imageScroller);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var imageUrlList = $model.get("pictureUrl");
+    var imageUrlList = $model.get("pictures");
     Ti.API.info("Pictures for: " + $model.get("title"));
-    var wallImage = Ti.UI.createImageView({
-        image: imageUrlList
-    });
-    $.imageScroller.addView(wallImage);
+    for (i = 0; imageUrlList.length > i; i++) {
+        var wallImage = Ti.UI.createImageView({
+            image: imageUrlList[i].url
+        });
+        $.imageScroller.addView(wallImage);
+    }
     $.imageScroller.addEventListener("close", function() {
         Ti.API.info("Destroying gallery: " + $model.get("title"));
         $.destroy();

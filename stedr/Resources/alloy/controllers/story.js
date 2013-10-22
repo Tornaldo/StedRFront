@@ -6,7 +6,6 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    Alloy.Collections.instance("story");
     $.__views.story = Ti.UI.createWindow({
         title: "Stories",
         id: "story"

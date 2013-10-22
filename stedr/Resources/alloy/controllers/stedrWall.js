@@ -1,6 +1,6 @@
 function Controller() {
     function changeView(evt) {
-        Ti.API.info(evt);
+        Ti.API.info("Change view");
         if (1 == evt) {
             $.storyTab.setBackgroundColor("#40B0D2");
             storyGalleryController.getView().show();
@@ -28,11 +28,15 @@ function Controller() {
         id: "stedrWall"
     });
     $.__views.stedrWall && $.addTopLevelView($.__views.stedrWall);
-    $.__views.pictureGallery = Ti.UI.createView({
-        id: "pictureGallery",
+    $.__views.wallPictureView = Ti.UI.createView({
+        id: "wallPictureView",
         height: "50%"
     });
-    $.__views.stedrWall.add($.__views.pictureGallery);
+    $.__views.stedrWall.add($.__views.wallPictureView);
+    $.__views.wallImageView = Ti.UI.createImageView({
+        id: "wallImageView"
+    });
+    $.__views.wallPictureView.add($.__views.wallImageView);
     $.__views.storyAndPictureView = Ti.UI.createView({
         id: "storyAndPictureView",
         layout: "vertical",
@@ -90,11 +94,7 @@ function Controller() {
     _.extend($, $.__views);
     Ti.API.info("Hello");
     Ti.API.info("Entering: " + $model.get("title"));
-    Ti.API.info("Starting picturegallery: " + $model.get("title"));
-    var pictureGalleryController = Alloy.createController("pictureGallery", {
-        $model: $model
-    });
-    $.pictureGallery.add(pictureGalleryController.getView());
+    $.wallImageView.setImage($model.get("pictureUrl"));
     Ti.API.info("Starting storygallery: " + $model.get("title"));
     var storyGalleryController = Alloy.createController("story", {
         $model: $model

@@ -1,11 +1,12 @@
 Ti.API.info("Hello");
 Ti.API.info("Entering: " + $model.get('title'));
 
-Ti.API.info("Starting picturegallery: " + $model.get('title'));
-var pictureGalleryController = Alloy.createController('pictureGallery', {
-	"$model" : $model
-});
-$.pictureGallery.add(pictureGalleryController.getView());
+$.wallImageView.setImage($model.get('pictureUrl'));
+
+// var pictureGalleryController = Alloy.createController('pictureGallery', {
+// "$model" : $model
+// });
+// $.pictureGallery.add(pictureGalleryController.getView());
 
 Ti.API.info("Starting storygallery: " + $model.get('title'));
 var storyGalleryController = Alloy.createController('story', {
@@ -20,7 +21,6 @@ var instagramController = Alloy.createController('instagram', {
 $.storyOrPictureView.add(instagramController.getView());
 $.storyOrPictureView.add(storyGalleryController.getView());
 
-
 $.storyTab.addEventListener('click', function() {
 	changeView(1);
 });
@@ -29,7 +29,7 @@ $.pictureTab.addEventListener('click', function() {
 });
 
 function changeView(evt) {
-	Ti.API.info(evt);
+	Ti.API.info("Change view");
 	if (evt == 1) {
 		$.storyTab.setBackgroundColor('#40B0D2');
 		storyGalleryController.getView().show();

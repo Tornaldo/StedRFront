@@ -1,10 +1,9 @@
 <Alloy>
-	<Collection id="wallCollection" src="wall">
 	<TabGroup>
 		<Tab id="debugList" title="Liste (Debug)">
 			<Window class="container" title="Walls">
 				<TableView dataCollection="wall">
-					<TableViewRow class="tableView" title="{title}" />
+					<TableViewRow class="tableView" model="{alloy_id}" title="{title}" />
 				</TableView>
 			</Window>
 		</Tab>
