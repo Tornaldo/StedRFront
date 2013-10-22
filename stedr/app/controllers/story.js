@@ -21,8 +21,8 @@ storyCollection.fetch({
 			params : {
 				padding : 5, //GALLERY ONLY.
 				showTitle : true, //GALLERY ONLY. True or False
-				backgroundColor : '#eee',
-				gridColor : '#ccc'
+				backgroundColor : '#FFFFFF',
+				gridColor : '#40B0D2'
 			},
 			width : Titanium.Platform.DisplayCaps.platformWidth //OPTIONAL. SCREEN'S WIDTH TO ADJUST GRID.
 		});
@@ -32,10 +32,14 @@ storyCollection.fetch({
 	}
 });
 
-// $.story.addEventListener('click', function(evt) {
-	// Ti.API.info(evt.type);
-	// Ti.API.info(evt.clicksource);
-// });
+$.st.on('click', function(e) {
+	Ti.API.info("Clicked: " + e.source.id);
+	var storyViewController = Alloy.createController('storyView', {
+			"$model" : storyCollection.get(e.source.id)
+		});
+		Ti.API.info(JSON.stringify(storyCollection.get(e.source.id)));
+		storyViewController.getView().open();
+});
 
 $.story.addEventListener('close', function() {
 	Ti.API.info("Destroying story: " + $model.get('title'));

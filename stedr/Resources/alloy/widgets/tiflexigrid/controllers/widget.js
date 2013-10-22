@@ -1,7 +1,7 @@
 function WPATH(s) {
     var index = s.lastIndexOf("/");
     var path = -1 === index ? "tiflexigrid/" + s : s.substring(0, index) + "/tiflexigrid/" + s.substring(index + 1);
-    return true && 0 !== path.indexOf("/") ? "/" + path : path;
+    return path;
 }
 
 function Controller() {
@@ -71,7 +71,8 @@ function Controller() {
                 height: Ti.UI.FILL,
                 backgroundColor: "transparent",
                 zIndex: 1,
-                strImage: data[x].image
+                strImage: data[x].image,
+                id: data[x].title
             });
             var gridElement;
             switch (layout) {
@@ -84,10 +85,7 @@ function Controller() {
                     showTitle: options.showTitle || false
                 }).getView();
                 overlay.addEventListener("click", function(e) {
-                    Ti.API.info(e.type);
-                    Ti.API.info(e.clicksource);
-                    Ti.API.info(e.source.strImage);
-                    exports.openModal(e.source.strImage);
+                    $.trigger("click", e);
                 });
                 break;
 

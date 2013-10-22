@@ -11,6 +11,8 @@ module.exports = [ {
     key: "pictureTab",
     style: {
         backgroundColor: "#8D8D8D",
+        borderColor: "#8D8D8D",
+        borderRadius: 4,
         color: "white",
         font: {
             fontFamily: "Helvetica",
@@ -18,7 +20,8 @@ module.exports = [ {
             fontStyle: "normal",
             fontWeight: "bold"
         },
-        textAlign: "TEXT_ALIGNEMENT_CENTER"
+        textAlign: "TEXT_ALIGNEMENT_CENTER",
+        left: 20
     }
 }, {
     isId: true,
@@ -26,6 +29,8 @@ module.exports = [ {
     key: "storyTab",
     style: {
         backgroundColor: "#40B0D2",
+        borderColor: "#8D8D8D",
+        borderRadius: 4,
         color: "white",
         font: {
             color: "white",
@@ -34,7 +39,8 @@ module.exports = [ {
             fontStyle: "normal",
             fontWeight: "bold"
         },
-        textAlign: "TEXT_ALIGNEMENT_CENTER"
+        textAlign: "TEXT_ALIGNEMENT_CENTER",
+        left: 20
     }
 }, {
     isId: true,

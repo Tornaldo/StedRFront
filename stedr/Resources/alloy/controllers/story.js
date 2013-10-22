@@ -41,8 +41,8 @@ function Controller() {
                 params: {
                     padding: 5,
                     showTitle: true,
-                    backgroundColor: "#eee",
-                    gridColor: "#ccc"
+                    backgroundColor: "#FFFFFF",
+                    gridColor: "#40B0D2"
                 },
                 width: Titanium.Platform.DisplayCaps.platformWidth
             });
@@ -50,6 +50,14 @@ function Controller() {
         error: function() {
             Ti.API.error("hmm - this is not good!");
         }
+    });
+    $.st.on("click", function(e) {
+        Ti.API.info("Clicked: " + e.source.id);
+        var storyViewController = Alloy.createController("storyView", {
+            $model: storyCollection.get(e.source.id)
+        });
+        Ti.API.info(JSON.stringify(storyCollection.get(e.source.id)));
+        storyViewController.getView().open();
     });
     $.story.addEventListener("close", function() {
         Ti.API.info("Destroying story: " + $model.get("title"));

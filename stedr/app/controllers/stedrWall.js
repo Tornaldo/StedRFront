@@ -1,5 +1,4 @@
 Ti.API.info("Hello");
-
 Ti.API.info("Entering: " + $model.get('title'));
 
 Ti.API.info("Starting picturegallery: " + $model.get('title'));

@@ -1,5 +1,5 @@
 <Alloy>
-	<Window>
-		
+	<Window class="container" layout="vertical" exitOnClose="false" navBarHidden="false">
+		<Label text=""></Label>
 	</Window>>
 </Alloy>

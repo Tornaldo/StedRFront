@@ -43,11 +43,13 @@ function Controller() {
     $.__views.tabView = Ti.UI.createView({
         id: "tabView",
         layout: "horizontal",
-        height: "10%"
+        height: "15%"
     });
     $.__views.storyAndPictureView.add($.__views.tabView);
     $.__views.pictureTab = Ti.UI.createButton({
         backgroundColor: "#8D8D8D",
+        borderColor: "#8D8D8D",
+        borderRadius: 4,
         color: "white",
         font: {
             fontFamily: "Helvetica",
@@ -56,12 +58,15 @@ function Controller() {
             fontWeight: "bold"
         },
         textAlign: "TEXT_ALIGNEMENT_CENTER",
+        left: 20,
         id: "pictureTab",
         title: "Bilder"
     });
     $.__views.tabView.add($.__views.pictureTab);
     $.__views.storyTab = Ti.UI.createButton({
         backgroundColor: "#40B0D2",
+        borderColor: "#8D8D8D",
+        borderRadius: 4,
         color: "white",
         font: {
             color: "white",
@@ -71,13 +76,14 @@ function Controller() {
             fontWeight: "bold"
         },
         textAlign: "TEXT_ALIGNEMENT_CENTER",
+        left: 20,
         id: "storyTab",
         title: "Historier"
     });
     $.__views.tabView.add($.__views.storyTab);
     $.__views.storyOrPictureView = Ti.UI.createView({
         id: "storyOrPictureView",
-        height: "90%"
+        height: "85%"
     });
     $.__views.storyAndPictureView.add($.__views.storyOrPictureView);
     exports.destroy = function() {};
