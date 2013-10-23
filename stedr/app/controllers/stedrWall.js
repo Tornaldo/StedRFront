@@ -1,7 +1,22 @@
 Ti.API.info("Hello");
 Ti.API.info("Entering: " + $model.get('title'));
 
-$.wallImageView.setImage($model.get('pictureUrl'));
+// var wallImageView = Titanium.UI.createImageView({
+// image : $model.get('pictureUrl'),
+// width : Ti.UI.FILL,
+// });
+
+$.mediaScrollerMainImage.addView(Ti.UI.createImageView({image : $model.get('pictureUrl')}));
+
+// $.wallImageView.setImage($model.get('pictureUrl'));
+
+// $.wallImageView.setImage($model.get('pictureUrl'));
+// $.wallImageView.setWidth(Titanium.Platform.DisplayCaps.platformWidth);
+// Ti.API.info("Width: " + $.wallImageView.getWidth());
+// Ti.API.info("Width: " + $.wallImageView.getRect());
+// Ti.API.info("Height: "+$.wallImageView.getHeight());
+// Ti.API.info("HeightPic: "+$.wallImageView.getImage().getHeight());
+// Ti.API.info("WidthPic: "+$.wallImageView.getImage().getWidth());
 
 // var pictureGalleryController = Alloy.createController('pictureGallery', {
 // "$model" : $model

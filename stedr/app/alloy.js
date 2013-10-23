@@ -19,3 +19,5 @@ if(!OS_MOBILEWEB){
 Alloy.Collections.wall = Alloy.createCollection('wall');
 Alloy.Collections.story = Alloy.createCollection('story');
 
+Ti.UI.orientation = Ti.UI.PORTRAIT;
+
