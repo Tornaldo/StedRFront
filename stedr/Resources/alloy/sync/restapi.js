@@ -13,7 +13,7 @@ function InitAdapter() {
 function apiCall(_options, _callback) {
     if (Ti.Network.online) {
         var xhr = Ti.Network.createHTTPClient({
-            timeout: _options.timeout || 3e4
+            timeout: _options.timeout || 15e3
         });
         xhr.open(_options.type, _options.url);
         xhr.onload = function() {

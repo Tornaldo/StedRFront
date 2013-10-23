@@ -64,13 +64,18 @@ function Controller() {
     };
     _.extend($, $.__views);
     $.index.open();
-    var MapModule;
     var mapview;
     mapview = Titanium.Map.createView({
         mapType: Titanium.Map.STANDARD_TYPE,
         animate: true,
         regionFit: true,
-        userLocation: true
+        userLocation: true,
+        region: {
+            latitude: 63.427255,
+            longitude: 10.396545,
+            latitudeDelta: .01,
+            longitudeDelta: .01
+        }
     });
     $.mapWin.add(mapview);
     mapview.addEventListener("click", function(evt) {
@@ -90,14 +95,13 @@ function Controller() {
             _.each(wallCollection.models, function(element) {
                 Ti.API.info("Making annotation for " + element.get("title"));
                 var mapAnnotation;
-                var mapAnnotation = MapModule.createAnnotation({
+                var mapAnnotation = Titanium.Map.createAnnotation({
                     title: element.get("title"),
                     latitude: element.get("latitude"),
                     longitude: element.get("longitude"),
                     rightView: Ti.UI.createImageView({
                         image: element.get("thumbnailUrl")
                     }),
-                    pincolor: MapModule.ANNOTATION_AZURE,
                     leftView: Ti.UI.createButton({
                         title: "Besøk"
                     }),
