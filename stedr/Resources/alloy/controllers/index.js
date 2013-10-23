@@ -14,6 +14,7 @@ function Controller() {
                     fontStyle: "normal",
                     fontWeight: "normal"
                 },
+                model: "undefined" != typeof __alloyId4.__transform["alloy_id"] ? __alloyId4.__transform["alloy_id"] : __alloyId4.get("alloy_id"),
                 title: "undefined" != typeof __alloyId4.__transform["title"] ? __alloyId4.__transform["title"] : __alloyId4.get("title")
             });
             rows.push(__alloyId5);
@@ -27,7 +28,6 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    Alloy.Collections.instance("wall");
     $.__views.index = Ti.UI.createTabGroup({
         id: "index"
     });

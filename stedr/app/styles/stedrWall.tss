@@ -2,44 +2,40 @@
 	backgroundColor:"white"
 },
 "#pictureTab":{
-	backgroundColor:'#9B8D8D',
-	backgroundSelectedColor: '#40B0D2',
-	right: 10,
-	
+	backgroundColor:'#8D8D8D',
+	borderColor : '#8D8D8D',
+	borderRadius : 4,
+	color:'white',
 	font: {
         fontFamily:'Helvetica',
-        fontSize: '20dp',
+        fontSize: '20sp',
         fontStyle: 'normal',
         fontWeight: 'bold',
-  },
-	borderColor: 'gray',
-	borderWidth: 3,
+ 	},
+	textAlign: 'TEXT_ALIGNEMENT_CENTER',
+	left : 20,
 },
 
 "#storyTab":{
-	backgroundColor:'#9B8D8D',
-	backgroundSelectedColor: '#40B0D2',
-	right : 10,
+	backgroundColor:'#40B0D2',
+	borderColor : '#8D8D8D',
+	borderRadius : 4,
+	color:'white',
 	font: {
+		color:'white',
         fontFamily:'Helvetica',
-        fontSize: '20dp',
+        fontSize: '20sp',
         fontStyle: 'normal',
         fontWeight: 'bold',
-  },
-   	borderColor: 'pink',
-	borderWidth: 3,
+  	},
+	textAlign: 'TEXT_ALIGNEMENT_CENTER',
+	left : 20,
 },
 
 "#pictureGallery":{
-	borderColor: 'green',
-	borderWidth: 3,
 },
 
-"#labelView":{
-	borderColor: 'yellow',
-	borderWidth: 3,
+"#tabView":{
 },
 "#storyAndPictureView":{
-	borderColor: 'blue',
-	borderWidth: 3,
 }

@@ -10,57 +10,51 @@ module.exports = [ {
     priority: 100000.0019,
     key: "pictureTab",
     style: {
-        backgroundColor: "#9B8D8D",
-        backgroundSelectedColor: "#40B0D2",
-        right: 10,
+        backgroundColor: "#8D8D8D",
+        borderColor: "#8D8D8D",
+        borderRadius: 4,
+        color: "white",
         font: {
             fontFamily: "Helvetica",
-            fontSize: "20dp",
+            fontSize: "20sp",
             fontStyle: "normal",
             fontWeight: "bold"
         },
-        borderColor: "gray",
-        borderWidth: 3
+        textAlign: "TEXT_ALIGNEMENT_CENTER",
+        left: 20
     }
 }, {
     isId: true,
     priority: 100000.002,
     key: "storyTab",
     style: {
-        backgroundColor: "#9B8D8D",
-        backgroundSelectedColor: "#40B0D2",
-        right: 10,
+        backgroundColor: "#40B0D2",
+        borderColor: "#8D8D8D",
+        borderRadius: 4,
+        color: "white",
         font: {
+            color: "white",
             fontFamily: "Helvetica",
-            fontSize: "20dp",
+            fontSize: "20sp",
             fontStyle: "normal",
             fontWeight: "bold"
         },
-        borderColor: "pink",
-        borderWidth: 3
+        textAlign: "TEXT_ALIGNEMENT_CENTER",
+        left: 20
     }
 }, {
     isId: true,
     priority: 100000.0021,
     key: "pictureGallery",
-    style: {
-        borderColor: "green",
-        borderWidth: 3
-    }
+    style: {}
 }, {
     isId: true,
     priority: 100000.0022,
-    key: "labelView",
-    style: {
-        borderColor: "yellow",
-        borderWidth: 3
-    }
+    key: "tabView",
+    style: {}
 }, {
     isId: true,
     priority: 100000.0023,
     key: "storyAndPictureView",
-    style: {
-        borderColor: "blue",
-        borderWidth: 3
-    }
+    style: {}
 } ];

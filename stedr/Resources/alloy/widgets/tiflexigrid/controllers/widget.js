@@ -71,7 +71,8 @@ function Controller() {
                 height: Ti.UI.FILL,
                 backgroundColor: "transparent",
                 zIndex: 1,
-                strImage: data[x].image
+                strImage: data[x].image,
+                id: data[x].title
             });
             var gridElement;
             switch (layout) {
@@ -84,10 +85,7 @@ function Controller() {
                     showTitle: options.showTitle || false
                 }).getView();
                 overlay.addEventListener("click", function(e) {
-                    Ti.API.info(e.type);
-                    Ti.API.info(e.clicksource);
-                    Ti.API.info(e.source.strImage);
-                    exports.openModal(e.source.strImage);
+                    $.trigger("click", e);
                 });
                 break;
 

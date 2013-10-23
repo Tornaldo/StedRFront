@@ -36,7 +36,8 @@ exports.createGrid = function(args) {
 			height : Ti.UI.FILL,
 			backgroundColor : 'transparent',
 			zIndex : 1,
-			strImage : data[x].image
+			strImage : data[x].image,
+			id : data[x].title,
 		});
 
 		var gridElement;
@@ -51,12 +52,12 @@ exports.createGrid = function(args) {
 					padding : options.padding || 10,
 					showTitle : options.showTitle || false
 				}).getView();
-				//need to customize this ODD
+				// CUSTOMIZATION, BY ODD
 				overlay.addEventListener('click', function(e) {
-					Ti.API.info(e.type);
-					Ti.API.info(e.clicksource);
-					Ti.API.info(e.source.strImage);
-					exports.openModal(e.source.strImage);
+					//Fire trigger event
+					$.trigger('click', e);
+					// Commenting out this function-call to prevent opening modal window
+					// exports.openModal(e.source.strImage);
 				});
 				break;
 			case('customView'):

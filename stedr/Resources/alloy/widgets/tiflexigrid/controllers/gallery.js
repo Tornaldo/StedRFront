@@ -59,9 +59,13 @@ function Controller() {
             width: Ti.UI.FILL,
             height: Ti.UI.SIZE,
             textAlign: "center",
-            color: "#555",
+            color: "white",
             font: {
-                fontSize: 12
+                color: "white",
+                fontFamily: "Helvetica",
+                fontSize: "15sp",
+                fontStyle: "normal",
+                fontWeight: "normal"
             }
         });
         titleView.add(title);
