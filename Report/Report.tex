@@ -147,7 +147,7 @@ SINTEF ICT is the ICT unit at SINTEF, which is the largest independent research 
 \parbox{7cm}{
 \begin{figure}[H]
       \includegraphics[width=0.4\textwidth]{Figures/Person.png}
-      \label{fig:partners_group_eistein}
+      \label{fig:partners_customer_eistein}
 \end{figure}
 \textbf{Eistein Guldseth}\\
 Role: Advisor Digital communication and Interaction, STFK\\
@@ -156,7 +156,7 @@ E-mail: eistein.guldseth@stfk.no} & \parbox{7cm}{
 Eistein Guldseth has worked with strategic marketing communication like brand building, text production and communication strategy consulting for 15 years. He has a MSc in Communication, Media and Information technology from NTNU, and has amongst other things, worked as a hired writer and communications consultant for several advertising agencies in Trondheim region from 1995. Previously he worked as a CAD consultant in engineering, and he also has experience in innovation processes and business creation.\cite{bioEisteinGuldseth}
 }
 \end{tabular}
-\label{tab:partners_advisor_jacqueline}
+\label{tab:partners_customer_eistein}
 \end{table}
 
 \begin{table}[H]
@@ -165,7 +165,7 @@ Eistein Guldseth has worked with strategic marketing communication like brand bu
 \parbox{7cm}{
 \begin{figure}[H]
       \includegraphics[width=0.4\textwidth]{Figures/Person.png}
-      \label{fig:partners_group_christian}
+      \label{fig:partners_customer_jacqueline}
 \end{figure}
 \textbf{Jacqueline Floch}\\
 Role: Senior scientist at SINTEF ICT\\
@@ -173,7 +173,7 @@ Mobile: +47 930 08 536\\
 Fax: +47 73 59 43 02\\
 E-mail: jacqueline.floch@sintef.no} & \parbox{7cm}{Hvem er Jacqueline?}
 \end{tabular}
-\label{tab:partners_advisor_jacqueline}
+\label{tab:partners_customer_jacqueline}
 \end{table}
 
 \subsubsection{Advisor}
@@ -183,7 +183,7 @@ E-mail: jacqueline.floch@sintef.no} & \parbox{7cm}{Hvem er Jacqueline?}
 \parbox{7cm}{
 \begin{figure}[H]
       \includegraphics[width=0.4\textwidth]{Figures/reidar.jpg}
-      \label{fig:partners_group_christian}
+      \label{fig:partners_advisor_reidar}
 \end{figure}
 \textbf{Reidar Conradi}\\
 Role: Professor at NTNU\\
@@ -1464,9 +1464,6 @@ Information hiding allows to provide a stable internal API. This will reduce dev
 \subsubsection{User initiative}
 By allowing the user to abort operations, undo or redo the user will feel more comfortable and secure while using the application.
 
-\subsubsection{User model}
-By storing the users credentials, the user will not have to provide the credentials every time he executes an action, like requesting content.
-
 \subsection{Testability}
 
 \subsubsection{Limit complexity}
@@ -1480,16 +1477,14 @@ By keeping the state local, the complexity of state machines with multiple parti
 The overall architecture for the whole system is client-server, where the handheld device or the web browser requests information from the server, which in turn returns it. The advantage of using client-server is that multiple devices might access the same information without needing to download an entire library every time someone updates some information. Using client-server instead of peer-to-peer simplifies keeping the integrity of the information and securing the users data.
 
 \subsection{Client}
-On the client Model View Controller will be used in order to separate concerns and keep the code as clean as possible. By dividing user interface, data and logic in different blocks, we increase modifiability and maintainability as well as increasing the speed of development as subdividing tasks will be easier.
+On the client, Model View Controller will be used in order to separate concerns and keep the code as clean as possible. By dividing user interface, data and logic in different blocks, we increase modifiability and maintainability as well as increasing the speed of development as subdividing tasks will be easier.
 
-The client might even be Model View Presenter (MVP). This uncertainty comes the fact that the technology was too badly documented, so we are looking for alternatives.
-
-HTML5 will function as an adapter that lets us run the application on multiple devices, including Android, iOS and normal web browsers.
+Appcelerator Titanium will be used as an adapter to different platforms, this be Android, iOS or a normal browser.
 
 \subsection{Server}
 The server will be a stateless REST services built on Play Framework. This gives a simple client-server approach where the server consists of some simple layers.
 
-The server will be fully stateless which will help on scalability and availability as well as simplifying modifiability.
+The server will be fully stateless which will help on scalability and availability as well as simplifying modifiability. It will also act as an broker, and therefor follow the broker pattern.
 
 \section{Views}
 
@@ -1500,7 +1495,7 @@ The logical view is quite simple due to the fact that Play! Framework is doing m
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{Figures/Architecture/serverLogical.jpg}
+      \includegraphics[width=1.0\textwidth]{Figures/Architecture/serverLogical.jpg}
       \caption{Server - Logical view}
       \label{fig:arch_server_logical}
 \end{figure}
@@ -1510,12 +1505,26 @@ The process in the server is quite simple as it is modeled on the way HTTP works
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{Figures/Architecture/serverProcess.jpg}
-      \caption{Server - Process view}
-      \label{fig:arch_server_process}
+      \includegraphics[width=0.8\textwidth]{Figures/Architecture/serverProcessStory.jpg}
+      \caption{Server - Process view for fetching stories}
+      \label{fig:arch_server_process_story}
 \end{figure}
 
-Note that *Controller and *Model means every corresponding pair of models and controllers.
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{Figures/Architecture/serverProcessPlace.jpg}
+      \caption{Server - Process view for fetching places}
+      \label{fig:arch_server_process_place}
+\end{figure}
+
+The retriever for places from Flickr has some additional functionality in order to support local caching to increase the performance of the system.
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{Figures/Architecture/serverFlickrRetriever.jpg}
+      \caption{Server - Process view for fetching places from Flickr}
+      \label{fig:arch_server_process_flickr}
+\end{figure}
 
 \subsubsection{Development view}
 DATABASE represents all the data. In this layer the work of structuring the data and figuring out the database design is also included.
@@ -1535,9 +1544,39 @@ CONTROLLERS represents the classes that handles the requests and returns data to
 
 \subsubsection{Logical view}
 
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Figures/Architecture/clientLogicalController.jpg}
+      \caption{Client - Logical view of controllers}
+      \label{fig:arch_client_logical_controllers}
+\end{figure}
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.5\textwidth]{Figures/Architecture/clientLogicalModels.jpg}
+      \caption{Client - Logical view of models}
+      \label{fig:arch_client_logical_models}
+\end{figure}
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Figures/Architecture/clientLogicalViews.jpg}
+      \caption{Client - Logical view of views}
+      \label{fig:arch_client_logical_views}
+\end{figure}
+
 \subsubsection{Process view}
 
+
+
 \subsubsection{Development view}
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.5\textwidth]{Figures/Architecture/clientDevelopmentView.png}
+      \caption{Client - Development view}
+      \label{fig:arch_client_development}
+\end{figure}
 
 \section{Architectural rationale}
 
@@ -2131,5 +2170,11 @@ Additional notes: All documentation (report and code comments) should be written
 
 
 \chapter{Documentation}
-
+\section{Introduction}
+\section{Server - Installation}
+\section{Client}
+\subsection{Installation}
+\subsection{Compile for Android}
+\subsection{Compile for iOS}
+\subsection{Compile for normal browsers}
 \end{document}
