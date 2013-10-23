@@ -8,6 +8,7 @@
 \usepackage{float}
 \usepackage{hyperref}
 \usepackage{rotating}
+\usepackage{tocbibind}
 \setlength\parindent{0pt}
 \usepackage{setspace}
 \setcounter{tocdepth}{2}
@@ -102,8 +103,7 @@
 The assignment relates to the EU-IST project TAG CLOUD. TAG CLOUD will develop innovative digital solutions with the aim to increase the engagement of people in culture and cultural heritage. The main aspects that will be investigated are: new interaction interfaces with cultural artefacts, user as a contributor and personalized information. In Norway, the focus is “culture in the landscape”, i.e. the discovery of cultural memories that we meet when walking around in cities, in villages and in the nature.  \cite[p. 47]{compendium}
 \end{quotation}
 
-The aim of this particular project is to develop a concept and a prototype that will make information about cultural heritage more accessible and fun! This will be accomplished by creating a mobile application that lets users consume content from cultural databases in an exploratory format.
-
+The aim of this particular project was to develop a concept and a prototype that would make information about cultural heritage more accessible and fun! This should be accomplished by creating a mobile application that let users consume content from cultural databases in an exploratory format.
 
 
 \tableofcontents
@@ -147,7 +147,7 @@ SINTEF ICT is the ICT unit at SINTEF, which is the largest independent research 
 \parbox{7cm}{
 \begin{figure}[H]
       \includegraphics[width=0.4\textwidth]{Figures/Person.png}
-      \label{fig:partners_group_eistein}
+      \label{fig:partners_customer_eistein}
 \end{figure}
 \textbf{Eistein Guldseth}\\
 Role: Advisor Digital communication and Interaction, STFK\\
@@ -156,7 +156,7 @@ E-mail: eistein.guldseth@stfk.no} & \parbox{7cm}{
 Eistein Guldseth has worked with strategic marketing communication like brand building, text production and communication strategy consulting for 15 years. He has a MSc in Communication, Media and Information technology from NTNU, and has amongst other things, worked as a hired writer and communications consultant for several advertising agencies in Trondheim region from 1995. Previously he worked as a CAD consultant in engineering, and he also has experience in innovation processes and business creation.\cite{bioEisteinGuldseth}
 }
 \end{tabular}
-\label{tab:partners_advisor_jacqueline}
+\label{tab:partners_customer_eistein}
 \end{table}
 
 \begin{table}[H]
@@ -165,7 +165,7 @@ Eistein Guldseth has worked with strategic marketing communication like brand bu
 \parbox{7cm}{
 \begin{figure}[H]
       \includegraphics[width=0.4\textwidth]{Figures/Person.png}
-      \label{fig:partners_group_christian}
+      \label{fig:partners_customer_jacqueline}
 \end{figure}
 \textbf{Jacqueline Floch}\\
 Role: Senior scientist at SINTEF ICT\\
@@ -173,7 +173,7 @@ Mobile: +47 930 08 536\\
 Fax: +47 73 59 43 02\\
 E-mail: jacqueline.floch@sintef.no} & \parbox{7cm}{Hvem er Jacqueline?}
 \end{tabular}
-\label{tab:partners_advisor_jacqueline}
+\label{tab:partners_customer_jacqueline}
 \end{table}
 
 \subsubsection{Advisor}
@@ -183,7 +183,7 @@ E-mail: jacqueline.floch@sintef.no} & \parbox{7cm}{Hvem er Jacqueline?}
 \parbox{7cm}{
 \begin{figure}[H]
       \includegraphics[width=0.4\textwidth]{Figures/reidar.jpg}
-      \label{fig:partners_group_christian}
+      \label{fig:partners_advisor_reidar}
 \end{figure}
 \textbf{Reidar Conradi}\\
 Role: Professor at NTNU\\
@@ -224,9 +224,9 @@ E-mail: oddfredrikrogstad@gmail.com} & \parbox{7cm}{Hvem er Odd?}
 Mobile: +47 45 21 70 66\\
 E-mail: chrisfro@stud.ntnu.no} & \parbox{7cm}{
 Christian Frøystad was born in Fosnavåg in 1990. He graduated from Vestborg VGS (high school) in 2009. From 2009 to 2010 he studied theology at Fjellhaug Bibelskole.
-In 2010, he started his education at NTNU, working towards a MS in Computer Science with focus on Software Engineering.
+In 2010, he started his education at NTNU, working towards a MS in Computer Science.
 
-In 2008 he co-founded Xist NUF, to become Xist AS in 2012.
+In 2008 he co-founded c, to become Xist AS in 2012.
 He is also an active participant in the church Betania Misjonsforsamling, and a recreational musician.
 
 His areas of interest includes theology, computer science, music, cooking, aviation, and general craftsmanship.
@@ -243,9 +243,19 @@ His areas of interest includes theology, computer science, music, cooking, aviat
       \includegraphics[width=0.4\textwidth]{Figures/Person.png}
       \label{fig:partners_group_simon}
 \end{figure}
-\textbf{Simon Stastny}
+\textbf{Simon Stastny}\\
 Mobile: +47 45 16 62 98\\
-E-mail: simonst@stud.ntnu.no} & \parbox{7cm}{Hvem er Simon?}
+E-mail: stastny.simon@gmail.com} & \parbox{7cm}{
+	
+Simon Stastny was born and brought up in Prague, Czech Republic.
+
+He studied Software Engineering at the Czech Technical University, where he received his Bc in 2012. He now is a student of MSc in Information Systems at NTNU.
+
+He has a background in backend development in Java-related technologies in his past and present occupations.
+
+In his spare time, he is an avid bookworm, traveler, and CouchSurfer.
+
+}
 \end{tabular}
 \label{tab:partners_group_simon}
 \end{table}
@@ -280,9 +290,10 @@ The goal of the project is producing a prototype of the system that might be exp
 \section{Tools}
 This section describes the tools used to communicate, develop and implement the system.
 
-\subsection{Hardware}
+\subsection{Hardware \& development software}
+As the system is to run on mobile phones, Android and iOS units was needed to performe tests along the way. The group had access to Android devices, but not iOS devices.
 
-\subsection{Software}
+Titanium Studio was used while developing the mobile application. Titanium Studio is the official development environment from the creators of the framework Titanium. It is based upon Eclipse.
 
 \subsection{Collaboration and communication}
 This section describes the tools used to collaborate and communicate throughout the project.
@@ -355,7 +366,7 @@ Duration: 09.10.2013 - 23.10.2013\\
 Expected outcome: Refined requirements and test plan, working prototype with even better and more complete developer documentation. Complete phase document.
 
 \subsubsection{Sprint 4}
-Duration: 23.10.2013 - 06.10.2013\\
+Duration: 23.10.2013 - 13.11.2013\\
 Expected outcome: Refined requirements and test plan, working prototype with excellent developer documentation.
 
 \subsubsection{Finalization}
@@ -1464,9 +1475,6 @@ Information hiding allows to provide a stable internal API. This will reduce dev
 \subsubsection{User initiative}
 By allowing the user to abort operations, undo or redo the user will feel more comfortable and secure while using the application.
 
-\subsubsection{User model}
-By storing the users credentials, the user will not have to provide the credentials every time he executes an action, like requesting content.
-
 \subsection{Testability}
 
 \subsubsection{Limit complexity}
@@ -1480,16 +1488,14 @@ By keeping the state local, the complexity of state machines with multiple parti
 The overall architecture for the whole system is client-server, where the handheld device or the web browser requests information from the server, which in turn returns it. The advantage of using client-server is that multiple devices might access the same information without needing to download an entire library every time someone updates some information. Using client-server instead of peer-to-peer simplifies keeping the integrity of the information and securing the users data.
 
 \subsection{Client}
-On the client Model View Controller will be used in order to separate concerns and keep the code as clean as possible. By dividing user interface, data and logic in different blocks, we increase modifiability and maintainability as well as increasing the speed of development as subdividing tasks will be easier.
+On the client, Model View Controller will be used in order to separate concerns and keep the code as clean as possible. By dividing user interface, data and logic in different blocks, we increase modifiability and maintainability as well as increasing the speed of development as subdividing tasks will be easier.
 
-The client might even be Model View Presenter (MVP). This uncertainty comes the fact that the technology was too badly documented, so we are looking for alternatives.
-
-HTML5 will function as an adapter that lets us run the application on multiple devices, including Android, iOS and normal web browsers.
+Appcelerator Titanium will be used as an adapter to different platforms, this be Android, iOS or a normal browser.
 
 \subsection{Server}
 The server will be a stateless REST services built on Play Framework. This gives a simple client-server approach where the server consists of some simple layers.
 
-The server will be fully stateless which will help on scalability and availability as well as simplifying modifiability.
+The server will be fully stateless which will help on scalability and availability as well as simplifying modifiability. It will also act as an broker, and therefor follow the broker pattern.
 
 \section{Views}
 
@@ -1500,7 +1506,7 @@ The logical view is quite simple due to the fact that Play! Framework is doing m
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{Figures/Architecture/serverLogical.jpg}
+      \includegraphics[width=1.0\textwidth]{Figures/Architecture/serverLogical.jpg}
       \caption{Server - Logical view}
       \label{fig:arch_server_logical}
 \end{figure}
@@ -1510,12 +1516,26 @@ The process in the server is quite simple as it is modeled on the way HTTP works
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{Figures/Architecture/serverProcess.jpg}
-      \caption{Server - Process view}
-      \label{fig:arch_server_process}
+      \includegraphics[width=0.8\textwidth]{Figures/Architecture/serverProcessStory.jpg}
+      \caption{Server - Process view for fetching stories}
+      \label{fig:arch_server_process_story}
 \end{figure}
 
-Note that *Controller and *Model means every corresponding pair of models and controllers.
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{Figures/Architecture/serverProcessPlace.jpg}
+      \caption{Server - Process view for fetching places}
+      \label{fig:arch_server_process_place}
+\end{figure}
+
+The retriever for places from Flickr has some additional functionality in order to support local caching to increase the performance of the system.
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{Figures/Architecture/serverFlickrRetriever.jpg}
+      \caption{Server - Process view for fetching places from Flickr}
+      \label{fig:arch_server_process_flickr}
+\end{figure}
 
 \subsubsection{Development view}
 DATABASE represents all the data. In this layer the work of structuring the data and figuring out the database design is also included.
@@ -1535,11 +1555,49 @@ CONTROLLERS represents the classes that handles the requests and returns data to
 
 \subsubsection{Logical view}
 
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Figures/Architecture/clientLogicalController.jpg}
+      \caption{Client - Logical view of controllers}
+      \label{fig:arch_client_logical_controllers}
+\end{figure}
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.5\textwidth]{Figures/Architecture/clientLogicalModels.jpg}
+      \caption{Client - Logical view of models}
+      \label{fig:arch_client_logical_models}
+\end{figure}
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Figures/Architecture/clientLogicalViews.jpg}
+      \caption{Client - Logical view of views}
+      \label{fig:arch_client_logical_views}
+\end{figure}
+
 \subsubsection{Process view}
+All the states in the Figure ~\ref{fig:arch_client_process} have a back event in addition to those added. They were left out in order to simplify the figure.
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Figures/Architecture/clientProcess.jpg}
+      \caption{Client - Process view}
+      \label{fig:arch_client_process}
+\end{figure}
 
 \subsubsection{Development view}
+This is an iterative development process. In order for a function to work on the client, it must have the required support on the server. It does not mean, however, that the server must first be finished in its entirety.
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.5\textwidth]{Figures/Architecture/clientDevelopmentView.png}
+      \caption{Client - Development view}
+      \label{fig:arch_client_development}
+\end{figure}
 
 \section{Architectural rationale}
+
 
 \chapter{Testing}
 
@@ -2104,10 +2162,38 @@ The data from \emph{Digitalt Fortalt} are retrieved from the API by classes in t
 \bibliography{bibliography}
 
 \appendix
-\chapter{Assignment}
+\chapter{Initial project description}
+The following descritpion is taken from the course compendium\cite[p. 47]{compendium}.
+
+The assignment relates to the EU-IST project TAG CLOUD (www.tagcloudproject.eu). TAG CLOUD will develop innovative digital solutions with the aim to increase the engagement of people in culture and cultural heritage. The main aspects that will be investigated are: new interaction interfaces with cultural artefacts, user as a contributor and personalized information. In Norway, the focus is “culture in the landscape”, i.e. the discovery of cultural memories that we meet when walking around in cities, in villages and in the nature.
+
+The goal of this assignment is to develop a tool to create and interact with “virtual walls”. The idea stems from Væggen\footnote{Væggen is the danish word for ”Wall”.} in Copenhagen (http://vaeggen.copenhagen.dk/dk/). Væggen is a large multitouch screen allowing people to tell, share and experience stories. We would like to explore the concept of wall as means to discover and share cultural stories related to buildings and places. It is however not practical to install and maintain physical walls such as Væggen all around. Instead we propose a digital representation of walls, that we call virtual wall.
+
+The assignment will build upon interactive pictures for the realization of virtual walls. The tool that will be develop should include support for:
+\begin{itemize}
+	\item Managing virtual walls: creation/deletion; retrieval according to location, popularity, topics and other metadata (e.g. author)
+	\item Managing stories: adding stories through a click on a specific place on the wall, filtering stories
+according to popularity, topics and other metadata (e.g. duration)
+	\item Social interaction: sharing walls (possibly stories) for editing, adding comments to walls and stories.
+	\item Promotion through social networks: sharing walls and stories through social networks (e.g. Facebook, Twitter)
+\end{itemize}
+The tool should be available for PC, tablet and mobile allowing experience at home and on site. The assignment should specify a system architecture that fits this requirement and select technologies that simplify development on several platforms. The assignment will realized the tool for one device type, preferably tablet.
+
+The tool thinglink (http://www.thinglink.com) supports some of the proposed functionality, but we wish to go further. In particular, the dynamic generation of a wall is needed for the filtering of stories. Our ultimate goal is to connect the wall with the personalization back-end that will be developed in TAG-CLOUD allowing to provide recommendations to the users.
+
+More information: As an example, we have started to develop a draft wall for Nidarosdomen using thinglink (http://www.thinglink.com/scene/397385278152507392). A presentation is also available at https://www.dropbox.com/l/GjCOoSqHoAmMEGg6P0axxa
+
+Additional notes: All documentation (report and code comments) should be written in English. The results should be made open source.
 
 \chapter{Timesheets}
 
-\chapter{Documentation}
 
+\chapter{Documentation}
+\section{Introduction}
+\section{Server - Installation}
+\section{Client}
+\subsection{Installation}
+\subsection{Compile for Android}
+\subsection{Compile for iOS}
+\subsection{Compile for normal browsers}
 \end{document}
