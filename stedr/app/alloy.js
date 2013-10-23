@@ -18,4 +18,5 @@ if(!OS_MOBILEWEB){
 
 Alloy.Collections.wall = Alloy.createCollection('wall');
 Alloy.Collections.story = Alloy.createCollection('story');
+Alloy.Collections.instagram = Alloy.createCollection('instagram');
 
