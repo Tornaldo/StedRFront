@@ -15,7 +15,9 @@ for ( i = 0; i < videoUrlList.length; i++) {
 	var wallImage = Titanium.Media.createVideoPlayer({
 		url : videoUrlList[i],
 		backgroundColor : 'blue',
-		movieControlMode : Titanium.Media.VIDEO_CONTROL_DEFAULT,
+		// mediaControlStyle : Titanium.Media.VIDEO_CONTROL_DEFAULT,
+		movieControlStyle : Titanium.Media.VIDEO_CONTROL_DEFAULT,
+		// movieControlMode : Titanium.Media.VIDEO_CONTROL_DEFAULT,
 		// scalingMode : Titanium.Media.VIDEO_SCALING_ASPECT_FILL,
 		autoplay : true,
 	});

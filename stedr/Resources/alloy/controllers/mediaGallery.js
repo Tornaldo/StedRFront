@@ -29,8 +29,8 @@ function Controller() {
         var wallImage = Titanium.Media.createVideoPlayer({
             url: videoUrlList[i],
             backgroundColor: "blue",
-            movieControlMode: Titanium.Media.VIDEO_CONTROL_DEFAULT,
-            autoplay: false
+            movieControlStyle: Titanium.Media.VIDEO_CONTROL_DEFAULT,
+            autoplay: true
         });
         $.mediaScroller.addView(wallImage);
     }

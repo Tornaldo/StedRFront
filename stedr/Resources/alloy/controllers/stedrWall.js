@@ -33,10 +33,13 @@ function Controller() {
         height: "50%"
     });
     $.__views.stedrWall.add($.__views.wallPictureView);
-    $.__views.wallImageView = Ti.UI.createImageView({
-        id: "wallImageView"
+    var __alloyId11 = [];
+    $.__views.mediaScrollerMainImage = Ti.UI.createScrollableView({
+        views: __alloyId11,
+        id: "mediaScrollerMainImage",
+        showPagingControl: "true"
     });
-    $.__views.wallPictureView.add($.__views.wallImageView);
+    $.__views.wallPictureView.add($.__views.mediaScrollerMainImage);
     $.__views.storyAndPictureView = Ti.UI.createView({
         id: "storyAndPictureView",
         layout: "vertical",
@@ -94,7 +97,9 @@ function Controller() {
     _.extend($, $.__views);
     Ti.API.info("Hello");
     Ti.API.info("Entering: " + $model.get("title"));
-    $.wallImageView.setImage($model.get("pictureUrl"));
+    $.mediaScrollerMainImage.addView(Ti.UI.createImageView({
+        image: $model.get("pictureUrl")
+    }));
     Ti.API.info("Starting storygallery: " + $model.get("title"));
     var storyGalleryController = Alloy.createController("story", {
         $model: $model
