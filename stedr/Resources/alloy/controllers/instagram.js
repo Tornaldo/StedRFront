@@ -18,6 +18,16 @@ function Controller() {
     $.__views.instagram.add($.__views.__alloyId9);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var instagramCollection = Alloy.Collections.instagram;
+    instagramCollection.fetch({
+        urlparams: {
+            tag: "stedr"
+        },
+        success: function() {},
+        error: function() {
+            Ti.API.error("hmm - this is not good!");
+        }
+    });
     _.extend($, exports);
 }
 

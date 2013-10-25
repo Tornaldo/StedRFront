@@ -25,14 +25,14 @@ function Controller() {
         });
         $.mediaScroller.addView(wallImage);
     }
+    Ti.Platform.displayCaps.platformHeight;
     for (i = 0; videoUrlList.length > i; i++) {
-        var wallImage = Titanium.Media.createVideoPlayer({
+        var wallVideo1 = Ti.Media.createVideoPlayer({
             url: videoUrlList[i],
-            backgroundColor: "blue",
-            movieControlStyle: Titanium.Media.VIDEO_CONTROL_DEFAULT,
+            mediaControlStyle: Ti.Media.VIDEO_CONTROL_DEFAULT,
             autoplay: true
         });
-        $.mediaScroller.addView(wallImage);
+        $.mediaScroller.addView(wallVideo1);
     }
     $.mediaScroller.addEventListener("close", function() {
         Ti.API.info("Destroying gallery: " + $model.get("title"));

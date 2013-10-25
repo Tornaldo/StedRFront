@@ -1,8 +1,14 @@
 <Alloy>
 	<Window class="container" layout="vertical" exitOnClose="false" navBarHidden="false">
-		<View id="mediaGalleryStory" height="50%">
-			<!-- Story media -->
-		</View>
-		<Label id="storyTitle"></Label>
+		<ScrollView layout="vertical">
+			<View id="mediaGalleryStory">
+				<!-- Story media -->
+			</View>
+			<Label id="storyTitle" ></Label>
+			<Label id="subTitle"></Label>
+			<Label id="storyText"></Label>
+			<Label id="storyAuthor"></Label>
+			<View id="tagView" layout="horizontal"></View>
+		</ScrollView>
 	</Window>>
 </Alloy>

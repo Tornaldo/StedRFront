@@ -3,7 +3,6 @@
 	<Window class="container" layout="vertical" exitOnClose="false" navBarHidden="false">
 		<View id="wallPictureView" height="50%">
 			<ScrollableView id="mediaScrollerMainImage" showPagingControl="true" ></ScrollableView>
-			<!-- <ImageView width="Ti.UI.FILL" id="wallImageView" ></ImageView> -->
 		</View>
 		<View id="storyAndPictureView" layout="vertical" height="50%" width="Ti.UI.Fill">
 			<View id="tabView" layout="horizontal" height="15%">
