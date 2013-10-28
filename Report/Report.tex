@@ -27,6 +27,7 @@
 \titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 
 \bibliographystyle{vancouver}
+\renewcommand{\bibname}{References}
 
 \begin{document}
 
@@ -99,7 +100,7 @@
 
 
 \chapter{Abstract}
-\begin{quotation}
+\begin{quotation}\noindent
 The assignment relates to the EU-IST project TAG CLOUD. TAG CLOUD will develop innovative digital solutions with the aim to increase the engagement of people in culture and cultural heritage. The main aspects that will be investigated are: new interaction interfaces with cultural artefacts, user as a contributor and personalized information. In Norway, the focus is “culture in the landscape”, i.e. the discovery of cultural memories that we meet when walking around in cities, in villages and in the nature.  \cite[p. 47]{compendium}
 \end{quotation}
 
@@ -114,7 +115,7 @@ The aim of this particular project was to develop a concept and a prototype that
 \chapter{Introduction}
 This report describes the planning and execution of the project ``Virtual Walls - Walls that tell us stories'' (later in this report only referred to as Virtual Walls or the system) on behalf of eTrøndelag and Sintef ICT.
 
-The aim of the project is to communicate and engage people in cultural heritage. The assigned project is part of the course TDT4290 - Customer driven project at NTNU, and also an ongoing project at Sintef ICT on behalf of eTrøndelag and the EU initiated project TAG-CLOUD.
+The assigned project is part of the course TDT4290 - Customer driven project at NTNU, and also an ongoing project at Sintef ICT on behalf of eTrøndelag and the EU initiated project TAG-CLOUD.
 
 Today most places of cultural or historical significance is mapped and has a rather large amount of connected data. This information might be hard to gain access to, written in a form more suited for scholars than the average man, or simply not written down at all.
 
@@ -122,7 +123,7 @@ The system will help the user discover, consume and share information about plac
 
 Both the walls and the information will be categorized using taxonomy so that the user might filter the sort of information he is looking for.
 
-The goal of the project is to make information about cultural heritage more accessible, understandable and fun for the common man.
+The aim of the project is to make information about cultural heritage more accessible, understandable and fun for the common man. This should be accomplished by making places (Stedr) discoverable on a map on a mobile phone, and connect the places on the map with information about that place from different databases. This way the user can explore his own neighborhood, city or even a new town he is visiting.
 
 \chapter{Project plan}
 This chapter will give an overview of how the work is to be structured and the most important milestones.
@@ -306,7 +307,7 @@ We chose to use Google Docs because everyone already had used this with great su
 \subsubsection{\LaTeX}
 \LaTeX~is a document markup language and document preparation system for the \TeX~typesetting program. \LaTeX~enables us to make large, professional looking documents without all the hassle regarding table of content, placing of pictures and diagrams, cross-references, making tables etc.. 
 
-Some group members had some experience with the language, but everyone else was eager to learn and try it out.
+Some group members had some experience with the markup language, but everyone else was eager to learn and try it out.
 
 \subsubsection{Dropbox}
 Is a file hosting service that offers cloud storage and file synchronization, much like Google Drive. We only used Dropbox as an collaboration tool with the customer, as in sharing files, etc.. We found that Google Drive, with the possibility to use the embedded office suite, Google Docs, were the best alternative as an collaboration tool for document writing.
@@ -338,7 +339,7 @@ Kanaban is fairly simple, a project is represented by a board, the board contain
 
 Figure~\ref{fig:tools_trello} shows how we used it for document work. There are several lists; ``TODO'', ``In Progress'', ``Testing'' and ``Done'', which represents the workflow. We started by populating the ``TODO''-list, with all the appendices that were needed. Then we divided the different tasks between the group members, and started working. When a person worked on a task, then the corresponding card would be in the ``In progress'' list, when the task were finished, it was moved to the ``Testing'' list, for quality assurance. If it was approved, it was moved to ``Done'' list, if not, back in the ``In Progress'' list.
 
-\subsection{Allocated man-hours}
+\subsection{Allocated person-hours}
 The course the project is part of amounts to 15 points of credit, which indicates that each member of the group should work for about 25 hours on the project each week. Given that the group consists of 4 members, and that the project run over 13 weeks, we get a total of allocated time that amounts to 25 x 4 x 13 = 1300 hours.
 
 Due to the diversity of the group, one in a full time job, the others attending different classes, the group has few meetings in person each week. As such, every group member is free to plan his own work each week, but has to meet at the weekly group meeting. As a result of this the group has only a few items on its weekly agenda: internal group meeting, meeting with advisor and meeting with customer.
@@ -602,309 +603,7 @@ A template for the weekly status report has also been made, and can be used with
 For meeting invitations a standard has also been established so that inviting people to meetings should be done in an uniform way and as effectively as possible.
 
 \subsection{Code standards}
-The project uses Java for server side programming, and JavaScript for client side programming.
-
-\subsubsection{Java}
-The project follows the coding guidelines of Play! Framework\cite{playCodingStandard}, which in turn relies heavely on Java Code Conventions\footnote{http://www.oracle.com/technetwork/java/codeconventions-150003.pdf}.
-
-\textbf{Whitespace}\\
-\begin{itemize}
-	\item Use spaces, not tabs
-	\item Use 4 space characters to indent
-	\item A line should not exceed 100 characters
-	\item Lines should not contain trailing spaces.
-\end{itemize}
-
-\textbf{Symbols}\\
-\begin{itemize}
-	\item Always use braces around blocks, even single line blocks.
-	\item The opening brace is always on the same line as the if statement, except when you have multiple arguments.
-\end{itemize}
-\lstset{language=Java}
-\begin{lstlisting}[frame=single]
-if (arg1 ||
-    arg2 < arg1 ||
-    arg3)
-    {
-        doSomething();
-    }
-\end{lstlisting}
-\begin{itemize}
-	\item When breaking logic, $||$ and \&\& at the end of the line.
-	\item One instruction per line.
-	\item Always put else on its own line.
-\end{itemize}
-
-\textbf{Function and variable names}\\
-\begin{itemize}
-	\item Use US English for function and variable names.
-	\item Use full English words for variable names. Examples: documentProvider but not docProv, feedElement but not fdElt. Variable names reduced to a single letter should not be used, unless in indexes such as in for loops.
-	\item Do not prefix interface types with I, and do not prefix abstract types with Abstract
-\end{itemize}
-
-\textbf{Comments}
-\begin{itemize}
-	\item Comments should be in grammatically-correct US English, with full sentences that include punctuation.
-	\item Javadoc comments before classes or methods are not mandatory.
-	\item Don't include empty javadoc. Either the javadoc provides information and it's good to have it, or it doesn't and shouldn't be there.
-	\item Do not leave commented-out code in source files. If the code is no longer used, just delete it. We can always use the Git history to get it back if necessary. Similarly, delete any dead code.
-\end{itemize}
-
-\textbf{General Java Guidelines}
-\begin{itemize}
-	\item Do not use raw types: List<String> rather than simply List.
-	\item Do not leave useless import statements in the code.
-	\item Use the Override annotation whenever possible (but not for interface implementations as it breaks Java 5 compatibility).
-	\item Do not ignore exceptions (no try with an empty catch block). If you don't handle a checked exception you can either add a throw to your method declaration (if you believe the exception is worth staying checked) or throw it again as a RuntimeException if it's rare enough so users of your method shouldn't have to care.
-\end{itemize}
-\begin{lstlisting}[frame=single]
-try {
-   // Code with a checked exception that shouldn't be checked
-} catch(Exception e) {
-   throw new RuntimeException(e);
-    // This will propagate to the controller,
-    // and the developer will see the exception in his web browser
-    // (or it will be logged if in production mode)
-}
-\end{lstlisting}
-\begin{itemize}
-	\item Prefer enum to int constants.
-\end{itemize}
-
-\subsubsection{JavaScript}
-The coding standard for JavaScript is taken directly from Titaniums coding standard\cite{titaniumCodingStandard}.
-
-\textbf{Avoid the global scope}\\
-Putting objects into the global scope can cause various problems:
-\begin{itemize}
-	\item Objects placed in the global scope will not be automatically garbage collected. You'll have to manually null global objects to mark them ready for collection.
-	\item It's easy to inadvertently overwrite an object in the global scope, because that variable is accessible so widely within your program.
-	\item The global scope of app.js is not accessible from other contexts or within CommonJS modules. So, you can't just dump variables there so you can access them throughout your app.
-\end{itemize}
-
-For these reasons, avoid defining variables in the global scope. Objects are placed in the global scope when:
-\begin{itemize}
-	\item You declare a variable outside of a function or CommonJS module. Using a modular pattern will alleviate this problem.
-	\item You omit the var keyword when declaring a variable (within or outside of a function). So always use var when declaring variables.
-\end{itemize}
-
-\textbf{Avoid local objects in global event listeners}\\
-The following code will cause a memory leak because the locally scoped variables are referenced in a global event listener. This is because the program will need to retain the locally scoped vars in order for the global event listener to use them. The global event listener will also persist until the app exits or the listener is explicitly removed.
-
-\begin{lstlisting}[frame=single]
-var someFunction = function() {
-    var table = Ti.UI.createTableView(),
-        label = Ti.UI.createLabel(),
-        view = Ti.UI.createView();
-
-
-    Ti.App.addEventListener('bad:move', function(e) {
-        table.setData(e.data);
-    });
-
-    view.add(table);
-    view.add(label);
-
-    return view;
-};
-\end{lstlisting}
-
-Global event listeners include those associated with Ti.App, Ti.Geolocation, Ti.Gesture, and so forth. The same problem is possible with non-global event listeners, like those you associate with a UI element. If that UI element remains valid in memory, any event listeners – and the objects they refer to – must also be kept in memory.
-
-The above example is an anti-pattern that will eventually consume the app's available memory. It's important to note that this is a common anti-pattern that developers employ in browser-based environments too, where it causes the same result, so it is not unique to Titanium.
-
-If you need to have a custom event, consider a method / callback that you can invoke later on. For the global events like location, network change, etc. it's highly recommended to place them in app.js. The general rule of thumb is global events handle global objects.
-
-\textbf{Defer script loading}
-One of the bottlenecks of a Titanium application is JavaScript evaluation. This is particularly the case for Android, although the V8 runtime provides substantial improvements for this issue compared with Rhino. For that reason, to speed the startup and responsiveness of your application, you should avoid loading scripts until they are absolutely needed. As in the following application, which has three windows to be opened in succession on a click (touch) event, note that the dependent JavaScript for each window is not loaded until absolutely necessary.
-
-\textit{Lazy script loading in app.js}
-\begin{lstlisting}[frame=single]
-//muse be loaded at launch
-var WindowOne = require('ui/WindowOne').WindowOne;
-
-var win1 = new WindowOne();
-win1.open();
-
-win1.addEventListener('click', function() {
-  //load window two JavaScript when needed...
-  var WindowTwo = require('ui/WindowTwo').WindowTwo;
-  var win2 = new WindowTwo();
-  win2.open();
-  win2.addEventListener('click', function() {
-    //load window three JavaScript when needed...
-    var WindowThree = require('ui/WindowThree').WindowThree;
-    var win3 = new WindowTwo();
-    win3.open();
-  });
-});
-\end{lstlisting}
-
-Or, if you're not using CommonJS but building out a namespace:
-\textit{Deferred loading to build a namespace}
-\begin{lstlisting}[frame=single]
-var someNameSpace = function() {
-	var API = {
-		init: function() {
-			// create your UI here or do whatever
-		}
-		reset: function() {
-			// null objects, clean up, etc
-		}
-	};
-
-	// Construct anything you want outside the local 'API' object
-
-	return API;
-};
-// And to use it
-var test = new someNameSpace();
-\end{lstlisting}
-
-\textbf{Don't Extend Titanium Prototypes}\\
-Many users attempt to add to the Ti namespace as a means to persist data across contexts, extend / override native methods, etc. This can sometimes work but is very unreliable for the following reasons:
-\begin{enumerate}
-	\item The Titanium end objects are really not true JavaScript objects. They are proxy representations of native operating system components. As such, they are constructed to pass through properties and method invocations. Your extensions could conflict with native functionality or interfere with proper operation of the proxy objects.
-	\item Sometimes you might be able to store things on the namespace but it's not changeable (i.e. an array stored on the namespace might not be able to be modified - mutable, etc.). Other-times your stored objects will be completely null.
-	\item Since this isn't an approved way of storing anything, there's no guarantee it will work in future releases of Titanium.
-\end{enumerate}
-
-As a rule do not add to, or extend via the prototype, any object or module in the Titanium namespace. If you want to extend a core part of the Titanium API you should build a native module to accomplish this. If you're just looking for an extendible JS namespace, create your own (i.e. \{\{var MyApp=\{\} \}\}).
-Coding strategies for multiplatform apps
-
-Branching in code is useful when your code will be mostly the same across platforms, but vary here and there. Long blocks of if...then code are difficult to read and maintain. Also, excessive branching will slow your app's execution. If you must use this technique, try to group as much code as you can within a branch and defer loading as much as possible to mitigate the performance penalty of branching.
-
-Using platform-specific JS files is likely to be most useful when your code is mostly different across platforms. This removes long if...then blocks from your main code. Separating platform-specific code reduces the chances of an error that comes from accidentally using the wrong platform's API or property. However, you'll have to remember to apply changes and fixes to each of the platform-specific files. So this approach could increase your work rather than reduce it. 
-
-\textbf{Don't store sensitive data in non-JavaScript files}\\
-Your JavaScript files are minified and obfuscated when you build for distribution. Depending on your target platform, they will be further processed and packaged into the compiled or "object-ified" files of your app. However, images, JSON files, SQLite databases, and other files not named with a .js extension are simply packaged as-is with your app's files.
-
-APK and IPA files are essentially Zip files. Their contents can be revealed by any Zip-decompressor. Thus, your non-JavaScript files are accessible to the curious.
-
-You should not include sensitive data in non-JS files. Simply renaming files with a .js extension is not a suitable alternative. Such files might not be supported on device. And, the Titanium build process removes them from the final build.
-Set local variables to avoid calling native methods
-
-Each time you request the value of a device-related property, Titanium has to query the operating system for the value. For example, if you read from Ti.Platform.osname or Ti.Platform.displayCaps.platformHeight, Titanium must take a "trip across the bridge" to request the value from the operating system. Doing so takes a few cycles and if used too frequently could possibly slow your program. Something like the following would be more efficient:
-
-\begin{lstlisting}[frame=single]
-var isAndroid = (Ti.Platform.osname=='android') ? true : false;
-
-if(isAndroid) {
-	// do Android specific stuff
-} else {
-	// do iOS stuff
-}
-\end{lstlisting}
-
-\textbf{Modular components with CommonJS}\\
-Appcelerator's primary recommended architecture a modular app architecture constructed with CommonJS modules. In fact, we have a whole Best Practices section devoted to CommonJS Modules in Titanium. CommonJS modules are discrete and independent building blocks, eliminating concerns about global variables and naming conflicts. In our testing, it is a highly performant architecture compared to some other solutions. This pattern is also used by other JavaScript-based environments, such as Node.js.
-
-\textit{MyModule.js}\\
-\begin{lstlisting}[frame=single]
-// variables defined in this file are private
-var defaultMessage = "Hello world";
-
-// we make objects, variables, functions available to the
-// calling context by adding them to the exports object
-exports.sayHello = function(msg) {
-	Ti.API.info('Hello '+msg);
-};
-
-// we can assign other objects, functions, and variables to
-// exports and they will be available to the calling context
-exports.helloWorld = function() {
-	Ti.API.info(defaultMessage);
-}
-\end{lstlisting}
-
-\textit{app.js}\\
-\begin{lstlisting}[frame=single]
-var myModule = require('/MyModule');
-myModule.sayHello('Kevin');  //console output is "Hello Kevin!"
-\end{lstlisting}
-
-Other architectures are valid and meet the needs of many developers. Which you choose is ultimately up to you and your experiences
-
-\textbf{Custom objects as components}\\
-Another popular pattern is one we teach in our training classes, that of custom objects typically stored within an app-specific namespace hierarchy. This model is flexible and well-suited to rapid deployment projects. It takes advantage of JavaScript's language features. Components are all members of the same global scope, thus sharing data within the app is simple. And when implemented well, this pattern can lead to very readable (and thus maintainable) code.
-
-On the downside, this pattern is less performant than CommonJS modules, especially on Rhino/Android. The rapid nature of this pattern can lead the developer to general, high-level bad practices and developer 'laziness'. Inheritance is vague or even non-existent. And critically, memory management can be difficult as object references can remain after they're no longer needed.
-
-\begin{lstlisting}[frame=single]
-// create an object literal to be your app's namespace
-var myapp = {};
-
-// the following could be in a separate "ui.js" file and include()'d into your app.js
-(function(){
-	myapp.ui = {}; // this sub-namespace extends the app's namespace object
-
-	myapp.ui.createApplicationWindow = function() {
-		var win = Ti.UI.createWindow({
-			backgroundColor:'white'
-		});
-
-		var header = Ti.UI.createLabel({
-			text: 'My App Heading',
-			top: 10,
-			height:'auto',
-			width:'auto'
-		});
-		win.add(header);
-		return win;
-	};
-})();
-\end{lstlisting}
-
-The same could be accomplished without the self-calling function, if you prefer:
-\begin{lstlisting}[frame=single]
-// create an object literal to be your app's namespace
-var myapp = {};
-
-// the following could be in a separate "ui.js" file and include()'d into your app.js
-myapp.ui = function() {
-	var API = {
-		createApplicationWindow: function() {
-			var win = Ti.UI.createWindow({
-				backgroundColor:'white'
-			});
-
-			var header = Ti.UI.createLabel({
-				text: 'My App Heading',
-				top: 10,
-				height:'auto',
-				width:'auto'
-			});
-			win.add(header);
-			return win;
-		}
-	}
-	return API;
-};
-\end{lstlisting}
-
-\textbf{Classical-based patterns}\\
-In general, Appcelerator does not recommend classical-inheritance based models because JavaScript is not a class-based language. For an in-depth look at inheritance patterns in JavaScript, we recommend you read Douglas Crockford's Protypal Inheritance in JavaScript and Classical Inheritance in JavaScript articles.
-
-Classical inheritance is familiar for programmers coming from Java and other class-based languages. They rightly claim that this pattern enforces discipline and logically structured code that is generally easy to read, debug, and document. However, it's our belief that such a pattern confuses the idea of 'classes' and 'objects' in Javascript, forces the programmer to define his or her own inheritance rules, and is slower to implement in a rapid-prototype setting.
-
-The code below is a fragment of this pattern:
-\begin{lstlisting}[frame=single]
-var SomeUIClass = function() {
-	// ----- DEFINE PRIVATE PROPERTIES AND METHODS -----
-	var UIGroup = Ti.UI.createView({ zIndex:5 }),
-	    UIBg = Ti.UI.createView({ borderRadius:10, opacity:0.2, width:150, height:150, backgroundColor:"#000" }),
-	    UIInd = Ti.UI.createActivityIndicator({ height:50, width:50, bottom:175, style:Ti.UI.iPhone.ActivityIndicatorStyle.BIG });
-
-	// ----- DEFINE PUBLIC PROPERTIES AND METHODS -----
-
-	// ----- Public Properties -----
-	this.somePublicProp = null;
-
-	// ----- Public Methods -----
-	this.display = function() {};
-	this.toggle = function(toggle) {};
-};
-\end{lstlisting}
+See section ~\ref{sec:codeStandard} for complete code standards for both the server and the client.
 
 \subsection{Version control procedures}
 All documents are produced in Google Docs, which incorporates version control for each document. The documents will regularly be backed up on local storage.
@@ -1110,7 +809,7 @@ The Waterfall model \cite[p. 30-32]{Sommerville10} is derived from general syste
 \begin{figure}[H]
       \centering
       \includegraphics[width=0.8\textwidth]{Figures/Prestudy/Waterfall.png}
-      \caption{The Waterfall process \cite{wikipedia:waterfall}}
+      \caption{The Waterfall process \cite{wikipedia:waterfall} without backward duty feedback}
       \label{fig:pre_waterfall}
 \end{figure}
 
@@ -1120,8 +819,8 @@ Waterfall makes good sense in larger manufacturing environments where certificat
 
 In the original publication about Waterfall for software systems, the author raises some limitations of the model and suggests some project owner involvement.
 
-\begin{quotation}
-For some reason what a software design is going to do is subject to wide interpretation even after previous agreement. It is important to involve the customer in a formal way so that he has committed himself at earlier points before final delivery. To give the contractor free rein between requirement definition and operation is inviting trouble. \cite[p. 335]{DBLP:conf/icse/Royce87}
+\begin{quotation}\noindent
+For some reason what a software design is going to do is subject to wide interpretation even after previous agreement. It is important to involve the customer in a formal way so that he has committed himself at earlier points before final delivery. To give the contractor free rein between requirement definition and operation is inviting trouble. - According to Royce \cite[p. 335]{DBLP:conf/icse/Royce87}
 \end{quotation}
 
 \subsection{SCRUM}
@@ -1403,7 +1102,7 @@ Same categorization as in Functions.
 \end{figure}
 
 
-\chapter{Architecture}\label{chap:architecture}
+\chapter{Software System Architecture}\label{chap:architecture}
 
 \section{Architectural drivers} \label{sec:architecture_drivers}
 In the following the document, the following items have been used as the main drivers for the architecture.
@@ -1426,7 +1125,7 @@ Given the relatively short duration of this project, the architecture should mak
 \section{Stakeholders and concerns}
 
 \subsection{Developers}
-The architects and developers are concerned about ease and speed of development. As part of this also comes the elegance of the resulting architecture with those in mind that are to continue the development or maintain an operational system.
+The architects and developers are concerned about ease and speed of development. As part of this one also has to consider the elegance of the resulting architecture. This is import to make it more understandable for those who are to continue the development or maintain an operational system.
 
 \subsection{Customer}
 The customer is interested in seeing a highly usable system that can run on multiple different devices and be easy to build upon, should they decide to use the prototype as starting point for an actual product.
@@ -1780,19 +1479,21 @@ The table \ref{tab:test_plan_approvals} lists approvals of completed tasks.
 \section{Test results and evaluation}
 
 \chapter{Phases}
-\section{Planning}
+\section{First phase: Planning}
 
-\section{Sprint 1}
-\subsection{S1: Introduction}
+\section{Second phase: Sprint 1}
+\subsection{S1: Sprint planning}
 The aim of this first sprint is to establish a baseline, in terms of technology but also with regard to the social aspects of executing a sprint as well as the amount of work being manageable within the timespan of the sprint.
 
-\subsection{S1: Requirements}
+\subsection{S1: Requirements as scenarios}
 The server as well as the client should have a base satisfying the architectural drivers listed in \ref{sec:architecture_drivers}.
 
-\subsection{S1: Pre study}
+\subsection{S1: Implementation}
 
 \subsubsection{Server}
-This is the pre study done for the server in sprint 1.
+During this period only the most basic proof of concept was developed for the server. A RESTful access point was made for the developed, with a database. All the basic groundwork was put in place, except for authentication, to develop the rest of the service.
+
+To arrive at this proof of concept, some technological decisions had to be made. Bellow the reasoning behind them are explained.
 
 \textbf{Extensible Markup Language (XML) vs JavaScript Object Notation (JSON)}\\
 XML is a extensible markup language created by the World Wide Web Consortium (W3C). It is made to be both human and machine readable. It consists of a developer defined set of nested elements that may contain data or new elements.
@@ -1937,19 +1638,14 @@ From version one we knew that the customer wanted a wall that was focused on the
     \label{fig:phases_sprint1_uiVersionTwoWallFunctions}
 \end{figure}
 
-\subsection{S1: Implementation}
-
-\subsubsection{Server}
-During this period only the most basic proof of concept was developed for the server. A RESTful access point was made for the developed, with a database. All the basic groundwork was put in place, except for authentication, to develop the rest of the service.
-
-\subsection{S1: Testing}
+\subsection{S1: Test execution}
 This sprint no formal testing was done, only functional tests on the server and discussions around the user interface.
 
 \subsection{S1: Review}
 We did not manage to finish all the predefined tasks for this sprint. This was partly due to the absence of two group members during most of the sprint period. The delay was also partly due to inexperience with mobile JavaScript frameworks and the lack of real documentation for most of them.
 
-\section{Sprint 2}
-\subsection{S2: Introduction}
+\section{Third phase: Sprint 2}
+\subsection{S2: Sprint planning}
 The goal of the second sprint was initially to build upon the bases put in place by sprint one, but due to a steep learning curve in JavaScript and lack of real documentation for most frameworks this was not the case.
 
 The server has seen development based upon what was done in sprint one, but the client has started from scratch.
@@ -1978,40 +1674,7 @@ The server has seen development based upon what was done in sprint one, but the 
 	\caption{Backlog for sprint 2.}
 \end{table}
 
-\subsection{S2: Requirements}
-
-\subsection{S2: Pre study}
-
-\subsubsection{Client}
-
-\textbf{The M project}\\
-Initially “The M project” \footnote{http://www.the-m-project.org/} came out quite good in comparisons of frameworks for client side development for mobile phones. This was due to it being lightweight and what seemed like usable documentation. Its described caracteristica also matched quite good with what we was looking for. Especially the MVC part and the native look and feel of the jQuery Mobile user interface. The MIT license was also very attractive, as it is compatible with the BSD license required for all code produced in this course.
-
-The reasons why The M project was not chosen in the end, surrounds two topics. First, the project has its own build system to help the developers develop more efficiently. Unfortunately this did not work, and produced unrunnable code. One could edit the files after each build in order to make them runnable, but 5 minutes extra per build to clean the code was just not acceptable.
-
-The second problem is of a more serious kind, both for this development team and for those that might follow at a later time. The documentation was vague at best and partly outdated.
-
-\textbf{Enyo}\\
-Enyo\footnote{http://enyojs.com/} was developed by HP for WebOS\cite{enyoHistory} and is at this time sponsored by LG. It has a very interesting approach to development, one develops features in the app as separate reusable components and glue them together. In that way it feels much more natural to develop in Enyo, and the documentation is excellent. The license, Apache 2.0, is also very attractive as it is compatible with BSD.
-
-The problem with Enyo was that the requirements specified modifiability as one very important factor to take into account. While components can make the app itself modifiable, Enyo does not support MVC in the components and as such one just moves the complexity one level down. When developing components we would still have to handle that lack of ability to structure the code in an efficient way.
-
-Adding support for MVC, or making it easy to use MVC in combination with the rest of the framework, is an ongoing effort at Enyo.
-
-The reason Enyo was not selected is that the MVC support has not yet stabilized, and the documentation is still a bit too thin on the matter.
-
-\textbf{Sencha Touch}\\
-Sencha Touch\footnote{http://www.sencha.com/products/touch/} has excellent documentation and a good community. The problem with Sencha is the incompatible license. Sencha uses the General Public License version 3, which is incompatible with the BSD license.\cite{flossLicense}
-
-\textbf{RhoMobile}\\
-RhoMobile is developed by Motorola Solutions\footnote{http://www.motorolasolutions.com/US-EN/Business+Product+and+Services/Software+and+Applications/RhoMobile+Suite} to help developers develop software across their different handheld devices. They have also added support for the mobile platforms. This framework has support for developing enterprise applications and has an attractive license in MIT.
-The reason this framework was not chosen, was because it uses Ruby as well as JavaScript. It was decided that learning one new language would be enough work, if not another one should be added on top.
-
-\textbf{Titanium}\\
-Appcelerator Titanium\footnote{http://www.appcelerator.com/titanium/} is a cross platform development framework for mobile and web. The development is done in JavaScript and XML. It is licensed under the Apache Public License version 2. Titanium is a "write once, adapt everywhere" framework\cite{titaniumCrossMobile}. That does not mean that it can’t run everywhere without adaption, but that in order to look native it needs adaption. Titanium has an excellent base of documentation and a mature framework supporting easy use of the model view controller architectural pattern.
-
-Titanium was chosen because of its framework, its documentation and the huge community that surrounds it.
-
+\subsection{S2: Requirements as scenarios}
 
 \subsection{S2: Implementation}
 
@@ -2082,7 +1745,38 @@ exports.definition = {
 };
 \end{lstlisting}
 
-\subsection{S2: Testing}
+Before choosing Titanium as the platform to develop the client application with, a number of other frameworks were examined.
+
+\textbf{The M project}\\
+Initially “The M project” \footnote{http://www.the-m-project.org/} came out quite good in comparisons of frameworks for client side development for mobile phones. This was due to it being lightweight and what seemed like usable documentation. Its described caracteristica also matched quite good with what we was looking for. Especially the MVC part and the native look and feel of the jQuery Mobile user interface. The MIT license was also very attractive, as it is compatible with the BSD license required for all code produced in this course.
+
+The reasons why The M project was not chosen in the end, surrounds two topics. First, the project has its own build system to help the developers develop more efficiently. Unfortunately this did not work, and produced unrunnable code. One could edit the files after each build in order to make them runnable, but 5 minutes extra per build to clean the code was just not acceptable.
+
+The second problem is of a more serious kind, both for this development team and for those that might follow at a later time. The documentation was vague at best and partly outdated.
+
+\textbf{Enyo}\\
+Enyo\footnote{http://enyojs.com/} was developed by HP for WebOS\cite{enyoHistory} and is at this time sponsored by LG. It has a very interesting approach to development, one develops features in the app as separate reusable components and glue them together. In that way it feels much more natural to develop in Enyo, and the documentation is excellent. The license, Apache 2.0, is also very attractive as it is compatible with BSD.
+
+The problem with Enyo was that the requirements specified modifiability as one very important factor to take into account. While components can make the app itself modifiable, Enyo does not support MVC in the components and as such one just moves the complexity one level down. When developing components we would still have to handle that lack of ability to structure the code in an efficient way.
+
+Adding support for MVC, or making it easy to use MVC in combination with the rest of the framework, is an ongoing effort at Enyo.
+
+The reason Enyo was not selected is that the MVC support has not yet stabilized, and the documentation is still a bit too thin on the matter.
+
+\textbf{Sencha Touch}\\
+Sencha Touch\footnote{http://www.sencha.com/products/touch/} has excellent documentation and a good community. The problem with Sencha is the incompatible license. Sencha uses the General Public License version 3, which is incompatible with the BSD license.\cite{flossLicense}
+
+\textbf{RhoMobile}\\
+RhoMobile is developed by Motorola Solutions\footnote{http://www.motorolasolutions.com/US-EN/Business+Product+and+Services/Software+and+Applications/RhoMobile+Suite} to help developers develop software across their different handheld devices. They have also added support for the mobile platforms. This framework has support for developing enterprise applications and has an attractive license in MIT.
+The reason this framework was not chosen, was because it uses Ruby as well as JavaScript. It was decided that learning one new language would be enough work, if not another one should be added on top.
+
+\textbf{Titanium}\\
+Appcelerator Titanium\footnote{http://www.appcelerator.com/titanium/} is a cross platform development framework for mobile and web. The development is done in JavaScript and XML. It is licensed under the Apache Public License version 2. Titanium is a "write once, adapt everywhere" framework\cite{titaniumCrossMobile}. That does not mean that it can’t run everywhere without adaption, but that in order to look native it needs adaption. Titanium has an excellent base of documentation and a mature framework supporting easy use of the model view controller architectural pattern.
+
+Titanium was chosen because of its framework, its documentation and the huge community that surrounds it.
+
+
+\subsection{S2: Test execution}
 Only functional testing was done for this sprint as development went on. No systematic testing was executed.
 
 \subsection{S2: Review}
@@ -2094,11 +1788,23 @@ Some of our goals for this sprint was only reached for the server. The reason fo
 
 The architecture is only partially done, this is due to the change in mobile framework and requirements. Now that a mobile framework has been chosen and the requirements more stabilized, we hope to have the architecture finished within a relatively short amount of time.
 
-\section{Sprint 3}
-\subsection{S3: Introduction}
-\subsection{S3: Requirements}
+\section{Fourth phase: Sprint 3}
+\subsection{S3: Sprint planning}
+\subsection{S3: Requirements as scenarios}
 
-\subsection{S3: Pre study}
+\subsection{S3: Implementation}
+
+\subsubsection{Server}
+
+Upon receiving changes proposed by customer, the data model was stashed and reworked to acomodate the proposed changes. As the concept of walls and stories finally settled down, we were able to implement API for retrieving walls based on geographic coordinates and to retrieve stories on walls.
+
+As requested in the last batch of change requests from customer, stories shall be stored in an external database called \emph{Digitalt Fortalt}. This database provides an API for search which we call to retrieve the stories. Our application does not write any data to \emph{Digitalt Fortalt}, stories need to be created manually on their website.
+
+Walls on the other hand shall be stored in out system database. We now store each wall with its geographic coordinates in a database table and filter as described in \ref{sec:spr3_maps}. 
+
+Data stored in our database are retrieved by classes in the \texttt{models} package. The models are extending \texttt{play.db.ebean.Model} class and use standard JPA\footnote{Java Persistence API} annotations to indicate relationships between entities.
+
+The data from \emph{Digitalt Fortalt} are retrieved from the API by classes in the \texttt{retrievers} package. The data are fetched and parsed by using the \emph{jsoup} Java HTML parser. We found this library to be more usable than \emph{DOM} and \emph{SAX} parser implementations in Java (due to various reasons such as usage of \texttt{Iterable} interface, which make the work with collection-like structures much easier).
 
 \subsubsection{Map views, coordinates and projections} \label{sec:spr3_maps}
 
@@ -2119,45 +1825,31 @@ It is a well-known fact that planet Earth is not flat. For this reason, various 
 
 As seen in \ref{fig:mercator}, it is a cylindrical conformal projection, so it preserves local angles (which is actually one of the reasons Google Maps use it), but is unfit for use in high-latitudes as the map extends infinitely North and South (so called \emph{polar exaggeration}). This shall be fine for use until we need to add a wall for a location near to one of the geographic poles (which are streched infinitely along the top and bottom edges of the map). This could be a problem is we want to add a wall for example for the Amundsen–Scott South Pole Station located just few meters from the geographical souch pole and which would and stretch widely east to west. \cite{progonos:mercator,radicalcartography} 
 
-\subsection{S3: Implementation}
 
-\subsubsection{Server}
-
-Upon receiving changes proposed by customer, the data model was stashed and reworked to acomodate the proposed changes. As the concept of walls and stories finally settled down, we were able to implement API for retrieving walls based on geographic coordinates and to retrieve stories on walls.
-
-As requested in the last batch of change requests from customer, stories shall be stored in an external database called \emph{Digitalt Fortalt}. This database provides an API for search which we call to retrieve the stories. Our application does not write any data to \emph{Digitalt Fortalt}, stories need to be created manually on their website.
-
-Walls on the other hand shall be stored in out system database. We now store each wall with its geographic coordinates in a database table and filter as described in \ref{sec:spr3_maps}. 
-
-Data stored in our database are retrieved by classes in the \texttt{models} package. The models are extending \texttt{play.db.ebean.Model} class and use standard JPA\footnote{Java Persistence API} annotations to indicate relationships between entities.
-
-The data from \emph{Digitalt Fortalt} are retrieved from the API by classes in the \texttt{retrievers} package. The data are fetched and parsed by using the \emph{jsoup} Java HTML parser. We found this library to be more usable than \emph{DOM} and \emph{SAX} parser implementations in Java (due to various reasons such as usage of \texttt{Iterable} interface, which make the work with collection-like structures much easier).
-
-\subsection{S3: Testing}
+\subsection{S3: Test execution}
 \subsection{S3: Review}
 \subsection{S3: Phase evaluation}
 
-\section{Sprint 4}
-\subsection{S4: Introduction}
-\subsection{S4: Requirements}
-\subsection{S4: Pre study}
+\section{Fifth phase: Sprint 4}
+To be written
+\subsection{S4: Sprint planning}
+To be written
+\subsection{S4: Requirements as scenarios}
+To be written
 \subsection{S4: Implementation}
-\subsection{S4: Testing}
+To be written
+\subsection{S4: Test execution}
+To be written
 \subsection{S4: Review}
+To be written
 \subsection{S4: Phase evaluation}
+To be written
 
-\section{Finalization}
-\subsection{F: Introduction}
-\subsection{F: Requirements}
-\subsection{F: Pre study}
-\subsection{F: Implementation}
-\subsection{F: Testing}
-\subsection{F: Review}
-\subsection{F: Phase evaluation}
-
-
+\section{Last phase: Finalization}
+To be written
 
 \chapter{Evaluation of the project}
+To be written
 
 \bibliography{bibliography}
 
@@ -2187,13 +1879,332 @@ Additional notes: All documentation (report and code comments) should be written
 
 \chapter{Timesheets}
 
-
-\chapter{Documentation}
+\chapter{Documentation}\label{chap:documentation}
 \section{Introduction}
+
+\section{Code standards for server}\label{sec:codeStandard}
+The project follows the coding guidelines of Play! Framework\cite{playCodingStandard}, which in turn relies heavely on Java Code Conventions\footnote{http://www.oracle.com/technetwork/java/codeconventions-150003.pdf}. The Play! Framework coding standard is included underneath.
+
+\subsection{Whitespace}
+\begin{itemize}
+	\item Use spaces, not tabs
+	\item Use 4 space characters to indent
+	\item A line should not exceed 100 characters
+	\item Lines should not contain trailing spaces.
+\end{itemize}
+
+\subsection{Symbols}
+\begin{itemize}
+	\item Always use braces around blocks, even single line blocks.
+	\item The opening brace is always on the same line as the if statement, except when you have multiple arguments.
+\end{itemize}
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+if (arg1 ||
+    arg2 < arg1 ||
+    arg3)
+    {
+        doSomething();
+    }
+\end{lstlisting}
+\begin{itemize}
+	\item When breaking logic, $||$ and \&\& at the end of the line.
+	\item One instruction per line.
+	\item Always put else on its own line.
+\end{itemize}
+
+\subsection{Function and variable names}
+\begin{itemize}
+	\item Use US English for function and variable names.
+	\item Use full English words for variable names. Examples: documentProvider but not docProv, feedElement but not fdElt. Variable names reduced to a single letter should not be used, unless in indexes such as in for loops.
+	\item Do not prefix interface types with I, and do not prefix abstract types with Abstract
+\end{itemize}
+
+\subsection{Comments}
+\begin{itemize}
+	\item Comments should be in grammatically-correct US English, with full sentences that include punctuation.
+	\item Javadoc comments before classes or methods are not mandatory.
+	\item Don't include empty javadoc. Either the javadoc provides information and it's good to have it, or it doesn't and shouldn't be there.
+	\item Do not leave commented-out code in source files. If the code is no longer used, just delete it. We can always use the Git history to get it back if necessary. Similarly, delete any dead code.
+\end{itemize}
+
+\subsection{General Java Guidelines}
+\begin{itemize}
+	\item Do not use raw types: List<String> rather than simply List.
+	\item Do not leave useless import statements in the code.
+	\item Use the Override annotation whenever possible (but not for interface implementations as it breaks Java 5 compatibility).
+	\item Do not ignore exceptions (no try with an empty catch block). If you don't handle a checked exception you can either add a throw to your method declaration (if you believe the exception is worth staying checked) or throw it again as a RuntimeException if it's rare enough so users of your method shouldn't have to care.
+\end{itemize}
+\begin{lstlisting}[frame=single]
+try {
+   // Code with a checked exception that shouldn't be checked
+} catch(Exception e) {
+   throw new RuntimeException(e);
+    // This will propagate to the controller,
+    // and the developer will see the exception in his web
+    // browser (or it will be logged if in production mode)
+}
+\end{lstlisting}
+\begin{itemize}
+	\item Prefer enum to int constants.
+\end{itemize}
+
+\section{Coding standard for client}
+The following coding standard for JavaScript is taken directly from Titaniums coding standard\cite{titaniumCodingStandard}.
+
+\subsection{Avoid the global scope}
+Putting objects into the global scope can cause various problems:
+\begin{itemize}
+	\item Objects placed in the global scope will not be automatically garbage collected. You'll have to manually null global objects to mark them ready for collection.
+	\item It's easy to inadvertently overwrite an object in the global scope, because that variable is accessible so widely within your program.
+	\item The global scope of app.js is not accessible from other contexts or within CommonJS modules. So, you can't just dump variables there so you can access them throughout your app.
+\end{itemize}
+
+For these reasons, avoid defining variables in the global scope. Objects are placed in the global scope when:
+\begin{itemize}
+	\item You declare a variable outside of a function or CommonJS module. Using a modular pattern will alleviate this problem.
+	\item You omit the var keyword when declaring a variable (within or outside of a function). So always use var when declaring variables.
+\end{itemize}
+
+\subsection{Avoid local objects in global event listeners}
+The following code will cause a memory leak because the locally scoped variables are referenced in a global event listener. This is because the program will need to retain the locally scoped vars in order for the global event listener to use them. The global event listener will also persist until the app exits or the listener is explicitly removed.
+
+\begin{lstlisting}[frame=single]
+var someFunction = function() {
+    var table = Ti.UI.createTableView(),
+        label = Ti.UI.createLabel(),
+        view = Ti.UI.createView();
+
+
+    Ti.App.addEventListener('bad:move', function(e) {
+        table.setData(e.data);
+    });
+
+    view.add(table);
+    view.add(label);
+
+    return view;
+};
+\end{lstlisting}
+
+Global event listeners include those associated with Ti.App, Ti.Geolocation, Ti.Gesture, and so forth. The same problem is possible with non-global event listeners, like those you associate with a UI element. If that UI element remains valid in memory, any event listeners – and the objects they refer to – must also be kept in memory.
+
+The above example is an anti-pattern that will eventually consume the app's available memory. It's important to note that this is a common anti-pattern that developers employ in browser-based environments too, where it causes the same result, so it is not unique to Titanium.
+
+If you need to have a custom event, consider a method / callback that you can invoke later on. For the global events like location, network change, etc. it's highly recommended to place them in app.js. The general rule of thumb is global events handle global objects.
+
+\subsection{Defer script loading}
+One of the bottlenecks of a Titanium application is JavaScript evaluation. This is particularly the case for Android, although the V8 runtime provides substantial improvements for this issue compared with Rhino. For that reason, to speed the startup and responsiveness of your application, you should avoid loading scripts until they are absolutely needed. As in the following application, which has three windows to be opened in succession on a click (touch) event, note that the dependent JavaScript for each window is not loaded until absolutely necessary.
+
+\subsubsection{Lazy script loading in app.js}
+\begin{lstlisting}[frame=single]
+//muse be loaded at launch
+var WindowOne = require('ui/WindowOne').WindowOne;
+
+var win1 = new WindowOne();
+win1.open();
+
+win1.addEventListener('click', function() {
+  //load window two JavaScript when needed...
+  var WindowTwo = require('ui/WindowTwo').WindowTwo;
+  var win2 = new WindowTwo();
+  win2.open();
+  win2.addEventListener('click', function() {
+    //load window three JavaScript when needed...
+    var WindowThree = require('ui/WindowThree').WindowThree;
+    var win3 = new WindowTwo();
+    win3.open();
+  });
+});
+\end{lstlisting}
+
+Or, if you're not using CommonJS but building out a namespace:
+\subsubsection{Deferred loading to build a namespace}
+\begin{lstlisting}[frame=single]
+var someNameSpace = function() {
+    var API = {
+        init: function() {
+            // create your UI here or do whatever
+        }
+        reset: function() {
+            // null objects, clean up, etc
+        }
+    };
+
+    // Construct anything you want outside the loca
+    //l 'API' object
+
+    return API;
+};
+// And to use it
+var test = new someNameSpace();
+\end{lstlisting}
+
+\subsection{Don't Extend Titanium Prototypes}
+Many users attempt to add to the Ti namespace as a means to persist data across contexts, extend / override native methods, etc. This can sometimes work but is very unreliable for the following reasons:
+\begin{enumerate}
+	\item The Titanium end objects are really not true JavaScript objects. They are proxy representations of native operating system components. As such, they are constructed to pass through properties and method invocations. Your extensions could conflict with native functionality or interfere with proper operation of the proxy objects.
+	\item Sometimes you might be able to store things on the namespace but it's not changeable (i.e. an array stored on the namespace might not be able to be modified - mutable, etc.). Other-times your stored objects will be completely null.
+	\item Since this isn't an approved way of storing anything, there's no guarantee it will work in future releases of Titanium.
+\end{enumerate}
+
+As a rule do not add to, or extend via the prototype, any object or module in the Titanium namespace. If you want to extend a core part of the Titanium API you should build a native module to accomplish this. If you're just looking for an extendible JS namespace, create your own (i.e. \{\{var MyApp=\{\} \}\}).
+Coding strategies for multiplatform apps
+
+Branching in code is useful when your code will be mostly the same across platforms, but vary here and there. Long blocks of if...then code are difficult to read and maintain. Also, excessive branching will slow your app's execution. If you must use this technique, try to group as much code as you can within a branch and defer loading as much as possible to mitigate the performance penalty of branching.
+
+Using platform-specific JS files is likely to be most useful when your code is mostly different across platforms. This removes long if...then blocks from your main code. Separating platform-specific code reduces the chances of an error that comes from accidentally using the wrong platform's API or property. However, you'll have to remember to apply changes and fixes to each of the platform-specific files. So this approach could increase your work rather than reduce it. 
+
+\subsection{Don't store sensitive data in non-JavaScript files}
+Your JavaScript files are minified and obfuscated when you build for distribution. Depending on your target platform, they will be further processed and packaged into the compiled or "object-ified" files of your app. However, images, JSON files, SQLite databases, and other files not named with a .js extension are simply packaged as-is with your app's files.
+
+APK and IPA files are essentially Zip files. Their contents can be revealed by any Zip-decompressor. Thus, your non-JavaScript files are accessible to the curious.
+
+You should not include sensitive data in non-JS files. Simply renaming files with a .js extension is not a suitable alternative. Such files might not be supported on device. And, the Titanium build process removes them from the final build.
+Set local variables to avoid calling native methods
+
+Each time you request the value of a device-related property, Titanium has to query the operating system for the value. For example, if you read from Ti.Platform.osname or Ti.Platform.displayCaps.platformHeight, Titanium must take a "trip across the bridge" to request the value from the operating system. Doing so takes a few cycles and if used too frequently could possibly slow your program. Something like the following would be more efficient:
+
+\begin{lstlisting}[frame=single]
+var isAndroid = (Ti.Platform.osname=='android') ? true : false;
+
+if(isAndroid) {
+	// do Android specific stuff
+} else {
+	// do iOS stuff
+}
+\end{lstlisting}
+
+\subsection{Modular components with CommonJS}
+Appcelerator's primary recommended architecture a modular app architecture constructed with CommonJS modules. In fact, we have a whole Best Practices section devoted to CommonJS Modules in Titanium. CommonJS modules are discrete and independent building blocks, eliminating concerns about global variables and naming conflicts. In our testing, it is a highly performant architecture compared to some other solutions. This pattern is also used by other JavaScript-based environments, such as Node.js.
+
+\subsubsection{MyModule.js}
+\begin{lstlisting}[frame=single]
+// variables defined in this file are private
+var defaultMessage = "Hello world";
+
+// we make objects, variables, functions available to the
+// calling context by adding them to the exports object
+exports.sayHello = function(msg) {
+	Ti.API.info('Hello '+msg);
+};
+
+// we can assign other objects, functions, and variables to
+// exports and they will be available to the calling context
+exports.helloWorld = function() {
+	Ti.API.info(defaultMessage);
+}
+\end{lstlisting}
+
+\subsubsection{app.js}
+\begin{lstlisting}[frame=single]
+var myModule = require('/MyModule');
+myModule.sayHello('Kevin');  //console output is "Hello Kevin!"
+\end{lstlisting}
+
+Other architectures are valid and meet the needs of many developers. Which you choose is ultimately up to you and your experiences
+
+\subsection{Custom objects as components}
+Another popular pattern is one we teach in our training classes, that of custom objects typically stored within an app-specific namespace hierarchy. This model is flexible and well-suited to rapid deployment projects. It takes advantage of JavaScript's language features. Components are all members of the same global scope, thus sharing data within the app is simple. And when implemented well, this pattern can lead to very readable (and thus maintainable) code.
+
+On the downside, this pattern is less performant than CommonJS modules, especially on Rhino/Android. The rapid nature of this pattern can lead the developer to general, high-level bad practices and developer 'laziness'. Inheritance is vague or even non-existent. And critically, memory management can be difficult as object references can remain after they're no longer needed.
+
+\begin{lstlisting}[frame=single]
+// create an object literal to be your app's namespace
+var myapp = {};
+
+// the following could be in a separate "ui.js" file and
+// include()'d into your app.js
+(function(){
+    myapp.ui = {}; // this sub-namespace extends the
+                             // app's namespace object
+
+    myapp.ui.createApplicationWindow = function() {
+        var win = Ti.UI.createWindow({
+            backgroundColor:'white'
+        });
+
+        var header = Ti.UI.createLabel({
+            text: 'My App Heading',
+            top: 10,
+            height:'auto',
+            width:'auto'
+        });
+        win.add(header);
+        return win;
+    };
+})();
+\end{lstlisting}
+
+The same could be accomplished without the self-calling function, if you prefer:
+\begin{lstlisting}[frame=single]
+// create an object literal to be your app's namespace
+var myapp = {};
+
+// the following could be in a separate "ui.js" file and
+// include()'d into your app.js
+myapp.ui = function() {
+    var API = {
+        createApplicationWindow: function() {
+            var win = Ti.UI.createWindow({
+                backgroundColor:'white'
+            });
+
+            var header = Ti.UI.createLabel({
+                text: 'My App Heading',
+                top: 10,
+                height:'auto',
+                width:'auto'
+            });
+            win.add(header);
+            return win;
+        }
+    }
+    return API;
+};
+\end{lstlisting}
+
+\subsection{Classical-based patterns}
+In general, Appcelerator does not recommend classical-inheritance based models because JavaScript is not a class-based language. For an in-depth look at inheritance patterns in JavaScript, we recommend you read Douglas Crockford's Protypal Inheritance in JavaScript and Classical Inheritance in JavaScript articles.
+
+Classical inheritance is familiar for programmers coming from Java and other class-based languages. They rightly claim that this pattern enforces discipline and logically structured code that is generally easy to read, debug, and document. However, it's our belief that such a pattern confuses the idea of 'classes' and 'objects' in Javascript, forces the programmer to define his or her own inheritance rules, and is slower to implement in a rapid-prototype setting.
+
+The code below is a fragment of this pattern:
+\begin{lstlisting}[frame=single]
+var SomeUIClass = function() {
+    // ----- DEFINE PRIVATE PROPERTIES AND METHODS -----
+    var UIGroup = Ti.UI.createView({ zIndex:5 }),
+        UIBg = Ti.UI.createView({
+            borderRadius:10,
+            opacity:0.2,
+            width:150,
+            height:150,
+            backgroundColor:"#000" 
+            }),
+        UIInd = Ti.UI.createActivityIndicator({
+            height:50,
+            width:50,
+            bottom:175,
+            style:Ti.UI.iPhone.ActivityIndicatorStyle.BIG
+            });
+
+    // ----- DEFINE PUBLIC PROPERTIES AND METHODS -----
+
+    // ----- Public Properties -----
+    this.somePublicProp = null;
+
+    // ----- Public Methods -----
+    this.display = function() {};
+    this.toggle = function(toggle) {};
+};
+\end{lstlisting}
+
 \section{Server - Installation}
 \section{Client}
 \subsection{Installation}
 \subsection{Compile for Android}
 \subsection{Compile for iOS}
 \subsection{Compile for normal browsers}
+
+
 \end{document}
