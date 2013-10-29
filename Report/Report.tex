@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{hyperref}
+\usepackage{index}
 \usepackage{rotating}
 \usepackage{tocbibind}
 \setlength\parindent{0pt}
@@ -19,7 +20,7 @@
 \usepackage{microtype}
 \usepackage{listings}
 \usepackage[utf8]{inputenc}
-
+\usepackage[acronym, toc]{glossaries}
 \usepackage{titlesec}
 
 \titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
@@ -28,6 +29,9 @@
 
 \bibliographystyle{vancouver}
 \renewcommand{\bibname}{References}
+
+\loadglsentries{Glossary.tex}
+\makeglossaries
 
 \begin{document}
 
@@ -434,8 +438,8 @@ All copies is to be accompanied with a CD that contain the implementation, docum
 \begin{table}[H]
 \centering
 \begin{tabular}{ l  p{11cm} }
-	Nr						& R1 																		\\ \hline
-	Activity				& All 																		\\ \hline
+	Id						& R1 																		\\ \hline
+	Activity				& All activities																\\ \hline
 	Risk factor				& Group member having a full time job in addition to being 75 \% student 	\\ \hline
 	Consequences			& H: The quality and scope of the project might suffer 						\\ \hline
 	Probability				& M 																		\\ \hline
@@ -444,14 +448,14 @@ All copies is to be accompanied with a CD that contain the implementation, docum
 	Responsible				& Project leader 															\\ 
 \end{tabular}
 \label{tab:risk_1}
-\caption{R1}
+\caption{R1: Group member not having time to prioritize the project}
 \end{table}
 
 \begin{table}[H]
 \centering
 \begin{tabular}{ l  p{11cm} }
-	Nr						& R2 																		\\ \hline
-	Activity				& All 																		\\ \hline
+	Id						& R2 																		\\ \hline
+	Activity				& All activities																	\\ \hline
 	Risk factor				& Disease 																	\\ \hline
 	Consequences			& H: The available work power might be reduced and tasks delayed. 			\\ \hline
 	Probability				& M 																		\\ \hline
@@ -461,14 +465,14 @@ All copies is to be accompanied with a CD that contain the implementation, docum
 	Responsible				& Everyone\\
 \end{tabular}
 \label{tab:risk_2}
-\caption{R2}
+\caption{R2: Disease}
 \end{table}
 
 \begin{table}[H]
 \centering
 \begin{tabular}{ l  p{11cm} }
-	Nr						& R3 																		\\ \hline
-	Activity				& All 																		\\ \hline
+	Id						& R3 																		\\ \hline
+	Activity				& All activities																	\\ \hline
 	Risk factor				& Lack of responsibility 													\\ \hline
 	Consequences			& H: Other members must do the work originally assigned to some other member\\ \hline
 	Probability				& M 																		\\ \hline
@@ -479,14 +483,14 @@ All copies is to be accompanied with a CD that contain the implementation, docum
 	Responsible				& Everyone 																	\\ 
 \end{tabular}
 \label{tab:risk_3}
-\caption{R3}
+\caption{R3: Lack of responsibility}
 \end{table}
 
 \begin{table}[H]
 \centering
 \begin{tabular}{ l  p{11cm} }
-	Nr						& R4 																		\\ \hline
-	Activity				& Cooperation - All  														\\ \hline
+	Id						& R4 																		\\ \hline
+	Activity				& Cooperation 														\\ \hline
 	Risk factor				& Internal conflicts 														\\ \hline
 	Consequences			& M: As the social environment will suffer, it will drain more energy from 
 								the people involved. This will in turn most likely reduce quality of 
@@ -498,13 +502,13 @@ All copies is to be accompanied with a CD that contain the implementation, docum
 	Responsible				& Everyone 																	\\ 
 \end{tabular}
 \label{tab:risk_4}
-\caption{R4}
+\caption{R4: Internal conflicts}
 \end{table}
 
 \begin{table}[H]
 \centering
 \begin{tabular}{ l  p{11cm} }
-	Nr						& R5 																		\\ \hline
+	Id						& R5 																		\\ \hline
 	Activity				& Communication with customer 												\\ \hline
 	Risk factor				& Miscommunication 															\\ \hline
 	Consequences			& H: The solution delivered might not be the solution asked for 			\\ \hline
@@ -516,14 +520,14 @@ All copies is to be accompanied with a CD that contain the implementation, docum
 	Responsible				& Customer contact and secretary 											\\ 
 \end{tabular}
 \label{tab:risk_5}
-\caption{R5}
+\caption{R5: Miscommunication}
 \end{table}
 
 \begin{table}[H]
 \centering
 \begin{tabular}{ l  p{11cm} }
-	Nr						& R6 																		\\ \hline
-	Activity				& All 																		\\ \hline
+	Id						& R6 																		\\ \hline
+	Activity				& Collaboration																		\\ \hline
 	Risk factor				& Distributed work 															\\ \hline
 	Consequences			& H: Efficiency might lower as could quality 								\\ \hline
 	Probability				& M 																		\\ \hline
@@ -533,7 +537,7 @@ All copies is to be accompanied with a CD that contain the implementation, docum
 	Responsible				& Everyone 																	\\ 
 \end{tabular}
 \label{tab:risk_6}
-\caption{R6}
+\caption{R6: Distributed work}
 \end{table}
 
 \section{Project organization}
@@ -1495,17 +1499,17 @@ During this period only the most basic proof of concept was developed for the se
 
 To arrive at this proof of concept, some technological decisions had to be made. Bellow the reasoning behind them are explained.
 
-\textbf{Extensible Markup Language (XML) vs JavaScript Object Notation (JSON)}\\
-XML is a extensible markup language created by the World Wide Web Consortium (W3C). It is made to be both human and machine readable. It consists of a developer defined set of nested elements that may contain data or new elements.
+\textbf{\gls{xmlLabel} vs \gls{json}}\\
+\gls{xmlLabel} is a extensible markup language created by the World Wide Web Consortium (W3C). It is made to be both human and machine readable. It consists of a developer defined set of nested elements that may contain data or new elements.
 
-JSON \cite{json} is based on two structures: a collection of name-value pairs, and an ordered list of values. The format is made to be human readable and easily parsed and created by computers. It is based on a subset of the JavaScript programming language, and because the customer has asked for HTML5 to be used for the app JSON makes sense as that will be easier to use together with JavaScript than XML.
+\gls{json} \cite{json} is based on two structures: a collection of name-value pairs, and an ordered list of values. The format is made to be human readable and easily parsed and created by computers. It is based on a subset of the JavaScript programming language, and because the customer has asked for HTML5 to be used for the app \gls{json} makes sense as that will be easier to use together with JavaScript than \gls{xmlLabel}.
 
-\textbf{Representational State Transfer (REST) vs Simple Object Access Protocol (SOAP)}\\
-REST \cite{rest} is an architectural style that is stateless at its heart, which leads to better visibility, reliability, and scalability. REST was developed in parallel with HTTP/1.1 and the largest system following this architectural style is the internet (according to \cite{wikipedia:rest}). REST is also a good match for data driven applications as the way you handle a REST services is by utilizing the verbs GET, POST, DELETE, PUT, PATCH.
+\textbf{\gls{rest} vs \gls{soap}}\\
+\gls{rest} \cite{rest} is an architectural style that is stateless at its heart, which leads to better visibility, reliability, and scalability. \gls{rest} was developed in parallel with HTTP/1.1 and the largest system following this architectural style is the internet (according to \cite{wikipedia:rest}). \gls{rest} is also a good match for data driven applications as the way you handle a \gls{rest} services is by utilizing the verbs GET, POST, DELETE, PUT, PATCH.
 
-SOAP is much more flexible than REST, but also much more complex. While REST is primarily data driven through resources, SOAP is logic oriented through operations. SOAP is also a better choice for making stateful web services. All communication with a SOAP service happens through XML.
+\gls{soap} is much more flexible than \gls{rest}, but also much more complex. While \gls{rest} is primarily data driven through resources, \gls{soap} is logic oriented through operations. \gls{soap} is also a better choice for making stateful web services. All communication with a \gls{soap} service happens through \gls{xmlLabel}.
 
-The simplicity of the REST architectural style, and the fact that it allows the developer to choose the format of exchange makes this our preferred way to go.
+The simplicity of the \gls{rest} architectural style, and the fact that it allows the developer to choose the format of exchange makes this our preferred way to go.
 
 \textbf{Play vs Spring}\\
 Two of the well known frameworks when it comes to developing webservices in JAVA is Play! Framework and Spring.
@@ -1852,6 +1856,10 @@ To be written
 To be written
 
 \bibliography{bibliography}
+
+\glsaddall
+\glossarystyle{altlistgroup}
+\printglossaries
 
 \appendix
 \chapter{Initial project description}
