@@ -10,3 +10,11 @@ Report.pdf
 *.lot
 *.blg
 *.bbl
+*.acn
+*.acr
+*.alg
+*.glo
+*.ist
+*.lot
+*.gz
+*.xdy
