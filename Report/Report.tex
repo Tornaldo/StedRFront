@@ -1687,6 +1687,23 @@ The server has seen development based upon what was done in sprint one, but the 
 \end{table}
 
 \subsection{S2: Requirements as scenarios}
+\textbf{Browse virtual walls}
+\begin{enumerate}
+	\item User goes to map view
+	\item Client asks user for location
+	\item User write location or taps on fetch my location
+	\item Map shows the users position
+	\item Walls are indicated on the map
+	\item The user might move around in the map by dragging it around
+\end{enumerate}
+
+\textbf{Open a virtual wall}
+\begin{enumerate}
+	\item User goes to walls view (that be map or list or whatever is decided)
+	\item User navigates to wall of interest - see [wall browsing] Browse virtual walls
+	\item User taps on desired wall
+	\item Client shows a new screen with the wall content
+\end{enumerate}
 
 \subsection{S2: Implementation}
 
@@ -1701,7 +1718,7 @@ The API has the following methods:
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{| l | l | l | l |}
+	\begin{tabular}{| p{3.5cm} | p{3.5cm} | p{3.5cm} | p{2.5cm} |}
 		\hline
 		Backbone Method & Sync CRUD Method & Equivalent HTTP Method & Equivalent SQL Method\\
 		\hline
@@ -1802,6 +1819,7 @@ The architecture is only partially done, this is due to the change in mobile fra
 
 \section{Fourth phase: Sprint 3}
 \subsection{S3: Sprint planning}
+\subsection{S3: Backlog}
 \subsection{S3: Requirements as scenarios}
 
 \subsection{S3: Implementation}
@@ -1846,10 +1864,18 @@ As seen in \ref{fig:mercator}, it is a cylindrical conformal projection, so it p
 To be written
 \subsection{S4: Sprint planning}
 To be written
+\subsection{S4: Backlog}
+To be written
 \subsection{S4: Requirements as scenarios}
 To be written
 \subsection{S4: Implementation}
-To be written
+
+\subsubsection{Client}
+\textbf{Instagram}\\
+Instagram API doesn’t support fecthing of several tags simultanously.
+Instagram has a limit of 30 pictures to be shown per page. 
+Can be problematic, legally, to show all pictures without filtering by humans.
+
 \subsection{S4: Test execution}
 To be written
 \subsection{S4: Review}
