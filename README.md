@@ -4,7 +4,7 @@ VirtualWall
 TDT4290 Customer Driven Project for SINTEF &amp; STFK
 
 ## License
-Copyright (c) 2013, SINTEF ICT, eTrøndelag, NTNU
+Copyright (c) 2013, Group 2
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
