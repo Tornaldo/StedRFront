@@ -1,13 +1,24 @@
 ".container": {
 	backgroundColor:"white"
 },
-"Label": {
+"#storyTitle": {
+	color: 'white',
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
-	color: "#000",
 	font: {
         fontFamily:'Helvetica',
         fontSize: '20dp',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+    }
+}
+"Label": {
+	color: 'white',
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	font: {
+        fontFamily:'Helvetica',
+        fontSize: '15dp',
         fontStyle: 'normal',
         fontWeight: 'normal',
     }

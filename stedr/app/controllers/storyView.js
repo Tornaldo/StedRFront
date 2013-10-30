@@ -1,6 +1,11 @@
 Ti.API.info("Hello");
 Ti.API.info("Entering: " + $model.get('title'));
 
+var mediaGalleryController = Alloy.createController('mediaGallery', {
+	"$model" : $model
+});
+$.mediaGalleryStory.add(mediaGalleryController.getView());
+
 $.storyTitle.setText($model.get('title'));
 $.subTitle.setText($model.get('ingress'));
 $.storyText.setText($model.get('fortelling'));
@@ -12,14 +17,8 @@ for ( i = 0; i < tags.length; i++) {
 	var tag = Ti.UI.createLabel({
 		text : tags[i]
 	});
-	$.storyView.add(tag);
+	$.tagView.add(tag);
 }
-
-var mediaGalleryController = Alloy.createController('mediaGallery', {
-	"$model" : $model
-});
-$.mediaGalleryStory.add(mediaGalleryController.getView());
-
 
 $.storyView.addEventListener('close', function() {
 	Ti.API.info("Destroying: " + $model.get('title'));

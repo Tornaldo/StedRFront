@@ -1,9 +1,9 @@
 <Alloy>
 	<Window class="container" layout="vertical" exitOnClose="false" navBarHidden="false">
-		<ScrollView layout="vertical">
-			<View id="mediaGalleryStory">
-				<!-- Story media -->
-			</View>
+		<View id="mediaGalleryStory" height="50%">
+			<!-- Story media -->
+		</View>
+		<ScrollView layout="vertical" backgroundColor="#40B0D2">
 			<Label id="storyTitle" ></Label>
 			<Label id="subTitle"></Label>
 			<Label id="storyText"></Label>

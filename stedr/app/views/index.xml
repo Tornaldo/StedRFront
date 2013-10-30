@@ -1,15 +1,3 @@
 <Alloy>
-	<TabGroup>
-		<Tab id="debugList" title="Liste (Debug)">
-			<Window class="container" title="Walls">
-				<TableView dataCollection="wall">
-					<TableViewRow class="tableView" model="{alloy_id}" title="{title}" />
-				</TableView>
-			</Window>
-		</Tab>
-		<Tab title="Kart">
-			<Window title="Wall" id="mapWin">
-			</Window>
-		</Tab>	
-	</TabGroup>
+	<Window title="Wall" id="mapWin"></Window>
 </Alloy>

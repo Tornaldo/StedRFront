@@ -14,19 +14,21 @@ function Controller() {
         id: "storyView"
     });
     $.__views.storyView && $.addTopLevelView($.__views.storyView);
-    $.__views.__alloyId12 = Ti.UI.createScrollView({
-        layout: "vertical",
-        id: "__alloyId12"
-    });
-    $.__views.storyView.add($.__views.__alloyId12);
     $.__views.mediaGalleryStory = Ti.UI.createView({
-        id: "mediaGalleryStory"
+        id: "mediaGalleryStory",
+        height: "50%"
     });
-    $.__views.__alloyId12.add($.__views.mediaGalleryStory);
+    $.__views.storyView.add($.__views.mediaGalleryStory);
+    $.__views.__alloyId3 = Ti.UI.createScrollView({
+        layout: "vertical",
+        backgroundColor: "#40B0D2",
+        id: "__alloyId3"
+    });
+    $.__views.storyView.add($.__views.__alloyId3);
     $.__views.storyTitle = Ti.UI.createLabel({
+        color: "white",
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
-        color: "#000",
         font: {
             fontFamily: "Helvetica",
             fontSize: "20dp",
@@ -35,55 +37,59 @@ function Controller() {
         },
         id: "storyTitle"
     });
-    $.__views.__alloyId12.add($.__views.storyTitle);
+    $.__views.__alloyId3.add($.__views.storyTitle);
     $.__views.subTitle = Ti.UI.createLabel({
+        color: "white",
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
-        color: "#000",
         font: {
             fontFamily: "Helvetica",
-            fontSize: "20dp",
+            fontSize: "15dp",
             fontStyle: "normal",
             fontWeight: "normal"
         },
         id: "subTitle"
     });
-    $.__views.__alloyId12.add($.__views.subTitle);
+    $.__views.__alloyId3.add($.__views.subTitle);
     $.__views.storyText = Ti.UI.createLabel({
+        color: "white",
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
-        color: "#000",
         font: {
             fontFamily: "Helvetica",
-            fontSize: "20dp",
+            fontSize: "15dp",
             fontStyle: "normal",
             fontWeight: "normal"
         },
         id: "storyText"
     });
-    $.__views.__alloyId12.add($.__views.storyText);
+    $.__views.__alloyId3.add($.__views.storyText);
     $.__views.storyAuthor = Ti.UI.createLabel({
+        color: "white",
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
-        color: "#000",
         font: {
             fontFamily: "Helvetica",
-            fontSize: "20dp",
+            fontSize: "15dp",
             fontStyle: "normal",
             fontWeight: "normal"
         },
         id: "storyAuthor"
     });
-    $.__views.__alloyId12.add($.__views.storyAuthor);
+    $.__views.__alloyId3.add($.__views.storyAuthor);
     $.__views.tagView = Ti.UI.createView({
         id: "tagView",
         layout: "horizontal"
     });
-    $.__views.__alloyId12.add($.__views.tagView);
+    $.__views.__alloyId3.add($.__views.tagView);
     exports.destroy = function() {};
     _.extend($, $.__views);
     Ti.API.info("Hello");
     Ti.API.info("Entering: " + $model.get("title"));
+    var mediaGalleryController = Alloy.createController("mediaGallery", {
+        $model: $model
+    });
+    $.mediaGalleryStory.add(mediaGalleryController.getView());
     $.storyTitle.setText($model.get("title"));
     $.subTitle.setText($model.get("ingress"));
     $.storyText.setText($model.get("fortelling"));
@@ -93,12 +99,8 @@ function Controller() {
         var tag = Ti.UI.createLabel({
             text: tags[i]
         });
-        $.storyView.add(tag);
+        $.tagView.add(tag);
     }
-    var mediaGalleryController = Alloy.createController("mediaGallery", {
-        $model: $model
-    });
-    $.mediaGalleryStory.add(mediaGalleryController.getView());
     $.storyView.addEventListener("close", function() {
         Ti.API.info("Destroying: " + $model.get("title"));
         $.destroy();
