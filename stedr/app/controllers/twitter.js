@@ -13,6 +13,8 @@ var twitter = social.create({
 	consumerSecret : 'v1hbUrM4rymaoE9Wry4ASZ6xxgSGKYDzUqtMStLhd8'
 });
 
+
+
 shareButton.addEventListener('click', function() {
 	twitter.authorize(function() {
 		Ti.API.info('Authorized!');
