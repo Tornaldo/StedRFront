@@ -878,7 +878,7 @@ The intended audience of this document shall be:
 Each part of the audience holds different stakes in the project, but all are interested in information contained within the \gls{srs}.
 
 \subsection{Scope}
-This \gls{srs} document deals with the project Virtual walls – walls that tell us stories. This project shall result in developing a tool for working with so called virtual walls, creating and sharing stories on them.
+This \gls{srs} document deals with the project Virtual walls - walls that tell us stories. This project shall result in developing a tool for working with so called virtual walls, creating and sharing stories on them.
 
 As presented by customer, the VirtualWall software system is going to be a complex system consisting of a number of subsystems including several content databases, a server backend and mobile application frontend.
 
@@ -922,7 +922,7 @@ The following diagram shows the whole system and how the separate parts work tog
       \label{fig:req_overview}
 \end{figure}
 
-In the initial phase, the server will not be directly connectex to any external content databases machine, the content from them would be presented as simple hyperlinks leading to the third party website (such as kulturminnesok.no, digitaltfortalt.no).
+In the initial phase, the server will not be directly connected to any external content databases machine, the content from them would be presented as simple hyperlinks leading to the third party website (such as kulturminnesok.no, digitaltfortalt.no).
 
 \subsection{User Interfaces}
 Since the frontend of the whole system shall be developed in this project, the description of user interface shall be considerably stressed.
@@ -1203,7 +1203,7 @@ On the client, Model View Controller will be used in order to separate concerns 
 Appcelerator Titanium will be used as an adapter to different platforms, this be Android, iOS or a normal browser.
 
 \subsection{Server}
-The server will be a stateless REST services built on Play Framework. This gives a simple client-server approach where the server consists of some simple layers.
+The server will be a stateless \gls{rest} services built on Play Framework. This gives a simple client-server approach where the server consists of some simple layers.
 
 The server will be fully stateless which will help on scalability and availability as well as simplifying modifiability. It will also act as an broker, and therefor follow the broker pattern.
 
@@ -1519,7 +1519,7 @@ To arrive at this proof of concept, some technological decisions had to be made.
 The simplicity of the \gls{rest} architectural style, and the fact that it allows the developer to choose the format of exchange makes this our preferred way to go.
 
 \textbf{Play vs Spring}\\
-Two of the well known frameworks when it comes to developing webservices in JAVA is Play! Framework and Spring.
+Two of the well known frameworks when it comes to developing webservices in Java is Play! Framework and Spring. %FIXME link to websites
 
 Spring is a very extensive framework with support for quite a few protocols and services. The framework also does a lot of work not necessarily apparent to the developer without a thorough investigation into the documentation.
 
@@ -1590,7 +1590,7 @@ The customer wanted to focus more on the use of filtering on tags and metadata.
 \textit{Look at walls}
 The main function of the application is to access a wall and browse user created information, that could be stories, pictures, links to other resources, etc.. Two possible solution were suggested; a wall that displayed both user created stories and information from multiple data sources as in Figure~\ref{fig:phases_sprint1_uiVersionOneSimpleWall}, for instance, Instagram, Wikipedia, YouTube, Twitter, Google, Flickr, etc., and a more simple version where the focus was on user created data, thus stories and pictures, as in Figure~\ref{fig:phases_sprint1_uiVersionOneMultipleDataSoruces}.
 
-The idea of using multiple data sources came from the danish mobile application, Kulturarv, or Cultural Heritage (both mentioned in \ref{sec:prestudy_existing_apps}), which blends data from a main database with other geo location data sources like Instagram, Flickr, Wikipedia and Twitter. The customer had not thought about the idea of using multiple data sources, and were therefore quite surprised by the solution. The group and customer agreed that the use of multiple data sources were out of the scope, and decided to focus on the more simple version. The customer liked the use of tabs, to navigate, within a wall.
+The idea of using multiple data sources came from the danish mobile application, \emph{Kulturarv}, or \emph{Cultural Heritage} (both mentioned in \ref{sec:prestudy_existing_apps}), which blends data from a main database with other geo location data sources like Instagram, Flickr, Wikipedia and Twitter. The customer had not thought about the idea of using multiple data sources, and were therefore quite surprised by the solution. The group and customer agreed that the use of multiple data sources were out of the scope, and decided to focus on the more simple version. The customer liked the use of tabs, to navigate, within a wall.
 
 \begin{figure}[H]
     \centering
@@ -1664,22 +1664,14 @@ The server has seen development based upon what was done in sprint one, but the 
 \subsection{S2: Backlog}
 \begin{table}[H]
     \centering
-    \begin{tabular}{| l | l |}
-        \hline
-        Item                 & Outcome\\
-        \hline
-        Define the concept of story & Done\\
-        \hline
-        Define the main principles of UI & Done\\
-        \hline
-        Browse virtual walls & Done in server\\
-        \hline
-        Open a virtual wall & Done in server\\
-        \hline
-        Basic framework for app with support for communicating with server & Done\\
-        \hline
-        Architecture & Partly done\\
-        \hline
+    \begin{tabular}{| l | l |} \hline
+        Item                                                                & Outcome         \\ \hline
+        Define the concept of story                                         & Done            \\ \hline
+        Define the main principles of UI                                    & Done            \\ \hline
+        Browse virtual walls                                                & Done in server  \\ \hline
+        Open a virtual wall                                                 & Done in server  \\ \hline
+        Basic framework for app with support for communicating with server  & Done            \\ \hline
+        Architecture                                                        & Partly done     \\ \hline
     \end{tabular}
     \label{tab:phase_sprint2_backlog}
     \caption{Backlog for sprint 2.}
@@ -1736,7 +1728,7 @@ The API has the following methods:
     \caption{API for Sync in Alloy\cite{titaniumAlloySync}}
 \end{table}
 
-As the application makes use of REST server, a backend supporting REST was needed. Although a custom backend could have been created, it made more sense to reuse the implementation of others. The napp.alloy.adapter.restapi\footnote{https://github.com/viezel/napp.alloy.adapter.restapi} by Mads Møller was chosen due to its feature completeness and active development.
+As the application makes use of \gls{rest} server, a backend supporting \gls{rest} was needed. Although a custom backend could have been created, it made more sense to reuse the implementation of others. The napp.alloy.adapter.restapi\footnote{https://github.com/viezel/napp.alloy.adapter.restapi} by Mads Møller was chosen due to its feature completeness and active development.
 
 \textbf{Models}\\
 Models in Titanium Alloy build upon Backbone.js\footnote{http://backbonejs.org/} \cite{titaniumAlloyModel}. Therefor the documentation for Backbone.js is relevant in addition to the documentation from Titanium.
