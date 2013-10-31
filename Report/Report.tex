@@ -106,7 +106,7 @@
 
 \chapter{Abstract}
 \begin{quotation}\noindent
-The assignment relates to the EU-IST project TAG CLOUD. TAG CLOUD will develop innovative digital solutions with the aim to increase the engagement of people in culture and cultural heritage. The main aspects that will be investigated are: new interaction interfaces with cultural artefacts, user as a contributor and personalized information. In Norway, the focus is “culture in the landscape”, i.e. the discovery of cultural memories that we meet when walking around in cities, in villages and in the nature.  \cite[p. 47]{compendium}
+The assignment relates to the EU-IST project TAG CLOUD. TAG CLOUD will develop innovative digital solutions with the aim to increase the engagement of people in culture and cultural heritage. The main aspects that will be investigated are: new interaction interfaces with cultural artifacts, user as a contributor and personalized information. In Norway, the focus is ``culture in the landscape'', i.e. the discovery of cultural memories that we meet when walking around in cities, in villages and in the nature.  \cite[p. 47]{compendium}
 \end{quotation}
 
 The aim of this particular project was to develop a concept and a prototype that would make information about cultural heritage more accessible and fun! This should be accomplished by creating a mobile application that let users consume content from cultural databases in an exploratory format.
@@ -118,9 +118,9 @@ The aim of this particular project was to develop a concept and a prototype that
 
 \mainmatter
 \chapter{Introduction}
-This report describes the planning and execution of the project ``Virtual Walls - Walls that tell us stories'' (later in this report only referred to as Virtual Walls or the system) on behalf of eTrøndelag and Sintef ICT.
+This report describes the planning and execution of the project ``Virtual Walls - Walls that tell us stories'' (later in this report only referred to as Virtual Walls or the system) on behalf of eTrøndelag and SINTEF ICT.
 
-The assigned project is part of the course TDT4290 - Customer driven project at NTNU, and also an ongoing project at Sintef ICT on behalf of eTrøndelag and the EU initiated project TAG-CLOUD.
+The assigned project is part of the course TDT4290 - Customer driven project at NTNU, and also an ongoing project at SINTEF ICT on behalf of eTrøndelag and the EU initiated project TAG-CLOUD.
 
 Today most places of cultural or historical significance is mapped and has a rather large amount of connected data. This information might be hard to gain access to, written in a form more suited for scholars than the average man, or simply not written down at all.
 
@@ -305,7 +305,7 @@ The goal of the project is producing a prototype of the system that might be exp
 This section describes the tools used to communicate, develop and implement the system.
 
 \subsection{Hardware \& development software}
-As the system is to run on mobile phones, Android and iOS units was needed to performe tests along the way. The group had access to Android devices, but not iOS devices.
+As the system is to run on mobile phones, Android and iOS units was needed to perform tests along the way. The group had access to Android devices, but not iOS devices.
 
 Titanium Studio\cite{titaniumStudio} was used while developing the mobile application. Titanium Studio is the official development environment from the creators of the framework Titanium. It is based upon Eclipse.
 
@@ -692,7 +692,7 @@ Kulturminnesøk can be considered a partly edge dominant system (will be explain
       \label{fig:pre_fortaltFrontPage}
 \end{figure}
 
-Another edge dominant cultural heritage system is ``digitalt fortalt'', or digitally told. Digitalt fortalt is a website where users, cultural institutions or private persons, can register and add stories related to cultural heritage. Users have added stories about everything from clothespins to protected buildings, and today there are over 3000 stories. 
+Another edge dominant cultural heritage system is ``digitalt fortalt'', or digitally told. Digitalt Fortalt is a website where users, cultural institutions or private persons, can register and add stories related to cultural heritage. Users have added stories about everything from clothespins to protected buildings, and today there are over 3000 stories. 
 
 To read a story you can either search, by pressing one of the popular tags or simply search from the search field, or browse on the front page, in last told stories, popular stories, last commented stories or among the most  read stories. If we search on ``Trondheim'' in the search field, we get 135 hits. The stories is placed in a grid system, and every story is represented in a little box, with a title, a picture (a play-sign if a sound is attached to the story), author and location. Some stories are also linked to a date or a period. The search result is shown in Figure~\ref{fig:pre_fortaltTrondheim}.
 
@@ -1330,7 +1330,7 @@ The backend is the part of the system where all the data is stored. The backend 
 The client is the part of the system that presents the data to the user and that directly interacts with the user.
 
 \subsection{Test items}
-Following items thall be tested:
+Following items shall be tested:
 
 \begin{itemize}
     \item The source code of server subsystems will be tested.
@@ -1511,7 +1511,7 @@ To arrive at this proof of concept, some technological decisions had to be made.
 \gls{json} \cite{json} is based on two structures: a collection of name-value pairs, and an ordered list of values. The format is made to be human readable and easily parsed and created by computers. It is based on a subset of the JavaScript programming language, and because the customer has asked for HTML5 to be used for the app \gls{json} makes sense as that will be easier to use together with JavaScript than \gls{xmlLabel}.
 
 \textbf{\gls{rest} vs \gls{soap}}\\
-\gls{rest} \cite{rest} is an architectural style that is stateless at its heart, which leads to better visibility, reliability, and scalability. \gls{rest} was developed in parallel with HTTP/1.1 and the largest system following this architectural style is the internet (according to \cite{wikipedia:rest}). \gls{rest} is also a good match for data driven applications as the way you handle a \gls{rest} services is by utilizing the verbs GET, POST, DELETE, PUT, PATCH.
+\gls{rest} \cite{rest} is an architectural style that is stateless at its heart, which leads to better visibility, reliability, and scalability. \gls{rest} was developed in parallel with HTTP/1.1 and the largest system following this architectural style is the Internet (according to \cite{wikipedia:rest}). \gls{rest} is also a good match for data driven applications as the way you handle a \gls{rest} services is by utilizing the verbs GET, POST, DELETE, PUT, PATCH.
 
 \gls{soap} is much more flexible than \gls{rest}, but also much more complex. While \gls{rest} is primarily data driven through resources, \gls{soap} is logic oriented through operations. \gls{soap} is also a better choice for making stateful web services. All communication with a \gls{soap} service happens through \gls{xmlLabel}.
 
@@ -1798,7 +1798,7 @@ RhoMobile is developed by Motorola Solutions\footnote{http://www.motorolasolutio
 The reason this framework was not chosen, was because it uses Ruby as well as JavaScript. It was decided that learning one new language would be enough work, if not another one should be added on top.
 
 \textbf{Titanium}\\
-Appcelerator Titanium\footnote{http://www.appcelerator.com/titanium/} is a cross platform development framework for mobile and web. The development is done in JavaScript and \gls{xmlLabel}. It is licensed under the Apache Public License version 2. Titanium is a ``write once, adapt everywhere'' framework\cite{titaniumCrossMobile}. That does not mean that it can’t run everywhere without adaption, but that in order to look native it needs adaption. Titanium has an excellent base of documentation and a mature framework supporting easy use of the model view controller architectural pattern.
+Appcelerator Titanium\footnote{http://www.appcelerator.com/titanium/} is a cross platform development framework for mobile and web. The development is done in JavaScript and \gls{xmlLabel}. It is licensed under the Apache Public License version 2. Titanium is a ``write once, adapt everywhere'' framework\cite{titaniumCrossMobile}. That does not mean that it cannot run everywhere without adaption, but that in order to look native it needs adaption. Titanium has an excellent base of documentation and a mature framework supporting easy use of the model view controller architectural pattern.
 
 Titanium was chosen because of its framework, its documentation and the huge community that surrounds it.
 
@@ -1824,7 +1824,7 @@ The architecture is only partially done, this is due to the change in mobile fra
 
 \subsubsection{Server}
 
-Upon receiving changes proposed by customer, the data model was stashed and reworked to acomodate the proposed changes. As the concept of walls and stories finally settled down, we were able to implement API for retrieving walls based on geographic coordinates and to retrieve stories on walls.
+Upon receiving changes proposed by customer, the data model was stashed and reworked to accommodate the proposed changes. As the concept of walls and stories finally settled down, we were able to implement API for retrieving walls based on geographic coordinates and to retrieve stories on walls.
 
 As requested in the last batch of change requests from customer, stories shall be stored in an external database called \emph{Digitalt Fortalt}. This database provides an API for search which we call to retrieve the stories. Our application does not write any data to \emph{Digitalt Fortalt}, stories need to be created manually on their website.
 
@@ -1836,11 +1836,11 @@ The data from \emph{Digitalt Fortalt} are retrieved from the API by classes in t
 
 \subsubsection{Map views, coordinates and projections} \label{sec:spr3_maps}
 
-One of the main features of the application is to show user location of various virtual walls on a map. Since we decided to use Titanium frameworkk for the development of the mobile application, we are using its own map view (\texttt{Titanium.Map.View}) for the display of maps and locations of walls upon them.
+One of the main features of the application is to show user location of various virtual walls on a map. Since we decided to use Titanium framework for the development of the mobile application, we are using its own map view (\texttt{Titanium.Map.View}) for the display of maps and locations of walls upon them.
 
-The database is now featuring just a few walls, but it is supposed to host much more of them in the future and it would not be optimal for the performance and operational reasons (such as costs of data transfers on mobil internet) to fetch all the walls when user is using the application.
+The database is now featuring just a few walls, but it is supposed to host much more of them in the future and it would not be optimal for the performance and operational reasons (such as costs of data transfers on mobile Internet) to fetch all the walls when user is using the application.
 
-The user is only interested in walls he could actually see on the map, so we decided to take an approach where we fetch the data from the server while filtering it upon geographic coordinates. The map view supplies us with a geogaphical coordinates of the center of the displayed map and with west-to-east distance and noth-to-south distance. This makes it possible to compute the coordinates of the north-west (i.e. top-left) corner of the map view, and the south-east (i.e. bottom-right) corner of the map view. Then the application fetches the data from the server, asking it to filter only those walls, which have coordinates in the rectange defined by those two corners.
+The user is only interested in walls he could actually see on the map, so we decided to take an approach where we fetch the data from the server while filtering it upon geographic coordinates. The map view supplies us with a geographical coordinates of the center of the displayed map and with west-to-east distance and noth-to-south distance. This makes it possible to compute the coordinates of the north-west (i.e. top-left) corner of the map view, and the south-east (i.e. bottom-right) corner of the map view. Then the application fetches the data from the server, asking it to filter only those walls, which have coordinates in the rectangle defined by those two corners.
 
 It is a well-known fact that planet Earth is not flat. For this reason, various map projections are used to transform the surface of Earth (3D) onto a plane (2D). Google Maps, which provide the map tiles for the map view, are using a variant of so called Mercator \footnote{Named after Flemish geographer and cartographer Gerardus Mercator, who firstly used it in 1569 for his map titled \emph{Nova et Aucta Orbis Terrae Descriptio ad Usum Navigantium Emendate Accommodata}, which is Latin for \emph{New and more complete representation of the terrestrial globe properly adapted for use in navigation}.} projection. This map projection was used in naval navigation for showing constant bearings (\emph{loxodromes}, also known as \emph{rhumb lines}) as straight lines on the map. \cite{progonos:mercator,radicalcartography} 
 
@@ -1851,7 +1851,7 @@ It is a well-known fact that planet Earth is not flat. For this reason, various 
     \label{fig:mercator}
 \end{figure}
 
-As seen in \ref{fig:mercator}, it is a cylindrical conformal projection, so it preserves local angles (which is actually one of the reasons Google Maps use it), but is unfit for use in high-latitudes as the map extends infinitely North and South (so called \emph{polar exaggeration}). This shall be fine for use until we need to add a wall for a location near to one of the geographic poles (which are streched infinitely along the top and bottom edges of the map). This could be a problem is we want to add a wall for example for the Amundsen–Scott South Pole Station located just few meters from the geographical souch pole and which would and stretch widely east to west. \cite{progonos:mercator,radicalcartography} 
+As seen in \ref{fig:mercator}, it is a cylindrical conformal projection, so it preserves local angles (which is actually one of the reasons Google Maps use it), but is unfit for use in high-latitudes as the map extends infinitely North and South (so called \emph{polar exaggeration}). This shall be fine for use until we need to add a wall for a location near to one of the geographic poles (which are stretched infinitely along the top and bottom edges of the map). This could be a problem is we want to add a wall for example for the Amundsen–Scott South Pole Station located just few meters from the geographical such pole and which would and stretch widely east to west. \cite{progonos:mercator,radicalcartography} 
 
 
 \subsection{S3: Test execution}
@@ -1870,7 +1870,7 @@ To be written
 
 \subsubsection{Client}
 \textbf{Instagram}\\
-Instagram API doesn’t support fecthing of several tags simultanously.
+Instagram API does not support fetching of several tags simultaneously.
 Instagram has a limit of 30 pictures to be shown per page. 
 Can be problematic, legally, to show all pictures without filtering by humans.
 
@@ -1895,11 +1895,11 @@ To be written
 
 \appendix
 \chapter{Initial project description}
-The following descritpion is taken from the course compendium\cite[p. 47]{compendium}.
+The following description is taken from the course compendium\cite[p. 47]{compendium}.
 
-The assignment relates to the EU-IST project TAG CLOUD (www.tagcloudproject.eu). TAG CLOUD will develop innovative digital solutions with the aim to increase the engagement of people in culture and cultural heritage. The main aspects that will be investigated are: new interaction interfaces with cultural artefacts, user as a contributor and personalized information. In Norway, the focus is “culture in the landscape”, i.e. the discovery of cultural memories that we meet when walking around in cities, in villages and in the nature.
+The assignment relates to the EU-IST project TAG CLOUD (www.tagcloudproject.eu). TAG CLOUD will develop innovative digital solutions with the aim to increase the engagement of people in culture and cultural heritage. The main aspects that will be investigated are: new interaction interfaces with cultural artifacts, user as a contributor and personalized information. In Norway, the focus is ``culture in the landscape'', i.e. the discovery of cultural memories that we meet when walking around in cities, in villages and in the nature.
 
-The goal of this assignment is to develop a tool to create and interact with “virtual walls”. The idea stems from Væggen\footnote{Væggen is the danish word for ”Wall”.} in Copenhagen (http://vaeggen.copenhagen.dk/dk/). Væggen is a large multitouch screen allowing people to tell, share and experience stories. We would like to explore the concept of wall as means to discover and share cultural stories related to buildings and places. It is however not practical to install and maintain physical walls such as Væggen all around. Instead we propose a digital representation of walls, that we call virtual wall.
+The goal of this assignment is to develop a tool to create and interact with ``virtual walls''. The idea stems from Væggen\footnote{Væggen is the danish word for ”Wall”.} in Copenhagen (http://vaeggen.copenhagen.dk/dk/). Væggen is a large multitouch screen allowing people to tell, share and experience stories. We would like to explore the concept of wall as means to discover and share cultural stories related to buildings and places. It is however not practical to install and maintain physical walls such as Væggen all around. Instead we propose a digital representation of walls, that we call virtual wall.
 
 The assignment will build upon interactive pictures for the realization of virtual walls. The tool that will be develop should include support for:
 \begin{itemize}
@@ -2027,7 +2027,7 @@ Additional notes: All documentation (report and code comments) should be written
 \section{Introduction}
 
 \section{Code standards for server}\label{sec:codeStandard}
-The project follows the coding guidelines of Play! Framework\cite{playCodingStandard}, which in turn relies heavely on Java Code Conventions\footnote{http://www.oracle.com/technetwork/java/codeconventions-150003.pdf}. The Play! Framework coding standard is included underneath.
+The project follows the coding guidelines of Play! Framework\cite{playCodingStandard}, which in turn relies heavily on Java Code Conventions\footnote{http://www.oracle.com/technetwork/java/codeconventions-150003.pdf}. The Play! Framework coding standard is included underneath.
 
 \subsection{Whitespace}
 \begin{itemize}
@@ -2067,8 +2067,8 @@ if (arg1 ||
 \subsection{Comments}
 \begin{itemize}
     \item Comments should be in grammatically-correct US English, with full sentences that include punctuation.
-    \item Javadoc comments before classes or methods are not mandatory.
-    \item Don't include empty javadoc. Either the javadoc provides information and it's good to have it, or it doesn't and shouldn't be there.
+    \item JavaDoc comments before classes or methods are not mandatory.
+    \item Don't include empty JavaDoc. Either the JavaDoc provides information and it's good to have it, or it doesn't and shouldn't be there.
     \item Do not leave commented-out code in source files. If the code is no longer used, just delete it. We can always use the Git history to get it back if necessary. Similarly, delete any dead code.
 \end{itemize}
 
@@ -2090,7 +2090,7 @@ try {
 }
 \end{lstlisting}
 \begin{itemize}
-    \item Prefer enum to int constants.
+    \item Prefer enumerations to int constants.
 \end{itemize}
 
 \section{Coding standard for client}
@@ -2313,7 +2313,7 @@ In general, Appcelerator does not recommend classical-inheritance based models b
 
 % FIXME there should be a reference to the book
 
-Classical inheritance is familiar for programmers coming from Java and other class-based languages. They rightly claim that this pattern enforces discipline and logically structured code that is generally easy to read, debug, and document. However, it's our belief that such a pattern confuses the idea of ``classes'' and ``objects'' in Javascript, forces the programmer to define his or her own inheritance rules, and is slower to implement in a rapid-prototype setting.
+Classical inheritance is familiar for programmers coming from Java and other class-based languages. They rightly claim that this pattern enforces discipline and logically structured code that is generally easy to read, debug, and document. However, it's our belief that such a pattern confuses the idea of ``classes'' and ``objects'' in JavaScript, forces the programmer to define his or her own inheritance rules, and is slower to implement in a rapid-prototype setting.
 
 The code below is a fragment of this pattern:
 \begin{lstlisting}[frame=single]
@@ -2365,7 +2365,7 @@ var SomeUIClass = function() {
         \hline
         Architecture & \\
         \hline
-        Define the overall system architecture (interfaces will be refined atferwards) & 10\\
+        Define the overall system architecture (interfaces will be refined afterwards) & 10\\
         \hline
         Define the concept of story & 10\\
         \hline
@@ -2387,7 +2387,7 @@ var SomeUIClass = function() {
         \hline
         Browse virtual walls - retrieve pictures from trondheimbilder.no & 2\\
         \hline
-        Format pictures to a postcard foramt (2x3?) & 6\\
+        Format pictures to a postcard format (2x3?) & 6\\
         \hline
         Filter walls by tags & 0\\
         \hline
@@ -2499,10 +2499,10 @@ var SomeUIClass = function() {
         \hline
         Adding instagram information related to a wall & 7\\
         \hline
-        Retrieving isntagram information related to a wall & 7\\
+        Retrieving instagram information related to a wall & 7\\
         \hline
         \caption{Latest complete backlog.}\label{tab:appendix_backlog}
     \end{longtable}
 \end{center}
 
-\end{document}
+\end{document}s
