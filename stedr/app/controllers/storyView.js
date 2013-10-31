@@ -6,6 +6,12 @@ var mediaGalleryController = Alloy.createController('mediaGallery', {
 });
 $.mediaGalleryStory.add(mediaGalleryController.getView());
 
+var twitterController = Alloy.createController('twitter', {
+	"$model" : $model
+});
+$.twitterView.add(twitterController.getView());
+
+
 $.storyTitle.setText($model.get('title'));
 $.subTitle.setText($model.get('ingress'));
 $.storyText.setText($model.get('fortelling'));

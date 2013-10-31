@@ -4,6 +4,7 @@
 			<!-- Story media -->
 		</View>
 		<ScrollView layout="vertical" backgroundColor="#40B0D2">
+			<View id="twitterView"></View>
 			<Label id="storyTitle" ></Label>
 			<Label id="subTitle"></Label>
 			<Label id="storyText"></Label>

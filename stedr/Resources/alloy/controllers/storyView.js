@@ -25,6 +25,10 @@ function Controller() {
         id: "__alloyId3"
     });
     $.__views.storyView.add($.__views.__alloyId3);
+    $.__views.twitterView = Ti.UI.createView({
+        id: "twitterView"
+    });
+    $.__views.__alloyId3.add($.__views.twitterView);
     $.__views.storyTitle = Ti.UI.createLabel({
         color: "white",
         width: Ti.UI.SIZE,
@@ -90,6 +94,10 @@ function Controller() {
         $model: $model
     });
     $.mediaGalleryStory.add(mediaGalleryController.getView());
+    var twitterController = Alloy.createController("twitter", {
+        $model: $model
+    });
+    $.twitterView.add(twitterController.getView());
     $.storyTitle.setText($model.get("title"));
     $.subTitle.setText($model.get("ingress"));
     $.storyText.setText($model.get("fortelling"));

@@ -1,0 +1,5 @@
+<Alloy>
+	<Window id="twitterView">
+		<Label id="twitterText"></Label>
+	</Window>
+</Alloy>
