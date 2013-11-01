@@ -6,27 +6,45 @@ var shareButton = Ti.UI.createButton({
 });
 $.twitterView.add(shareButton);
 
-var social = require('alloy/social');
-var twitter = social.create({
-	site : 'Twitter',
-	consumerKey : 'gHaiZb9KH9icQV5YRmIdA',
-	consumerSecret : 'v1hbUrM4rymaoE9Wry4ASZ6xxgSGKYDzUqtMStLhd8'
-});
+var Codebird = require('codebird');
+var cb = new Codebird();
+cb.setConsumerKey('gHaiZb9KH9icQV5YRmIdA', 'v1hbUrM4rymaoE9Wry4ASZ6xxgSGKYDzUqtMStLhd8');
 
+var bearerToken = Ti.App.Properties.getString('TwitterBearerToken', null);
+if (bearerToken == null) {
+	cb.__call('oauth2_token', {}, function(reply) {
+		var bearer_token = reply.access_token;
+		cb.setBearerToken(bearer_token);
+		Ti.App.Properties.setString('TwitterBearerToken', bearer_token);
+		Ti.API.info("Token: " + bearer_token);
+		fetchTwitter();
+	});
+} else {
+	Ti.API.info("We do have a bearer token...");
+	cb.setBearerToken(bearerToken);
+	fetchTwitter();
+}
 
+function fetchTwitter() {
+	cb.__call(
+		'search_tweets', 
+		"q=" + Ti.Network.encodeURIComponent("#plingplongpling"), function(reply) {
+		// ...
+		Ti.API.info("Reply fetch: " + JSON.stringify(reply));
+	}, true // this parameter required
+	);
+}
+
+function tweet() {
+	Ti.API.info("Trying to tweet");
+	cb.__call(
+		"statuses_update", {
+		"status" : "PLINGPLONG"
+	}, function(reply) {
+		Ti.API.info("Reply tweet: " + JSON.stringify(reply));
+	});
+}
 
 shareButton.addEventListener('click', function() {
-	twitter.authorize(function() {
-		Ti.API.info('Authorized!');
-	});
-	Ti.API.info(twitter.isAuthorized());
-	twitter.share({
-		message : 'Hello, world!',
-		success : function() {
-			Ti.API.info('Tweeted!');
-		},
-		error : function(error) {
-			Ti.API.info('Oh no! ' + error);
-		}
-	});
+	tweet();
 }); 
