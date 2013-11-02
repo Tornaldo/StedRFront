@@ -69,8 +69,8 @@ Customer decided that offline mode does not need to be implemented as this is a 
 
 Customer also requested adding two functional requirements concerning walls:
 
+* F2.1.2 System shall enable owner to add contributors to wall
 * F2.2.3 System shall get auto-fill suggestions when filtering upon topics (user defined tags)
-* F2.3.1 System shall let users edit walls collaboratively in groups
 
 
 ## Changes - Iteration 2
