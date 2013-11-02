@@ -118,7 +118,7 @@ As system does not store any entities in its own database, it is not its concern
 * F2.2.5 System shall show user a list of walls that feature his stories
 
 
-Another suggestion was that stories shall be retrieved from *Digitalt Fortalt* or *Storify* or similar service. We therefore cannot offer filtering upon attributes that are not present in the API of the service we use.
+Another suggestion was that stories shall be retrieved from *Digitalt Fortalt* or *Storify* or similar service. We therefore cannot offer filtering upon attributes that are not present in the API of the service we use. Thus, we dropped the requirements:
 
 * F2.2.1 System shall let users to filter walls by popularity
 * F3.2.1 System shall let users to filter stories by popularity.
