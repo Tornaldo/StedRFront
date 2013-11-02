@@ -44,7 +44,7 @@ From this description, we carried out first draft of our requirements document. 
 ### Functional: Stories
 
 * F3.1 System shall enable management of stories on virtual walls
-* F3.1.1 System shall let registered users add story on a wall by clicking on * a desired place on the wall
+* F3.1.1 System shall let registered users add story on a wall by clicking on a desired place on the wall
 * F3.1.2 System shall enable the stories to contain text, hyperlinks, video, pictures, audio
 * F3.2 System shall let users retrieve and view stories
 * F3.2.1 System shall let users to filter stories by popularity
@@ -126,6 +126,7 @@ As we are not able to store the comments in our database, it was suggested to us
 The missing database brought up the problem where should we get the walls from. For this purpose *Flickr* was suggested.
 
 Another request was that the project name shall change from *Virtual Wall* to *StedR* (norwegian for *places*, colloquially). The reason is uncertainty of most people about what the term actually means.
+
 >  Jeg har merket at folk ikke forstår begrep Virtual Wall. Hava synes dere om StedR? - Jacqueline Floch
 
 This change as well makes us call *walls* with their new name *places* instead. The rest of report is following this.
