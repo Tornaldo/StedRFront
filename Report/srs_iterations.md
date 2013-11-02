@@ -85,7 +85,16 @@ The original concept proposed was proven corrupt and inconsistent. Several requi
 * F1.2.3 System shall let the group owner remove users from group.
 * F2.3.1 System shall let users edit walls collaboratively in groups
 
+Issues about spam, illegal and abusive content were raised. Thus new funtional requirements were introduced:
+
+* F3.3.2 System shall notify story author about new comment
+* F3.3.3 System shall enable users to flag a comment as a spam
+* F3.3.4 System shall notify story author about spam-flagged comment
+* F3.3.5 System shall enable story author to remove a comment
+
+
 Also, so called *topics* are now simply refered to as *tags* instead. These were mentioned in: 
+
 * F2.2.2 System shall let users to filter walls by ...
 * F2.2.3 System shall get auto-fill suggestions when filtering upon topics (user defined tags)
 
@@ -104,8 +113,9 @@ Customer came up with the idea, that there is not to be any internal database fo
 As system does not store any entities in its own database, it is not its concern to be in charge of access control. The concept of users and owner relationships is therefore abandoned and the rest of functional requirements concerning those are dropped:
 
 * F1.1 System shall let users to register an account within the system.
-* F2.1.2   & System shall let owner delete a virtual wall
-* F2.1.3   & System shall enable owner to add contributors to wall (their stories for this location shall appear on the wall)
+* F2.1.2 System shall let owner delete a virtual wall
+* F2.1.3 System shall enable owner to add contributors to wall (their stories for this location shall appear on the wall)
+* F2.2.5 System shall show user a list of walls that feature his stories
 
 
 Another suggestion was that stories shall be retrieved from *Digitalt Fortalt* or *Storify* or similar service. We therefore cannot offer filtering upon attributes that are not present in the API of the service we use.
@@ -122,8 +132,15 @@ Also, we are not able to get list of tags in the system a priori to getting the 
 Not storing stories in own database also means user is not going to create or edit stories inside our application. The application shall only inform the user how to create the story, but the users must do this themself. Thus we dropped some other requirements:
 
 * F3.1.1 System shall let registered users add story to a location
+* F3.1.2 System shall enable the stories to contain text, hyperlinks, video, pictures, audio
 
-As we are not able to store the comments in our database, it was suggested to use *Twitter* to let users comment on stories and drop commenting on walls compately.
+As we are not able to store the comments in our database, it was suggested to use *Twitter* to let users comment on stories and drop commenting on walls completely:
+
+* F2.3.2 System shall let registered users comment on walls
+* F3.3.2 System shall notify story author about new comment
+* F3.3.3 System shall enable users to flag a comment as a spam
+* F3.3.4 System shall notify story author about spam-flagged comment
+* F3.3.5 System shall enable story author to remove a comment
 
 
 The missing database brought up the problem where should we get the walls from. For this purpose *Flickr* was suggested. This also means we do not store the walls anymore, which implies dropping other requirements:
