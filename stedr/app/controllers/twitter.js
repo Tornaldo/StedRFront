@@ -26,19 +26,19 @@ if (bearerToken == null) {
 }
 
 function fetchTwitter() {
-	cb.__call(
-		'search_tweets', 
-		"q=" + Ti.Network.encodeURIComponent("#plingplongpling"), function(reply) {
-		// ...
-		Ti.API.info("Reply fetch: " + JSON.stringify(reply));
+	cb.__call('search_tweets', "q=" + Ti.Network.encodeURIComponent("#nidarosdomen"), function(reply) {
+		Ti.API.info("Reply length: " + reply.statuses.length);
+		var row = Alloy.createController('twitterRow', {
+			"$model" : reply
+		});
+		stedrWallController.getView().open();
 	}, true // this parameter required
 	);
 }
 
 function tweet() {
 	Ti.API.info("Trying to tweet");
-	cb.__call(
-		"statuses_update", {
+	cb.__call("statuses_update", {
 		"status" : "PLINGPLONG"
 	}, function(reply) {
 		Ti.API.info("Reply tweet: " + JSON.stringify(reply));
@@ -47,4 +47,4 @@ function tweet() {
 
 shareButton.addEventListener('click', function() {
 	tweet();
-}); 
+});

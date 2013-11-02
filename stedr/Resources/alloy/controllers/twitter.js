@@ -1,7 +1,8 @@
 function Controller() {
     function fetchTwitter() {
-        cb.__call("search_tweets", "q=" + Ti.Network.encodeURIComponent("#plingplongpling"), function(reply) {
-            Ti.API.info("Reply fetch: " + JSON.stringify(reply));
+        cb.__call("search_tweets", "q=" + Ti.Network.encodeURIComponent("#nidarosdomen"), function(reply) {
+            Ti.API.info("Reply length: " + reply.statuses.length);
+            for (var i = 0; reply.statuses.length > i; i++) Ti.API.info("Reply number " + i + " : " + reply.statuses[i].text);
         }, true);
     }
     function tweet() {

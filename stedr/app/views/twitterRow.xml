@@ -1,8 +1,10 @@
 <Alloy>
 	<TableViewRow id="row">
-		<ImageView id="image" />
-		<Label id="name" />
-		<Label id="time" />
-		<Label id="text" />
+		<ImageView id="userimage" />
+		<View>
+			<Label id="name" />
+			<Label id="time" />
+			<Label id="text" />
+		</View>
 	</TableViewRow>
 </Alloy>
