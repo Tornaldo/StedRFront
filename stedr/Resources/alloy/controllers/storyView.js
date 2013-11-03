@@ -16,11 +16,11 @@ function Controller() {
         navBarHidden: "false",
         id: "__alloyId3"
     });
-    $.__views.mediaGalleryStory = Ti.UI.createView({
-        id: "mediaGalleryStory",
+    $.__views.mediaGalleryView = Ti.UI.createView({
+        id: "mediaGalleryView",
         height: "50%"
     });
-    $.__views.__alloyId3.add($.__views.mediaGalleryStory);
+    $.__views.__alloyId3.add($.__views.mediaGalleryView);
     $.__views.__alloyId4 = Ti.UI.createScrollView({
         layout: "vertical",
         backgroundColor: "#40B0D2",
@@ -113,12 +113,10 @@ function Controller() {
     $.__views.storyView && $.addTopLevelView($.__views.storyView);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Ti.API.info("Hello");
-    Ti.API.info("Entering: " + $model.get("title"));
     var mediaGalleryController = Alloy.createController("mediaGallery", {
         $model: $model
     });
-    $.mediaGalleryStory.add(mediaGalleryController.getView());
+    $.mediaGalleryView.add(mediaGalleryController.getView());
     var twitterController = Alloy.createController("twitter", {
         $model: $model
     });
@@ -128,13 +126,33 @@ function Controller() {
     $.storyText.setText($model.get("fortelling"));
     $.storyAuthor.setText($model.get("author"));
     var tags = $model.get("tags");
+    var tagStart = Ti.UI.createLabel({
+        text: "Tags: ",
+        width: Ti.UI.SIZE,
+        height: Ti.UI.SIZE,
+        left: 5,
+        font: {
+            fontFamily: "Helvetica",
+            fontSize: "15dp",
+            fontStyle: "normal",
+            fontWeight: "normal"
+        }
+    });
+    $.tagView.add(tagStart);
     for (i = 0; tags.length > i; i++) {
-        var tag = Ti.UI.createLabel({
+        if (tags.length != i) var tag = Ti.UI.createLabel({
+            text: tags[i] + ", ",
+            width: Ti.UI.SIZE,
+            height: Ti.UI.SIZE,
+            left: 10,
+            font: {
+                fontFamily: "Helvetica",
+                fontSize: "15dp",
+                fontStyle: "normal",
+                fontWeight: "normal"
+            }
+        }); else var tag = Ti.UI.createLabel({
             text: tags[i],
-            color: "white",
-            backgroundColor: "#40B0D2",
-            borderColor: "#8D8D8D",
-            borderRadius: 4,
             width: Ti.UI.SIZE,
             height: Ti.UI.SIZE,
             left: 10,

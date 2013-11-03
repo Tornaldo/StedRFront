@@ -1,7 +1,6 @@
 function Controller() {
     function fetchTwitter() {
         cb.__call("search_tweets", "q=" + Ti.Network.encodeURIComponent("#nidarosdomen"), function(reply) {
-            Ti.API.info("Reply length: " + reply.statuses.length);
             var row = Alloy.createController("twitterRow", {
                 $model: reply.statuses
             });
@@ -23,25 +22,34 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
+    var __defers = {};
     $.__views.twitterView = Ti.UI.createWindow({
         backgroundColor: "white",
         id: "twitterView",
         layout: "vertical"
     });
     $.__views.twitterView && $.addTopLevelView($.__views.twitterView);
+    $.__views.tweetText = Ti.UI.createTextField({
+        top: "10dp",
+        left: "10dp",
+        right: "10dp",
+        width: Ti.UI.FILL,
+        id: "tweetText",
+        hintText: "Enter your tweet... (max 140 letters)"
+    });
+    $.__views.twitterView.add($.__views.tweetText);
+    $.__views.tweetButton = Ti.UI.createButton({
+        id: "tweetButton",
+        title: "Tweet!"
+    });
+    $.__views.twitterView.add($.__views.tweetButton);
+    tweet ? $.__views.tweetButton.addEventListener("click", tweet) : __defers["$.__views.tweetButton!click!tweet"] = true;
     $.__views.twitterStatusesView = Ti.UI.createView({
         id: "twitterStatusesView"
     });
     $.__views.twitterView.add($.__views.twitterStatusesView);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var shareButton = Ti.UI.createButton({
-        width: 90,
-        bottom: 10,
-        height: 30,
-        title: "Tweet!"
-    });
-    $.twitterView.add(shareButton);
     var Codebird = require("codebird");
     var cb = new Codebird();
     cb.setConsumerKey("gHaiZb9KH9icQV5YRmIdA", "v1hbUrM4rymaoE9Wry4ASZ6xxgSGKYDzUqtMStLhd8");
@@ -57,9 +65,7 @@ function Controller() {
         cb.setBearerToken(bearerToken);
         fetchTwitter();
     }
-    shareButton.addEventListener("click", function() {
-        tweet();
-    });
+    __defers["$.__views.tweetButton!click!tweet"] && $.__views.tweetButton.addEventListener("click", tweet);
     _.extend($, exports);
 }
 

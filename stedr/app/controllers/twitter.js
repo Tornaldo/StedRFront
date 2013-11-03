@@ -1,11 +1,6 @@
-var shareButton = Ti.UI.createButton({
-	width : 90,
-	bottom : 10,
-	height : 30,
-	title : 'Tweet!'
-});
-$.twitterView.add(shareButton);
-
+/*
+ * Require Codebird, twitter API
+ */
 var Codebird = require('codebird');
 var cb = new Codebird();
 cb.setConsumerKey('gHaiZb9KH9icQV5YRmIdA', 'v1hbUrM4rymaoE9Wry4ASZ6xxgSGKYDzUqtMStLhd8');
@@ -25,10 +20,11 @@ if (bearerToken == null) {
 	fetchTwitter();
 }
 
+/*
+ * Fetch twitter statuses with q as the given tag
+ */
 function fetchTwitter() {
 	cb.__call('search_tweets', "q=" + Ti.Network.encodeURIComponent("#nidarosdomen"), function(reply) {
-		Ti.API.info("Reply length: " + reply.statuses.length);
-		
 		var row = Alloy.createController('twitterRow', {
 			"$model" : reply.statuses
 		});
@@ -37,15 +33,12 @@ function fetchTwitter() {
 	);
 }
 
+
 function tweet() {
 	Ti.API.info("Trying to tweet");
 	cb.__call("statuses_update", {
-		"status" : "PLINGPLONG"
+		"status" : Ti.Network.encodeURIComponent("#PLINGPLONG")
 	}, function(reply) {
 		Ti.API.info("Reply tweet: " + JSON.stringify(reply));
 	});
 }
-
-shareButton.addEventListener('click', function() {
-	tweet();
-});

@@ -1,3 +1,13 @@
 ".container" : {
   backgroundColor:"white"
 }
+"#tweetText":{
+	top: '10dp',
+	left: '10dp',
+	right: '10dp',
+	width : Ti.UI.FILL,
+	
+}
+"#tweetButton":{
+	
+}
