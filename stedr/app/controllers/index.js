@@ -38,7 +38,7 @@ $.mapWin.add(mapview);
 mapview.addEventListener('click', function(evt) {
 	Ti.API.info(evt.type);
 	Ti.API.info(evt.clicksource);
-	if (evt.clicksource == 'infoWindow' || evt.clicksource == 'leftPane' || evt.clicksource == 'title') {
+	if (evt.clicksource == 'infoWindow' || evt.clicksource == 'leftPane' || evt.clicksource == 'title' || evt.clicksource == 'rightPane') {
 		Ti.API.info("Trying to enter: " + wallCollection.get(evt.annotation.id).get('title'));
 		var stedrWallController = Alloy.createController('stedrWall', {
 			"$model" : wallCollection.get(evt.annotation.id)

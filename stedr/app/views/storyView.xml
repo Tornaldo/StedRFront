@@ -1,16 +1,23 @@
 <Alloy>
-	<Window class="container" layout="vertical" exitOnClose="false" navBarHidden="false">
-		<View id="mediaGalleryStory" height="50%">
-			<!-- Story media -->
-		</View>
-		<ScrollView layout="vertical" backgroundColor="#40B0D2">
-			<Label id="storyTitle" ></Label>
-			<Label id="subTitle"></Label>
-			<Label id="storyText"></Label>
-			<Label id="storyAuthor"></Label>
-			<View id="tagView" layout="horizontal"></View>
-			<View id="twitterView" ></View>
-		</ScrollView>
-		
-	</Window>>
+	<TabGroup>
+		<Tab id="storyTab" icon="images/digitaltfortaltlogo.png" backgroundColor="#8D8D8D" backgroundSelectedColor="#40B0D2">
+			<Window class="container" layout="vertical" exitOnClose="false" navBarHidden="false">
+				<View id="mediaGalleryStory" height="50%">
+					<!-- Story media -->
+				</View>
+				<ScrollView layout="vertical" backgroundColor="#40B0D2">
+					<Label id="storyTitle" ></Label>
+					<Label id="subTitle"></Label>
+					<Label id="storyText"></Label>
+					<Label id="storyAuthor"></Label>
+					<View id="tagView" layout="horizontal"></View>
+				</ScrollView>
+			</Window>
+		</Tab>
+		<Tab id="commentTab" icon="images/twitterlogo.png" backgroundColor="#8D8D8D" backgroundSelectedColor="#40B0D2">
+			<Window id="twitterWin">
+				<View id="twitterView" ></View>
+			</Window>
+		</Tab>
+	</TabGroup>
 </Alloy>

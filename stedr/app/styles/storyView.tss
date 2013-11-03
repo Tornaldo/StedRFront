@@ -9,10 +9,35 @@
         fontFamily:'Helvetica',
         fontSize: '20dp',
         fontStyle: 'normal',
+        fontWeight: 'bold',
+    }
+}
+"#subTitle": {
+	top:'10dp',
+	color: 'white',
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	font: {
+        fontFamily:'Helvetica',
+        fontSize: '15dp',
+        fontStyle: 'normal',
         fontWeight: 'normal',
     }
 }
-"Label": {
+"#storyText": {
+	top:'10dp',
+	color: 'white',
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	font: {
+        fontFamily:'Helvetica',
+        fontSize: '15dp',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+    }
+}
+"#storyAuthor": {
+	top:'10dp',
 	color: 'white',
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
