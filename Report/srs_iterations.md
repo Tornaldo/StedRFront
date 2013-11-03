@@ -143,10 +143,11 @@ As we are not able to store the comments in our database, it was suggested to us
 * F3.3.5 System shall enable story author to remove a comment
 
 
-The missing database brought up the problem where should we get the walls from. For this purpose *Flickr* was suggested. This also means we do not store the walls anymore, which implies dropping other requirements:
+The missing database brought up the problem where should we get the walls from. For this purpose *Flickr* was suggested. This also means we do not store the walls anymore and we generate them on the fly, which implies dropping other requirements:
 
-* F2.1     & System shall enable management of virtual walls
-* F2.1.1   & System shall let registered users create a virtual wall
+* F2.1 System shall enable management of virtual walls
+* F2.1.1 System shall let registered users create a virtual wall
+* F2.2.4 System shall let users to filter walls by story authors 
 
 
 Another request was that the project name shall change from *Virtual Wall* to *StedR* (norwegian for *places*, colloquially). The reason is uncertainty of most people about what the term actually means.
