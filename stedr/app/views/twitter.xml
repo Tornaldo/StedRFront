@@ -1,6 +1,5 @@
 <Alloy>
-	<Window id="twitterView" layout="vertical">
-		<Label id="twitterText" height="10%"></Label>
-		<Label id="twitterStatuses" height="90%"></Label>
+	<Window id="twitterView" layout="vertical" class="container">
+		<View id="twitterStatusesView" ></View>
 	</Window>
 </Alloy>

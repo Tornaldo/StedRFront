@@ -1,10 +1,9 @@
 <Alloy>
-	<TableViewRow id="row">
-		<ImageView id="userimage" />
-		<View>
-			<Label id="name" />
-			<Label id="time" />
-			<Label id="text" />
-		</View>
-	</TableViewRow>
+	<TableView dataCollection="tweets" dataTransform="transformFunction" class="twittertable">
+		<TableViewRow>
+			<ImageView id="twitterImage" image="{profileImage}" />
+			<Label id="twitterName" text="{userName}" />
+			<Label id="twitterText" text="{text}" />
+		</TableViewRow>
+	</TableView>
 </Alloy>

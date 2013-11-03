@@ -1,4 +1,35 @@
-
 ".container" : {
   
+}
+
+".twittertable":{
+	backgroundColor:"blue"
+}
+
+"Label":{
+	backgroundColor:"yellow"
+}
+
+".twitterImage":{
+        height:'40dp',
+        width:'40dp',
+        top:'10dp',
+        left:'10dp'
+}
+
+".twitterName":{
+        top:'10dp',
+        left:'60dp',
+        height:'16dp',
+        font:{
+                fontSize:'12sp'
+        }
+}
+
+".twitterText":{
+        top:'26dp',
+        left:'60dp',
+        bottom:'10dp',
+        textAlign:'left',
+        height:Ti.UI.SIZE
 }

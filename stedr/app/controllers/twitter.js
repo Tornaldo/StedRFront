@@ -2,7 +2,7 @@ var shareButton = Ti.UI.createButton({
 	width : 90,
 	bottom : 10,
 	height : 30,
-	title : 'Tweet!"'
+	title : 'Tweet!'
 });
 $.twitterView.add(shareButton);
 
@@ -28,10 +28,11 @@ if (bearerToken == null) {
 function fetchTwitter() {
 	cb.__call('search_tweets', "q=" + Ti.Network.encodeURIComponent("#nidarosdomen"), function(reply) {
 		Ti.API.info("Reply length: " + reply.statuses.length);
+		
 		var row = Alloy.createController('twitterRow', {
-			"$model" : reply
+			"$model" : reply.statuses
 		});
-		stedrWallController.getView().open();
+		$.twitterStatusesView.add(row.getView());
 	}, true // this parameter required
 	);
 }

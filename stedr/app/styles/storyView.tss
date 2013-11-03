@@ -1,6 +1,6 @@
 ".container": {
 	backgroundColor:"white"
-},
+}
 "#storyTitle": {
 	color: 'white',
 	width: Ti.UI.SIZE,

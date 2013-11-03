@@ -25,10 +25,6 @@ function Controller() {
         id: "__alloyId3"
     });
     $.__views.storyView.add($.__views.__alloyId3);
-    $.__views.twitterView = Ti.UI.createView({
-        id: "twitterView"
-    });
-    $.__views.__alloyId3.add($.__views.twitterView);
     $.__views.storyTitle = Ti.UI.createLabel({
         color: "white",
         width: Ti.UI.SIZE,
@@ -86,6 +82,11 @@ function Controller() {
         layout: "horizontal"
     });
     $.__views.__alloyId3.add($.__views.tagView);
+    $.__views.twitterView = Ti.UI.createView({
+        id: "twitterView",
+        height: "40%"
+    });
+    $.__views.storyView.add($.__views.twitterView);
     exports.destroy = function() {};
     _.extend($, $.__views);
     Ti.API.info("Hello");

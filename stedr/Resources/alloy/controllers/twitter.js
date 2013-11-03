@@ -2,7 +2,10 @@ function Controller() {
     function fetchTwitter() {
         cb.__call("search_tweets", "q=" + Ti.Network.encodeURIComponent("#nidarosdomen"), function(reply) {
             Ti.API.info("Reply length: " + reply.statuses.length);
-            for (var i = 0; reply.statuses.length > i; i++) Ti.API.info("Reply number " + i + " : " + reply.statuses[i].text);
+            var row = Alloy.createController("twitterRow", {
+                $model: reply.statuses
+            });
+            $.twitterStatusesView.add(row.getView());
         }, true);
     }
     function tweet() {
@@ -21,20 +24,22 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.twitterView = Ti.UI.createWindow({
-        id: "twitterView"
+        backgroundColor: "white",
+        id: "twitterView",
+        layout: "vertical"
     });
     $.__views.twitterView && $.addTopLevelView($.__views.twitterView);
-    $.__views.twitterText = Ti.UI.createLabel({
-        id: "twitterText"
+    $.__views.twitterStatusesView = Ti.UI.createView({
+        id: "twitterStatusesView"
     });
-    $.__views.twitterView.add($.__views.twitterText);
+    $.__views.twitterView.add($.__views.twitterStatusesView);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var shareButton = Ti.UI.createButton({
         width: 90,
         bottom: 10,
         height: 30,
-        title: 'Tweet!"'
+        title: "Tweet!"
     });
     $.twitterView.add(shareButton);
     var Codebird = require("codebird");
