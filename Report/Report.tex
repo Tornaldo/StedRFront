@@ -1007,12 +1007,14 @@ Sharing in this case means posting a link on user's social network profile.
 \subsection{Functions}
 The functional requirements are organized according to object categories.
 
+%FIXME SIMON: assign test levels
+
 \subsubsection{Users}
 
 \begin{table}[H]
 \centering
 \begin{tabular}{ l  p{11cm} }
-F1 & System shall let users to register an account within the system\\
+F1.1 & System shall let users to register an account within the system\\
 \end{tabular}
 \label{tab:req_users}
 \caption{Users}
@@ -1023,17 +1025,10 @@ F1 & System shall let users to register an account within the system\\
 \begin{table}[H]
 \centering
 \begin{tabular}{ l  p{11cm} }
-    F2.1     & System shall enable management of virtual walls                                                                   \\ \hline
-    F2.1.1   & System shall let registered users create a virtual wall                                                           \\ \hline
-    F2.1.2   & System shall let owner delete a virtual wall                                                                      \\ \hline
-    F2.1.3   & System shall enable owner to add contributors to wall (their stories for this location shall appear on the wall)  \\ \hline
     F2.2     & System shall let users filter and view walls                                                                      \\ \hline
-    F2.2.1   & System shall let users to filter walls by popularity                                                              \\ \hline
     F2.2.2   & System shall let users to filter walls by tags                                                                    \\ \hline
     F2.2.3   & System shall let users to filter walls by metadata (wall owner, location)                                         \\ \hline
     F2.2.4   & System shall let users to filter walls by story authors                                                           \\ \hline
-    F2.2.5   & System shall show user a list of walls that feature his stories                                                   \\ \hline
-    F2.3     & System shall let registered users comment on walls                                                                \\ \hline
     F2.4     & System shall let users like and share wall over social networks (facebook, twitter).
                See \ref{sec:req_social_networks} for details                                                                     \\ 
 \end{tabular}
@@ -1046,25 +1041,26 @@ F1 & System shall let users to register an account within the system\\
 \begin{table}[H]
 \centering
 \begin{tabular}{ l  p{11cm} }
-    F3.1     & System shall enable management of stories on virtual walls                                                        \\ \hline
-    F3.1.1   & System shall let registered users add story to a location                                                         \\ \hline
-    F3.1.2   & System shall enable the stories to contain text, hyperlinks, video, pictures, audio                               \\ \hline
     F3.2     & System shall let users filter and view stories from a particular wall                                             \\ \hline
-    F3.2.1   & System shall let users to filter stories by popularity on a particular wall                                       \\ \hline
     F3.2.2   & System shall let users to filter stories by tags on a particular wall                                             \\ \hline
     F3.2.4   & System shall let users to filter stories by metadata (author, media duration) on a particular wall                \\ \hline
     F3.3     & System shall let users comment on stories                                                                         \\ \hline
-    F3.3.1   & System shall notify story author about new comment                                                                \\ \hline
-    F3.3.2   & System shall enable users to flag a comment as a spam                                                             \\ \hline
-    F3.3.3   & System shall notify story author about spam-flagged comment                                                       \\ \hline
-    F3.3.4   & System shall enable story author to remove a comment                                                              \\ \hline
     F3.4     & System shall let users like and share stories over social networks (facebook, twitter). 
-               See \ref{sec:req_social_networks} for details                                                                     \\ \hline
-    F3.5     & System shall show user a list all his stories, and for each story a list of walls featuring the story             \\ \hline
-    F3.6     & System shall notify the user when last wall featuring his story was removed
+               See \ref{sec:req_social_networks} for details                                                                     \\
     \end{tabular}
 \label{tab:req_stories}
-\caption{Users}
+\caption{Stories}
+\end{table}
+
+\subsubsection{Images}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ l  p{11cm} }
+    F4.1     & System shall show images tagged with the tag of the particular place.                                             \\
+    \end{tabular}
+\label{tab:req_stories}
+\caption{Stories}
 \end{table}
 
 \subsection{Software system attributes}\label{sec:req_software_system_attributes}
@@ -1078,10 +1074,10 @@ Customer requests that the project documentation shall include description of al
 \subsubsection{Portability}
 As customer requested, the front end application shall be developed in order to be working on various devices, ranging from small smartphones to desktop stations.
 
-Quality attribute scenario to evaluate the system shall be determined later.
+Quality attribute scenario to evaluate the system shall be determined later. %FIXME SIMON prepare scenarios for: modifiablity (able to add new feature in time x), portability (deploying to other cloud service, running on other mobile platform...)
 
 \subsubsection{Usability}\label{sec:req_usability}
-From the description of typical usage (mentioned in \ref{sec:req_user_characteristics}) and characteristic problems listed in \ref{sec:req_webapplication_frontend}, we came up with several usability scenarios that shall evaluate the usability quality of the software system. As usability is a big concern in this project, usability scenarios and tests shall be included in the report under Test Procedures Specification.  % FIXME SIMON: once usabilitz tests are prepared, put refs to them (link to Test Procedures Specification)
+From the description of typical usage (mentioned in \ref{sec:req_user_characteristics}) and characteristic problems listed in \ref{sec:req_webapplication_frontend}, we came up with several usability scenarios that shall evaluate the usability quality of the software system. As usability is a big concern in this project, usability scenarios and tests shall be included in the report under Test Procedures Specification.  % FIXME SIMON: once usability tests are prepared, put refs to them (link to Test Procedures Specification)
 
 These scenarios shall evaluate, whether the application suits the needs of the audience in the means of usability. These shall be derived from use cases and requirements.
 
@@ -1311,7 +1307,19 @@ This is an iterative development process. In order for a function to work on the
 
 \chapter{Testing}
 
-\section{Test plan}
+\begin{quotation}\noindent
+Software testing is any activity aimed at evaluating an attribute or capability of a program or system and determining that it meets its required results. \cite{pan}
+\end{quotation}
+
+There are many various approaches to testing. In out project, we will perform a handful of them.
+
+One of the approaches we are going to use is called \emph{black-box testing}. According to \cite{shinde}, this involves testing based on required functionality without knowing the implementation details and inner workings of the system. This tells us whether we implemented what we should have implemented.
+
+Another important testing approach used in this project is \emph{white-box testing}. According to \cite{shinde}, this involves testing correctness of implemented functionality with the knowledge of the internal logic. This tells us whether the implementation is correct and works as intended. One particular instance of \emph{white-box testing} is \emph{unit testing}. This means testing individual \emph{units} (i.e. classes, modules, components) by the developer itself.
+
+Since usability is one of our key quality requirements, we are going to perform \emph{usability tests}, as well. According to \cite{shinde}, these kinds of tests are checking the navigation of user in the system and its user friendliness.
+
+\section{Design of test plan}
 
 The items and the form and content of the each test document is based on the IEEE Standard 829 \cite{ieee829}. So according to the definition of test plan in the standard: ``The test plan prescribes the scope, approach, resources, and schedule of the testing activities. It identifies the items to be tested, the features to be tested, the testing tasks to be performed, the personnel responsible for each task, and the risks associated with the plan''.
 
@@ -1322,11 +1330,11 @@ Let this test plan to be identified as ``VirtualWall\_TESTPLAN\_1''.
 The Virtual Wall software system consists of two subsystems:
 
 \begin{itemize}
-    \item backend/server
-    \item frontend/client (mobile/web application)
+    \item backend / server
+    \item frontend / client (mobile / web application)
 \end{itemize}
 
-The backend is the part of the system where all the data is stored. The backend serves the clients with the data on demand.
+The backend is the part of the system which retrieves the data from other services and serves the frontend with the data on demand.
 
 The client is the part of the system that presents the data to the user and that directly interacts with the user.
 
@@ -1343,7 +1351,7 @@ Following items shall be tested:
 All functional requirements listed in \ref{chap:req} for this project shall be tested, unless listed as features not to be tested under \ref{sec:test_plan_features_not_tested}.
 
 \subsection{Features not to be tested} \label{sec:test_plan_features_not_tested}
-There are no items known not to be tested.
+There are no items known to be not tested.
 
 \subsection{Approach}
 The overall approach is to perform a system test of all features listed under \ref{sec:test_plan_features_tested} using tests cases specified in \ref{sec:test_cases}.
@@ -1375,9 +1383,11 @@ The documents to be delivered shall include:
 \end{itemize}
 
 \subsection{Environmental needs}
-Backend subsystem shall be deployed on a server running JRE 1.6 and an instance of PostgreSQL database. The database needs to contain specified schema with structure according to DDL scripts.
+Backend subsystem shall be deployed on a server running JRE 1.6 and able to run Play Framework!.
 
-Server computer needs to be connected to the Internet. Specified port shall be open for server to listen on and reachable from outer network (not blocked by a firewall, etc). %FIXME SIMON: mention port number once it's known
+Server computer needs to be connected to the Internet. Specified port shall be open for server to listen on and reachable from outer network (not blocked by a firewall, etc).
+
+Alternative setup is deploying the server to some cloud computing platform like Heroku, RedHat OpenShift, Google AppEngine, or similar. 
 
 Device to run the client needs to be equipped Android or iOS mobile operating system. The device needs to be connected to the Internet.
 
@@ -1451,11 +1461,13 @@ The table \ref{tab:test_plan_schedule} lists tasks and maps them to people respo
     \centering
     \begin{tabular}{| l | l | l |}
         \hline
-        Task                                & Responsible     & Due date       \\ \hline
-        Design test cases for system tests  & Simon Stastny   & 2013-10-31     \\ \hline
-        Design usability tests              & TBD             & TBD            \\ \hline
-        Perform black-box tests             & TBD             & TBD            \\ \hline
-        Perform usability tests             & TBD             & TBD            \\ \hline
+        Task                                & Responsible             & Due date       \\ \hline
+        Design test cases for system tests  & Simon Stastny           & 2013-11-05     \\ \hline
+        Design usability tests              & TBD                     & TBD            \\ \hline
+        Perform black-box tests             & TBD                     & 2013-11-18     \\ \hline
+        Perform usability tests             & TBD                     & TBD            \\ \hline
+        Perform code inspection (server)    & Christian Frøystad      & 2013-11-05     \\ \hline
+        Perform code inspection (client)    & TBD                     & TBD            \\ \hline
     \end{tabular}
     \label{tab:test_plan_schedule}
     \caption{Test tasks schedule}
@@ -1475,19 +1487,30 @@ The table \ref{tab:test_plan_approvals} lists approvals of completed tasks.
     \centering
     \begin{tabular}{| l | l | l |}
         \hline
-        Task                                & Approved by     & Date           \\ \hline
-        Design test cases for system tests  & Simon Stastny   &                \\ \hline
-        Design usability tests              &                 &                \\ \hline
-        Perform black-box tests             &                 &                \\ \hline
-        Perform usability tests             &                 &                \\ \hline
+        Task                                & Approved by             & Date           \\ \hline
+        Design test cases for system tests  & Simon Stastny           &                \\ \hline
+        Design usability tests              &                         &                \\ \hline
+        Perform black-box tests             &                         &                \\ \hline
+        Perform usability tests             &                         &                \\ \hline
+        Perform code inspection (server)    & Christian Frøystad      &                \\ \hline
+        Perform code inspection (client)    &                         &                \\ \hline
     \end{tabular}
     \label{tab:test_plan_approvals}
     \caption{Test tasks approvals}
 \end{table}
 
+\section{Test levels}
+
+\subsection{Integration test level}
+\subsection{Integration test level}
+\subsection{Integration test level}
+
 \section{Test cases} \label{sec:test_cases}
 
 \section{Test results and evaluation}
+
+
+
 
 \chapter{Phases}
 \section{First phase: Planning}
