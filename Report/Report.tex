@@ -1025,12 +1025,13 @@ F1.1 & System shall let users to register an account within the system\\
 \begin{table}[H]
 \centering
 \begin{tabular}{ l  p{11cm} }
-    F2.2     & System shall let users filter and view walls                                                                      \\ \hline
-    F2.2.2   & System shall let users to filter walls by tags                                                                    \\ \hline
-    F2.2.3   & System shall let users to filter walls by metadata (wall owner, location)                                         \\ \hline
-    F2.2.4   & System shall let users to filter walls by story authors                                                           \\ \hline
-    F2.4     & System shall let users like and share wall over social networks (facebook, twitter).
-               See \ref{sec:req_social_networks} for details                                                                     \\ 
+    ID       & Description                                                                                              & Test level            \\ \hline
+    F2.2     & System shall let users filter and view walls                                                             & All                   \\ \hline
+    F2.2.2   & System shall let users to filter walls by tags                                                           & System, Unit, UAT     \\ \hline
+    F2.2.3   & System shall let users to filter walls by metadata (location)                                            & System, Unit, UAT     \\ \hline
+    F2.2.4   & System shall let users to filter walls by story authors                                                  & System, Unit, UAT     \\ \hline
+    F2.4     & System shall let users like and share wall over social networks (facebook, twitter). 
+               See \ref{sec:req_social_networks} for details                                                            & System, Unit, UAT     \\ 
 \end{tabular}
 \label{tab:req_walls}
 \caption{Walls}
@@ -1041,12 +1042,13 @@ F1.1 & System shall let users to register an account within the system\\
 \begin{table}[H]
 \centering
 \begin{tabular}{ l  p{11cm} }
-    F3.2     & System shall let users filter and view stories from a particular wall                                             \\ \hline
-    F3.2.2   & System shall let users to filter stories by tags on a particular wall                                             \\ \hline
-    F3.2.4   & System shall let users to filter stories by metadata (author, media duration) on a particular wall                \\ \hline
-    F3.3     & System shall let users comment on stories                                                                         \\ \hline
+    ID       & Description                                                                                              & Test level            \\ \hline
+    F3.2     & System shall let users filter and view stories from a particular wall                                    & All                   \\ \hline
+    F3.2.2   & System shall let users to filter stories by tags on a particular wall                                    & System, Unit, UAT     \\ \hline
+    F3.2.4   & System shall let users to filter stories by metadata (author, media duration) on a particular wall       & System, Unit, UAT     \\ \hline
+    F3.3     & System shall let users comment on stories                                                                & System, Unit, UAT     \\ \hline
     F3.4     & System shall let users like and share stories over social networks (facebook, twitter). 
-               See \ref{sec:req_social_networks} for details                                                                     \\
+               See \ref{sec:req_social_networks} for details                                                            & System, Unit, UAT     \\
     \end{tabular}
 \label{tab:req_stories}
 \caption{Stories}
@@ -1057,7 +1059,8 @@ F1.1 & System shall let users to register an account within the system\\
 \begin{table}[H]
 \centering
 \begin{tabular}{ l  p{11cm} }
-    F4.1     & System shall show images tagged with the tag of the particular place.                                             \\
+    ID       & Description                                                                                              & Test level            \\ \hline
+    F4.1     & System shall show images tagged with the tag of the particular place.                                    & All                   \\
     \end{tabular}
 \label{tab:req_stories}
 \caption{Stories}
@@ -1505,11 +1508,91 @@ The table \ref{tab:test_plan_approvals} lists approvals of completed tasks.
 
 \section{Test levels}
 
-% FIXME SIMON: write about test levels
+\subsection{Unit test level}
 
-\subsection{System test level}
+\paragraph{Objective}
+
+This level of tests is concerned about testing the correctness of implementation of individual unit (class, module, subsystem) in the system.
+
+\paragraph{Test Environment}
+
+To perform the tests in the unit level, we need to be able to run the unit within its subsystem. For testing units in the backend we obviously need the backend deployed on a server, etc.
+
+\paragraph{Completion Criteria}
+
+The unit level testing is completed when all unit tests are completed.
+
+\paragraph{Type of Test}
+
+This level of testing uses white-box testing since it is very important to know the application logic.
+
+
 \subsection{Integration test level}
-\subsection{User acceptance test level}
+
+\paragraph{Objective}
+
+This level of tests is concerned about integration of different subsystems, in this case the frontend and the backend. The purpose of tests in this level is to test the connection and cooperation of these two subsystems.
+
+\paragraph{Test Environment}
+
+To perform the tests in the integration level, we need both the working backend deployed on a server and a smartphone with the frontend application.
+
+\paragraph{Completion Criteria}
+
+The integration level testing is completed when each test is either performed or unable to be started due to unmet preconditions.
+
+\paragraph{Type of Test}
+
+For this level of testing, the white-box testing is to be used to find possible problems only the developers might be aware of, such as corner cases in input, etc.
+
+
+\subsubsection{System Test Level}
+
+\paragraph{Objective}
+
+This level of tests is concerned whether the system meets the functional and technical requirements.
+
+These tests should verify whether each function is implemented correctly and does what it is supposed to do.
+
+\paragraph{Test environment}
+
+For testing functionality of the backend, it must obviously be deployed on the server and running.
+
+For testing the functionality of the frontend application, it must be running on a smartphone and connected to the internet.
+
+\paragraph{Completion criteria}
+
+The system level testing is completed when each test is either performed or unable to be started due to unmet preconditions.
+
+\paragraph{Type of test}
+
+This level of tests is concerned about the functionality. Black box method shall be used, for it is not essential to know the logic of the application code. 
+
+
+\subsubsection{User Acceptance Test Level}
+
+\paragraph{Objective}
+
+This level of tests is usually ran by the customer on a completed product or user to find out whether the product meets all the requirement defined and it can be used in production.
+
+Tests of this level are defined beforehand with a set of scenarios so the vendors can ran the tests themselves and find out whether the product is ready to be handed in to the customer and shipped. This is as well to ensure that a product that is known to not pass tests at the customer side is not handed in to the customer yet (to save the vendor from embarrassment and avoid waste of time).
+
+\paragraph{Test Environment}
+
+The test environment for this level should be as close as possible to the real-world like environment used in the production.
+
+In our case, this means we need both the working backend deployed on a server and a smartphone with the frontend application.
+
+
+\paragraph{Completion Criteria}
+
+The user acceptance level testing is completed when each test is either performed or unable to be started due to unmet preconditions. This as well implies pass or fail result of the test respectively.
+
+
+\paragraph{Type of Test}
+
+Tests in this level shall be performed as black-box tests and usability tests. Note that we are testing real-world like usage of the system where the user is supposed to know nothing about the system and his satisfaction is very important.
+
 
 \section{Test cases} \label{sec:test_cases}
 
