@@ -1320,7 +1320,7 @@ The Virtual Wall software system consists of two subsystems:
     \item frontend/client (mobile/web application)
 \end{itemize}
 
-The backend is the part of the system where all the data is stored. The backend serves the clients with the data on demand.
+The backend is the part of the system which retrieves the sata from other services and serves the frontend with the data on demand.
 
 The client is the part of the system that presents the data to the user and that directly interacts with the user.
 
@@ -1337,7 +1337,7 @@ Following items shall be tested:
 All functional requirements listed in \ref{chap:req} for this project shall be tested, unless listed as features not to be tested under \ref{sec:test_plan_features_not_tested}.
 
 \subsection{Features not to be tested} \label{sec:test_plan_features_not_tested}
-There are no items known not to be tested.
+There are no items known to be not tested.
 
 \subsection{Approach}
 The overall approach is to perform a system test of all features listed under \ref{sec:test_plan_features_tested} using tests cases specified in \ref{sec:test_cases}.
@@ -1369,9 +1369,11 @@ The documents to be delivered shall include:
 \end{itemize}
 
 \subsection{Environmental needs}
-Backend subsystem shall be deployed on a server running JRE 1.6 and an instance of PostgreSQL database. The database needs to contain specified schema with structure according to DDL scripts.
+Backend subsystem shall be deployed on a server running JRE 1.6 and able to run Play Framework!.
 
-Server computer needs to be connected to the Internet. Specified port shall be open for server to listen on and reachable from outer network (not blocked by a firewall, etc). %FIXME SIMON: mention port number once it's known
+Server computer needs to be connected to the Internet. Specified port shall be open for server to listen on and reachable from outer network (not blocked by a firewall, etc).
+
+Alternative setup is deploying the server to some cloud computing platform like Heroku, RedHat OpenShift, Google AppEngine, or similar. 
 
 Device to run the client needs to be equipped Android or iOS mobile operating system. The device needs to be connected to the Internet.
 
@@ -1445,11 +1447,13 @@ The table \ref{tab:test_plan_schedule} lists tasks and maps them to people respo
     \centering
     \begin{tabular}{| l | l | l |}
         \hline
-        Task                                & Responsible     & Due date       \\ \hline
-        Design test cases for system tests  & Simon Stastny   & 2013-10-31     \\ \hline
-        Design usability tests              & TBD             & TBD            \\ \hline
-        Perform black-box tests             & TBD             & TBD            \\ \hline
-        Perform usability tests             & TBD             & TBD            \\ \hline
+        Task                                & Responsible             & Due date       \\ \hline
+        Design test cases for system tests  & Simon Stastny           & 2013-11-05     \\ \hline
+        Design usability tests              & TBD                     & TBD            \\ \hline
+        Perform black-box tests             & TBD                     & 2013-11-18     \\ \hline
+        Perform usability tests             & TBD                     & TBD            \\ \hline
+        Perform code inspection (server)    & Christian Frøystad      & 2013-11-05     \\ \hline
+        Perform code inspection (client)    & TBD                     & TBD            \\ \hline
     \end{tabular}
     \label{tab:test_plan_schedule}
     \caption{Test tasks schedule}
@@ -1469,11 +1473,13 @@ The table \ref{tab:test_plan_approvals} lists approvals of completed tasks.
     \centering
     \begin{tabular}{| l | l | l |}
         \hline
-        Task                                & Approved by     & Date           \\ \hline
-        Design test cases for system tests  & Simon Stastny   &                \\ \hline
-        Design usability tests              &                 &                \\ \hline
-        Perform black-box tests             &                 &                \\ \hline
-        Perform usability tests             &                 &                \\ \hline
+        Task                                & Approved by             & Date           \\ \hline
+        Design test cases for system tests  & Simon Stastny           &                \\ \hline
+        Design usability tests              &                         &                \\ \hline
+        Perform black-box tests             &                         &                \\ \hline
+        Perform usability tests             &                         &                \\ \hline
+        Perform code inspection (server)    & Christian Frøystad      &                \\ \hline
+        Perform code inspection (client)    &                         &                \\ \hline
     \end{tabular}
     \label{tab:test_plan_approvals}
     \caption{Test tasks approvals}
