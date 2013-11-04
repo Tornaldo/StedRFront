@@ -39,9 +39,7 @@ function Controller() {
         });
         Ti.API.info("HALLO?");
     }
-    function stringCounter(evt) {
-        Ti.API.info("TAP" + evt);
-        Ti.API.info("TAP" + evt.clicksource);
+    function stringCounter() {
         $.charCounter.setText("(" + $.tweetText.getValue().length + "/140)");
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
