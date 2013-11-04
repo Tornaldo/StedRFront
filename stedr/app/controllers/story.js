@@ -12,7 +12,6 @@ storyCollection.fetch({
 				image : element.get('pictures')[0]
 			});
 		});
-		Ti.API.info(JSON.stringify(storyCollection));
 		$.st.createGrid({
 			columns : 2, //NUMBER OF COLUMNS. DEFAULT IS 4.
 			space : 10, //SPACE BETWEEN EACH ELEMENT. DEFAULT IS 5.
@@ -28,7 +27,7 @@ storyCollection.fetch({
 		});
 	},
 	error : function() {
-		Ti.API.error("hmm - this is not good!");
+		Ti.API.error("Could not load story");
 	}
 });
 
@@ -37,7 +36,6 @@ $.st.on('click', function(e) {
 	var storyViewController = Alloy.createController('storyView', {
 			"$model" : storyCollection.get(e.source.id)
 		});
-		Ti.API.info(JSON.stringify(storyCollection.get(e.source.id)));
 		storyViewController.getView().open();
 });
 
