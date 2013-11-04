@@ -34,8 +34,8 @@ From this description, we carried out first draft of our requirements document. 
 * F2.2 System shall let users retrieve and view walls
 * F2.2.1 System shall let users to filter walls by popularity
 * F2.2.2 System shall let users to filter walls by topics (user-defined tags)
-* F2.2.3 System shall get auto-fill suggestions when filtering upon topics (user defined tags)
-* F2.2.4 System shall let users to filter walls by metadata
+* F2.2.3 System shall let users to filter walls by metadata
+* F2.2.4 System shall let users to filter walls by story authors 
 * F2.3 System shall enable social interaction upon walls
 * F2.3.1 System shall let users edit walls collaboratively in groups
 * F2.3.2 System shall let registered users comment on walls
@@ -49,8 +49,7 @@ From this description, we carried out first draft of our requirements document. 
 * F3.2 System shall let users retrieve and view stories
 * F3.2.1 System shall let users to filter stories by popularity
 * F3.2.2 System shall let users to filter stories by topics (user defined tags)
-* F3.2.3 System shall get auto-fill suggestions when filtering upon topics (user defined tags)
-* F3.2.4 System shall let users to filter stories by metadata (author, media duration)
+* F3.2.3 System shall let users to filter stories by metadata (author, media duration)
 * F3.3 System shall enable social interaction upon stories
 * F3.3.1 System shall let users comment on stories
 * F3.4 System shall let users share stories over social networks (facebook, twitter).
@@ -67,11 +66,12 @@ After the first few meetings with the customer, some necessary changes were carr
 
 Customer decided that offline mode does not need to be implemented as this is a prototype of the application and it should be simple, rapidly developed and used rather as a proof of concept than production-ready.
 
-Customer also requested adding two functional requirements concerning walls:
+Customer also requested adding two functional requirements concerning walls and stories:
 
 * F2.1.3 System shall enable owner to add contributors to wall
-* F2.2.4 System shall get auto-fill suggestions when filtering upon topics (user defined tags)
-* F2.2.5 System shall show user a list of walls that feature his stories
+* F2.2.5 System shall get auto-fill suggestions when filtering upon topics (user defined tags)
+* F2.2.6 System shall show user a list of walls that feature his stories
+* F3.2.4 System shall get auto-fill suggestions when filtering upon topics (user defined tags)
 
 ## Changes - Iteration 2
 
@@ -99,7 +99,7 @@ Also, so called *topics* are now simply refered to as *tags* instead. These were
 * F2.2.3 System shall get auto-fill suggestions when filtering upon topics (user defined tags)
 
 Another requirement was dropped as it was a duplicate of another.
-* System shall enable social interaction upon walls
+* F2.3 System shall enable social interaction upon walls
 
 Requirement F3.1.1 was rewritten from *System shall let registered users add story on a wall by clicking on a desired place on the wall* to more general *System shall let registered users add story to a location* as a particular mechanism of adding walls is a concern of design and implementation and proven to be a subject of change.
 
@@ -115,7 +115,8 @@ As system does not store any entities in its own database, it is not its concern
 * F1.1 System shall let users to register an account within the system.
 * F2.1.2 System shall let owner delete a virtual wall
 * F2.1.3 System shall enable owner to add contributors to wall (their stories for this location shall appear on the wall)
-* F2.2.5 System shall show user a list of walls that feature his stories
+* F2.2.5 System shall get auto-fill suggestions when filtering upon topics (user defined tags)
+* F2.2.6 System shall show user a list of walls that feature his stories
 
 
 Another suggestion was that stories shall be retrieved from *Digitalt Fortalt* or *Storify* or similar service. We therefore cannot offer filtering upon attributes that are not present in the API of the service we use. Thus, we dropped the requirements:
@@ -131,6 +132,7 @@ Also, we are not able to get list of tags in the system a priori to getting the 
 
 Not storing stories in own database also means user is not going to create or edit stories inside our application. The application shall only inform the user how to create the story, but the users must do this themself. Thus we dropped some other requirements:
 
+* F3.1 System shall enable management of stories on virtual walls
 * F3.1.1 System shall let registered users add story to a location
 * F3.1.2 System shall enable the stories to contain text, hyperlinks, video, pictures, audio
 
@@ -147,12 +149,11 @@ The missing database brought up the problem where should we get the walls from. 
 
 * F2.1 System shall enable management of virtual walls
 * F2.1.1 System shall let registered users create a virtual wall
-* F2.2.4 System shall let users to filter walls by story authors 
 
 
 Another request was that the project name shall change from *Virtual Wall* to *StedR* (norwegian for *places*, colloquially). The reason is uncertainty of most people about what the term actually means.
 
->  Jeg har merket at folk ikke forstår begrep Virtual Wall. Hava synes dere om StedR? - Jacqueline Floch
+>  Jeg har merket at folk ikke forstår begrep Virtual Wall. Hva synes dere om StedR? - Jacqueline Floch
 
 This change as well makes us call *walls* with their new name *places* instead. The rest of report is following this.
 
@@ -166,3 +167,7 @@ Additional feature of showing photos for tags on *Instagram* was requested.
 * 4.1 System shall show images tagged with the tag of the particular place.
 
 It was agreed that we shall use *Flickr* group called [StedR](http://www.flickr.com/groups/2297124@N25/) as a source of the *places*. Each photo added to this group shall appear as a *place* in our application on a place where it was geo-tagged on *Flickr*.
+
+As requirement F3.3.1 was the only child of its parent, we are renumbering it and calling it:
+
+* F3.3 System shall let users comment on stories
