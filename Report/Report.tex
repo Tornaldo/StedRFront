@@ -1469,7 +1469,8 @@ The table \ref{tab:test_plan_schedule} lists tasks and maps them to people respo
     \begin{tabular}{| l | l | l |}
         \hline
         Task                                & Responsible             & Due date       \\ \hline
-        Design test cases for system tests  & Simon Stastny           & 2013-11-05     \\ \hline
+        Design test cases for system tests  & Simon Stastny           & 2013-11-06     \\ \hline
+        Design quality attribute test cases & Simon Stastny           & 2013-11-05     \\ \hline
         Design usability tests              & TBD                     & TBD            \\ \hline
         Perform black-box tests             & TBD                     & 2013-11-18     \\ \hline
         Perform usability tests             & TBD                     & TBD            \\ \hline
@@ -1498,6 +1499,7 @@ The table \ref{tab:test_plan_approvals} lists approvals of completed tasks.
         \hline
         Task                                & Approved by             & Date           \\ \hline
         Design test cases for system tests  & Simon Stastny           &                \\ \hline
+        Design quality attribute test cases & Simon Stastny           & 2013-11-04     \\ \hline
         Design usability tests              &                         &                \\ \hline
         Perform black-box tests             &                         &                \\ \hline
         Perform usability tests             &                         &                \\ \hline
@@ -1599,6 +1601,39 @@ Tests in this level shall be performed as black-box tests and usability tests. N
 
 
 \section{Test cases} \label{sec:test_cases}
+
+\subsection{Quality attributes scenarios}
+
+\subsubsection{Modifiability scenarios}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{| l | p{11cm} |} \hline
+  Source of stimulus   & Developer                                   \\ \hline
+  Stimulus             & Integrate new external service              \\ \hline
+  Environment          & Design time                                 \\ \hline
+  Artefact             & Backend                                     \\ \hline
+  Response             & New feature added                           \\ \hline
+  Response measure     & Done in 5 hours                             \\ \hline
+\end{tabular}
+\label{tab:qas_newservice}
+\caption{Quality Attribute Scenario 1}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{| l | p{11cm} |} \hline
+  Source of stimulus   & Developer                                   \\ \hline
+  Stimulus             & Build application for a new platform        \\ \hline
+  Environment          & Design time                                 \\ \hline
+  Artefact             & Frontend                                    \\ \hline
+  Response             & Application built                           \\ \hline
+  Response measure     & Done in 5 hours                             \\ \hline
+\end{tabular}
+\label{tab:qas_newplatform}
+\caption{Quality Attribute Scenario 2}
+\end{table}
+
 
 % FIXME SIMON: write test cases for functional requirements and quality attributes scenarios
 

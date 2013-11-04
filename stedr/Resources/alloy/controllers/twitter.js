@@ -1,6 +1,10 @@
 function Controller() {
     function fetchTwitter() {
-        cb.__call("search_tweets", "q=" + Ti.Network.encodeURIComponent("#nidarosdomen"), function(reply) {
+        var params = {
+            q: hashtag,
+            count: 30
+        };
+        cb.__call("search_tweets", params, function(reply) {
             var row = Alloy.createController("twitterRow", {
                 $model: reply.statuses
             });
@@ -45,7 +49,7 @@ function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "twitter";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
-    arguments[0] ? arguments[0]["$model"] : null;
+    var $model = arguments[0] ? arguments[0]["$model"] : null;
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
@@ -66,7 +70,6 @@ function Controller() {
         maxLength: "140"
     });
     $.__views.twitterView.add($.__views.tweetText);
-    stringCounter ? $.__views.tweetText.addEventListener("keypressed", stringCounter) : __defers["$.__views.tweetText!keypressed!stringCounter"] = true;
     stringCounter ? $.__views.tweetText.addEventListener("change", stringCounter) : __defers["$.__views.tweetText!change!stringCounter"] = true;
     $.__views.twitterCharCounterAndButton = Ti.UI.createView({
         top: "10dp",
@@ -104,6 +107,11 @@ function Controller() {
     cb.setConsumerKey("gHaiZb9KH9icQV5YRmIdA", "v1hbUrM4rymaoE9Wry4ASZ6xxgSGKYDzUqtMStLhd8");
     var accessToken = null;
     var accessTokenSecret = null;
+    var storyName = $model.get("title");
+    storyName = storyName.replace(/[^a-z0-9\s]/gi, "");
+    storyName = storyName.replace(/[^a-z0-9]/gi, "_");
+    var hashtag = "#stedR_" + storyName;
+    $.tweetText.setValue(hashtag);
     var bearerToken = Ti.App.Properties.getString("TwitterBearerToken", null);
     if (null == bearerToken) cb.__call("oauth2_token", {}, function(reply) {
         var bearer_token = reply.access_token;
@@ -211,7 +219,6 @@ function Controller() {
             });
         });
     });
-    __defers["$.__views.tweetText!keypressed!stringCounter"] && $.__views.tweetText.addEventListener("keypressed", stringCounter);
     __defers["$.__views.tweetText!change!stringCounter"] && $.__views.tweetText.addEventListener("change", stringCounter);
     _.extend($, exports);
 }

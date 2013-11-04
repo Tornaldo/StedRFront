@@ -1,6 +1,6 @@
 <Alloy>
 	<Window id="twitterView" layout="vertical" class="container">
-		<TextArea id="tweetText" hintText="Enter your tweet... (max 140 letters)" maxLength="140" onKeypressed="stringCounter" onChange="stringCounter"></TextArea>
+		<TextArea id="tweetText" hintText="Enter your tweet... (max 140 letters)" maxLength="140" onChange="stringCounter"></TextArea>
 		<View id="twitterCharCounterAndButton" layout="horizontal" >
 			<Button id="tweetButton" title="Tweet!"></Button>
 			<Label id="charCounter" text="(0/140)"></Label>

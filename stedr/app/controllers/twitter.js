@@ -35,6 +35,15 @@ cb.setConsumerKey('gHaiZb9KH9icQV5YRmIdA', 'v1hbUrM4rymaoE9Wry4ASZ6xxgSGKYDzUqtM
 var accessToken = null;
 var accessTokenSecret = null;
 
+/*
+ * String concatenating and removing, the hashtag should be #stedR'storyName'
+ */
+var storyName = $model.get('title');
+storyName = storyName.replace(/[^a-z0-9\s]/gi, "");
+storyName = storyName.replace(/[^a-z0-9]/gi, "_");
+var hashtag = "#stedR_" + storyName;
+$.tweetText.setValue(hashtag);
+
 var bearerToken = Ti.App.Properties.getString('TwitterBearerToken', null);
 if (bearerToken == null) {
 	cb.__call('oauth2_token', {}, function(reply) {
@@ -52,9 +61,15 @@ fetchTwitter();
 
 /*
  * Fetch twitter statuses with q as the given tag
+ * Ti.Network.encodeURIComponent("#nidarosdomen")
+ * "q=" + Ti.Network.encodeURIComponent("#nidarosdomen")
  */
 function fetchTwitter() {
-	cb.__call('search_tweets', "q=" + Ti.Network.encodeURIComponent("#nidarosdomen"), function(reply) {
+	var params = {
+		q : hashtag,
+		count : 30
+	};
+	cb.__call('search_tweets', params, function(reply) {
 		var row = Alloy.createController('twitterRow', {
 			"$model" : reply.statuses
 		});
@@ -229,4 +244,4 @@ $.tweetButton.addEventListener('click', function(e) {
 			});
 		});
 	}
-}); 
+});
