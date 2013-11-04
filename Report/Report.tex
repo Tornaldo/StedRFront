@@ -35,6 +35,8 @@
 \loadglsentries{Glossary.tex}
 \makeglossaries
 
+\usepackage{gensymb}
+
 \begin{document}
 
 \frontmatter
@@ -1290,6 +1292,13 @@ All the states in the Figure ~\ref{fig:arch_client_process} have a back event in
       \label{fig:arch_client_process_story}
 \end{figure}
 
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Figures/Architecture/Sequence/client/storyView.jpg}
+      \caption{Client - Process view for story detail view}
+      \label{fig:arch_client_process_storyDetail}
+\end{figure}
+
 \subsubsection{Development view}
 This is an iterative development process. In order for a function to work on the client, it must have the required support on the server. It does not mean, however, that the server must first be finished in its entirety.
 
@@ -1313,6 +1322,169 @@ The clients only communicate with the broker and Twitter.
       \caption{Deployment view}
       \label{fig:arch_deployment}
 \end{figure}
+
+\section{Communication interfaces}
+Getting data from the server and by that, the services it consumes, is done by accessing given \glspl{url} and recieving \gls{json} as a return value.
+
+\subsection{Places}
+To access the places in the system, two options are availiable.
+If the objective is to get a hold of all places in the system, use the following address:
+\begin{lstlisting}[frame=single]
+/places.json
+\end{lstlisting}
+
+The places are returned as a \gls{json} document, as shown bellow.
+
+\begin{lstlisting}[frame=single]
+[
+  {
+    "id": "10365419324",
+    "owner": "30804868@N05",
+    "ownerName": "Simon Stastny",
+    "title": "Atlanterhavsveien",
+    "latitude": 63.016799,
+    "longitude": 7.354445,
+    "dateAdded": 1382204661000,
+    "pictureUrl": "http:\/\/farm4.staticflickr.com\/3665\
+                         /10365419324_698b0c5132.jpg",
+    "thumbnailUrl": "http:\/\/farm4.staticflickr.com\/3665\
+                             /10365419324_698b0c5132_t.jpg"
+  },
+  {
+    "id": "10365389335",
+    "owner": "30804868@N05",
+    "ownerName": "Simon Stastny",
+    "title": "Rotsethornet",
+    "latitude": 62.133544,
+    "longitude": 6.095094,
+    "dateAdded": 1382204661000,
+    "pictureUrl": "http:\/\/farm6.staticflickr.com\/5538\
+                         /10365389335_6bd2a47d6b.jpg",
+    "thumbnailUrl": "http:\/\/farm6.staticflickr.com\/5538\
+                             /10365389335_6bd2a47d6b_t.jpg"
+  }
+]
+\end{lstlisting}
+
+\subsection{Places in area}
+If the objective is to get only the places in a given area on the map, use the following address: 
+\begin{lstlisting}[frame=single]
+/places_in_area.json?startLatitude=63.397&startLongitude=10.305
+&stopLatitude=63.454&stopLongitude=10.492
+\end{lstlisting}
+When used, the query arguments should be fitted for the use case. The API assumes a Mercator-projection map like the one Google Maps are using.
+
+Where startLongitude is the the latitude of the west (i.e. left) border of the bounding box, stopLongitude is the east (i.e. right) border, startLatitude is the south (i.e. bottom) border and stopLatitude is the north (i.e. top) border of the bounding box.
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{Figures/Architecture/placesRange.png}
+      \caption{Places in area}
+      \label{fig:arch_interface_map}
+\end{figure}
+
+All latitudes and longitudes are given in \gls{dd}. To quote:
+
+\begin{quotation}\noindent
+Decimal degrees (DD) express latitude and longitude geographic coordinates as decimal fractions and are used in many geographic information systems (GIS), web mapping applications such as Google Maps, and GPS devices. Decimal degrees are an alternative to using degrees, minutes, and seconds (DMS). As with latitude and longitude, the values are bounded by $\pm$90\degree and $\pm$180\degree respectively. Positive latitudes are north of the equator, negative latitudes are south of the equator. Positive longitudes are east of Prime Meridian, negative longitudes are west of the Prime Meridian. Latitude and longitude are usually expressed in that sequence, latitude before longitude.\cite{decimalDegrees}
+\end{quotation}
+
+This means New York City has a positive latitude and negative longitude, while Rio de Janeiro has both values negative and Tokyo (or most of the Europe) both values positive.
+
+\subsection{Stories}
+For getting stories in radius of 50 meters from the Place identified by the passed \textit{placeId}, invoke this \gls{url}:
+
+\begin{lstlisting}[frame=single]
+http://stedr.herokuapp.com/stories.json?placeId=10357336336
+\end{lstlisting}
+
+This will return a collection of stories that match the provided place id.
+
+\begin{lstlisting}[frame=single]
+[
+    {
+        "author": "Kulturnett Tr\u00f8ndelag",
+        "category": "Arkitektur",
+        "fortelling": "\nMed utgangspunkt i Trondheim Kunstmuseum har vi fors\u00f8kt \u00e5 finne ut hva museumsarkitekturen kan fortelle oss om synet p\u00e5 kunst.\n\n",
+        "ingress": "Museumsarkitektur kan fortelle s\u00e5 mangt. ",
+        "institution": null,
+        "language": "Norsk",
+        "pictures": [
+            "http://media31.dimu.no/media/image/H-DF/DF.1985/4750?height=400&width=400"
+        ],
+        "tags": [
+            "museum",
+            "funksjonalisme",
+            "kunst",
+            "kunstmuseum",
+            "bygningshistorie",
+            "modernisme",
+            "Arkitektur(1)",
+            "fortellerkunst",
+            "Bildekunst(2)",
+            "museumsutstilling",
+            "museumsbes\u00f8k",
+            "Kultur og samfunn(23)"
+        ],
+        "title": "Hva forteller museet?",
+        "videos": [
+            "http://mm01.dimu.no/multimedia/012MtDCo.mp4?mmid=012MtDCo"
+        ]
+    },
+    {
+        "author": "Nidaros Domkirkes Restaureringsarbeider",
+        "category": "Arkitektur",
+        "fortelling": "Videoen ble lagd i forbindelse med prosjektet Nordic Handscape - kulturarv i nye former - i 2005. Prosjektet skulle pr\u00f8ve ut og utvikle nye m\u00e5ter \u00e5 formidle kulturarv p\u00e5 gjennom mobil teknologi.  \nManus: Tove S\u00f8reide/NDR\nProduksjon: Klipp og Lim Media AS\nStemme: Marte Stolp\n",
+        "ingress": "Videoen forteller om kalkmalingene i Regalierommet p\u00e5 Erkebispeg\u00e5rden i Trondheim. En f\u00e5r se og h\u00f8re om motivene, om maleren, og hva det hele kostet en gang i tiden. ",
+        "institution": null,
+        "language": "Norsk",
+        "pictures": [
+            "http://media31.dimu.no/media/image/H-DF/DF.1682/4136?height=400&width=400",
+            "http://media31.dimu.no/media/image/H-DF/DF.1682/4135?height=400&width=400",
+            "http://media31.dimu.no/media/image/H-DF/DF.1682/4138?height=400&width=400",
+            "http://media31.dimu.no/media/image/H-DF/DF.1682/4137?height=400&width=400"
+        ],
+        "tags": [
+            "nidaros",
+            "embetsgardar",
+            "Historie og geografi(22)",
+            "kunst",
+            "borger",
+            "Arkitektur(1)",
+            "Kulturminne(24)",
+            "Bildekunst(2)",
+            "kunstnere"
+        ],
+        "title": "Regalierommet",
+        "videos": [
+            "http://mm01.dimu.no/multimedia/01JY1q.mp4?mmid=01JY1q"
+        ]
+    }
+]
+\end{lstlisting}
+
+\subsection{Images}
+For getting images for a specified tag:
+\begin{lstlisting}[frame=single]
+/images.json?tag=nidaros
+\end{lstlisting}
+Returns a collection of stories like this:
+\begin{lstlisting}[frame=single]
+[
+    {
+        "fullName": "Bengt Persson",
+        "url": "http://distilleryimage9.s3.amazonaws.com/05ffa296426d11e3ac5c22000ae91269_8.jpg"
+    },
+    {
+        "fullName": "sheminbdille",
+        "url": "http://distilleryimage9.s3.amazonaws.com/df08ec16422a11e395a822000ae90d43_7.jpg"
+    },
+    {
+        "fullName": "mortensabo",
+        "url": "http://distilleryimage3.s3.amazonaws.com/f8b0334a41a311e3985c22000a1f9ad3_8.jpg"
+    }
+]
+\end{lstlisting}
 
 \section{Architectural rationale}
 
