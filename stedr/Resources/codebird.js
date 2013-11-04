@@ -243,7 +243,7 @@ var Codebird = function() {
             method_template = method_template.split(param).join(":" + param_l);
             if ("undefined" == typeof apiparams[param_l]) {
                 for (j = 0; 26 > j; j++) method_template = method_template.split(String.fromCharCode(65 + j)).join("_" + String.fromCharCode(97 + j));
-                console.warn('To call the templated method "' + method_template + '", specify the parameter value for "' + param_l + '".');
+                Ti.API.warn('To call the templated method "' + method_template + '", specify the parameter value for "' + param_l + '".');
             }
             method = method.split(param).join(apiparams[param_l]);
             delete apiparams[param_l];
@@ -259,7 +259,7 @@ var Codebird = function() {
     var oauth_authenticate = function(params, callback) {
         "undefined" == typeof params.force_login && (params.force_login = null);
         "undefined" == typeof params.screen_name && (params.screen_name = null);
-        null == _oauth_token && console.warn("To get the authenticate URL, the OAuth token must be set.");
+        null == _oauth_token && Ti.API.warn("To get the authenticate URL, the OAuth token must be set.");
         var url = _endpoint_oauth + "oauth/authenticate?oauth_token=" + _url(_oauth_token);
         if (true === params.force_login) {
             url += "?force_login=1";
@@ -271,7 +271,7 @@ var Codebird = function() {
     var oauth_authorize = function(params, callback) {
         "undefined" == typeof params.force_login && (params.force_login = null);
         "undefined" == typeof params.screen_name && (params.screen_name = null);
-        null == _oauth_token && console.warn("To get the authorize URL, the OAuth token must be set.");
+        null == _oauth_token && Ti.API.warn("To get the authorize URL, the OAuth token must be set.");
         var url = _endpoint_oauth + "oauth/authorize?oauth_token=" + _url(_oauth_token);
         if (true === params.force_login) {
             url += "?force_login=1";
@@ -281,7 +281,7 @@ var Codebird = function() {
         return true;
     };
     var oauth2_token = function(callback) {
-        null == _oauth_consumer_key && console.warn("To obtain a bearer token, the consumer key must be set.");
+        null == _oauth_consumer_key && Ti.API.warn("To obtain a bearer token, the consumer key must be set.");
         if ("undefined" == typeof callback) var callback = function() {};
         var post_fields = "grant_type=client_credentials";
         var url = _endpoint_oauth + "oauth2/token";
@@ -309,8 +309,8 @@ var Codebird = function() {
         return "array" == typeof data ? array_map([ this, "_url" ], data) : /boolean|number|string/.test(typeof data) ? encodeURIComponent(data).replace(/!/g, "%21").replace(/'/g, "%27").replace(/\(/g, "%28").replace(/\)/g, "%29").replace(/\*/g, "%2A") : "";
     };
     var _sha1 = function(data) {
-        null == _oauth_consumer_secret && console.warn("To generate a hash, the consumer secret must be set.");
-        "function" != typeof b64_hmac_sha1 && console.warn("To generate a hash, the Javascript SHA1.js must be available.");
+        null == _oauth_consumer_secret && Ti.API.warn("To generate a hash, the consumer secret must be set.");
+        "function" != typeof b64_hmac_sha1 && Ti.API.warn("To generate a hash, the Javascript SHA1.js must be available.");
         b64pad = "=";
         return b64_hmac_sha1(_oauth_consumer_secret + "&" + (null != _oauth_token_secret ? _oauth_token_secret : ""), data);
     };
@@ -359,7 +359,7 @@ var Codebird = function() {
     };
     var _nonce = function(length) {
         if ("undefined" == typeof length) var length = 8;
-        1 > length && console.warn("Invalid nonce length.");
+        1 > length && Ti.API.warn("Invalid nonce length.");
         var nonce = "";
         for (var i = 0; length > i; i++) {
             var character = Math.floor(61 * Math.random());
@@ -388,7 +388,7 @@ var Codebird = function() {
     var _sign = function(httpmethod, method, params, append_to_get) {
         if ("undefined" == typeof params) var params = {};
         if ("undefined" == typeof append_to_get) var append_to_get = false;
-        null == _oauth_consumer_key && console.warn("To generate a signature, the consumer key must be set.");
+        null == _oauth_consumer_key && Ti.API.warn("To generate a signature, the consumer key must be set.");
         var sign_params = {
             consumer_key: _oauth_consumer_key,
             version: "1.0",
@@ -442,7 +442,7 @@ var Codebird = function() {
         httpmethods["GET"] = [ "statuses/mentions_timeline", "statuses/user_timeline", "statuses/home_timeline", "statuses/retweets_of_me", "statuses/retweets/:id", "statuses/show/:id", "statuses/oembed", "search/tweets", "direct_messages", "direct_messages/sent", "direct_messages/show", "friendships/no_retweets/ids", "friends/ids", "followers/ids", "friendships/lookup", "friendships/incoming", "friendships/outgoing", "friendships/show", "friends/list", "followers/list", "account/settings", "account/verify_credentials", "blocks/list", "blocks/ids", "users/lookup", "users/show", "users/search", "users/contributees", "users/contributors", "users/profile_banner", "users/suggestions/:slug", "users/suggestions", "users/suggestions/:slug/members", "favorites/list", "lists/list", "lists/statuses", "lists/memberships", "lists/subscribers", "lists/subscribers/show", "lists/members/show", "lists/members", "lists/show", "lists/subscriptions", "saved_searches/list", "saved_searches/show/:id", "geo/id/:place_id", "geo/reverse_geocode", "geo/search", "geo/similar_places", "trends/place", "trends/available", "trends/closest", "oauth/authenticate", "oauth/authorize", "help/configuration", "help/languages", "help/privacy", "help/tos", "application/rate_limit_status" ];
         httpmethods["POST"] = [ "statuses/destroy/:id", "statuses/update", "statuses/retweet/:id", "statuses/update_with_media", "direct_messages/destroy", "direct_messages/new", "friendships/create", "friendships/destroy", "friendships/update", "account/settings__post", "account/update_delivery_device", "account/update_profile", "account/update_profile_background_image", "account/update_profile_colors", "account/update_profile_image", "blocks/create", "blocks/destroy", "account/update_profile_banner", "account/remove_profile_banner", "favorites/destroy", "favorites/create", "lists/members/destroy", "lists/subscribers/create", "lists/subscribers/destroy", "lists/members/create_all", "lists/members/create", "lists/destroy", "lists/update", "lists/create", "lists/members/destroy_all", "saved_searches/create", "saved_searches/destroy/:id", "geo/place", "users/report_spam", "oauth/access_token", "oauth/request_token", "oauth2/token", "oauth2/invalidate_token" ];
         for (var httpmethod in httpmethods) if (httpmethods[httpmethod].indexOf(method) > -1) return httpmethod;
-        console.warn("Can't find HTTP method to use for \"" + method + '".');
+        Ti.API.warn("Can't find HTTP method to use for \"" + method + '".');
     };
     var _detectMultipart = function(method) {
         var multiparts = [ "statuses/update_with_media", "account/update_profile_background_image", "account/update_profile_image", "account/update_profile_banner" ];
@@ -484,7 +484,7 @@ var Codebird = function() {
             xml.open(httpmethod, url_with_params, true);
         } else {
             if (_use_jsonp) {
-                console.warn("Sending POST requests is not supported for IE7-9.");
+                Ti.API.warn("Sending POST requests is not supported for IE7-9.");
                 return;
             }
             authorization = _sign(httpmethod, url, {});
@@ -498,7 +498,7 @@ var Codebird = function() {
             multipart ? xml.setRequestHeader("Content-Type", "multipart/form-data") : xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         }
         if (app_only_auth) {
-            null == _oauth_consumer_key && console.warn("To make an app-only auth API request, the consumer key must be set.");
+            null == _oauth_consumer_key && Ti.API.warn("To make an app-only auth API request, the consumer key must be set.");
             if (null == _oauth_bearer_token) return oauth2_token(function() {
                 _callApi(httpmethod, method, method_template, params, multipart, app_only_auth, callback);
             });
