@@ -1024,7 +1024,7 @@ F1.1 & System shall let users to register an account within the system\\
 
 \begin{table}[H]
 \centering
-\begin{tabular}{ l  p{11cm} }
+\begin{tabular}{ l  p{11cm} l }
     ID       & Description                                                                                              & Test level            \\ \hline
     F2.2     & System shall let users filter and view walls                                                             & All                   \\ \hline
     F2.2.2   & System shall let users to filter walls by tags                                                           & System, Unit, UAT     \\ \hline
@@ -1041,7 +1041,7 @@ F1.1 & System shall let users to register an account within the system\\
 
 \begin{table}[H]
 \centering
-\begin{tabular}{ l  p{11cm} }
+\begin{tabular}{ l  p{11cm} l }
     ID       & Description                                                                                              & Test level            \\ \hline
     F3.2     & System shall let users filter and view stories from a particular wall                                    & All                   \\ \hline
     F3.2.2   & System shall let users to filter stories by tags on a particular wall                                    & System, Unit, UAT     \\ \hline
@@ -1058,7 +1058,7 @@ F1.1 & System shall let users to register an account within the system\\
 
 \begin{table}[H]
 \centering
-\begin{tabular}{ l  p{11cm} }
+\begin{tabular}{ l  p{11cm} l }
     ID       & Description                                                                                              & Test level            \\ \hline
     F4.1     & System shall show images tagged with the tag of the particular place.                                    & All                   \\
     \end{tabular}
@@ -1235,14 +1235,14 @@ The process in the server is quite simple as it is modeled on the way \gls{http}
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{Figures/Architecture/serverProcessStory.jpg}
+      \includegraphics[width=0.8\textwidth]{Figures/Architecture/Sequence/story.jpg}
       \caption{Server - Process view for fetching stories}
       \label{fig:arch_server_process_story}
 \end{figure}
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{Figures/Architecture/serverProcessPlace.jpg}
+      \includegraphics[width=0.6\textwidth]{Figures/Architecture/Sequence/place.jpg}
       \caption{Server - Process view for fetching places}
       \label{fig:arch_server_process_place}
 \end{figure}
@@ -1251,9 +1251,9 @@ The retriever for places from Flickr has some additional functionality in order 
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{Figures/Architecture/serverFlickrRetriever.jpg}
-      \caption{Server - Process view for fetching places from Flickr}
-      \label{fig:arch_server_process_flickr}
+      \includegraphics[width=0.6\textwidth]{Figures/Architecture/Sequence/image.jpg}
+      \caption{Server - Process view for fetching user images}
+      \label{fig:arch_server_process_image}
 \end{figure}
 
 \subsubsection{Development view}

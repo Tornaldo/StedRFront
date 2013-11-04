@@ -1,5 +1,5 @@
 <Alloy>
-	<Window class="container">
-		<Label>Her kommer instagrambilder</Label>
+	<Window class="container" title="Pictures">
+		<Require type="widget" src="tiflexigrid" id="ig"/>
 	</Window>
 </Alloy>

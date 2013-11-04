@@ -1,0 +1,10 @@
+<Alloy>
+	<Window class="container" layout="vertical" exitOnClose="false" navBarHidden="false">
+		<ScrollView layout="vertical" backgroundColor="#40B0D2">
+			<View id="igView"></View>
+			<Label id="userName" ></Label>
+			<Label id="url"></Label>
+		</ScrollView>
+		<Require type="widget" src="tiflexigrid" id="igv"/>
+	</Window>>
+</Alloy>
