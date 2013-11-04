@@ -69,15 +69,14 @@ function tweet() {
 	}
 }
 
-
-$.tweetText.addEventListener('click', function(){
-	$.charCounter.setText("("+ $.tweetText.getValue.length +"/140)");
-});
+function stringCounter(evt) {
+	$.charCounter.setText("(" + $.tweetText.getValue().length + "/140)");
+}
 
 /*
- * Most of the following code is copy-pasted from a solution created by Rogichi (GitHub).
- * Source code: https://gist.github.com/Rogichi   (app.js)
- */
+* Most of the following code is copy-pasted from a solution created by Rogichi (GitHub).
+* Source code: https://gist.github.com/Rogichi   (app.js)
+*/
 
 ///////////LOAD ACCESS TOKEN
 loadAccessToken = function(pService) {
@@ -202,4 +201,4 @@ $.tweetButton.addEventListener('click', function(e) {
 			});
 		});
 	}
-});
+}); 

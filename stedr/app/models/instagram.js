@@ -4,7 +4,7 @@ exports.definition = {
 			"username" : "string",
 			"imageurl" : "string",
 		},
-		"URL" : "http://stedr.herokuapp.com/instagram.json",
+		"URL" : "http://stedr.herokuapp.com/images.json",
 		"adapter" : {
 			"type" : "restapi",
 			"collection_name" : "instagram",

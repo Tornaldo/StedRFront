@@ -43,4 +43,3 @@ $.story.addEventListener('close', function() {
 	Ti.API.info("Destroying story: " + $model.get('title'));
 	$.destroy();
 });
-

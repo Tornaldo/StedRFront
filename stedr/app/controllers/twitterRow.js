@@ -17,3 +17,4 @@ function showTweet(evt){
 	Ti.API.info(evt.source);
 	Ti.API.info(JSON.stringify(evt.source));
 }
+

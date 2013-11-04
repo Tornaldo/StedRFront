@@ -42,4 +42,9 @@ module.exports = [ {
             fontWeight: "normal"
         }
     }
+}, {
+    isId: true,
+    priority: 100000.0039,
+    key: "twitterStatusesView",
+    style: {}
 } ];
