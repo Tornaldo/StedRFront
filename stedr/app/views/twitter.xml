@@ -1,7 +1,10 @@
 <Alloy>
 	<Window id="twitterView" layout="vertical" class="container">
-		<TextField id="tweetText" hintText="Enter your tweet... (max 140 letters)"></TextField>
-		<Button id="tweetButton" onClick="tweet" title="Tweet!"></Button>
+		<TextArea id="tweetText" hintText="Enter your tweet... (max 140 letters)" maxLength="140"></TextArea>
+		<View id="twitterCharCounterAndButton" layout="horizontal">
+			<Button id="tweetButton" title="Tweet!"></Button>
+			<Label id="charCounter" text="(0/140)"></Label>
+		</View>
 		<View id="twitterStatusesView" ></View>
 	</Window>
 </Alloy>

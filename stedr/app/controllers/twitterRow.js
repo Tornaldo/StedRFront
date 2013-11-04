@@ -3,7 +3,7 @@ Alloy.Collections.tweets.reset($model);
 function transformFunction(model) {
     // Need to convert the model to a JSON object
     var transform = model.toJSON();
-    Ti.API.info("TRANSFORM "+ transform.profile_image_url_https);
+    Ti.API.info("TRANSFORM picture"+ transform.user.profile_image_url_https);
     transform.userName = transform.user.name;
     transform.screenName = "@" + transform.user.screen_name;
     transform.created = transform.created_at.slice(0,16);

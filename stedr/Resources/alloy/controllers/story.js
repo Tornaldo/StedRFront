@@ -31,7 +31,6 @@ function Controller() {
                     image: element.get("pictures")[0]
                 });
             });
-            Ti.API.info(JSON.stringify(storyCollection));
             $.st.createGrid({
                 columns: 2,
                 space: 10,
@@ -47,7 +46,7 @@ function Controller() {
             });
         },
         error: function() {
-            Ti.API.error("hmm - this is not good!");
+            Ti.API.error("Could not load story");
         }
     });
     $.st.on("click", function(e) {
@@ -55,7 +54,6 @@ function Controller() {
         var storyViewController = Alloy.createController("storyView", {
             $model: storyCollection.get(e.source.id)
         });
-        Ti.API.info(JSON.stringify(storyCollection.get(e.source.id)));
         storyViewController.getView().open();
     });
     $.story.addEventListener("close", function() {

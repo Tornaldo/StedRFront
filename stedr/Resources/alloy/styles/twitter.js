@@ -18,6 +18,28 @@ module.exports = [ {
 }, {
     isId: true,
     priority: 100000.0036,
+    key: "twitterCharCounterAndButton",
+    style: {
+        top: "10dp",
+        left: "10dp",
+        right: "10dp",
+        height: Ti.UI.SIZE
+    }
+}, {
+    isId: true,
+    priority: 100000.0037,
     key: "tweetButton",
     style: {}
+}, {
+    isId: true,
+    priority: 100000.0038,
+    key: "charCounter",
+    style: {
+        font: {
+            fontFamily: "Helvetica",
+            fontSize: "17sp",
+            fontStyle: "normal",
+            fontWeight: "normal"
+        }
+    }
 } ];
