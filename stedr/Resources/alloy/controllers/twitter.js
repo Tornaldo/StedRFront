@@ -39,6 +39,11 @@ function Controller() {
         });
         Ti.API.info("HALLO?");
     }
+    function stringCounter(evt) {
+        Ti.API.info("TAP" + evt);
+        Ti.API.info("TAP" + evt.clicksource);
+        $.charCounter.setText("(" + $.tweetText.getValue().length + "/140)");
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "twitter";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -46,6 +51,7 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
+    var __defers = {};
     $.__views.twitterView = Ti.UI.createWindow({
         backgroundColor: "white",
         id: "twitterView",
@@ -62,6 +68,8 @@ function Controller() {
         maxLength: "140"
     });
     $.__views.twitterView.add($.__views.tweetText);
+    stringCounter ? $.__views.tweetText.addEventListener("keypressed", stringCounter) : __defers["$.__views.tweetText!keypressed!stringCounter"] = true;
+    stringCounter ? $.__views.tweetText.addEventListener("change", stringCounter) : __defers["$.__views.tweetText!change!stringCounter"] = true;
     $.__views.twitterCharCounterAndButton = Ti.UI.createView({
         top: "10dp",
         left: "10dp",
@@ -109,9 +117,6 @@ function Controller() {
         cb.setBearerToken(bearerToken);
     }
     fetchTwitter();
-    $.tweetText.addEventListener("click", function() {
-        $.charCounter.setText("(" + $.tweetText.getValue.length + "/140)");
-    });
     loadAccessToken = function(pService) {
         Ti.API.info("Loading access token for service [" + pService + "].");
         var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, pService + ".config");
@@ -208,6 +213,8 @@ function Controller() {
             });
         });
     });
+    __defers["$.__views.tweetText!keypressed!stringCounter"] && $.__views.tweetText.addEventListener("keypressed", stringCounter);
+    __defers["$.__views.tweetText!change!stringCounter"] && $.__views.tweetText.addEventListener("change", stringCounter);
     _.extend($, exports);
 }
 

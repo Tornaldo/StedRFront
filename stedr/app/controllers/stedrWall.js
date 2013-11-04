@@ -44,4 +44,3 @@ $.stedrWall.addEventListener('close', function() {
 	Ti.API.info("Destroying: " + $model.get('title'));
 	$.destroy();
 });
-
