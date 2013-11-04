@@ -16,11 +16,11 @@
 ".nameView":{
 	top:'10dp',
     left:'70dp',
-    height: '20dp'
+    height: '22dp'
 }
 
 ".twitterName":{
-    height:'18dp',
+    height:'22dp',
     font: {
     fontFamily:'Helvetica',
 	    fontSize: '17sp',
@@ -30,7 +30,7 @@
 }
 
 ".screenName":{
-    height:'18dp',
+    height:'22dp',
     left: '5dp',
     font: {
     fontFamily:'Helvetica',
@@ -41,7 +41,7 @@
 }
 
 ".created":{
-    top:'30dp',
+    top:'32dp',
     left:'70dp',
     height:'18dp',
     font: {
@@ -53,7 +53,7 @@
 }
 
 ".twitterText":{
-    top:'50dp',
+    top:'52dp',
     left:'70dp',
     bottom:'10dp',
     textAlign:'left',

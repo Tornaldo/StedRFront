@@ -21,12 +21,12 @@ function Controller() {
             var __alloyId11 = Ti.UI.createView({
                 top: "10dp",
                 left: "70dp",
-                height: "20dp",
+                height: "22dp",
                 layout: "horizontal"
             });
             __alloyId7.add(__alloyId11);
             var __alloyId13 = Ti.UI.createLabel({
-                height: "18dp",
+                height: "22dp",
                 font: {
                     fontFamily: "Helvetica",
                     fontSize: "17sp",
@@ -37,7 +37,7 @@ function Controller() {
             });
             __alloyId11.add(__alloyId13);
             var __alloyId15 = Ti.UI.createLabel({
-                height: "18dp",
+                height: "22dp",
                 left: "5dp",
                 font: {
                     fontFamily: "Helvetica",
@@ -49,7 +49,7 @@ function Controller() {
             });
             __alloyId11.add(__alloyId15);
             var __alloyId17 = Ti.UI.createLabel({
-                top: "50dp",
+                top: "52dp",
                 left: "70dp",
                 bottom: "10dp",
                 textAlign: "left",
@@ -64,7 +64,7 @@ function Controller() {
             });
             __alloyId7.add(__alloyId17);
             var __alloyId19 = Ti.UI.createLabel({
-                top: "30dp",
+                top: "32dp",
                 left: "70dp",
                 height: "18dp",
                 font: {

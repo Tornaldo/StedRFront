@@ -7,6 +7,19 @@
 	right: '10dp',
 	width : Ti.UI.FILL,
 }
+"#twitterCharCounterAndButton":{
+	top: '10dp',
+	left: '10dp',
+	right: '10dp',
+	height: Ti.UI.SIZE,
+}
 "#tweetButton":{
-	
+}
+"#charCounter":{
+	font: {
+    fontFamily:'Helvetica',
+	    fontSize: '17sp',
+	    fontStyle: 'normal',
+	    fontWeight: 'normal',
+    }
 }

@@ -21,10 +21,15 @@ function Controller() {
             status: text
         }, function(reply) {
             Ti.API.info("Reply: ");
-            if (200 == reply.httpstatus) Ti.UI.createNotification({
-                message: "You just tweeted :) The tweet will appear on twitter in a few minutes",
-                duration: Ti.UI.NOTIFICATION_DURATION_LONG
-            }).show(); else {
+            if (200 == reply.httpstatus) {
+                $.tweetText.setValue("");
+                $.tweetText.setHintText("You've just tweeted. Tweet again?");
+                Ti.UI.createNotification({
+                    message: "You just tweeted :)",
+                    duration: Ti.UI.NOTIFICATION_DURATION_LONG
+                }).show();
+                fetchTwitter();
+            } else {
                 Ti.API.warn(reply.errors[0].message);
                 Ti.UI.createNotification({
                     message: "Sorry, something went wrong",
@@ -47,20 +52,41 @@ function Controller() {
         layout: "vertical"
     });
     $.__views.twitterView && $.addTopLevelView($.__views.twitterView);
-    $.__views.tweetText = Ti.UI.createTextField({
+    $.__views.tweetText = Ti.UI.createTextArea({
         top: "10dp",
         left: "10dp",
         right: "10dp",
         width: Ti.UI.FILL,
         id: "tweetText",
-        hintText: "Enter your tweet... (max 140 letters)"
+        hintText: "Enter your tweet... (max 140 letters)",
+        maxLength: "140"
     });
     $.__views.twitterView.add($.__views.tweetText);
+    $.__views.twitterCharCounterAndButton = Ti.UI.createView({
+        top: "10dp",
+        left: "10dp",
+        right: "10dp",
+        height: Ti.UI.SIZE,
+        id: "twitterCharCounterAndButton",
+        layout: "horizontal"
+    });
+    $.__views.twitterView.add($.__views.twitterCharCounterAndButton);
     $.__views.tweetButton = Ti.UI.createButton({
         id: "tweetButton",
         title: "Tweet!"
     });
-    $.__views.twitterView.add($.__views.tweetButton);
+    $.__views.twitterCharCounterAndButton.add($.__views.tweetButton);
+    $.__views.charCounter = Ti.UI.createLabel({
+        font: {
+            fontFamily: "Helvetica",
+            fontSize: "17sp",
+            fontStyle: "normal",
+            fontWeight: "normal"
+        },
+        id: "charCounter",
+        text: "(0/140)"
+    });
+    $.__views.twitterCharCounterAndButton.add($.__views.charCounter);
     $.__views.twitterStatusesView = Ti.UI.createView({
         id: "twitterStatusesView"
     });
@@ -83,6 +109,9 @@ function Controller() {
         cb.setBearerToken(bearerToken);
     }
     fetchTwitter();
+    $.tweetText.addEventListener("click", function() {
+        $.charCounter.setText("(" + $.tweetText.getValue.length + "/140)");
+    });
     loadAccessToken = function(pService) {
         Ti.API.info("Loading access token for service [" + pService + "].");
         var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, pService + ".config");

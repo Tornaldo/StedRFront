@@ -69,6 +69,11 @@ function tweet() {
 	}
 }
 
+
+$.tweetText.addEventListener('click', function(){
+	$.charCounter.setText("("+ $.tweetText.getValue.length +"/140)");
+});
+
 /*
  * Most of the following code is copy-pasted from a solution created by Rogichi (GitHub).
  * Source code: https://gist.github.com/Rogichi   (app.js)
