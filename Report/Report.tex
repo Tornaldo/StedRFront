@@ -361,7 +361,7 @@ Due to the diversity of the group, one in a full time job, the others attending 
 \section{Detailed plan}
 The goal of this chapter is to indicate how the project was executed. It was written as a guide on beforehand, but has been revised during the project lifetime in order to provide a better level of detail.
 
-\subsection{Phases}
+\subsection{Phases}\label{subsec:phases}
 Here follows a short summary of the contents, duration and expected outcome of each phase.
 
 \subsubsection{Planning and preliminary study}
@@ -1113,9 +1113,14 @@ Same categorization as in Functions.
 
 
 \chapter{Software System Architecture}\label{chap:architecture}
+The following architecture is the result of working closely with the customers requirements and trying to fulfill them as elegantly and sustainably as possible.
+
+For the client application, creating an architecture satisfying the customers requirements, was not too hard. It was  mainly based upon recognized industry patterns.
+
+Designing the server, which uses multiple external systems, without introducing multiple points of failure, proved to be more difficult. In the end, the server was designed with recognized industry patterns at least allowing it to fail gracefully.
 
 \section{Architectural drivers} \label{sec:architecture_drivers}
-In the following the document, the following items have been used as the main drivers for the architecture.
+In the following the document, the items listed bellow have been used as the main drivers for the architecture.
 
 \subsection{Maintainability} 
 A maintainable code base makes for a developable code base. Achieving a maintainable base will make development easier in the short run and maintenance less expensive in the long run. It will also be easier for other teams to continue the development upon the same code base.\\
@@ -1159,12 +1164,17 @@ Form of description: Class diagram
 \subsection{Process view}
 Purpose: The process view serves to show how the modules and classes communicates with each other, and explain the system processes.\\
 Stakeholders: Developers, Customer, End users, Course staff\\
-Form of description: 
+Form of description: Sequence diagrams
 
 \subsection{Development view}
 Purpose: The main matter of concern for the development view is the development process. It serves to show which parts of the system depends upon others. \\
 Stakeholders: Developers\\
 Form of description: Architecture Layer Diagram
+
+\subsection{Deployment view}
+Purpose: The deployment view serves to get a overview of how the system interrelate.
+Stakeholders: Developers
+Form of description: Deployment diagram
 
 \section{Architectural Tactics}
 
@@ -1303,6 +1313,20 @@ This is an iterative development process. In order for a function to work on the
       \includegraphics[width=0.5\textwidth]{Figures/Architecture/clientDevelopmentView.png}
       \caption{Client - Development view}
       \label{fig:arch_client_development}
+\end{figure}
+
+\subsection{Deployment view}
+Due to the systems being interconnected, the deployment view is made of the whole system in one diagram, instead of one for the server and anotherone for the client.
+
+The server retrieves data from multiple services hosted on several different servers in different countries. It serves as a broker between the clients and these services.
+
+The clients only communicate with the broker and Twitter.
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{Figures/Architecture/deploymentView.jpg}
+      \caption{Deployment view}
+      \label{fig:arch_deployment}
 \end{figure}
 
 \section{Architectural rationale}
@@ -1611,7 +1635,12 @@ Code inspection found the backend to be \emph{structured, clean, elegant, with n
 %FIXME SIMON: perform tests
 
 \chapter{Phases}
+This chapter aims to document the progress of the project, but also give valuable background for decisions taken and documentation for developing against the system.
+
+The chapter follows the outline from chapter ~\ref{subsec:phases}.
+
 \section{First phase: Planning}
+UPDATE READER ON WHAT HE HAS READ
 
 \section{Second phase: Sprint 1}
 \subsection{S1: Sprint planning}
@@ -1965,7 +1994,7 @@ It is a well-known fact that planet Earth is not flat. For this reason, various 
     \label{fig:mercator}
 \end{figure}
 
-As seen in \ref{fig:mercator}, it is a cylindrical conformal projection, so it preserves local angles (which is actually one of the reasons Google Maps use it), but is unfit for use in high-latitudes as the map extends infinitely North and South (so called \emph{polar exaggeration}). This shall be fine for use until we need to add a wall for a location near to one of the geographic poles (which are stretched infinitely along the top and bottom edges of the map). This could be a problem is we want to add a wall for example for the Amundsen–Scott South Pole Station located just few meters from the geographical such pole and which would and stretch widely east to west. \cite{progonos:mercator,radicalcartography} 
+As seen in \ref{fig:mercator}, it is a cylindrical conformal projection, so it preserves local angles, but is unfit for use in high-latitudes as the map extends infinitely North and South (so called \emph{polar exaggeration}). This shall be fine for use until we need to add a wall for a location near to one of the geographic poles (which are stretched infinitely along the top and bottom edges of the map). This could be a problem is we want to add a wall for example for the Amundsen–Scott South Pole Station located just few meters from the geographical such pole and which would and stretch widely east to west. \cite{progonos:mercator,radicalcartography} 
 
 
 \subsection{S3: Test execution}
