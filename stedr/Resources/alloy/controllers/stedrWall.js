@@ -30,46 +30,42 @@ function Controller() {
     $.__views.stedrWall && $.addTopLevelView($.__views.stedrWall);
     $.__views.wallPictureView = Ti.UI.createView({
         id: "wallPictureView",
-        height: "50%"
+        height: "50%",
+        layout: "vertical"
     });
     $.__views.stedrWall.add($.__views.wallPictureView);
-    var __alloyId11 = [];
+    var __alloyId2 = [];
     $.__views.mediaScrollerMainImage = Ti.UI.createScrollableView({
-        views: __alloyId11,
+        views: __alloyId2,
         id: "mediaScrollerMainImage",
-        showPagingControl: "true"
+        showPagingControl: "true",
+        height: "95%"
     });
     $.__views.wallPictureView.add($.__views.mediaScrollerMainImage);
+    $.__views.creditLabel = Ti.UI.createLabel({
+        color: "black",
+        font: {
+            fontFamily: "Helvetica",
+            fontSize: "10sp",
+            fontStyle: "normal",
+            fontWeight: "normal"
+        },
+        id: "creditLabel",
+        height: "5%"
+    });
+    $.__views.wallPictureView.add($.__views.creditLabel);
     $.__views.storyAndPictureView = Ti.UI.createView({
         id: "storyAndPictureView",
         layout: "vertical",
-        height: "50%",
-        width: Ti.UI.Fill
+        height: "50%"
     });
     $.__views.stedrWall.add($.__views.storyAndPictureView);
     $.__views.tabView = Ti.UI.createView({
         id: "tabView",
         layout: "horizontal",
-        height: "15%"
+        height: "20%"
     });
     $.__views.storyAndPictureView.add($.__views.tabView);
-    $.__views.pictureTab = Ti.UI.createButton({
-        backgroundColor: "#8D8D8D",
-        borderColor: "#8D8D8D",
-        borderRadius: 4,
-        color: "white",
-        font: {
-            fontFamily: "Helvetica",
-            fontSize: "20sp",
-            fontStyle: "normal",
-            fontWeight: "bold"
-        },
-        textAlign: "TEXT_ALIGNEMENT_CENTER",
-        left: 20,
-        id: "pictureTab",
-        title: "Bilder"
-    });
-    $.__views.tabView.add($.__views.pictureTab);
     $.__views.storyTab = Ti.UI.createButton({
         backgroundColor: "#40B0D2",
         borderColor: "#8D8D8D",
@@ -78,19 +74,37 @@ function Controller() {
         font: {
             color: "white",
             fontFamily: "Helvetica",
-            fontSize: "20sp",
+            fontSize: "25sp",
             fontStyle: "normal",
             fontWeight: "bold"
         },
-        textAlign: "TEXT_ALIGNEMENT_CENTER",
-        left: 20,
         id: "storyTab",
-        title: "Historier"
+        title: "Stories",
+        height: "80%",
+        width: "30%"
     });
     $.__views.tabView.add($.__views.storyTab);
+    $.__views.pictureTab = Ti.UI.createButton({
+        backgroundColor: "#8D8D8D",
+        borderColor: "#8D8D8D",
+        borderRadius: 4,
+        textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+        color: "white",
+        font: {
+            fontFamily: "Helvetica",
+            fontSize: "25sp",
+            fontStyle: "normal",
+            fontWeight: "bold"
+        },
+        id: "pictureTab",
+        title: "Pictures",
+        height: "80%",
+        width: "30%"
+    });
+    $.__views.tabView.add($.__views.pictureTab);
     $.__views.storyOrPictureView = Ti.UI.createView({
         id: "storyOrPictureView",
-        height: "85%"
+        height: "80%"
     });
     $.__views.storyAndPictureView.add($.__views.storyOrPictureView);
     exports.destroy = function() {};
@@ -100,6 +114,7 @@ function Controller() {
     $.mediaScrollerMainImage.addView(Ti.UI.createImageView({
         image: $model.get("pictureUrl")
     }));
+    $.creditLabel.setText("FOTO: " + $model.get("ownerName"));
     Ti.API.info("Starting storygallery: " + $model.get("title"));
     var storyGalleryController = Alloy.createController("story", {
         $model: $model

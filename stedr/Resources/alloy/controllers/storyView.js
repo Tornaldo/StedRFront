@@ -6,99 +6,165 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.storyView = Ti.UI.createWindow({
+    $.__views.storyView = Ti.UI.createTabGroup({
+        id: "storyView"
+    });
+    $.__views.__alloyId3 = Ti.UI.createWindow({
         backgroundColor: "white",
         layout: "vertical",
         exitOnClose: "false",
         navBarHidden: "false",
-        id: "storyView"
+        id: "__alloyId3"
     });
-    $.__views.storyView && $.addTopLevelView($.__views.storyView);
-    $.__views.__alloyId12 = Ti.UI.createScrollView({
+    $.__views.mediaGalleryView = Ti.UI.createView({
+        id: "mediaGalleryView",
+        height: "50%"
+    });
+    $.__views.__alloyId3.add($.__views.mediaGalleryView);
+    $.__views.__alloyId4 = Ti.UI.createScrollView({
         layout: "vertical",
-        id: "__alloyId12"
+        backgroundColor: "#40B0D2",
+        id: "__alloyId4"
     });
-    $.__views.storyView.add($.__views.__alloyId12);
-    $.__views.mediaGalleryStory = Ti.UI.createView({
-        id: "mediaGalleryStory"
-    });
-    $.__views.__alloyId12.add($.__views.mediaGalleryStory);
+    $.__views.__alloyId3.add($.__views.__alloyId4);
     $.__views.storyTitle = Ti.UI.createLabel({
+        color: "white",
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
-        color: "#000",
         font: {
             fontFamily: "Helvetica",
             fontSize: "20dp",
             fontStyle: "normal",
-            fontWeight: "normal"
+            fontWeight: "bold"
         },
         id: "storyTitle"
     });
-    $.__views.__alloyId12.add($.__views.storyTitle);
+    $.__views.__alloyId4.add($.__views.storyTitle);
     $.__views.subTitle = Ti.UI.createLabel({
+        top: "10dp",
+        color: "white",
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
-        color: "#000",
         font: {
             fontFamily: "Helvetica",
-            fontSize: "20dp",
+            fontSize: "15dp",
             fontStyle: "normal",
             fontWeight: "normal"
         },
         id: "subTitle"
     });
-    $.__views.__alloyId12.add($.__views.subTitle);
+    $.__views.__alloyId4.add($.__views.subTitle);
     $.__views.storyText = Ti.UI.createLabel({
+        top: "10dp",
+        color: "white",
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
-        color: "#000",
         font: {
             fontFamily: "Helvetica",
-            fontSize: "20dp",
+            fontSize: "15dp",
             fontStyle: "normal",
             fontWeight: "normal"
         },
         id: "storyText"
     });
-    $.__views.__alloyId12.add($.__views.storyText);
+    $.__views.__alloyId4.add($.__views.storyText);
     $.__views.storyAuthor = Ti.UI.createLabel({
+        top: "10dp",
+        color: "white",
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
-        color: "#000",
         font: {
             fontFamily: "Helvetica",
-            fontSize: "20dp",
+            fontSize: "15dp",
             fontStyle: "normal",
             fontWeight: "normal"
         },
         id: "storyAuthor"
     });
-    $.__views.__alloyId12.add($.__views.storyAuthor);
+    $.__views.__alloyId4.add($.__views.storyAuthor);
     $.__views.tagView = Ti.UI.createView({
         id: "tagView",
         layout: "horizontal"
     });
-    $.__views.__alloyId12.add($.__views.tagView);
+    $.__views.__alloyId4.add($.__views.tagView);
+    $.__views.storyTab = Ti.UI.createTab({
+        window: $.__views.__alloyId3,
+        id: "storyTab",
+        icon: "images/digitaltfortaltlogo.png",
+        backgroundColor: "#8D8D8D",
+        backgroundSelectedColor: "#40B0D2"
+    });
+    $.__views.storyView.addTab($.__views.storyTab);
+    $.__views.twitterWin = Ti.UI.createWindow({
+        id: "twitterWin"
+    });
+    $.__views.twitterView = Ti.UI.createView({
+        id: "twitterView"
+    });
+    $.__views.twitterWin.add($.__views.twitterView);
+    $.__views.commentTab = Ti.UI.createTab({
+        window: $.__views.twitterWin,
+        id: "commentTab",
+        icon: "images/twitterlogo.png",
+        backgroundColor: "#8D8D8D",
+        backgroundSelectedColor: "#40B0D2"
+    });
+    $.__views.storyView.addTab($.__views.commentTab);
+    $.__views.storyView && $.addTopLevelView($.__views.storyView);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Ti.API.info("Hello");
-    Ti.API.info("Entering: " + $model.get("title"));
+    var mediaGalleryController = Alloy.createController("mediaGallery", {
+        $model: $model
+    });
+    $.mediaGalleryView.add(mediaGalleryController.getView());
+    var twitterController = Alloy.createController("twitter", {
+        $model: $model
+    });
+    $.twitterView.add(twitterController.getView());
     $.storyTitle.setText($model.get("title"));
     $.subTitle.setText($model.get("ingress"));
     $.storyText.setText($model.get("fortelling"));
     $.storyAuthor.setText($model.get("author"));
     var tags = $model.get("tags");
-    for (i = 0; tags.length > i; i++) {
-        var tag = Ti.UI.createLabel({
-            text: tags[i]
-        });
-        $.storyView.add(tag);
-    }
-    var mediaGalleryController = Alloy.createController("mediaGallery", {
-        $model: $model
+    var tagStart = Ti.UI.createLabel({
+        text: "Tags: ",
+        width: Ti.UI.SIZE,
+        height: Ti.UI.SIZE,
+        left: 5,
+        font: {
+            fontFamily: "Helvetica",
+            fontSize: "15dp",
+            fontStyle: "normal",
+            fontWeight: "normal"
+        }
     });
-    $.mediaGalleryStory.add(mediaGalleryController.getView());
+    $.tagView.add(tagStart);
+    for (i = 0; tags.length > i; i++) {
+        if (tags.length != i) var tag = Ti.UI.createLabel({
+            text: tags[i] + ", ",
+            width: Ti.UI.SIZE,
+            height: Ti.UI.SIZE,
+            left: 10,
+            font: {
+                fontFamily: "Helvetica",
+                fontSize: "15dp",
+                fontStyle: "normal",
+                fontWeight: "normal"
+            }
+        }); else var tag = Ti.UI.createLabel({
+            text: tags[i],
+            width: Ti.UI.SIZE,
+            height: Ti.UI.SIZE,
+            left: 10,
+            font: {
+                fontFamily: "Helvetica",
+                fontSize: "15dp",
+                fontStyle: "normal",
+                fontWeight: "normal"
+            }
+        });
+        $.tagView.add(tag);
+    }
     $.storyView.addEventListener("close", function() {
         Ti.API.info("Destroying: " + $model.get("title"));
         $.destroy();

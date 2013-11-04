@@ -1,0 +1,13 @@
+<Alloy>
+	<TableView dataCollection="tweets" dataTransform="transformFunction" class="twittertable">
+		<TableViewRow onClick="showTweet">
+			<ImageView class="twitterImage" image="{profileImage}" />
+			<View class="nameView" layout="horizontal">
+				<Label class="twitterName" text="{userName}" />
+				<Label class="screenName" text="{screenName}"></Label>
+			</View>
+			<Label class="twitterText" text="{text}" />
+			<Label class="created" text="{created}"></Label>
+		</TableViewRow>
+	</TableView>
+</Alloy>

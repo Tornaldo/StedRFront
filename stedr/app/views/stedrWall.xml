@@ -1,15 +1,16 @@
 <Alloy>
 	<!-- Need to declare navBarHidden, so it becomes a heavy weight window that can capture back event -->
 	<Window class="container" layout="vertical" exitOnClose="false" navBarHidden="false">
-		<View id="wallPictureView" height="50%">
-			<ScrollableView id="mediaScrollerMainImage" showPagingControl="true" ></ScrollableView>
+		<View id="wallPictureView" height="50%" layout="vertical" >
+			<ScrollableView id="mediaScrollerMainImage" showPagingControl="true" height="95%"></ScrollableView>
+			<Label id="creditLabel" height="5%"></Label>
 		</View>
-		<View id="storyAndPictureView" layout="vertical" height="50%" width="Ti.UI.Fill">
-			<View id="tabView" layout="horizontal" height="15%">
-				<Button id="pictureTab" title="Bilder" ></Button>
-				<Button id="storyTab" title="Historier"></Button>
+		<View id="storyAndPictureView" layout="vertical" height="50%">
+			<View id="tabView" layout="horizontal" height="20%">
+				<Button id="storyTab" title="Stories" height="80%" width="30%"></Button>
+				<Button id="pictureTab" title="Pictures" height="80%" width="30%" ></Button>
 			</View>
-			<View id="storyOrPictureView" height="85%"></View>
+			<View id="storyOrPictureView" height="80%"></View>
 		</View>
 	</Window>
 </Alloy>

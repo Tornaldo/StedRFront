@@ -1,4 +1,4 @@
-$.index.open();
+$.mapWin.open();
 
 //Android Google Maps v2 module
 var MapModule;
@@ -38,7 +38,7 @@ $.mapWin.add(mapview);
 mapview.addEventListener('click', function(evt) {
 	Ti.API.info(evt.type);
 	Ti.API.info(evt.clicksource);
-	if (evt.clicksource == 'infoWindow' || evt.clicksource == 'leftPane' || evt.clicksource == 'title') {
+	if (evt.clicksource == 'infoWindow' || evt.clicksource == 'leftPane' || evt.clicksource == 'title' || evt.clicksource == 'rightPane') {
 		Ti.API.info("Trying to enter: " + wallCollection.get(evt.annotation.id).get('title'));
 		var stedrWallController = Alloy.createController('stedrWall', {
 			"$model" : wallCollection.get(evt.annotation.id)
@@ -61,9 +61,6 @@ wallCollection.fetch({
 						image : element.get('thumbnailUrl'),
 					}),
 
-					leftView : Ti.UI.createButton({
-						title : 'Besøk'
-					}),
 					id : element.get('id'),
 				});
 			} else {
@@ -76,9 +73,6 @@ wallCollection.fetch({
 					}),
 
 					pincolor : MapModule.ANNOTATION_AZURE,
-					leftView : Ti.UI.createButton({
-						title : 'Besøk'
-					}),
 					id : element.get('id'),
 				});
 			}
@@ -91,31 +85,6 @@ wallCollection.fetch({
 	}
 });
 
-$.index.addEventListener('close', function() {
+$.mapWin.addEventListener('close', function() {
 	$.destroy();
 });
-
-// function checkGooglePlayService() {
-// var MapModule = require('ti.map');
-// var rc = MapModule.isGooglePlayServicesAvailable();
-// switch (rc) {
-// case MapModule.SUCCESS:
-// Ti.API.info('Google Play services is installed.');
-// break;
-// case MapModule.SERVICE_MISSING:
-// Ti.API.info('Google Play services is missing. Please install Google Play services from the Google Play store.');
-// break;
-// case MapModule.SERVICE_VERSION_UPDATE_REQUIRED:
-// Ti.API.info('Google Play services is out of date. Please update Google Play services.');
-// break;
-// case MapModule.SERVICE_DISABLED:
-// Ti.API.info('Google Play services is disabled. Please enable Google Play services.');
-// break;
-// case MapModule.SERVICE_INVALID:
-// Ti.API.info('Google Play services cannot be authenticated. Reinstall Google Play services.');
-// break;
-// default:
-// Ti.API.info('Unknown error.');
-// break;
-// }
-// }

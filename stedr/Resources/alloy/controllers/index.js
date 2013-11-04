@@ -1,26 +1,4 @@
 function Controller() {
-    function __alloyId7() {
-        __alloyId7.opts || {};
-        var models = __alloyId6.models;
-        var len = models.length;
-        var rows = [];
-        for (var i = 0; len > i; i++) {
-            var __alloyId4 = models[i];
-            __alloyId4.__transform = {};
-            var __alloyId5 = Ti.UI.createTableViewRow({
-                font: {
-                    fontFamily: "Helvetica",
-                    fontSize: "20dp",
-                    fontStyle: "normal",
-                    fontWeight: "normal"
-                },
-                model: "undefined" != typeof __alloyId4.__transform["alloy_id"] ? __alloyId4.__transform["alloy_id"] : __alloyId4.get("alloy_id"),
-                title: "undefined" != typeof __alloyId4.__transform["title"] ? __alloyId4.__transform["title"] : __alloyId4.get("title")
-            });
-            rows.push(__alloyId5);
-        }
-        $.__views.__alloyId2.setData(rows);
-    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -28,42 +6,14 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.index = Ti.UI.createTabGroup({
-        id: "index"
-    });
-    $.__views.__alloyId1 = Ti.UI.createWindow({
-        backgroundColor: "white",
-        title: "Walls",
-        id: "__alloyId1"
-    });
-    $.__views.__alloyId2 = Ti.UI.createTableView({
-        id: "__alloyId2"
-    });
-    $.__views.__alloyId1.add($.__views.__alloyId2);
-    var __alloyId6 = Alloy.Collections["wall"] || wall;
-    __alloyId6.on("fetch destroy change add remove reset", __alloyId7);
-    $.__views.debugList = Ti.UI.createTab({
-        window: $.__views.__alloyId1,
-        id: "debugList",
-        title: "Liste (Debug)"
-    });
-    $.__views.index.addTab($.__views.debugList);
     $.__views.mapWin = Ti.UI.createWindow({
         title: "Wall",
         id: "mapWin"
     });
-    $.__views.__alloyId8 = Ti.UI.createTab({
-        window: $.__views.mapWin,
-        title: "Kart",
-        id: "__alloyId8"
-    });
-    $.__views.index.addTab($.__views.__alloyId8);
-    $.__views.index && $.addTopLevelView($.__views.index);
-    exports.destroy = function() {
-        __alloyId6.off("fetch destroy change add remove reset", __alloyId7);
-    };
+    $.__views.mapWin && $.addTopLevelView($.__views.mapWin);
+    exports.destroy = function() {};
     _.extend($, $.__views);
-    $.index.open();
+    $.mapWin.open();
     var MapModule;
     var mapview;
     MapModule = require("ti.map");
@@ -82,7 +32,7 @@ function Controller() {
     mapview.addEventListener("click", function(evt) {
         Ti.API.info(evt.type);
         Ti.API.info(evt.clicksource);
-        if ("infoWindow" == evt.clicksource || "leftPane" == evt.clicksource || "title" == evt.clicksource) {
+        if ("infoWindow" == evt.clicksource || "leftPane" == evt.clicksource || "title" == evt.clicksource || "rightPane" == evt.clicksource) {
             Ti.API.info("Trying to enter: " + wallCollection.get(evt.annotation.id).get("title"));
             var stedrWallController = Alloy.createController("stedrWall", {
                 $model: wallCollection.get(evt.annotation.id)
@@ -104,9 +54,6 @@ function Controller() {
                         image: element.get("thumbnailUrl")
                     }),
                     pincolor: MapModule.ANNOTATION_AZURE,
-                    leftView: Ti.UI.createButton({
-                        title: "Besøk"
-                    }),
                     id: element.get("id")
                 });
                 mapview.addAnnotation(mapAnnotation);
@@ -116,7 +63,7 @@ function Controller() {
             Ti.API.error("woops");
         }
     });
-    $.index.addEventListener("close", function() {
+    $.mapWin.addEventListener("close", function() {
         $.destroy();
     });
     _.extend($, exports);

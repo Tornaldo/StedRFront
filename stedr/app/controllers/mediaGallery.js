@@ -2,7 +2,6 @@ var imageUrlList = $model.get('pictures');
 var videoUrlList = $model.get('videos');
 
 Ti.API.info("Media for: " + $model.get('title'));
-Ti.API.info(JSON.stringify($model.get('pictures')));
 
 for ( i = 0; i < imageUrlList.length; i++) {
 	var wallImage = Ti.UI.createImageView({

@@ -11,11 +11,11 @@ function Controller() {
         id: "instagram"
     });
     $.__views.instagram && $.addTopLevelView($.__views.instagram);
-    $.__views.__alloyId9 = Ti.UI.createLabel({
+    $.__views.__alloyId0 = Ti.UI.createLabel({
         text: "Her kommer instagrambilder",
-        id: "__alloyId9"
+        id: "__alloyId0"
     });
-    $.__views.instagram.add($.__views.__alloyId9);
+    $.__views.instagram.add($.__views.__alloyId0);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var instagramCollection = Alloy.Collections.instagram;
