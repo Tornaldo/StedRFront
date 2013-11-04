@@ -81,7 +81,7 @@ function Controller() {
     }
     function transformFunction(model) {
         var transform = model.toJSON();
-        Ti.API.info("TRANSFORM " + transform.profile_image_url_https);
+        Ti.API.info("TRANSFORM picture" + transform.user.profile_image_url_https);
         transform.userName = transform.user.name;
         transform.screenName = "@" + transform.user.screen_name;
         transform.created = transform.created_at.slice(0, 16);
