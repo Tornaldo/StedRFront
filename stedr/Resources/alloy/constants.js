@@ -168,7 +168,7 @@ exports.IMPLICIT_NAMESPACES = {
     DocumentViewer: NS_TI_UI_IPAD,
     Popover: NS_TI_UI_IPAD,
     SplitWindow: NS_TI_UI_IPAD,
-    NavigationGroup: isTitanium && false ? NS_TI_UI_MOBILEWEB : NS_TI_UI_IPHONE,
+    NavigationGroup: isTitanium && true ? NS_TI_UI_MOBILEWEB : NS_TI_UI_IPHONE,
     StatusBar: NS_TI_UI_IPHONE,
     LeftNavButton: "Ti.UI.Window",
     RightNavButton: "Ti.UI.Window",

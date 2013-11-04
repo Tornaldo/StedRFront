@@ -403,7 +403,7 @@ Since it is not possible for the group to work together during normal work hours
 \subsection{Milestones}
 
 \subsubsection{Pre-delivery of report}
-Due: 14.10.2013 (08.10.2013 electronically to advisor)\\
+Due: 14.10.2013\\
 Delivery of the chapters Abstract, Introduction, Pre-study and the one containing choice of development model. The outline of the report should also be finalized in the table of contents. The outline does not need to be complete, but should give a good indication as to what each sections is to discuss.
 
 \subsubsection{Production of reports}
@@ -419,7 +419,7 @@ All copies is to be accompanied with a CD that contain the implementation, docum
 \subsection{Gantt diagram}
 \begin{figure}[H]
       \centering
-      \includegraphics[width=1.0\textwidth]{Figures/gantt.jpg}
+      \includegraphics[width=0.4\textwidth]{Figures/gantt.jpg}
       \caption{Overview of project}
       \label{fig:plan_gantt}
 \end{figure}
@@ -917,7 +917,7 @@ The following diagram shows the whole system and how the separate parts work tog
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{Figures/Requirements/overview.png}
+      \includegraphics[width=0.8\textwidth]{Figures/Architecture/deploymentView.jpg}
       \caption{Overview of interaction}
       \label{fig:req_overview}
 \end{figure}
@@ -1009,28 +1009,17 @@ The functional requirements are organized according to object categories.
 
 %FIXME SIMON: assign test levels
 
-\subsubsection{Users}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{ l  p{11cm} }
-F1.1 & System shall let users to register an account within the system\\
-\end{tabular}
-\label{tab:req_users}
-\caption{Users}
-\end{table}
-
-\subsubsection{Walls}
+\subsubsection{Places}
 
 \begin{table}[H]
 \centering
 \begin{tabular}{ l  p{11cm} l }
     ID       & Description                                                                                              & Test level            \\ \hline
-    F2.2     & System shall let users filter and view walls                                                             & All                   \\ \hline
-    F2.2.2   & System shall let users to filter walls by tags                                                           & System, Unit, UAT     \\ \hline
-    F2.2.3   & System shall let users to filter walls by metadata (location)                                            & System, Unit, UAT     \\ \hline
-    F2.2.4   & System shall let users to filter walls by story authors                                                  & System, Unit, UAT     \\ \hline
-    F2.4     & System shall let users like and share wall over social networks (facebook, twitter). 
+    F2.2     & System shall let users filter and view places                                                            & All                   \\ \hline
+    F2.2.2   & System shall let users to filter places by tags                                                          & System, Unit, UAT     \\ \hline
+    F2.2.3   & System shall let users to filter places by metadata (location)                                           & System, Unit, UAT     \\ \hline
+    F2.2.4   & System shall let users to filter places by story authors                                                 & System, Unit, UAT     \\ \hline
+    F2.4     & System shall let users like and share places over social networks (facebook, twitter). 
                See \ref{sec:req_social_networks} for details                                                            & System, Unit, UAT     \\ 
 \end{tabular}
 \label{tab:req_walls}
@@ -1043,9 +1032,9 @@ F1.1 & System shall let users to register an account within the system\\
 \centering
 \begin{tabular}{ l  p{11cm} l }
     ID       & Description                                                                                              & Test level            \\ \hline
-    F3.2     & System shall let users filter and view stories from a particular wall                                    & All                   \\ \hline
-    F3.2.2   & System shall let users to filter stories by tags on a particular wall                                    & System, Unit, UAT     \\ \hline
-    F3.2.4   & System shall let users to filter stories by metadata (author, media duration) on a particular wall       & System, Unit, UAT     \\ \hline
+    F3.2     & System shall let users filter and view stories from a particular places                                  & All                   \\ \hline
+    F3.2.2   & System shall let users to filter stories by tags on a particular places                                  & System, Unit, UAT     \\ \hline
+    F3.2.4   & System shall let users to filter stories by metadata (author, media duration) on a particular places     & System, Unit, UAT     \\ \hline
     F3.3     & System shall let users comment on stories                                                                & System, Unit, UAT     \\ \hline
     F3.4     & System shall let users like and share stories over social networks (facebook, twitter). 
                See \ref{sec:req_social_networks} for details                                                            & System, Unit, UAT     \\
@@ -1062,7 +1051,7 @@ F1.1 & System shall let users to register an account within the system\\
     ID       & Description                                                                                              & Test level            \\ \hline
     F4.1     & System shall show images tagged with the tag of the particular place.                                    & All                   \\
     \end{tabular}
-\label{tab:req_stories}
+\label{tab:req_images}
 \caption{Stories}
 \end{table}
 
@@ -1085,32 +1074,14 @@ From the description of typical usage (mentioned in \ref{sec:req_user_characteri
 These scenarios shall evaluate, whether the application suits the needs of the audience in the means of usability. These shall be derived from use cases and requirements.
 
 \section{Use case diagrams}
-Same categorization as in Functions. 
+As there is just few requirements left after all the changes made, we are presenting all of them in just one use case diagram.
 
-\subsubsection{User registration}
 \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{Figures/Requirements/user_registration.pdf}
-      \caption{Use case diagram for Users}
-      \label{fig:req_usecase_users}
-\end{figure}
-
-\subsubsection{Walls}
-\begin{figure}[H]
-      \centering
-      \includegraphics[width=0.8\textwidth]{Figures/Requirements/wall.pdf}
-      \caption{Use case diagram for Walls}
+      \includegraphics[width=0.5\textwidth]{Figures/Requirements/final.pdf}
+      \caption{Use case diagram for Places}
       \label{fig:req_usecase_walls}
 \end{figure}
-
-\subsubsection{Stories}
-\begin{figure}[H]
-      \centering
-      \includegraphics[width=0.8\textwidth]{Figures/Requirements/story.pdf}
-      \caption{Use case diagram for Stories}
-      \label{fig:req_usecase_stories}
-\end{figure}
-
 
 \chapter{Software System Architecture}\label{chap:architecture}
 The following architecture is the result of working closely with the customers requirements and trying to fulfill them as elegantly and sustainably as possible.
@@ -1300,10 +1271,12 @@ All the states in the Figure ~\ref{fig:arch_client_process} have a back event in
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=1.0\textwidth]{Figures/Architecture/clientProcess.jpg}
-      \caption{Client - Process view}
+      \includegraphics[width=0.8\textwidth]{Figures/Architecture/Sequence/client/map.jpg}
+      \caption{Client - Process view of map}
       \label{fig:arch_client_process}
 \end{figure}
+
+
 
 \subsubsection{Development view}
 This is an iterative development process. In order for a function to work on the client, it must have the required support on the server. It does not mean, however, that the server must first be finished in its entirety.
