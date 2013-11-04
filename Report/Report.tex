@@ -1607,33 +1607,133 @@ Tests in this level shall be performed as black-box tests and usability tests. N
 \subsubsection{Modifiability scenarios}
 
 \begin{table}[H]
-\centering
-\begin{tabular}{| l | p{11cm} |} \hline
-  Source of stimulus   & Developer                                   \\ \hline
-  Stimulus             & Integrate new external service              \\ \hline
-  Environment          & Design time                                 \\ \hline
-  Artefact             & Backend                                     \\ \hline
-  Response             & New feature added                           \\ \hline
-  Response measure     & Done in 5 hours                             \\ \hline
-\end{tabular}
-\label{tab:qas_newservice}
-\caption{Quality Attribute Scenario 1}
+  \centering
+  \begin{tabular}{| l | p{11cm} |} \hline
+    Source of stimulus   & Developer                                   \\ \hline
+    Stimulus             & Integrate new external service              \\ \hline
+    Environment          & Design time                                 \\ \hline
+    Artefact             & Backend                                     \\ \hline
+    Response             & New feature added                           \\ \hline
+    Response measure     & Done in 5 hours                             \\ \hline
+  \end{tabular}
+  \label{tab:qas_newservice}
+  \caption{Quality Attribute Scenario 1}
 \end{table}
 
 \begin{table}[H]
-\centering
-\begin{tabular}{| l | p{11cm} |} \hline
-  Source of stimulus   & Developer                                   \\ \hline
-  Stimulus             & Build application for a new platform        \\ \hline
-  Environment          & Design time                                 \\ \hline
-  Artefact             & Frontend                                    \\ \hline
-  Response             & Application built                           \\ \hline
-  Response measure     & Done in 5 hours                             \\ \hline
-\end{tabular}
-\label{tab:qas_newplatform}
-\caption{Quality Attribute Scenario 2}
+  \centering
+  \begin{tabular}{| l | p{11cm} |} \hline
+    Source of stimulus   & Developer                                   \\ \hline
+    Stimulus             & Build application for a new platform        \\ \hline
+    Environment          & Design time                                 \\ \hline
+    Artefact             & Frontend                                    \\ \hline
+    Response             & Application built                           \\ \hline
+    Response measure     & Done in 5 hours                             \\ \hline
+  \end{tabular}
+  \label{tab:TC_qas_newplatform}
+  \caption{Quality Attribute Scenario 2}
 \end{table}
 
+\subsection{Requirements test cases}
+
+\subsubsection{Backend test cases}
+
+Test cases in \ref{tab:TC_F2.2B1}, \ref{tab:tab:TC_F3.2B1} and \ref{tab:tab:TC_F4.1B1} are testing the server backend part of the system. These are to be performed as white-box tests by the developers, so they can identify possible problems. This is not a function to be used directly by users.
+
+\begin{table}
+  \begin{tabular}{| p{3cm} | p{9.5cm} |} \hline 
+    TC Title              & Places.json server method \\ \hline 
+    TC Identification     & TC-F2.2-B-1 \\ \hline 
+    Requirement           & F2.2 \\ \hline 
+    Feature               & Server exposes a method for retrieving places in the specified JSON format. \\ \hline 
+    Preconditions         & \begin{enumerate}
+                              \item Flickr is up.
+                              \item There are some photos posted to the StedR group on Flickr that have any kind of
+                               Creative Commons licence, set location and are public and visible through the Flickr API.
+                              \item Server backend is successfully deployed at \texttt{http://stedr.herokuapp.com}
+                            \end{enumerate} \\ \hline 
+
+    Test description      & Manually check in browser whether the method returns the data as expected.
+
+                            \begin{enumerate}
+                              \item Open a web browser.
+                              \item Go to \texttt{/places.json}
+                            \end{enumerate} \\ \hline 
+    Expected result       & \begin{enumerate}
+                              \item The window should feature a JSON file with structure as shown in appendix. %FIXME SIMON: appendix message samples
+                            \end{enumerate} \\ \hline 
+    Pass/Fail criteria    & All results appear as expected above.
+                            \begin{enumerate}
+                              \item JSON file is returned and valid.
+                            \end{enumerate} \\ \hline 
+    Severity              & High \\ \hline 
+  \end{tabular}
+  \label{tab:TC_F2.2B1}
+  \caption{Requirements Test case TC-F2.2-B-1}
+\end{table}
+
+
+\begin{table}
+  \begin{tabular}{| p{3cm} | p{9.5cm} |} \hline 
+    TC Title              & Stories.json server method \\ \hline 
+    TC Identification     & TC-F3.2-B-1 \\ \hline 
+    Requirement           & F3.2 \\ \hline 
+    Feature               & Server exposes a method for retrieving stories for a particular place in the specified JSON format. \\ \hline 
+    Preconditions         & \begin{enumerate}
+                              \item Flickr is up.
+                              \item Digitalt Fortalt is up.
+                              \item We have a placeId from the \texttt{places.json} file (for example \texttt{10671243644})
+                              \item Server backend is successfully deployed at \texttt{http://stedr.herokuapp.com}
+                            \end{enumerate} \\ \hline 
+
+    Test description      & Manually check in browser whether the method returns the data as expected.
+
+                            \begin{enumerate}
+                              \item Open a web browser.
+                              \item Go to \texttt{/stories.json?placeId=10671243644}
+                            \end{enumerate} \\ \hline 
+    Expected result       & \begin{enumerate}
+                              \item The window should feature a JSON file with structure as shown in appendix. %FIXME SIMON: appendix message samples
+                            \end{enumerate} \\ \hline 
+    Pass/Fail criteria    & All results appear as expected above.
+                            \begin{enumerate}
+                              \item JSON file is returned and valid.
+                            \end{enumerate} \\ \hline 
+    Severity              & High \\ \hline 
+  \end{tabular}
+  \label{tab:TC_F3.2B1}
+  \caption{Requirements Test case TC-F2.2-B-1}
+\end{table}
+
+\begin{table}
+  \begin{tabular}{| p{3cm} | p{9.5cm} |} \hline 
+    TC Title              & Images.json server method \\ \hline 
+    TC Identification     & TC-F4.1-B-1 \\ \hline 
+    Requirement           & F4.1 \\ \hline 
+    Feature               & Server exposes a method for retrieving images for a particular tag in the specified JSON format. \\ \hline 
+    Preconditions         & \begin{enumerate}
+                              \item Instagram is up.
+                              \item Server backend is successfully deployed at \texttt{http://stedr.herokuapp.com}
+                            \end{enumerate} \\ \hline 
+
+    Test description      & Manually check in browser whether the method returns the data as expected.
+
+                            \begin{enumerate}
+                              \item Open a web browser.
+                              \item Go to \texttt{/images.json?tag=nidarosdomen}
+                            \end{enumerate} \\ \hline 
+    Expected result       & \begin{enumerate}
+                              \item The window should feature a JSON file with structure as shown in appendix. %FIXME SIMON: appendix message samples
+                            \end{enumerate} \\ \hline 
+    Pass/Fail criteria    & All results appear as expected above.
+                            \begin{enumerate}
+                              \item JSON file is returned and valid.
+                            \end{enumerate} \\ \hline 
+    Severity              & High \\ \hline 
+  \end{tabular}
+  \label{tab:TC_F4.1B1}
+  \caption{Requirements Test case TC-F4.1-B-1}
+\end{table}
 
 % FIXME SIMON: write test cases for functional requirements and quality attributes scenarios
 
