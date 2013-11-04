@@ -5,12 +5,12 @@ var MapModule;
 
 var mapview;
 
-if (OS_MOBILEWEB) {
-	mapview = Titanium.Map.createView({
-		mapType : Titanium.Map.STANDARD_TYPE,
-		animate : true,
-		regionFit : true,
+if (OS_ANDROID) {
+	MapModule = require('ti.map');
+	mapview = MapModule.createView({
 		userLocation : true,
+		mapType : MapModule.NORMAL_TYPE,
+		animate : true,
 		region : {
 			latitude : 63.427255,
 			longitude : 10.396545,
@@ -19,11 +19,11 @@ if (OS_MOBILEWEB) {
 		},
 	});
 } else {
-	MapModule = require('ti.map');
-	mapview = MapModule.createView({
-		userLocation : true,
-		mapType : MapModule.NORMAL_TYPE,
+	mapview = Titanium.Map.createView({
+		mapType : Titanium.Map.STANDARD_TYPE,
 		animate : true,
+		regionFit : true,
+		userLocation : true,
 		region : {
 			latitude : 63.427255,
 			longitude : 10.396545,
@@ -76,7 +76,6 @@ wallCollection.fetch({
 					id : element.get('id'),
 				});
 			}
-
 			mapview.addAnnotation(mapAnnotation);
 		});
 	},
@@ -87,4 +86,4 @@ wallCollection.fetch({
 
 $.mapWin.addEventListener('close', function() {
 	$.destroy();
-});
+}); 
