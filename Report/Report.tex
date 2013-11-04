@@ -917,7 +917,7 @@ The following diagram shows the whole system and how the separate parts work tog
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{Figures/Requirements/overview.png}
+      \includegraphics[width=0.8\textwidth]{Figures/Architecture/deploymentView.jpg}
       \caption{Overview of interaction}
       \label{fig:req_overview}
 \end{figure}
@@ -1009,28 +1009,17 @@ The functional requirements are organized according to object categories.
 
 %FIXME SIMON: assign test levels
 
-\subsubsection{Users}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{ l  p{11cm} }
-F1.1 & System shall let users to register an account within the system\\
-\end{tabular}
-\label{tab:req_users}
-\caption{Users}
-\end{table}
-
-\subsubsection{Walls}
+\subsubsection{Places}
 
 \begin{table}[H]
 \centering
 \begin{tabular}{ l  p{11cm} l }
     ID       & Description                                                                                              & Test level            \\ \hline
-    F2.2     & System shall let users filter and view walls                                                             & All                   \\ \hline
-    F2.2.2   & System shall let users to filter walls by tags                                                           & System, Unit, UAT     \\ \hline
-    F2.2.3   & System shall let users to filter walls by metadata (location)                                            & System, Unit, UAT     \\ \hline
-    F2.2.4   & System shall let users to filter walls by story authors                                                  & System, Unit, UAT     \\ \hline
-    F2.4     & System shall let users like and share wall over social networks (facebook, twitter). 
+    F2.2     & System shall let users filter and view places                                                            & All                   \\ \hline
+    F2.2.2   & System shall let users to filter places by tags                                                          & System, Unit, UAT     \\ \hline
+    F2.2.3   & System shall let users to filter places by metadata (location)                                           & System, Unit, UAT     \\ \hline
+    F2.2.4   & System shall let users to filter places by story authors                                                 & System, Unit, UAT     \\ \hline
+    F2.4     & System shall let users like and share places over social networks (facebook, twitter). 
                See \ref{sec:req_social_networks} for details                                                            & System, Unit, UAT     \\ 
 \end{tabular}
 \label{tab:req_walls}
@@ -1043,9 +1032,9 @@ F1.1 & System shall let users to register an account within the system\\
 \centering
 \begin{tabular}{ l  p{11cm} l }
     ID       & Description                                                                                              & Test level            \\ \hline
-    F3.2     & System shall let users filter and view stories from a particular wall                                    & All                   \\ \hline
-    F3.2.2   & System shall let users to filter stories by tags on a particular wall                                    & System, Unit, UAT     \\ \hline
-    F3.2.4   & System shall let users to filter stories by metadata (author, media duration) on a particular wall       & System, Unit, UAT     \\ \hline
+    F3.2     & System shall let users filter and view stories from a particular places                                  & All                   \\ \hline
+    F3.2.2   & System shall let users to filter stories by tags on a particular places                                  & System, Unit, UAT     \\ \hline
+    F3.2.4   & System shall let users to filter stories by metadata (author, media duration) on a particular places     & System, Unit, UAT     \\ \hline
     F3.3     & System shall let users comment on stories                                                                & System, Unit, UAT     \\ \hline
     F3.4     & System shall let users like and share stories over social networks (facebook, twitter). 
                See \ref{sec:req_social_networks} for details                                                            & System, Unit, UAT     \\
@@ -1085,32 +1074,14 @@ From the description of typical usage (mentioned in \ref{sec:req_user_characteri
 These scenarios shall evaluate, whether the application suits the needs of the audience in the means of usability. These shall be derived from use cases and requirements.
 
 \section{Use case diagrams}
-Same categorization as in Functions. 
+As there is just few requirements left after all the changes made, we are presenting all of them in just one use case diagram.
 
-\subsubsection{User registration}
 \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{Figures/Requirements/user_registration.pdf}
-      \caption{Use case diagram for Users}
-      \label{fig:req_usecase_users}
-\end{figure}
-
-\subsubsection{Walls}
-\begin{figure}[H]
-      \centering
-      \includegraphics[width=0.8\textwidth]{Figures/Requirements/wall.pdf}
-      \caption{Use case diagram for Walls}
+      \includegraphics[width=0.5\textwidth]{Figures/Requirements/final.pdf}
+      \caption{Use case diagram for Places}
       \label{fig:req_usecase_walls}
 \end{figure}
-
-\subsubsection{Stories}
-\begin{figure}[H]
-      \centering
-      \includegraphics[width=0.8\textwidth]{Figures/Requirements/story.pdf}
-      \caption{Use case diagram for Stories}
-      \label{fig:req_usecase_stories}
-\end{figure}
-
 
 \chapter{Software System Architecture}\label{chap:architecture}
 The following architecture is the result of working closely with the customers requirements and trying to fulfill them as elegantly and sustainably as possible.
