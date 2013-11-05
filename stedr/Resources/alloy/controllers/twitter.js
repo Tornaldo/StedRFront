@@ -5,10 +5,16 @@ function Controller() {
             count: 30
         };
         cb.__call("search_tweets", params, function(reply) {
-            var row = Alloy.createController("twitterRow", {
-                $model: reply.statuses
-            });
-            $.twitterStatusesView.add(row.getView());
+            if ("undefined" == typeof twitterRowController) {
+                Ti.API.info("STARTING TWITTER ROW");
+                twitterRowController = Alloy.createController("twitterRow", {
+                    $model: reply.statuses
+                });
+                $.twitterStatusesView.add(twitterRowController.getView());
+            } else {
+                Ti.API.info(reply.statuses[0].user.name);
+                Alloy.Collections.tweets.reset(reply.statuses);
+            }
         }, true);
     }
     function tweet() {
@@ -24,13 +30,13 @@ function Controller() {
         cb.__call("statuses_update", {
             status: text
         }, function(reply) {
-            Ti.API.info("Reply: ");
             if (200 == reply.httpstatus) {
-                $.tweetText.setValue("");
+                $.tweetText.setValue(hashtag);
                 $.tweetText.setHintText("You've just tweeted. Tweet again?");
                 Ti.UI.createNotification({
                     message: "You just tweeted :)",
-                    duration: Ti.UI.NOTIFICATION_DURATION_LONG
+                    duration: Ti.UI.NOTIFICATION_DURATION_LONG,
+                    top: "100dp"
                 }).show();
                 fetchTwitter();
             } else {
@@ -41,7 +47,6 @@ function Controller() {
                 }).show();
             }
         });
-        Ti.API.info("HALLO?");
     }
     function stringCounter() {
         $.charCounter.setText("(" + $.tweetText.getValue().length + "/140)");
@@ -122,6 +127,7 @@ function Controller() {
         Ti.API.info("We do have a bearer token: " + bearerToken);
         cb.setBearerToken(bearerToken);
     }
+    var twitterRowController;
     fetchTwitter();
     loadAccessToken = function(pService) {
         Ti.API.info("Loading access token for service [" + pService + "].");

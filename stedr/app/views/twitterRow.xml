@@ -1,5 +1,5 @@
 <Alloy>
-	<TableView class="twitterTable" dataCollection="tweets" dataTransform="transformFunction" class="twittertable">
+	<TableView id="tableView" dataCollection="tweets" dataTransform="transformFunction" class="twittertable">
 		<TableViewRow onClick="showTweet" class="twitterStatus">
 			<ImageView class="twitterImage" image="{profileImage}" />
 			<View class="nameView" layout="horizontal">

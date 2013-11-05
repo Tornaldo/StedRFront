@@ -1,7 +1,7 @@
 /**
  *	Copyright (c) 2013, Odd Fredrik Rogstad, Christian Frøystad, Simon Stastny, Knut Nergård
  *	All rights reserved.
- *	
+ *
  *	Redistribution and use in source and binary forms, with or without
  *	modification, are permitted provided that the following conditions are met:
  *	* Redistributions of source code must retain the above copyright
@@ -9,10 +9,10 @@
  *	* Redistributions in binary form must reproduce the above copyright
  *	  notice, this list of conditions and the following disclaimer in the
  *	  documentation and/or other materials provided with the distribution.
- *	* Neither the name of the project nor the 
+ *	* Neither the name of the project nor the
  *	  names of its contributors may be used to endorse or promote products
  *	  derived from this software without specific prior written permission.
- *	
+ *
  *	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  *	ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  *	WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -22,12 +22,11 @@
  *	LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
  *	ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  *	(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
 /*
- * Require Codebird, twitter API
+ * Require Codebird, twitter library
  */
 var Codebird = require('codebird');
 var cb = new Codebird();
@@ -36,7 +35,8 @@ var accessToken = null;
 var accessTokenSecret = null;
 
 /*
- * String concatenating and removing, the hashtag should be #stedR'storyName'
+ * String concatenating and removing of whitespaces and spcial characters,
+ * the hashtag should be #stedR_'storyName'
  */
 var storyName = $model.get('title');
 storyName = storyName.replace(/[^a-z0-9\s]/gi, "");
@@ -57,23 +57,36 @@ if (bearerToken == null) {
 	cb.setBearerToken(bearerToken);
 }
 
+var twitterRowController;
 fetchTwitter();
 
 /*
- * Fetch twitter statuses with q as the given tag
- * Ti.Network.encodeURIComponent("#nidarosdomen")
- * "q=" + Ti.Network.encodeURIComponent("#nidarosdomen")
+ * Fetch "count" twitter statuses with q as the given tag
+ * Ti.App.fireEvent('updateTwitterTable', reply.statuses);
  */
+
 function fetchTwitter() {
 	var params = {
 		q : hashtag,
 		count : 30
 	};
 	cb.__call('search_tweets', params, function(reply) {
-		var row = Alloy.createController('twitterRow', {
-			"$model" : reply.statuses
-		});
-		$.twitterStatusesView.add(row.getView());
+		/*
+		 * If twittercontroller has not been created, create it, and add reply.statuses as model.
+		 * Else, update/reset the tweets collection, which will trigger the UI TableView in twitterRow
+		 * to update its collection.
+		 */
+		if ( typeof twitterRowController === "undefined") {
+			Ti.API.info("STARTING TWITTER ROW");
+			twitterRowController = Alloy.createController('twitterRow', {
+				"$model" : reply.statuses
+			});
+			$.twitterStatusesView.add(twitterRowController.getView());
+
+		} else {
+			Ti.API.info(reply.statuses[0].user.name);
+			Alloy.Collections.tweets.reset(reply.statuses);
+		}
 	}, true // this parameter required
 	);
 }
@@ -91,13 +104,13 @@ function tweet() {
 		cb.__call("statuses_update", {
 			"status" : text
 		}, function(reply) {
-			Ti.API.info("Reply: ");
 			if (reply.httpstatus == 200) {
-				$.tweetText.setValue("");
+				$.tweetText.setValue(hashtag);
 				$.tweetText.setHintText("You've just tweeted. Tweet again?");
 				Ti.UI.createNotification({
 					message : "You just tweeted :)",
-					duration : Ti.UI.NOTIFICATION_DURATION_LONG
+					duration : Ti.UI.NOTIFICATION_DURATION_LONG,
+					top : '100dp'
 				}).show();
 				fetchTwitter();
 			} else {
@@ -108,10 +121,13 @@ function tweet() {
 				}).show();
 			}
 		});
-		Ti.API.info("HALLO?");
 	}
 }
 
+/*
+ * User by the charCounter-label. Sets the charcounter text to the length of the text
+ * in the textarea
+ */
 function stringCounter(evt) {
 	$.charCounter.setText("(" + $.tweetText.getValue().length + "/140)");
 }

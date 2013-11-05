@@ -77,11 +77,10 @@ function Controller() {
             });
             __alloyId7.add(__alloyId19);
         }
-        $.__views.twitterRow.setData(rows);
+        $.__views.tableView.setData(rows);
     }
     function transformFunction(model) {
         var transform = model.toJSON();
-        Ti.API.info("TRANSFORM picture" + transform.user.profile_image_url_https);
         transform.userName = transform.user.name;
         transform.screenName = "@" + transform.user.screen_name;
         transform.created = transform.created_at.slice(0, 16);
@@ -102,12 +101,12 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __defers = {};
-    $.__views.twitterRow = Ti.UI.createTableView({
-        id: "twitterRow"
+    $.__views.tableView = Ti.UI.createTableView({
+        id: "tableView"
     });
     var __alloyId20 = Alloy.Collections["tweets"] || tweets;
     __alloyId20.on("fetch destroy change add remove reset", __alloyId21);
-    $.__views.twitterRow && $.addTopLevelView($.__views.twitterRow);
+    $.__views.tableView && $.addTopLevelView($.__views.tableView);
     exports.destroy = function() {
         __alloyId20.off("fetch destroy change add remove reset", __alloyId21);
     };

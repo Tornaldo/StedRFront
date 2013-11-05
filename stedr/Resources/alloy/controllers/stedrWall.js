@@ -109,8 +109,6 @@ function Controller() {
     $.__views.storyAndPictureView.add($.__views.storyOrPictureView);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Ti.API.info("Hello");
-    Ti.API.info("Entering: " + $model.get("title"));
     $.mediaScrollerMainImage.addView(Ti.UI.createImageView({
         image: $model.get("pictureUrl")
     }));
