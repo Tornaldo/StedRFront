@@ -1,7 +1,7 @@
 /**
  *	Copyright (c) 2013, Odd Fredrik Rogstad, Christian Frøystad, Simon Stastny, Knut Nergård
  *	All rights reserved.
- *	
+ *
  *	Redistribution and use in source and binary forms, with or without
  *	modification, are permitted provided that the following conditions are met:
  *	* Redistributions of source code must retain the above copyright
@@ -9,10 +9,10 @@
  *	* Redistributions in binary form must reproduce the above copyright
  *	  notice, this list of conditions and the following disclaimer in the
  *	  documentation and/or other materials provided with the distribution.
- *	* Neither the name of the project nor the 
+ *	* Neither the name of the project nor the
  *	  names of its contributors may be used to endorse or promote products
  *	  derived from this software without specific prior written permission.
- *	
+ *
  *	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  *	ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  *	WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -22,7 +22,7 @@
  *	LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
  *	ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  *	(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 $.mapWin.open();
@@ -36,14 +36,8 @@ if (OS_ANDROID) {
 	MapModule = require('ti.map');
 	mapview = MapModule.createView({
 		userLocation : true,
-		mapType : MapModule.NORMAL_TYPE,
 		animate : true,
-		region : {
-			latitude : 63.427255,
-			longitude : 10.396545,
-			latitudeDelta : 0.01,
-			longitudeDelta : 0.01
-		},
+		mapType : MapModule.NORMAL_TYPE,
 	});
 } else {
 	mapview = Titanium.Map.createView({
@@ -60,7 +54,7 @@ if (OS_ANDROID) {
 	});
 }
 
-$.mapWin.add(mapview);
+$.mapView.add(mapview);
 
 mapview.addEventListener('click', function(evt) {
 	Ti.API.info(evt.type);
@@ -72,6 +66,11 @@ mapview.addEventListener('click', function(evt) {
 		});
 		stedrWallController.getView().open();
 	}
+});
+
+
+$.mapSearchButton.addEventListener('click', function(evt) {
+
 });
 
 var wallCollection = Alloy.Collections.wall;
@@ -111,6 +110,7 @@ wallCollection.fetch({
 	}
 });
 
+
 $.mapWin.addEventListener('close', function() {
 	$.destroy();
-}); 
+});

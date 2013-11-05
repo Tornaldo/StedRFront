@@ -8,9 +8,32 @@ function Controller() {
     var exports = {};
     $.__views.mapWin = Ti.UI.createWindow({
         title: "Wall",
-        id: "mapWin"
+        id: "mapWin",
+        layout: "vertical"
     });
     $.__views.mapWin && $.addTopLevelView($.__views.mapWin);
+    $.__views.__alloyId0 = Ti.UI.createView({
+        height: "10%",
+        layout: "horizontal",
+        id: "__alloyId0"
+    });
+    $.__views.mapWin.add($.__views.__alloyId0);
+    $.__views.__alloyId1 = Ti.UI.createTextField({
+        width: "80%",
+        hintText: "Search location",
+        id: "__alloyId1"
+    });
+    $.__views.__alloyId0.add($.__views.__alloyId1);
+    $.__views.mapSearchButton = Ti.UI.createButton({
+        id: "mapSearchButton",
+        title: "Search"
+    });
+    $.__views.__alloyId0.add($.__views.mapSearchButton);
+    $.__views.mapView = Ti.UI.createView({
+        id: "mapView",
+        height: "90%"
+    });
+    $.__views.mapWin.add($.__views.mapView);
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.mapWin.open();
@@ -19,16 +42,10 @@ function Controller() {
     MapModule = require("ti.map");
     mapview = MapModule.createView({
         userLocation: true,
-        mapType: MapModule.NORMAL_TYPE,
         animate: true,
-        region: {
-            latitude: 63.427255,
-            longitude: 10.396545,
-            latitudeDelta: .01,
-            longitudeDelta: .01
-        }
+        mapType: MapModule.NORMAL_TYPE
     });
-    $.mapWin.add(mapview);
+    $.mapView.add(mapview);
     mapview.addEventListener("click", function(evt) {
         Ti.API.info(evt.type);
         Ti.API.info(evt.clicksource);
@@ -40,6 +57,7 @@ function Controller() {
             stedrWallController.getView().open();
         }
     });
+    $.mapSearchButton.addEventListener("click", function() {});
     var wallCollection = Alloy.Collections.wall;
     wallCollection.fetch({
         success: function() {
