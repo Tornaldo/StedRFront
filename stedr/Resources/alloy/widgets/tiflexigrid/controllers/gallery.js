@@ -5,8 +5,14 @@ function WPATH(s) {
 }
 
 function Controller() {
-    function createThumb(image) {
-        return image;
+    function createThumb(image, size) {
+        var imageView = Ti.UI.createImageView({
+            image: image,
+            width: Ti.UI.SIZE,
+            height: Ti.UI.SIZE,
+            hires: true
+        });
+        return imageView.toImage().imageAsThumbnail(2 * size, 0, 0);
     }
     new (require("alloy/widget"))("tiflexigrid");
     this.__widgetId = "tiflexigrid";

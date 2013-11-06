@@ -37,6 +37,7 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.mapWin.open();
+    var MapModule;
     var mapview;
     mapview = Titanium.Map.createView({
         mapType: Titanium.Map.STANDARD_TYPE,
@@ -64,21 +65,48 @@ function Controller() {
     });
     $.mapSearchButton.addEventListener("click", function() {
         var searchText = $.searchField.getValue();
-        Ti.API.info("WEB");
-        var geocoder = new google.maps.Geocoder();
-        geocoder ? geocoder.geocode({
-            address: searchText
-        }, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) mapview.setLocation({
-                latitude: results[0].geometry.location.lat(),
-                longitude: results[0].geometry.location.lng(),
-                latitudeDelta: .1,
-                longitudeDelta: .1
-            }); else {
-                Ti.API.error(status);
-                Ti.API.info(JSON.stringify(results));
+        Ti.API.info("PHONE");
+        var xhr = Titanium.Network.createHTTPClient();
+        var url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + searchText + "&sensor=true&key=AIzaSyD7QIWz-xIs3WTWYR_0eaH_whi56NNE1sE";
+        xhr.open("GET", url);
+        xhr.onload = function() {
+            var json = JSON.parse(this.responseText);
+            switch (json.status) {
+              case "OK":
+                Ti.API.info(JSON.stringify(json));
+                mapview.setLocation({
+                    latitude: json.results[0].geometry.location.lat,
+                    longitude: json.results[0].geometry.location.lng,
+                    latitudeDelta: .1,
+                    longitudeDelta: .1
+                });
+                break;
+
+              case "ZERO_RESULTS":
+                alert("No result for your search");
+                break;
+
+              case "OVER_QUERY_LIMIT":
+                alert("Sorry, the query limit is exceeded");
+                break;
+
+              case "REQUEST_DENIED":
+                alert("Sorry, your request was denied");
+                break;
+
+              case "INVALID_REQUEST":
+                alert("Sorry, your request is invalid");
+                break;
+
+              default:
+                alert("This is very strange! Do you have internet connection?");
             }
-        }) : alert("Google Maps Geocoder not supported");
+        };
+        xhr.onerror = function(e) {
+            alert("This is very strange! Do you have internet connection?");
+            Ti.API.error(e.error);
+        };
+        xhr.send();
     });
     var wallCollection = Alloy.Collections.wall;
     wallCollection.fetch({
@@ -86,13 +114,14 @@ function Controller() {
             _.each(wallCollection.models, function(element) {
                 Ti.API.info("Making annotation for " + element.get("title"));
                 var mapAnnotation;
-                var mapAnnotation = Titanium.Map.createAnnotation({
+                var mapAnnotation = MapModule.createAnnotation({
                     title: element.get("title"),
                     latitude: element.get("latitude"),
                     longitude: element.get("longitude"),
                     rightView: Ti.UI.createImageView({
                         image: element.get("thumbnailUrl")
                     }),
+                    pincolor: MapModule.ANNOTATION_AZURE,
                     id: element.get("id")
                 });
                 mapview.addAnnotation(mapAnnotation);
