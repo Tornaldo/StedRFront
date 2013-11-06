@@ -18,14 +18,14 @@ function Controller() {
     var imageUrlList = $model.get("pictures");
     var videoUrlList = $model.get("videos");
     Ti.API.info("Media for: " + $model.get("title"));
-    for (i = 0; imageUrlList.length > i; i++) {
+    if (imageUrlList) for (i = 0; imageUrlList.length > i; i++) {
         var wallImage = Ti.UI.createImageView({
             image: imageUrlList[i]
         });
         $.mediaScroller.addView(wallImage);
     }
     Ti.Platform.displayCaps.platformHeight;
-    for (i = 0; videoUrlList.length > i; i++) {
+    if (videoUrlList) for (i = 0; videoUrlList.length > i; i++) {
         var wallVideo1 = Ti.Media.createVideoPlayer({
             url: videoUrlList[i],
             mediaControlStyle: Ti.Media.VIDEO_CONTROL_DEFAULT,
