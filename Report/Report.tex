@@ -437,8 +437,8 @@ All copies is to be accompanied with a CD that contain the implementation, docum
 
 \begin{table}[H]
 \centering
-\begin{tabular}{ l | l l l l l l }
-    Activity                Planning    & Sprint 1  & Sprint 2  & Sprint 3  & Sprint 4  & Finalization    \\ \hline        
+\begin{tabular}{ l | r r r r r r }
+    Activity               & Planning    & Sprint 1  & Sprint 2  & Sprint 3  & Sprint 4  & Finalization    \\ \hline        
     Lectures                & 60        & 4         & 4         & 4         & 4         & 4               \\ \hline
     Admin                   & 25        & 20        & 20        & 20        & 20        & 50              \\ \hline
     Planning                & 50        & 8         & 8         & 8         & 8         & 50              \\ \hline
@@ -2297,7 +2297,7 @@ As requested in the last batch of change requests from customer, stories shall b
 
 Walls on the other hand shall be stored in out system database. We now store each wall with its geographic coordinates in a database table and filter as described in \ref{sec:spr3_maps}. 
 
-Data stored in our database are retrieved by classes in the \texttt{models} package. The models are extending \texttt{play.db.ebean.Model} class and use standard JPA\footnote{Java Persistence API} annotations to indicate relationships between entities.
+Data stored in our database are retrieved by classes in the \texttt{models} package. The models are extending \texttt{play.db.ebean.Model} class and use standard \gls{jpa} annotations to indicate relationships between entities.
 
 The data from \emph{Digitalt Fortalt} are retrieved from the API by classes in the \texttt{retrievers} package. The data are fetched and parsed by using the \emph{jsoup} Java \gls{html} parser. We found this library to be more usable than \emph{DOM} and \emph{SAX} parser implementations in Java (due to various reasons such as usage of \texttt{Iterable} interface, which make the work with collection-like structures much easier).
 
@@ -2813,11 +2813,30 @@ var SomeUIClass = function() {
 \end{lstlisting}
 
 \section{Server - Installation}
+Deploying the server can be done in multiple different ways. Here two will be presented.
+
+\subsection{Deploy on Heroku}
+Follow the instructions given at the following link:\\
+http://www.playframework.com/documentation/2.2.x/ProductionHeroku
+
+\subsection{Deploy on own server}
+Follow the instructions given at the following linke:\\
+http://www.playframework.com/documentation/2.2.x/Production
+
 \section{Client}
+Some short guides for compiling and installing the client.
+
 \subsection{Installation}
+WRITE ABOUT INSTALLATION
+
 \subsection{Compile for Android}
+TODO
+
 \subsection{Compile for iOS}
+TODO
+
 \subsection{Compile for normal browsers}
+TODO
 
 \chapter{Backlog}
 \begin{center}
