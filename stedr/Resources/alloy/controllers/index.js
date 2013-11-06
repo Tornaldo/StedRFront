@@ -18,12 +18,12 @@ function Controller() {
         id: "__alloyId0"
     });
     $.__views.mapWin.add($.__views.__alloyId0);
-    $.__views.__alloyId1 = Ti.UI.createTextField({
+    $.__views.searchField = Ti.UI.createTextField({
+        id: "searchField",
         width: "80%",
-        hintText: "Search location",
-        id: "__alloyId1"
+        hintText: "Search location"
     });
-    $.__views.__alloyId0.add($.__views.__alloyId1);
+    $.__views.__alloyId0.add($.__views.searchField);
     $.__views.mapSearchButton = Ti.UI.createButton({
         id: "mapSearchButton",
         title: "Search"
@@ -57,7 +57,51 @@ function Controller() {
             stedrWallController.getView().open();
         }
     });
-    $.mapSearchButton.addEventListener("click", function() {});
+    $.mapSearchButton.addEventListener("click", function() {
+        var searchText = $.searchField.getValue();
+        Ti.API.info("PHONE");
+        var xhr = Titanium.Network.createHTTPClient();
+        var url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + searchText + "&sensor=true&key=AIzaSyD7QIWz-xIs3WTWYR_0eaH_whi56NNE1sE";
+        xhr.open("GET", url);
+        xhr.onload = function() {
+            var json = JSON.parse(this.responseText);
+            switch (json.status) {
+              case "OK":
+                Ti.API.info(JSON.stringify(json));
+                mapview.setLocation({
+                    latitude: json.results[0].geometry.location.lat,
+                    longitude: json.results[0].geometry.location.lng,
+                    latitudeDelta: .1,
+                    longitudeDelta: .1
+                });
+                break;
+
+              case "ZERO_RESULTS":
+                alert("No result for your search");
+                break;
+
+              case "OVER_QUERY_LIMIT":
+                alert("Sorry, the query limit is exceeded");
+                break;
+
+              case "REQUEST_DENIED":
+                alert("Sorry, your request was denied");
+                break;
+
+              case "INVALID_REQUEST":
+                alert("Sorry, your request is invalid");
+                break;
+
+              default:
+                alert("This is very strange! Do you have internet connection?");
+            }
+        };
+        xhr.onerror = function(e) {
+            alert("This is very strange! Do you have internet connection?");
+            Ti.API.error(e.error);
+        };
+        xhr.send();
+    });
     var wallCollection = Alloy.Collections.wall;
     wallCollection.fetch({
         success: function() {

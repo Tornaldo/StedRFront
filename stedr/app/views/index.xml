@@ -3,7 +3,7 @@
 		<!-- On Android there are several issues with the current implementation of the searchbar; using textfield -->
 		<!-- <SearchBar id="geoSearch" showCancel="true" height="10%" top="0" zIndex="9999"></SearchBar> -->
 		<View height="10%" layout="horizontal">
-			<TextField width="80%" hintText="Search location"></TextField>
+			<TextField id="searchField" width="80%" hintText="Search location"></TextField>
 			<Button id="mapSearchButton" title="Search"></Button>
 		</View>
 		<View id="mapView" height="90%"></View>
