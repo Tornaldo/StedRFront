@@ -141,6 +141,7 @@ Both the walls and the information will be categorized using taxonomy so that th
 The aim of the project is to make information about cultural heritage more accessible, understandable and fun for the common man. This should be accomplished by making places (Stedr) discoverable on a map on a mobile phone, and connect the places on the map with information about that place from different databases. This way the user can explore his own neighborhood, city or even a new town he is visiting.
 
 \chapter{Project plan}
+\label{chap:project_plan}
 This chapter will give an overview of how the work is to be structured and the most important milestones.
 
 \section{Project directive}
@@ -635,6 +636,7 @@ All documents are produced in Google Docs, which incorporates version control fo
 All code will be tracked with git and checked in continuously in order to always be consistent.
 
 \chapter{Preliminary study}
+\label{chap:preliminary_study}
 
 \section{Current situation}
 Cultural Heritage is the legacy of physical artifacts and non physical attributes of a group or society that are inherited from past generations. According to \cite{CiD:culturalheritage}, cultural Heritage can be divided into three main categories; tangible culture, intangible culture and natural heritage. The system will mainly focus on the ``culture in the landscape'', i.e. the discovery of cultural memories that we meet when walking around in cities, in villages and in the nature.
@@ -1136,22 +1138,22 @@ The course staff is mostly concerned about the quality of the documentation and 
 
 This description will focus on the first three views, logical, process and development view.
 
-\subsection{Logical view}
+\subsection{Logical view}\label{subsec:logicalViewDescription}
 Purpose: The logical view will give us an understanding of how to layout our code in a meaningful way. It will show how classes and modules relates to each other, and as such help us identify common relations and tasks and then generalize them.\\
 Stakeholders: Developers, course staff\\
 Form of description: Class diagram
 
-\subsection{Process view}
+\subsection{Process view}\label{subsec:processViewDescription}
 Purpose: The process view serves to show how the modules and classes communicates with each other, and explain the system processes.\\
 Stakeholders: Developers, Customer, End users, Course staff\\
 Form of description: Sequence diagrams
 
-\subsection{Development view}
+\subsection{Development view}\label{subsec:developmentViewDescription}
 Purpose: The main matter of concern for the development view is the development process. It serves to show which parts of the system depends upon others. \\
 Stakeholders: Developers\\
 Form of description: Architecture Layer Diagram
 
-\subsection{Deployment view}
+\subsection{Deployment view}\label{subsec:deploymentViewDescription}
 Purpose: The deployment view serves to get a overview of how the system interrelate.
 Stakeholders: Developers
 Form of description: Deployment diagram
@@ -1201,6 +1203,8 @@ The server will be fully stateless which will help on scalability and availabili
 \subsection{Server}
 
 \subsubsection{Logical view}
+This view follows the description in section ~\ref{subsec:logicalViewDescription}
+
 The logical view is quite simple due to the fact that Play! Framework is doing most of the heavy lifting. Each logical entity has its own controller/model pair that handles fetching, storing and modifying the relevant information.
 
 \begin{figure}[H]
@@ -1211,6 +1215,8 @@ The logical view is quite simple due to the fact that Play! Framework is doing m
 \end{figure}
 
 \subsubsection{Process view}
+This view follows the description in section ~\ref{subsec:processViewDescription}
+
 The process in the server is quite simple as it is modeled on the way \gls{http} works, and the way browsers threats \gls{html}. The client sends a request to an URL and the Play! Frameworks main controller delegates the  responsibility of delivering data to the correct controller based on the URL requested. If the content received has connections to other types of content on the server, the client will have to send a new request for that content.
 
 \begin{figure}[H]
@@ -1237,6 +1243,8 @@ The retriever for places from Flickr has some additional functionality in order 
 \end{figure}
 
 \subsubsection{Development view}
+This view follows the description in section ~\ref{subsec:developmentViewDescription}
+
 DATABASE represents all the data. In this layer the work of structuring the data and figuring out the database design is also included.
 
 MODELS represents the classes that will be used to work with the database from the rest of the backend code. The models will abstract away the database, so that it can be changed in its entirety if needed without changing any other code.
@@ -1253,6 +1261,7 @@ CONTROLLERS represents the classes that handles the requests and returns data to
 \subsection{Client}
 
 \subsubsection{Logical view}
+This view follows the description in section ~\ref{subsec:logicalViewDescription}
 
 \begin{figure}[H]
       \centering
@@ -1276,6 +1285,8 @@ CONTROLLERS represents the classes that handles the requests and returns data to
 \end{figure}
 
 \subsubsection{Process view}
+This view follows the description in section ~\ref{subsec:processViewDescription}
+
 All the states in the Figure ~\ref{fig:arch_client_process} have a back event in addition to those added. They were left out in order to simplify the figure.
 
 \begin{figure}[H]
@@ -1307,6 +1318,8 @@ All the states in the Figure ~\ref{fig:arch_client_process} have a back event in
 \end{figure}
 
 \subsubsection{Development view}
+This view follows the description in section ~\ref{subsec:developmentViewDescription}
+
 This is an iterative development process. In order for a function to work on the client, it must have the required support on the server. It does not mean, however, that the server must first be finished in its entirety.
 
 \begin{figure}[H]
@@ -1317,6 +1330,8 @@ This is an iterative development process. In order for a function to work on the
 \end{figure}
 
 \subsection{Deployment view}
+This view follows the description in section ~\ref{subsec:deploymentViewDescription}
+
 Due to the systems being interconnected, the deployment view is made of the whole system in one diagram, instead of one for the server and anotherone for the client.
 
 The server retrieves data from multiple services hosted on several different servers in different countries. It serves as a broker between the clients and these services.
@@ -1939,7 +1954,13 @@ This chapter aims to document the progress of the project, but also give valuabl
 The chapter follows the outline from chapter ~\ref{subsec:phases}.
 
 \section{First phase: Planning}
-UPDATE READER ON WHAT HE HAS READ
+The first weeks was used to get a understanding of the problem space, and how it should be solved. Chapter~\ref{chap:preliminary_study} presents the findings.
+
+The group also focused on planning the project. The result of this can be found in chapter~\ref{chap:project_plan}.
+
+Initial requirements was also created to get a better picture of what the system should be and how it should work. The final version can be seen in chapter~\ref{chap:req}, and the different revisions can be seen in appendix~\ref{chap:req_history}.
+
+The groundwork of the architecture was also laid. The final document can be found in chapter~\ref{chap:architecture}.
 
 \section{Second phase: Sprint 1}
 \subsection{S1: Sprint planning}
@@ -2146,6 +2167,9 @@ The server has seen development based upon what was done in sprint one, but the 
 \end{enumerate}
 
 \subsection{S2: Implementation}
+
+\subsubsection{Definition of story}
+A story is defined by its existance on Digitalt Fortalt, and thus uses Digitalt Fortalts definition of a story.
 
 \subsubsection{Server}
 
@@ -2946,5 +2970,8 @@ var SomeUIClass = function() {
         \caption{Latest complete backlog.}\label{tab:appendix_backlog}
     \end{longtable}
 \end{center}
+
+\chapter{Requirements history}\label{chap:req_history}
+ADD ALL THE REVISIONS OF THE REQUIREMENTS DOCUMENT WITH CHANGES DOCUMENTED
 
 \end{document}s
