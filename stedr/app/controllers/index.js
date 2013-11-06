@@ -76,7 +76,6 @@ mapview.addEventListener('click', function(evt) {
 $.mapSearchButton.addEventListener('click', function(evt) {
 	var searchText = $.searchField.getValue();
 	if (OS_MOBILEWEB) {
-		Ti.API.info("WEB");
 		var geocoder = new google.maps.Geocoder();
 		if (geocoder) {
 			geocoder.geocode({
@@ -144,18 +143,7 @@ wallCollection.fetch({
 	success : function() {
 		_.each(wallCollection.models, function(element, index, list) {
 			Ti.API.info("Making annotation for " + element.get('title'));
-			if (OS_MOBILEWEB) {
-				var mapAnnotation = Titanium.Map.createAnnotation({
-					title : element.get('title'),
-					latitude : element.get('latitude'),
-					longitude : element.get('longitude'),
-					rightView : Ti.UI.createImageView({
-						image : element.get('thumbnailUrl'),
-					}),
-
-					id : element.get('id'),
-				});
-			} else {
+			if (OS_ANDROID) {
 				var mapAnnotation = MapModule.createAnnotation({
 					title : element.get('title'),
 					latitude : element.get('latitude'),
@@ -165,6 +153,17 @@ wallCollection.fetch({
 					}),
 
 					pincolor : MapModule.ANNOTATION_AZURE,
+					id : element.get('id'),
+				});
+			} else {
+				var mapAnnotation = Titanium.Map.createAnnotation({
+					title : element.get('title'),
+					latitude : element.get('latitude'),
+					longitude : element.get('longitude'),
+					rightView : Ti.UI.createImageView({
+						image : element.get('thumbnailUrl'),
+					}),
+
 					id : element.get('id'),
 				});
 			}
