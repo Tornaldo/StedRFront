@@ -49,7 +49,6 @@ function Controller() {
     } else mapview = Titanium.Map.createView({
         mapType: Titanium.Map.STANDARD_TYPE,
         animate: true,
-        regionFit: true,
         userLocation: true,
         region: {
             latitude: 63.427255,

@@ -6,16 +6,15 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.story = Ti.UI.createWindow({
-        title: "Stories",
+    $.__views.story = Ti.UI.createView({
         id: "story"
     });
     $.__views.story && $.addTopLevelView($.__views.story);
-    $.__views.st = Alloy.createWidget("tiflexigrid", "widget", {
-        id: "st",
+    $.__views.storyGrid = Alloy.createWidget("tiflexigrid", "widget", {
+        id: "storyGrid",
         __parentSymbol: $.__views.story
     });
-    $.__views.st.setParent($.__views.story);
+    $.__views.storyGrid.setParent($.__views.story);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var items = [];
@@ -32,7 +31,7 @@ function Controller() {
                 });
             });
             Ti.API.info(Titanium.Platform.displayCaps.platformWidth);
-            $.st.createGrid({
+            $.storyGrid.createGrid({
                 columns: 2,
                 space: 10,
                 data: items,
@@ -45,12 +44,14 @@ function Controller() {
                 },
                 width: Titanium.Platform.displayCaps.platformWidth
             });
+            Ti.API.info("finish creating grid");
+            Ti.API.info($.story.getWidth() + " " + $.story.getHeight());
         },
         error: function() {
             Ti.API.error("Could not load story");
         }
     });
-    $.st.on("click", function(e) {
+    $.storyGrid.on("click", function(e) {
         Ti.API.info("Clicked: " + e.source.id);
         var storyViewController = Alloy.createController("storyView", {
             $model: storyCollection.get(e.source.id)
