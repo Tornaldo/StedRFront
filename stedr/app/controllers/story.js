@@ -39,6 +39,7 @@ storyCollection.fetch({
 				image : element.get('pictures')[0]
 			});
 		});
+		Ti.API.info(Titanium.Platform.displayCaps.platformWidth);
 		$.st.createGrid({
 			columns : 2, //NUMBER OF COLUMNS. DEFAULT IS 4.
 			space : 10, //SPACE BETWEEN EACH ELEMENT. DEFAULT IS 5.

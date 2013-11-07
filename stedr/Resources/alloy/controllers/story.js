@@ -31,6 +31,7 @@ function Controller() {
                     image: element.get("pictures")[0]
                 });
             });
+            Ti.API.info(Titanium.Platform.displayCaps.platformWidth);
             $.st.createGrid({
                 columns: 2,
                 space: 10,
