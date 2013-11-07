@@ -67,4 +67,9 @@ module.exports = [ {
             fontWeight: "normal"
         }
     }
+}, {
+    isId: true,
+    priority: 100000.0025,
+    key: "storyOrPictureView",
+    style: {}
 } ];

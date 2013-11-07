@@ -1,6 +1,7 @@
 ".container": {
 	backgroundColor:"white"
-},
+}
+
 "#pictureTab":{
 	backgroundColor:'#8D8D8D',
 	borderRadius : 4,
@@ -12,7 +13,7 @@
         fontStyle: 'normal',
         fontWeight: 'bold',
  	},
-},
+}
 
 "#storyTab":{
 	left : '10%',
@@ -27,15 +28,17 @@
         fontStyle: 'normal',
         fontWeight: 'bold',
   	},
-},
+}
 
 "#pictureGallery":{
-},
+}
 
 "#tabView":{
-},
+}
 "#storyAndPictureView":{
-},
+	
+
+}
 "#creditLabel":{
 	color:'black',
 		font: {
@@ -45,3 +48,7 @@
         fontWeight: 'normal',
  	},
 }
+
+"#storyOrPictureView":{
+}
+

@@ -1,13 +1,13 @@
 module.exports = [ {
     isClass: true,
-    priority: 10000.0028,
+    priority: 10000.0029,
     key: "container",
     style: {
         backgroundColor: "white"
     }
 }, {
     isId: true,
-    priority: 100000.0029,
+    priority: 100000.003,
     key: "storyTitle",
     style: {
         color: "white",
@@ -22,7 +22,7 @@ module.exports = [ {
     }
 }, {
     isId: true,
-    priority: 100000.003,
+    priority: 100000.0031,
     key: "subTitle",
     style: {
         top: "10dp",
@@ -38,7 +38,7 @@ module.exports = [ {
     }
 }, {
     isId: true,
-    priority: 100000.0031,
+    priority: 100000.0032,
     key: "storyText",
     style: {
         top: "10dp",
@@ -54,7 +54,7 @@ module.exports = [ {
     }
 }, {
     isId: true,
-    priority: 100000.0032,
+    priority: 100000.0033,
     key: "storyAuthor",
     style: {
         top: "10dp",

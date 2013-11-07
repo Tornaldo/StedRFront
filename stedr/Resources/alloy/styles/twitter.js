@@ -1,13 +1,13 @@
 module.exports = [ {
     isClass: true,
-    priority: 10000.0034,
+    priority: 10000.0035,
     key: "container",
     style: {
         backgroundColor: "white"
     }
 }, {
     isId: true,
-    priority: 100000.0035,
+    priority: 100000.0036,
     key: "tweetText",
     style: {
         top: "10dp",
@@ -17,7 +17,7 @@ module.exports = [ {
     }
 }, {
     isId: true,
-    priority: 100000.0036,
+    priority: 100000.0037,
     key: "twitterCharCounterAndButton",
     style: {
         top: "10dp",
@@ -27,12 +27,12 @@ module.exports = [ {
     }
 }, {
     isId: true,
-    priority: 100000.0037,
+    priority: 100000.0038,
     key: "tweetButton",
     style: {}
 }, {
     isId: true,
-    priority: 100000.0038,
+    priority: 100000.0039,
     key: "charCounter",
     style: {
         font: {
@@ -44,7 +44,7 @@ module.exports = [ {
     }
 }, {
     isId: true,
-    priority: 100000.0039,
+    priority: 100000.004,
     key: "twitterStatusesView",
     style: {}
 } ];
