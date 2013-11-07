@@ -37,8 +37,16 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.mapWin.open();
+    var MapModule;
     var mapview;
-    mapview = Titanium.Map.createView({
+    if ("android" == Alloy.Globals.OS) {
+        MapModule = require("ti.map");
+        mapview = MapModule.createView({
+            userLocation: true,
+            animate: true,
+            mapType: MapModule.NORMAL_TYPE
+        });
+    } else mapview = Titanium.Map.createView({
         mapType: Titanium.Map.STANDARD_TYPE,
         animate: true,
         regionFit: true,
@@ -112,8 +120,16 @@ function Controller() {
         success: function() {
             _.each(wallCollection.models, function(element) {
                 Ti.API.info("Making annotation for " + element.get("title"));
-                var mapAnnotation;
-                var mapAnnotation = Titanium.Map.createAnnotation({
+                if ("android" == Alloy.Globals.OS) var mapAnnotation = MapModule.createAnnotation({
+                    title: element.get("title"),
+                    latitude: element.get("latitude"),
+                    longitude: element.get("longitude"),
+                    rightView: Ti.UI.createImageView({
+                        image: element.get("thumbnailUrl")
+                    }),
+                    pincolor: MapModule.ANNOTATION_AZURE,
+                    id: element.get("id")
+                }); else var mapAnnotation = Titanium.Map.createAnnotation({
                     title: element.get("title"),
                     latitude: element.get("latitude"),
                     longitude: element.get("longitude"),

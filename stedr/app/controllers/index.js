@@ -37,7 +37,7 @@ var mapview;
  * If Android, require the ti.map module, if not,
  * use the Titanium Map
  */
-if (OS_ANDROID) {
+if (Alloy.Globals.OS == "android") {
 	MapModule = require('ti.map');
 	mapview = MapModule.createView({
 		userLocation : true,
@@ -143,7 +143,7 @@ wallCollection.fetch({
 	success : function() {
 		_.each(wallCollection.models, function(element, index, list) {
 			Ti.API.info("Making annotation for " + element.get('title'));
-			if (OS_ANDROID) {
+			if (Alloy.Globals.OS == "android") {
 				var mapAnnotation = MapModule.createAnnotation({
 					title : element.get('title'),
 					latitude : element.get('latitude'),
