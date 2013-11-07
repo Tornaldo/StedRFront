@@ -54,7 +54,7 @@ var instagramCollection = Alloy.Collections.instagram;
 				backgroundColor : '#FFFFFF',
 				gridColor : '#40B0D2'
 			},
-			width : Titanium.Platform.DisplayCaps.platformWidth //OPTIONAL. SCREEN'S WIDTH TO ADJUST GRID.
+			width : Titanium.Platform.displayCaps.platformWidth //OPTIONAL. SCREEN'S WIDTH TO ADJUST GRID.
 		});
 		},
 		

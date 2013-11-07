@@ -37,6 +37,7 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 
+//It is resource intensive to check what platform we're on all the time, therfor;
 Alloy.Globals.OS = Ti.Platform.osname;
 
 if(Alloy.Globals.OS == "android"){

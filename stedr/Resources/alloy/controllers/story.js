@@ -42,7 +42,7 @@ function Controller() {
                     backgroundColor: "#FFFFFF",
                     gridColor: "#40B0D2"
                 },
-                width: Titanium.Platform.DisplayCaps.platformWidth
+                width: Titanium.Platform.displayCaps.platformWidth
             });
         },
         error: function() {
