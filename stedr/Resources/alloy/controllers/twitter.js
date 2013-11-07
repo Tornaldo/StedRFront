@@ -29,7 +29,6 @@ function Controller() {
         }, function(reply) {
             if (200 == reply.httpstatus) {
                 $.tweetText.setValue(hashtag);
-                $.tweetText.setHintText("You've just tweeted. Tweet again?");
                 alert("You just tweeted :)");
                 fetchTwitter();
             } else {
