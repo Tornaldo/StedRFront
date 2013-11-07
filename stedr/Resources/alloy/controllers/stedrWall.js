@@ -67,10 +67,11 @@ function Controller() {
     });
     $.__views.storyAndPictureView.add($.__views.tabView);
     $.__views.storyTab = Ti.UI.createButton({
+        left: "10%",
         backgroundColor: "#40B0D2",
-        borderColor: "#8D8D8D",
         borderRadius: 4,
-        color: "white",
+        borderColor: "#40B0D2",
+        color: "#40B0D2",
         font: {
             color: "white",
             fontFamily: "Helvetica",
@@ -81,16 +82,15 @@ function Controller() {
         id: "storyTab",
         title: "Stories",
         height: "80%",
-        width: "30%"
+        width: "40%"
     });
     $.__views.tabView.add($.__views.storyTab);
     $.__views.pictureTab = Ti.UI.createButton({
         backgroundColor: "#8D8D8D",
-        borderColor: "#8D8D8D",
         borderRadius: 4,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-        color: "white",
         font: {
+            color: "white",
             fontFamily: "Helvetica",
             fontSize: "25sp",
             fontStyle: "normal",
@@ -99,7 +99,7 @@ function Controller() {
         id: "pictureTab",
         title: "Pictures",
         height: "80%",
-        width: "30%"
+        width: "40%"
     });
     $.__views.tabView.add($.__views.pictureTab);
     $.__views.storyOrPictureView = Ti.UI.createView({

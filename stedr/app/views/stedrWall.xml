@@ -7,8 +7,8 @@
 		</View>
 		<View id="storyAndPictureView" layout="vertical" height="50%">
 			<View id="tabView" layout="horizontal" height="20%">
-				<Button id="storyTab" title="Stories" height="80%" width="30%"></Button>
-				<Button id="pictureTab" title="Pictures" height="80%" width="30%" ></Button>
+				<Button id="storyTab" title="Stories" height="80%" width="40%"></Button>
+				<Button id="pictureTab" title="Pictures" height="80%" width="40%" ></Button>
 			</View>
 			<View id="storyOrPictureView" height="80%"></View>
 		</View>
