@@ -21,10 +21,7 @@ function Controller() {
         Ti.API.info("Trying to tweet");
         var text = $.tweetText.getValue();
         if (text.length > 140) {
-            Ti.UI.createNotification({
-                message: "Sorry, your text is too long",
-                duration: Ti.UI.NOTIFICATION_DURATION_LONG
-            }).show();
+            alert("Sorry, your text is too long");
             return;
         }
         cb.__call("statuses_update", {
@@ -33,18 +30,11 @@ function Controller() {
             if (200 == reply.httpstatus) {
                 $.tweetText.setValue(hashtag);
                 $.tweetText.setHintText("You've just tweeted. Tweet again?");
-                Ti.UI.createNotification({
-                    message: "You just tweeted :)",
-                    duration: Ti.UI.NOTIFICATION_DURATION_LONG,
-                    top: "100dp"
-                }).show();
+                alert("You just tweeted :)");
                 fetchTwitter();
             } else {
                 Ti.API.warn(reply.errors[0].message);
-                Ti.UI.createNotification({
-                    message: "Sorry, something went wrong",
-                    duration: Ti.UI.NOTIFICATION_DURATION_LONG
-                }).show();
+                alert("Sorry, something went wrong");
             }
         });
     }
@@ -59,7 +49,7 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __defers = {};
-    $.__views.twitterView = Ti.UI.createWindow({
+    $.__views.twitterView = Ti.UI.createView({
         backgroundColor: "white",
         id: "twitterView",
         layout: "vertical"
