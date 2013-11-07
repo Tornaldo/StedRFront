@@ -1,18 +1,12 @@
 function WPATH(s) {
     var index = s.lastIndexOf("/");
     var path = -1 === index ? "tiflexigrid/" + s : s.substring(0, index) + "/tiflexigrid/" + s.substring(index + 1);
-    return path;
+    return true && 0 !== path.indexOf("/") ? "/" + path : path;
 }
 
 function Controller() {
-    function createThumb(image, size) {
-        var imageView = Ti.UI.createImageView({
-            image: image,
-            width: Ti.UI.SIZE,
-            height: Ti.UI.SIZE,
-            hires: true
-        });
-        return imageView.toImage().imageAsThumbnail(2 * size, 0, 0);
+    function createThumb(image) {
+        return image;
     }
     new (require("alloy/widget"))("tiflexigrid");
     this.__widgetId = "tiflexigrid";
