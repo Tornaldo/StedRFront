@@ -37,7 +37,10 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 
-if(!OS_MOBILEWEB){
+// Since it 
+Alloy.Globals.OS = Ti.Platform.osname;
+
+if(Alloy.Globals.OS == "android"){
 	Alloy.Globals.Map = require('ti.map');
 }
 
