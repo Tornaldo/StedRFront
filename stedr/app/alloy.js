@@ -37,7 +37,7 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 
-if(!OS_MOBILEWEB){
+if(OS_ANDROID){
 	Alloy.Globals.Map = require('ti.map');
 }
 
