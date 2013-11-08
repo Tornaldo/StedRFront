@@ -25,7 +25,9 @@
  *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-$.mapWin.open();
+
+$.nav.open();
+
 
 //Android Google Maps v2 module
 var MapModule;
@@ -74,7 +76,7 @@ mapview.addEventListener('click', function(evt) {
 		} else {
 			win.open();
 		}
-
+		
 	}
 });
 
@@ -180,6 +182,6 @@ wallCollection.fetch({
 	}
 });
 
-$.mapWin.addEventListener('close', function() {
+$.index.addEventListener('close', function() {
 	$.destroy();
 });

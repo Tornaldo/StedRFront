@@ -1,42 +1,14 @@
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
-    this.__controllerPath = "index";
+    this.__controllerPath = "iphone/index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.mapWin = Ti.UI.createWindow({
-        title: "Map",
-        id: "mapWin",
-        layout: "vertical"
-    });
-    $.__views.mapWin && $.addTopLevelView($.__views.mapWin);
-    $.__views.__alloyId0 = Ti.UI.createView({
-        height: "10%",
-        layout: "horizontal",
-        id: "__alloyId0"
-    });
-    $.__views.mapWin.add($.__views.__alloyId0);
-    $.__views.searchField = Ti.UI.createTextField({
-        id: "searchField",
-        width: "80%",
-        hintText: "Search location"
-    });
-    $.__views.__alloyId0.add($.__views.searchField);
-    $.__views.mapSearchButton = Ti.UI.createButton({
-        id: "mapSearchButton",
-        title: "Search"
-    });
-    $.__views.__alloyId0.add($.__views.mapSearchButton);
-    $.__views.mapView = Ti.UI.createView({
-        id: "mapView",
-        height: "90%"
-    });
-    $.__views.mapWin.add($.__views.mapView);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.mapWin.open();
+    $.nav.open();
     var MapModule;
     var mapview;
     if ("android" == Alloy.Globals.OS) {
@@ -145,7 +117,7 @@ function Controller() {
             Ti.API.error("woops");
         }
     });
-    $.mapWin.addEventListener("close", function() {
+    $.index.addEventListener("close", function() {
         $.destroy();
     });
     _.extend($, exports);
