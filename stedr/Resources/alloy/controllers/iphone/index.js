@@ -8,7 +8,7 @@ function Controller() {
     var exports = {};
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.nav.open();
+    Ti.API.info("IPHONE");
     var MapModule;
     var mapview;
     if ("android" == Alloy.Globals.OS) {
@@ -117,7 +117,7 @@ function Controller() {
             Ti.API.error("woops");
         }
     });
-    $.index.addEventListener("close", function() {
+    $.nav.addEventListener("close", function() {
         $.destroy();
     });
     _.extend($, exports);

@@ -25,7 +25,11 @@
  *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-$.mapWin.open();
+if (Alloy.Globals.OS == "iphone") {
+	$.nav.open();
+} else {
+	$.mapWin.open();
+}
 
 //Android Google Maps v2 module
 var MapModule;

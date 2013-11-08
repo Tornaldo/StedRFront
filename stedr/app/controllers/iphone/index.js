@@ -26,7 +26,7 @@
  */
 
 
-$.nav.open();
+Ti.API.info('IPHONE');
 
 
 //Android Google Maps v2 module
@@ -182,6 +182,6 @@ wallCollection.fetch({
 	}
 });
 
-$.index.addEventListener('close', function() {
+$.nav.addEventListener('close', function() {
 	$.destroy();
 });
