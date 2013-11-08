@@ -40,7 +40,7 @@ function Controller() {
     $.__views.nav && $.addTopLevelView($.__views.nav);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.nav.open();
+    (Alloy.Globals.OS = "iphone") ? $.nav.open() : $.mapWin.open();
     var MapModule;
     var mapview;
     if ("android" == Alloy.Globals.OS) {
@@ -71,7 +71,7 @@ function Controller() {
                 $model: wallCollection.get(evt.annotation.id)
             });
             var win = stedrWallController.getView();
-            $.nav.openWindow(win);
+            (Alloy.Globals.OS = "iphone") ? $.nav.openWindow(win) : win.open();
         }
     });
     $.mapSearchButton.addEventListener("click", function() {

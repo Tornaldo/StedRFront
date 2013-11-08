@@ -25,7 +25,11 @@
  *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-$.nav.open();
+if (Alloy.Globals.OS = "iphone") {
+	$.nav.open();
+} else {
+	$.mapWin.open();
+}
 
 //Android Google Maps v2 module
 var MapModule;
@@ -69,7 +73,12 @@ mapview.addEventListener('click', function(evt) {
 			"$model" : wallCollection.get(evt.annotation.id)
 		});
 		var win = stedrWallController.getView();
-		$.nav.openWindow(win);
+		if (Alloy.Globals.OS = "iphone") {
+			$.nav.openWindow(win);
+		} else {
+			win.open();
+		}
+		
 	}
 });
 
