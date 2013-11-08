@@ -23,7 +23,7 @@ function Controller() {
     $.__views.stedrWall = Ti.UI.createWindow({
         backgroundColor: "white",
         layout: "vertical",
-        exitOnClose: "false",
+        exitOnClose: "true",
         navBarHidden: "false",
         id: "stedrWall"
     });

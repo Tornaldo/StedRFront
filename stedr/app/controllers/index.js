@@ -25,7 +25,7 @@
  *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-$.mapWin.open();
+$.nav.open();
 
 //Android Google Maps v2 module
 var MapModule;
@@ -68,7 +68,8 @@ mapview.addEventListener('click', function(evt) {
 		var stedrWallController = Alloy.createController('stedrWall', {
 			"$model" : wallCollection.get(evt.annotation.id)
 		});
-		stedrWallController.getView().open();
+		var win = stedrWallController.getView();
+		$.nav.openWindow(win);
 	}
 });
 

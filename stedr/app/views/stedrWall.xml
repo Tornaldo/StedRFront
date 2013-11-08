@@ -1,6 +1,6 @@
 <Alloy>
 	<!-- Need to declare navBarHidden, so it becomes a heavy weight window that can capture back event -->
-	<Window class="container" layout="vertical" exitOnClose="false" navBarHidden="false">
+	<Window class="container" layout="vertical" exitOnClose="true" navBarHidden="false">
 		<View id="wallPictureView" height="50%" layout="vertical" >
 			<ScrollableView id="mediaScrollerMainImage" showPagingControl="true" height="95%"></ScrollableView>
 			<Label id="creditLabel" height="5%"></Label>

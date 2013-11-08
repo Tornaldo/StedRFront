@@ -7,11 +7,10 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.mapWin = Ti.UI.createWindow({
-        title: "Wall",
+        title: "Map",
         id: "mapWin",
         layout: "vertical"
     });
-    $.__views.mapWin && $.addTopLevelView($.__views.mapWin);
     $.__views.__alloyId0 = Ti.UI.createView({
         height: "10%",
         layout: "horizontal",
@@ -34,9 +33,14 @@ function Controller() {
         height: "90%"
     });
     $.__views.mapWin.add($.__views.mapView);
+    $.__views.nav = Ti.UI.iOS.createNavigationWindow({
+        window: $.__views.mapWin,
+        id: "nav"
+    });
+    $.__views.nav && $.addTopLevelView($.__views.nav);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.mapWin.open();
+    $.nav.open();
     var MapModule;
     var mapview;
     if ("android" == Alloy.Globals.OS) {
@@ -66,7 +70,8 @@ function Controller() {
             var stedrWallController = Alloy.createController("stedrWall", {
                 $model: wallCollection.get(evt.annotation.id)
             });
-            stedrWallController.getView().open();
+            var win = stedrWallController.getView();
+            $.nav.openWindow(win);
         }
     });
     $.mapSearchButton.addEventListener("click", function() {
