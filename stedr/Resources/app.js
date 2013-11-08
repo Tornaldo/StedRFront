@@ -1,6 +1,6 @@
 var Alloy = require("alloy"), _ = Alloy._, Backbone = Alloy.Backbone;
 
-Alloy.Globals.OS = Ti.Platform.osname;
+Alloy.Globals.OS = "android";
 
 "android" == Alloy.Globals.OS && (Alloy.Globals.Map = require("ti.map"));
 

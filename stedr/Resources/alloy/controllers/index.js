@@ -6,38 +6,6 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.mapWin = Ti.UI.createWindow({
-        title: "Map",
-        id: "mapWin",
-        layout: "vertical"
-    });
-    $.__views.__alloyId0 = Ti.UI.createView({
-        height: "10%",
-        layout: "horizontal",
-        id: "__alloyId0"
-    });
-    $.__views.mapWin.add($.__views.__alloyId0);
-    $.__views.searchField = Ti.UI.createTextField({
-        id: "searchField",
-        width: "80%",
-        hintText: "Search location"
-    });
-    $.__views.__alloyId0.add($.__views.searchField);
-    $.__views.mapSearchButton = Ti.UI.createButton({
-        id: "mapSearchButton",
-        title: "Search"
-    });
-    $.__views.__alloyId0.add($.__views.mapSearchButton);
-    $.__views.mapView = Ti.UI.createView({
-        id: "mapView",
-        height: "90%"
-    });
-    $.__views.mapWin.add($.__views.mapView);
-    $.__views.nav = Ti.UI.iOS.createNavigationWindow({
-        window: $.__views.mapWin,
-        id: "nav"
-    });
-    $.__views.nav && $.addTopLevelView($.__views.nav);
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.nav.open();
