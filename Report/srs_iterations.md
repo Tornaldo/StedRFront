@@ -1,9 +1,7 @@
-# Requirements changes
-
 During development of this project, we dealt with constant changes in requirements from the customer side. This certainly slowed down the development as we needed to rework some of the features as well as implemented some code that was not used in the the final product.
 
 
-## Original requirements
+# Original requirements
 
 The first draft of requirements was based on information we got from the project description supplied by the customer and from our first meeting.
 
@@ -18,15 +16,15 @@ The functional requirements as described in the document handed in as a project 
 
 From this description, we carried out first draft of our requirements document. The sections below state functional (grouped by topic) and non-functinal requirements from this iteration.
 
-### Functional: Users
-	
+## Functional: Users
+
 * F1.1 System shall let users to register an account within the system.
 * F1.2 System shall enable group management.
 * F1.2.1 System shall let registered users to create a group.
 * F1.2.2 System shall let the group owner add users to group.
 * F1.2.3 System shall let  the group owner remove users from group.
 
-### Functional: Walls
+## Functional: Walls
 
 * F2.1 System shall enable management of virtual walls
 * F2.1.1 System shall let registered users create a virtual wall
@@ -41,7 +39,7 @@ From this description, we carried out first draft of our requirements document. 
 * F2.3.2 System shall let registered users comment on walls
 * F2.4 System shall let users share wall over social networks (facebook, twitter).
 
-### Functional: Stories
+## Functional: Stories
 
 * F3.1 System shall enable management of stories on virtual walls
 * F3.1.1 System shall let registered users add story on a wall by clicking on a desired place on the wall
@@ -54,13 +52,13 @@ From this description, we carried out first draft of our requirements document. 
 * F3.3.1 System shall let users comment on stories
 * F3.4 System shall let users share stories over social networks (facebook, twitter).
 
-### Non-functional
+## Non-functional
 
 * NF1 Application shall enable offline work (limited).
 * NF2 Application shall be developed for one target mobile device (tablet).
 
 
-## Changes - Iteration 1
+# Changes - Iteration 1
 
 After the first few meetings with the customer, some necessary changes were carried out.
 
@@ -73,7 +71,7 @@ Customer also requested adding two functional requirements concerning walls and 
 * F2.2.6 System shall show user a list of walls that feature his stories
 * F3.2.4 System shall get auto-fill suggestions when filtering upon topics (user defined tags)
 
-## Changes - Iteration 2
+# Changes - Iteration 2
 
 Many issues raised when analysing the requirements concerning users and groups, the owner relationships between users, groups and walls.
 
@@ -104,7 +102,7 @@ Another requirement was dropped as it was a duplicate of another.
 Requirement F3.1.1 was rewritten from *System shall let registered users add story on a wall by clicking on a desired place on the wall* to more general *System shall let registered users add story to a location* as a particular mechanism of adding walls is a concern of design and implementation and proven to be a subject of change.
 
 
-## Changes - Iteration 3
+# Changes - Iteration 3
 
 In an e-mail from customer from October 9, 2013, many crucial changes were requested.
 
@@ -150,7 +148,6 @@ The missing database brought up the problem where should we get the walls from. 
 * F2.1 System shall enable management of virtual walls
 * F2.1.1 System shall let registered users create a virtual wall
 
-
 Another request was that the project name shall change from *Virtual Wall* to *StedR* (norwegian for *places*, colloquially). The reason is uncertainty of most people about what the term actually means.
 
 >  Jeg har merket at folk ikke forstår begrep Virtual Wall. Hva synes dere om StedR? - Jacqueline Floch
@@ -158,7 +155,7 @@ Another request was that the project name shall change from *Virtual Wall* to *S
 This change as well makes us call *walls* with their new name *places* instead. The rest of report is following this.
 
 
-## Changes - Iteration 4
+# Changes - Iteration 4
 
 In the following two weeks, the requirements were finalized and settled.
 

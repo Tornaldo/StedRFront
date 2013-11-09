@@ -999,6 +999,8 @@ See chapter \ref{sec:req_usability} for requirements on usability.
 
 \subsection{Constraints}
 
+This section lists the design constraints prescribed by the customer, such as use of specific languages, toolkits or frameworks.
+
 \subsubsection{HTML5 use}
 Since use on many different devices and platforms is expected and necessary, customer requested that the frontend would be a mobile application. As the system is crowdsourced and heavily relies on users, it it necessary that it interacts very well with the users and is visually appealing. Also, for reasons stated in \ref{sec:req_unavailability_of_connection}, local storage is necessary to enable off-line mode (in the future). This implies the use of cutting-edge technologies for the development.
 
@@ -1012,7 +1014,7 @@ As the application developed is going to be a client/server where the client is 
 \subsubsection{Virtual Wall Client/Server interface}
 VirtualWall client is a mobile that runs in a container similar to a web browser. Once the application is installed in the phone and open, data transfers with the web server can be done using \gls{ajax} to retrieve the data in \gls{json} format from the server.
 
-Format of the messages shall be determined later. % FIXME SIMON: put format description and sample json messages to appendix
+Format of the messages is presented in sections \ref{placesjson}, \ref{storiesjson} and \ref{imagesjson}.
 
 \subsubsection{Social networks}\label{sec:req_social_networks}
 Walls and stories shall be easily shared using social networks like Facebook or Twitter. Custom button for sharing/liking shall be available for each story or wall that user wants to like or share.
@@ -1021,8 +1023,6 @@ Sharing in this case means posting a link on user's social network profile.
 
 \subsection{Functions}
 The functional requirements are organized according to object categories.
-
-%FIXME SIMON: assign test levels
 
 \subsubsection{Places}
 
@@ -1070,7 +1070,7 @@ The functional requirements are organized according to object categories.
 \label{tab:req_images}
 \end{table}
 
-\subsection{Software system attributes}\label{sec:req_software_system_attributes}
+\subsection{Quality attributes}\label{sec:req_software_system_attributes}
 In this section, we describe several quality attributes this system shall have.
 
 \subsubsection{Maintainability}
@@ -1081,7 +1081,7 @@ Customer requests that the project documentation shall include description of al
 \subsubsection{Portability}
 As customer requested, the front end application shall be developed in order to be working on various devices, ranging from small smartphones to desktop stations.
 
-Quality attribute scenario to evaluate the system shall be determined later. %FIXME SIMON prepare scenarios for: modifiablity (able to add new feature in time x), portability (deploying to other cloud service, running on other mobile platform...)
+Quality attribute scenario to evaluate the system shall be determined in section \ref{sec:qatestscenarios}.
 
 \subsubsection{Usability}\label{sec:req_usability}
 From the description of typical usage (mentioned in \ref{sec:req_user_characteristics}) and characteristic problems listed in \ref{sec:req_webapplication_frontend}, we came up with several usability scenarios that shall evaluate the usability quality of the software system. As usability is a big concern in this project, usability scenarios and tests shall be included in the report under Test Procedures Specification.  % FIXME SIMON: once usability tests are prepared, put refs to them (link to Test Procedures Specification)
@@ -1352,7 +1352,7 @@ The clients only communicate with the broker and Twitter.
 \section{Communication interfaces}
 Getting data from the server and by that, the services it consumes, is done by accessing given \glspl{url} and recieving \gls{json} as a return value.
 
-\subsection{Places}
+\subsection{Places}\label{placesjson}
 To access the places in the system, two options are availiable.
 If the objective is to get a hold of all places in the system, use the following address:
 \begin{lstlisting}[frame=single]
@@ -1417,7 +1417,7 @@ Decimal degrees (DD) express latitude and longitude geographic coordinates as de
 
 This means New York City has a positive latitude and negative longitude, while Rio de Janeiro has both values negative and Tokyo (or most of the Europe) both values positive.
 
-\subsection{Stories}
+\subsection{Stories}\label{storiesjson}
 For getting stories in radius of 50 meters from the Place identified by the passed \textit{placeId}, invoke this \gls{url}:
 
 \begin{lstlisting}[frame=single]
@@ -1489,7 +1489,7 @@ This will return a collection of stories that match the provided place id.
 ]
 \end{lstlisting}
 
-\subsection{Images}
+\subsection{Images}\label{imagesjson}
 For getting images for a specified tag:
 \begin{lstlisting}[frame=single]
 /images.json?tag=nidaros
@@ -1805,7 +1805,11 @@ Tests in this level shall be performed as black-box tests and usability tests. N
 
 \section{Test cases} \label{sec:test_cases}
 
-\subsection{Quality attributes scenarios}
+This section is listing designed test cases and scenarios, that shall be used to conduct tests on the software system we developed.
+
+\subsection{Quality attributes test scenarios}\label{sec:qatestscenarios}
+
+Test scenarios featured in this section are designed to test the quality attributes that were chosen in section \ref{sec:req_software_system_attributes}.
 
 \subsubsection{Modifiability scenarios}
 
@@ -1839,6 +1843,8 @@ Tests in this level shall be performed as black-box tests and usability tests. N
 
 \subsection{Functional requirements test cases}
 
+This system is featuring test cases testing the functional reuirements. These are divided into two groups by the subsystem they are testing, i.e. either backend or frontend.
+
 \subsubsection{Backend test cases}
 
 Test cases in \ref{tab:TCF2.2BE1}, \ref{tab:TCF3.2BE1} and \ref{tab:TCF4.1BE1} are testing the server backend part of the system. These are to be performed as white-box tests by the developers, so they can identify possible problems. This is not a function to be used directly by users.
@@ -1863,7 +1869,7 @@ Test cases in \ref{tab:TCF2.2BE1}, \ref{tab:TCF3.2BE1} and \ref{tab:TCF4.1BE1} a
                               \item Go to \texttt{/places.json}
                             \end{enumerate} \\ \hline 
     Expected result       & \begin{enumerate}
-                              \item The window should feature a JSON file with structure as shown in appendix. %FIXME SIMON: appendix message samples
+                              \item The window should feature a JSON file with structure as shown in \ref{placesjson}.
                             \end{enumerate} \\ \hline 
     Pass/Fail criteria    & All results appear as expected above.
                             \begin{enumerate}
@@ -1896,7 +1902,7 @@ Test cases in \ref{tab:TCF2.2BE1}, \ref{tab:TCF3.2BE1} and \ref{tab:TCF4.1BE1} a
                               \item Go to \texttt{/stories.json?placeId=10671243644}
                             \end{enumerate} \\ \hline 
     Expected result       & \begin{enumerate}
-                              \item The window should feature a JSON file with structure as shown in appendix. %FIXME SIMON: appendix message samples
+                              \item The window should feature a JSON file with structure as shown in \ref{storiesjson}.
                             \end{enumerate} \\ \hline 
     Pass/Fail criteria    & All results appear as expected above.
                             \begin{enumerate}
@@ -1926,7 +1932,7 @@ Test cases in \ref{tab:TCF2.2BE1}, \ref{tab:TCF3.2BE1} and \ref{tab:TCF4.1BE1} a
                               \item Go to \texttt{/images.json?tag=nidarosdomen}
                             \end{enumerate} \\ \hline 
     Expected result       & \begin{enumerate}
-                              \item The window should feature a JSON file with structure as shown in appendix. %FIXME SIMON: appendix message samples
+                              \item The window should feature a JSON file with structure as shown in \ref{imagesjson}.
                             \end{enumerate} \\ \hline 
     Pass/Fail criteria    & All results appear as expected above.
                             \begin{enumerate}
@@ -1940,7 +1946,7 @@ Test cases in \ref{tab:TCF2.2BE1}, \ref{tab:TCF3.2BE1} and \ref{tab:TCF4.1BE1} a
 
 \subsubsection{Frontend test cases}
 
-%FIXME
+Test cases in \ref{tab:TCF2.2FE1}, \ref{tab:TCF2.2FE2}, \ref{tab:TCF3.2FE1}, \ref{tab:TCF3.2FE2}, \ref{tab:TCF3.3FE1} and \ref{tab:TCF4.1FE1} are testing the frontend part of the system. These are to be performed as black-box tests by testers, that do not need any special training or knowledge. These simulate how is the system going to be used in production, i.e. by real users.
 
 \begin{table}
   \begin{tabular}{| p{3cm} | p{9.5cm} |} \hline 
@@ -2174,7 +2180,7 @@ Code inspection found the backend to be \emph{structured, clean, elegant, with n
 
 \subsubsection{Frontend}
 
-%FIXME SIMON: perform tests
+%FIXME SIMON: perform inspection
 
 \chapter{Phases}
 This chapter aims to document the progress of the project, but also give valuable background for decisions taken and documentation for developing against the system.
@@ -3227,6 +3233,274 @@ TODO
 \end{center}
 
 \chapter{Requirements evolution}\label{chap:req_history}
-ADD ALL THE REVISIONS OF THE REQUIREMENTS DOCUMENT WITH CHANGES DOCUMENTED
+
+During development of this project, we dealt with constant changes in
+requirements from the customer side. This certainly slowed down the
+development as we needed to rework some of the features as well as
+implemented some code that was not used in the the final product.
+
+\section{Original requirements}\label{original-requirements}
+
+The first draft of requirements was based on information we got from the
+project description supplied by the customer and from our first meeting.
+
+Originally, the goal of the project was to develop a prototype backend
+server and a frontend application for one target device (tablet was
+suggested for this purpose).
+
+The functional requirements as described in the document handed in as a
+project description by customer:
+
+\begin{itemize}
+  \item Managing virtual walls: creation \& deletion; retrieval according to
+  location, popularity, topics and other metadata (e.g.~author)
+  \item Managing stories: adding stories through a click on a specific place
+  on the wall, filtering stories according to popularity, topics and
+  other metadata (e.g.~duration)
+  \item Social interaction: sharing walls (possibly stories) for editing,
+  adding comments to walls and stories.
+  \item Promotion through social networks: sharing walls and stories through
+  social networks (e.g.~Facebook, Twitter)
+\end{itemize}
+
+From this description, we carried out first draft of our requirements
+document. The sections below state functional (grouped by topic) and
+non-functinal requirements from this iteration.
+
+\subsection{Functional: Users}\label{functional-users}
+
+\begin{itemize}
+  \item F1.1 System shall let users to register an account within the system.
+  \item F1.2 System shall enable group management.
+  \item F1.2.1 System shall let registered users to create a group.
+  \item F1.2.2 System shall let the group owner add users to group.
+  \item F1.2.3 System shall let the group owner remove users from group.
+\end{itemize}
+
+\subsection{Functional: Walls}\label{functional-walls}
+
+\begin{itemize}
+  \item F2.1 System shall enable management of virtual walls
+  \item F2.1.1 System shall let registered users create a virtual wall
+  \item F2.1.2 System shall let owner delete a virtual wall
+  \item F2.2 System shall let users retrieve and view walls
+  \item F2.2.1 System shall let users to filter walls by popularity
+  \item F2.2.2 System shall let users to filter walls by topics (user-defined
+  tags)
+  \item F2.2.3 System shall let users to filter walls by metadata
+  \item F2.2.4 System shall let users to filter walls by story authors
+  \item F2.3 System shall enable social interaction upon walls
+  \item F2.3.1 System shall let users edit walls collaboratively in groups
+  \item F2.3.2 System shall let registered users comment on walls
+  \item F2.4 System shall let users share wall over social networks (facebook,
+  twitter).
+\end{itemize}
+
+\subsection{Functional: Stories}\label{functional-stories}
+
+\begin{itemize}
+  \item F3.1 System shall enable management of stories on virtual walls
+  \item F3.1.1 System shall let registered users add story on a wall by
+  clicking on a desired place on the wall
+  \item F3.1.2 System shall enable the stories to contain text, hyperlinks,
+  video, pictures, audio
+  \item F3.2 System shall let users retrieve and view stories
+  \item F3.2.1 System shall let users to filter stories by popularity
+  \item F3.2.2 System shall let users to filter stories by topics (user
+  defined tags)
+  \item F3.2.3 System shall let users to filter stories by metadata (author,
+  media duration)
+  \item F3.3 System shall enable social interaction upon stories
+  \item F3.3.1 System shall let users comment on stories
+  \item F3.4 System shall let users share stories over social networks
+  (facebook, twitter).
+\end{itemize}
+
+\subsection{Non-functional}\label{non-functional}
+
+\begin{itemize}
+  \item NF1 Application shall enable offline work (limited).
+  \item NF2 Application shall be developed for one target mobile device
+  (tablet).
+\end{itemize}
+
+\section{Changes - Iteration 1}\label{changes---iteration-1}
+
+After the first few meetings with the customer, some necessary changes
+were carried out.
+
+Customer decided that offline mode does not need to be implemented as
+this is a prototype of the application and it should be simple, rapidly
+developed and used rather as a proof of concept than production-ready.
+
+Customer also requested adding two functional requirements concerning
+walls and stories:
+
+\begin{itemize}
+  \item F2.1.3 System shall enable owner to add contributors to wall
+  \item F2.2.5 System shall get auto-fill suggestions when filtering upon
+  topics (user defined tags)
+  \item F2.2.6 System shall show user a list of walls that feature his stories
+  \item F3.2.4 System shall get auto-fill suggestions when filtering upon
+  topics (user defined tags)
+\end{itemize}
+
+\section{Changes - Iteration 2}\label{changes---iteration-2}
+
+Many issues raised when analysing the requirements concerning users and
+groups, the owner relationships between users, groups and walls.
+
+The original concept proposed was proven corrupt and inconsistent.
+Several requirements were dropped for this reason:
+
+\begin{itemize}
+  \item F1.2 System shall enable group management.
+  \item F1.2.1 System shall let registered users to create a group.
+  \item F1.2.2 System shall let the group owner add users to group.
+  \item F1.2.3 System shall let the group owner remove users from group.
+  \item F2.3.1 System shall let users edit walls collaboratively in groups
+\end{itemize}
+
+Issues about spam, illegal and abusive content were raised. Thus new
+funtional requirements were introduced:
+
+\begin{itemize}
+  \item F3.3.2 System shall notify story author about new comment
+  \item F3.3.3 System shall enable users to flag a comment as a spam
+  \item F3.3.4 System shall notify story author about spam-flagged comment
+  \item F3.3.5 System shall enable story author to remove a comment
+\end{itemize}
+
+Also, so called \emph{topics} are now simply refered to as \emph{tags}
+instead. These were mentioned in:
+
+\begin{itemize}
+  \item F2.2.2 System shall let users to filter walls by \ldots{}
+  \item F2.2.3 System shall get auto-fill suggestions when filtering upon
+  topics (user defined tags)
+\end{itemize}
+
+Another requirement was dropped as it was a duplicate of another. * F2.3
+System shall enable social interaction upon walls
+
+Requirement F3.1.1 was rewritten from \emph{System shall let registered
+users add story on a wall by clicking on a desired place on the wall} to
+more general \emph{System shall let registered users add story to a
+location} as a particular mechanism of adding walls is a concern of
+design and implementation and proven to be a subject of change.
+
+\section{Changes - Iteration 3}\label{changes---iteration-3}
+
+In an e-mail from customer from October 9, 2013, many crucial changes
+were requested.
+
+Customer came up with the idea, that there is not to be any internal
+database for this system and it should merely retrieve data from other
+systems' APIs, such as \emph{Digitalt Fortalt}, \emph{Flickr}.
+
+As system does not store any entities in its own database, it is not its
+concern to be in charge of access control. The concept of users and
+owner relationships is therefore abandoned and the rest of functional
+requirements concerning those are dropped:
+
+\begin{itemize}
+  \item F1.1 System shall let users to register an account within the system.
+  \item F2.1.2 System shall let owner delete a virtual wall
+  \item F2.1.3 System shall enable owner to add contributors to wall (their
+  stories for this location shall appear on the wall)
+  \item F2.2.5 System shall get auto-fill suggestions when filtering upon
+  topics (user defined tags)
+  \item F2.2.6 System shall show user a list of walls that feature his stories
+\end{itemize}
+
+Another suggestion was that stories shall be retrieved from
+\emph{Digitalt Fortalt} or \emph{Storify} or similar service. We
+therefore cannot offer filtering upon attributes that are not present in
+the API of the service we use. Thus, we dropped the requirements:
+
+\begin{itemize}
+  \item F2.2.1 System shall let users to filter walls by popularity
+  \item F3.2.1 System shall let users to filter stories by popularity.
+\end{itemize}
+
+Also, we are not able to get list of tags in the system a priori to
+getting the stories.
+
+\begin{itemize}
+  \item F3.2.3 System shall get auto-fill suggestions when filtering upon
+  topics (user defined tags)
+\end{itemize}
+
+Not storing stories in own database also means user is not going to
+create or edit stories inside our application. The application shall
+only inform the user how to create the story, but the users must do this
+themself. Thus we dropped some other requirements:
+
+\begin{itemize}
+  \item F3.1 System shall enable management of stories on virtual walls
+  \item F3.1.1 System shall let registered users add story to a location
+  \item F3.1.2 System shall enable the stories to contain text, hyperlinks,
+  video, pictures, audio
+\end{itemize}
+
+As we are not able to store the comments in our database, it was
+suggested to use \emph{Twitter} to let users comment on stories and drop
+commenting on walls completely:
+
+\begin{itemize}
+  \item F2.3.2 System shall let registered users comment on walls
+  \item F3.3.2 System shall notify story author about new comment
+  \item F3.3.3 System shall enable users to flag a comment as a spam
+  \item F3.3.4 System shall notify story author about spam-flagged comment
+  \item F3.3.5 System shall enable story author to remove a comment
+\end{itemize}
+
+The missing database brought up the problem where should we get the
+walls from. For this purpose \emph{Flickr} was suggested. This also
+means we do not store the walls anymore and we generate them on the fly,
+which implies dropping other requirements:
+
+\begin{itemize}
+  \item F2.1 System shall enable management of virtual walls
+  \item F2.1.1 System shall let registered users create a virtual wall
+\end{itemize}
+
+Another request was that the project name shall change from
+\emph{Virtual Wall} to \emph{StedR} (norwegian for \emph{places},
+colloquially). The reason is uncertainty of most people about what the
+term actually means.
+
+\begin{quote}
+Jeg har merket at folk ikke forstår begrep Virtual Wall. Hva synes dere
+om StedR? - Jacqueline Floch
+\end{quote}
+
+This change as well makes us call \emph{walls} with their new name
+\emph{places} instead. The rest of report is following this.
+
+\section{Changes - Iteration 4}\label{changes---iteration-4}
+
+In the following two weeks, the requirements were finalized and settled.
+
+Additional feature of showing photos for tags on \emph{Instagram} was
+requested.
+
+\begin{itemize}
+  \item 4.1 System shall show images tagged with the tag of the particular
+  place.
+\end{itemize}
+
+It was agreed that we shall use \emph{Flickr} group called
+\href{http://www.flickr.com/groups/2297124@N25/}{StedR} as a source of
+the \emph{places}. Each photo added to this group shall appear as a
+\emph{place} in our application on a place where it was geo-tagged on
+\emph{Flickr}.
+
+As requirement F3.3.1 was the only child of its parent, we are
+renumbering it and calling it:
+
+\begin{itemize}
+  \item F3.3 System shall let users comment on stories
+\end{itemize}
 
 \end{document}s
