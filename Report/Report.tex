@@ -2550,6 +2550,16 @@ The architecture is only partially done, this is due to the change in mobile fra
 \section{Fourth phase: Sprint 3}
 \subsection{S3: Sprint planning}
 \subsection{S3: Backlog}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| l | l |} \hline
+        Item                                                                & Outcome         \\ \hline
+
+    \end{tabular}
+    \caption{Backlog for sprint 3.}
+    \label{tab:phase_sprint3_backlog}
+\end{table}
+
 \subsection{S3: Requirements as scenarios}
 
 \subsection{S3: Implementation}
@@ -2591,13 +2601,108 @@ As seen in \ref{fig:mercator}, it is a cylindrical conformal projection, so it p
 \subsection{S3: Phase evaluation}
 
 \section{Fifth phase: Sprint 4}
-To be written
+
 \subsection{S4: Sprint planning}
-To be written
+The project plan states that there are to be 4 sprints, and that the last one (Sprint 4) will start on october 23rd. and last until november 11th. This leaves two weeks for finalizing the report and a presentation.
+
+Ideally this would be the prefered route, but due to the projects current status some changes needs to be made. Four persons working 50 hours or more each on making finishing touches on a document and a presentation is quite extensive, given the fact that the system still needs quite some work.
+
+Sprint 4 is therefor extended with one week. It will last from 23.10.2013 - 13.11.2013, amounting to three weeks.
+
+During Sprint 4 one person is allocated to fix any issues with the report, so that in the last phase (finalization) the group might focus solely on the presentation and proof reading.
+
+In Sprint 4, the group should also place an emphasis on testing, as very little has formally been done in that regard earlier in the process.
+
+\textbf{Allocation matrix}\\
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| l | l | l | l |} \hline
+         & App & Testing & Report\\
+         \hline
+         Odd & 3 weeks & 0 & 0\\
+         \hline
+         Simon & 2 weeks & 1 week & 0\\
+         \hline
+         Knut & 2 weeks & 1 week & 0\\
+         \hline
+         Christian & as needed & 1 week & 2 weeks\\
+         \hline
+    \end{tabular}
+    \caption{Allocation matrix for sprint 4}
+    \label{tab:phase_sprint4_allocation}
+\end{table}
+
+
 \subsection{S4: Backlog}
-To be written
+\begin{table}[H]
+    \centering
+    \begin{tabular}{| l | l |} \hline
+        Item                                                                & Outcome         \\ \hline
+        Define the main principles of UI & Done\\
+        \hline
+        Finish system architecture & Done\\
+        \hline
+        Browse virtual walls - retrieve picture(s) from flickr & Done\\
+        \hline
+        Open a virtual wall & Done\\
+        \hline
+        Create virtual wall & Done\\
+        \hline
+        Open story & Done\\
+        \hline
+        Add story to wall & \\
+        \hline
+        Filter stories by tags & \\ 
+        \hline
+        Adding instagram information related to a wall  & \\
+        \hline
+        Retrieving instagram information related to a wall & \\
+        \hline
+        Add comment to a story & Done\\
+        \hline
+    \end{tabular}
+    \caption{Backlog for sprint 4.}
+    \label{tab:phase_sprint4_backlog}
+\end{table}
+
 \subsection{S4: Requirements as scenarios}
-To be written
+\subsubsection{Create virtual wall}
+\begin{enumerate}
+\item User goes to map view
+\item User taps on the add icon (a plus sign)
+\item System provides user with information about how to add a new wall
+\end{enumerate}
+
+\subsubsection{Add story to wall}
+\begin{enumerate}
+\item User goes to story view on a wall
+\item User taps on the add icon (a plus sign)
+\item System provides user with information about how to add a new story
+\end{enumerate}
+
+\subsubsection{Filter stories by tags or author}
+\begin{enumerate}
+\item User goes to the story view of a wall
+\item User pulls out tags panel and selects desired tags by browsing or searching
+\item Client fetches stories from server that matches the chosen tags
+\item Tags panel disappear and wall view is updated with only stories matching the tags
+\end{enumerate}
+
+\subsubsection{Browse stories}
+\begin{enumerate}
+\item User opens a wall
+\item User navigates to stories tab
+\item User navigates the tiles by dragging and tapping
+\end{enumerate}
+
+\subsubsection{Open story}
+\begin{enumerate}
+\item User navigates to a wall
+\item User browses stories
+\item User selects a desired story by tapping on it
+\item Client displays the story
+\end{enumerate}
+
 \subsection{S4: Implementation}
 
 \subsubsection{Client}
@@ -2605,6 +2710,8 @@ To be written
 Instagram API does not support fetching of several tags simultaneously.
 Instagram has a limit of 30 pictures to be shown per page. 
 Can be problematic, legally, to show all pictures without filtering by humans.
+
+subsubsection{Server}
 
 \subsection{S4: Test execution}
 To be written
