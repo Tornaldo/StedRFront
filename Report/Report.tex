@@ -953,9 +953,11 @@ Another characteristic property of those devices is that their interaction mecha
 \end{enumerate}
 
 \subsection{Software interfaces}
-We imply that the server and the client interoperate and are developed to work with one another. The required interfaces and communication schema is to be determined later on. % FIXME SIMON: finish this
+We imply that the server and the client interoperate and are developed to work with one another. The required interfaces and communication schema is to be determined later on in section \ref{sec:arch_communicationinterfaces}.
 
 \subsection{Communication interfaces}
+This section describes what we shall take into account when designing interfaces for communication between subsystems of our system. If there are any special characteristics of the environment that affect those interfaces, they should be stated here.
+
 Another inherent characteristic of mobile devices (smartphones, tablets, etc.) is the unreliability and speed of network connection. Since this application is a part of a client-server system, the communication link between those is critical.
 
 The main issues with mobile data networks are frequent interruption, big latency and small bitrate. Sometimes the connection can as well be unavailable at all. This results in the data connection being slow and unreliable which has a great significance on the performance of the application and its usability. As developers of the mobile application, we need to take this into consideration.
@@ -1342,7 +1344,7 @@ The clients only communicate with the broker and Twitter.
       \label{fig:arch_deployment}
 \end{figure}
 
-\section{Communication interfaces}
+\section{Communication interfaces}\label{sec:arch_communicationinterfaces}
 Getting data from the server and by that, the services it consumes, is done by accessing given \glspl{url} and recieving \gls{json} as a return value.
 
 \subsection{Places}\label{placesjson}
@@ -1573,9 +1575,6 @@ Testing of the user interface shall be done by intended users of the system by m
 
 \subsection{Item pass and fail criteria}
 Meeting the preconditions for each test and receiving a corresponding expected result are criteria for successful passing the test. The test is evaluated as failed otherwise.
-
-%FIXME SIMON: TBD
-%\subsection{Suspension criteria and resumption requirements}
 
 \subsection{Test deliverables}
 The documents to be delivered shall include:
