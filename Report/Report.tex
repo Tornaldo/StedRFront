@@ -110,7 +110,6 @@
         }
 }
 \end{tabular}
-\label{tab:partners_customer_jacqueline}
 \end{table}
         
 
@@ -737,7 +736,7 @@ As you can see in Figure~\ref{fig:pre_kulturoversikt}, sights from all over Norw
       \label{fig:pre_kulturMoreInfo}
 \end{figure}
 
-Kulturminnesøk can be considered a partly edge dominant system\footnote{the term "edge dominant system" is explained in section~\ref{subsec:edge}}, since everyone can register and add their own cultural heritage sight. There is about 1500 sights that users have added. Users have added everything from swimming halls to archaeological memories. We call it just partly edge dominant, since only 1\% of the content is added by the public.
+Kulturminnesøk can be considered a partly edge dominant system\footnote{the term edge dominant system is explained in section~\ref{subsec:edge}}, since everyone can register and add their own cultural heritage sight. There is about 1500 sights that users have added. Users have added everything from swimming halls to archaeological memories. We call it just partly edge dominant, since only 1\% of the content is added by the public.
 
 \begin{figure}[H]
       \centering
@@ -746,7 +745,7 @@ Kulturminnesøk can be considered a partly edge dominant system\footnote{the ter
       \label{fig:pre_fortaltFrontPage}
 \end{figure}
 
-Another edge dominant cultural heritage system is "Digitalt fortalt", or "digitally told". Digitalt Fortalt is a website where users, cultural institutions or private persons can register and add stories related to cultural heritage. Users have added stories about everything from clothespins to protected buildings, and today there are over 3000 stories. 
+Another edge dominant cultural heritage system is ``Digitalt fortalt'' (norwegian for ``digitally told''). Digitalt Fortalt is a website where users, cultural institutions or private persons can register and add stories related to cultural heritage. Users have added stories about everything from clothespins to protected buildings, and today there are over 3000 stories. 
 
 To read a story you can either search, by pressing one of the popular tags or simply search from the search field, or browse on the front page, in last told stories, popular stories, last commented stories or among the most  read stories. If we search on ``Trondheim'' in the search field, we get 135 hits. The stories are placed in a grid system, and every story is represented in a little box, with a title, a picture (a play-sign if a sound is attached to the story), author and location. Some stories are also linked to a date or a period. The search result is shown in Figure~\ref{fig:pre_fortaltTrondheim}.
 
@@ -1387,12 +1386,9 @@ Getting data from the server and by that, the services it consumes, is done by a
 
 \subsection{Places}\label{placesjson}
 To access the places in the system, two options are availiable.
-If the objective is to get a hold of all places in the system, use the following address:
-\begin{lstlisting}[frame=single]
-/places.json
-\end{lstlisting}
+If the objective is to get a hold of all places in the system, use the \texttt{/places.json} method, which returns a collection of all the places.
 
-The places are returned as a \gls{json} document, as shown bellow.
+The structure of the collection can be seen in the example below.
 
 \begin{lstlisting}[frame=single]
 [
@@ -1426,11 +1422,10 @@ The places are returned as a \gls{json} document, as shown bellow.
 \end{lstlisting}
 
 \subsection{Places in area}
-If the objective is to get only the places in a given area on the map, use the following address: 
-\begin{lstlisting}[frame=single]
-/places_in_area.json?startLatitude=63.397&startLongitude=10.305
-&stopLatitude=63.454&stopLongitude=10.492
-\end{lstlisting}
+If the objective is to get only the places in a given area on the map, use the method with latitude and lingitude boundaries: \texttt{/places\_in\_area.json} with 4 parameters defining the bounding box as shown in figure~\ref{fig:arch_interface_map}: \texttt{startLatitude}, \texttt{startLongitude}, \texttt{stopLatitude} and \texttt{stopLongitude}.
+
+
+
 When used, the query arguments should be fitted for the use case. The API assumes a Mercator-projection map like the one Google Maps are using.
 
 Where startLongitude is the the latitude of the west (i.e. left) border of the bounding box, stopLongitude is the east (i.e. right) border, startLatitude is the south (i.e. bottom) border and stopLatitude is the north (i.e. top) border of the bounding box.
@@ -1451,13 +1446,7 @@ Decimal degrees (DD) express latitude and longitude geographic coordinates as de
 This means New York City has a positive latitude and negative longitude, while Rio de Janeiro has both values negative and Tokyo (or most of the Europe) both values positive.
 
 \subsection{Stories}\label{storiesjson}
-For getting stories in radius of 50 meters from the Place identified by the passed \textit{placeId}, invoke this \gls{url}:
-
-\begin{lstlisting}[frame=single]
-http://stedr.herokuapp.com/stories.json?placeId=10357336336
-\end{lstlisting}
-
-This will return a collection of stories that match the provided place id.
+Method \texttt{http://stedr.herokuapp.com/stories.json?placeId=10357336336} returns a collection of stories in radius of 50 meters from the Place identified by the passed \textit{placeId} (which is \emph{10357336336} in this case. The structure of the collection can be seen in the example below.
 
 \begin{lstlisting}[frame=single]
 [
@@ -1523,11 +1512,7 @@ This will return a collection of stories that match the provided place id.
 \end{lstlisting}
 
 \subsection{Images}\label{imagesjson}
-For getting images for a specified tag:
-\begin{lstlisting}[frame=single]
-/images.json?tag=nidaros
-\end{lstlisting}
-Returns a collection of stories like this:
+Method \texttt{/images.json?tag=nidaros} returns a collection of images for the specified tag (\emph{nidaros} in this case). The structure of the collection can be seen in the example below.
 \begin{lstlisting}[frame=single]
 [
     {
@@ -2264,7 +2249,7 @@ To arrive at this proof of concept, some technological decisions had to be made.
 \textbf{\gls{rest} vs \gls{soap}}\\
 \gls{rest} \cite{rest} is an architectural style that is stateless at its heart, which leads to better visibility, reliability, and scalability. \gls{rest} was developed in parallel with HTTP/1.1 and the largest system following this architectural style is the Internet (according to \cite{wikipedia:rest}). \gls{rest} is also a good match for data driven applications as the way you handle a \gls{rest} services is by utilizing the verbs GET, POST, DELETE, PUT, PATCH.
 
-\gls{soap} is much more flexible than \gls{rest}, but also much more complex. While \gls{rest} is primarily data driven through resources, \gls{soap} is logic oriented through operations. \gls{soap} is also a better choice for making stateful web services. All communication with a \gls{soap} service happens through \gls{xmlLabel}.
+\gls{soap} is more flexible than \gls{rest}, but also much more complex. While \gls{rest} is primarily data driven through resources, \gls{soap} is logic oriented through operations. \gls{soap} is also a better choice for making stateful web services. All communication with a \gls{soap} service happens through \gls{xmlLabel}.
 
 The simplicity of the \gls{rest} architectural style, and the fact that it allows the developer to choose the format of exchange makes this our preferred way to go.
 
@@ -2481,7 +2466,7 @@ The API has the following methods:
     \label{tab:phase_sprint2_model}
 \end{table}
 
-As the application makes use of \gls{rest} server, a backend supporting \gls{rest} was needed. Although a custom backend could have been created, it made more sense to reuse the implementation of others. The napp.alloy.adapter.restapi\footnote{https://github.com/viezel/napp.alloy.adapter.restapi} by Mads Møller was chosen due to its feature completeness and active development.
+As the application makes use of \gls{rest} server, a backend supporting \gls{rest} was needed. Although a custom backend could have been created, it made more sense to reuse the implementation of others. The \texttt{napp.alloy.adapter.restapi}\footnote{https://github.com/viezel/napp.alloy.adapter.restapi} by Mads Møller was chosen due to its feature completeness and active development.
 
 \textbf{Models}\\
 Models in Titanium Alloy build upon Backbone.js\footnote{http://backbonejs.org/} \cite{titaniumAlloyModel}. Therefor the documentation for Backbone.js is relevant in addition to the documentation from Titanium.

@@ -32,4 +32,11 @@ module.exports = [ {
             fontWeight: "normal"
         }
     }
+}, {
+    isId: true,
+    priority: 100000.0013,
+    key: "mapSearchButton",
+    style: {
+        backgroundColor: "#40B0D2"
+    }
 } ];
