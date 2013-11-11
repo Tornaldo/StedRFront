@@ -5,6 +5,7 @@
 "#pictureTab":{
 	backgroundColor:'#8D8D8D',
 	borderRadius : 4,
+	backgroundImage: 'none',
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
 	font: {
 		color:'white',
@@ -19,8 +20,7 @@
 	left : '10%',
 	backgroundColor:'#40B0D2',
 	borderRadius : 4,
-	borderColor: '#40B0D2',
-	color:'#40B0D2',
+	backgroundImage: 'none',
 	font: {
 		color:'white',
         fontFamily:'Helvetica',

@@ -70,8 +70,7 @@ function Controller() {
         left: "10%",
         backgroundColor: "#40B0D2",
         borderRadius: 4,
-        borderColor: "#40B0D2",
-        color: "#40B0D2",
+        backgroundImage: "none",
         font: {
             color: "white",
             fontFamily: "Helvetica",
@@ -88,6 +87,7 @@ function Controller() {
     $.__views.pictureTab = Ti.UI.createButton({
         backgroundColor: "#8D8D8D",
         borderRadius: 4,
+        backgroundImage: "none",
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
         font: {
             color: "white",
@@ -109,6 +109,7 @@ function Controller() {
     $.__views.storyAndPictureView.add($.__views.storyOrPictureView);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    $.stedrWall.setTitle($model.get("title"));
     $.mediaScrollerMainImage.addView(Ti.UI.createImageView({
         image: $model.get("pictureUrl")
     }));

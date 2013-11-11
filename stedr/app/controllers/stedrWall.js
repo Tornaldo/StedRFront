@@ -25,6 +25,8 @@
  *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+$.stedrWall.setTitle($model.get('title'));
+
 $.mediaScrollerMainImage.addView(Ti.UI.createImageView({
 	image : $model.get('pictureUrl')
 }));

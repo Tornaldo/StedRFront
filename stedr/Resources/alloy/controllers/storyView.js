@@ -84,7 +84,7 @@ function Controller() {
     $.__views.__alloyId4.add($.__views.storyAuthor);
     $.__views.tagView = Ti.UI.createView({
         id: "tagView",
-        layout: "horizontal"
+        layout: "vertical"
     });
     $.__views.__alloyId4.add($.__views.tagView);
     $.__views.storyTab = Ti.UI.createTab({
@@ -126,13 +126,14 @@ function Controller() {
     $.storyTitle.setText($model.get("title"));
     $.subTitle.setText($model.get("ingress"));
     $.storyText.setText($model.get("fortelling"));
-    $.storyAuthor.setText($model.get("author"));
+    $.storyAuthor.setText("Author: " + $model.get("author"));
     var tags = $model.get("tags");
     var tagStart = Ti.UI.createLabel({
         text: "Tags: ",
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         left: 5,
+        color: "white",
         font: {
             fontFamily: "Helvetica",
             fontSize: "15dp",
@@ -142,22 +143,12 @@ function Controller() {
     });
     $.tagView.add(tagStart);
     for (i = 0; tags.length > i; i++) {
-        if (tags.length != i) var tag = Ti.UI.createLabel({
-            text: tags[i] + ", ",
+        var tag = Ti.UI.createLabel({
+            text: "- " + tags[i],
             width: Ti.UI.SIZE,
             height: Ti.UI.SIZE,
             left: 10,
-            font: {
-                fontFamily: "Helvetica",
-                fontSize: "15dp",
-                fontStyle: "normal",
-                fontWeight: "normal"
-            }
-        }); else var tag = Ti.UI.createLabel({
-            text: tags[i],
-            width: Ti.UI.SIZE,
-            height: Ti.UI.SIZE,
-            left: 10,
+            color: "white",
             font: {
                 fontFamily: "Helvetica",
                 fontSize: "15dp",
