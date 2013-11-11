@@ -7,6 +7,7 @@
 	borderRadius : 4,
 	backgroundImage: 'none',
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	color:'white',
 	font: {
 		color:'white',
         fontFamily:'Helvetica',
@@ -21,6 +22,7 @@
 	backgroundColor:'#40B0D2',
 	borderRadius : 4,
 	backgroundImage: 'none',
+	color:'white',
 	font: {
 		color:'white',
         fontFamily:'Helvetica',

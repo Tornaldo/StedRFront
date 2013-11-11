@@ -21,3 +21,7 @@
         fontWeight: 'normal',
     }
 }
+
+"#mapSearchButton": {
+	backgroundColor: '#40B0D2'
+}

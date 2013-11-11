@@ -48,3 +48,16 @@
         fontWeight: 'normal',
     }
 }
+"#storyTab": {
+	activeIcon: "twitterlogowhite.png",
+	icon: "twitterlogo.png",
+	backgroundColor: "#8D8D8D", 
+	backgroundSelectedColor: "#40B0D2"
+}
+"#commentTab": {
+	activeIcon: "digitaltfortaltlogowhite.png",
+	icon: "digitaltfortaltlogo.png",
+	backgroundColor: "#8D8D8D", 
+	backgroundSelectedColor: "#40B0D2"
+	
+}
