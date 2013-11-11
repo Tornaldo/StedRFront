@@ -53,11 +53,13 @@ function Controller() {
         }
     });
     $.instagramGrid.on("click", function(e) {
-        Ti.API.info("Clicked: " + e.source.id);
+        Ti.API.info("click");
+        Ti.API.info(e.source.strImage);
+        Ti.API.info(JSON.stringify(instagramCollection));
+        Ti.API.info(JSON.stringify(instagramCollection.get(e.source.strImage)));
         var instagramViewController = Alloy.createController("instagramView", {
-            $model: instagramCollection.get(e.source.id)
+            $model: instagramCollection.get(e.source.strImage)
         });
-        Ti.API.info(JSON.stringify(instagramCollection.get(e.source.id)));
         instagramViewController.getView().open();
     });
     $.instagram.addEventListener("close", function() {

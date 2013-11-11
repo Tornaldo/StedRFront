@@ -6,11 +6,11 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.instagramView = Ti.UI.createView({
+    $.__views.instagramView = Ti.UI.createWindow({
         id: "instagramView"
     });
     $.__views.instagramView && $.addTopLevelView($.__views.instagramView);
-    $.__views.instagramPicture = Ti.UI.createImage({
+    $.__views.instagramPicture = Ti.UI.createImageView({
         id: "instagramPicture"
     });
     $.__views.instagramView.add($.__views.instagramPicture);
@@ -20,8 +20,9 @@ function Controller() {
     $.__views.instagramView.add($.__views.userName);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    Ti.API.info("Model: " + JSON.stringify($model.get("fullName")));
     $.userName.setText($model.get("fullName"));
-    $.url.setText($model.get("url"));
+    $.instagramPicture.setImage($model.get("url"));
     $.instagramView.addEventListener("close", function() {
         Ti.API.info("Destroying: ");
         $.destroy();

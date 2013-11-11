@@ -25,8 +25,9 @@
  *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+Ti.API.info("Model: " +JSON.stringify($model.get('fullName')));
 $.userName.setText($model.get('fullName'));
-$.url.setText($model.get('url'));
+$.instagramPicture.setImage($model.get('url'));
 
 $.instagramView.addEventListener('close', function() {
 	Ti.API.info("Destroying: "/* + $model.get('username')*/);

@@ -1,6 +1,6 @@
 <Alloy>
-	<View>
-		<Image id="instagramPicture"></Image>
+	<Window>
+		<ImageView id="instagramPicture"></ImageView>
 		<Label id="userName" ></Label>
-	</View>>
+	</Window>
 </Alloy>

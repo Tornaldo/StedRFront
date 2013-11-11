@@ -191,7 +191,7 @@ wallCollection.fetch({
 
 function hideKeyboard() {
 	if (Alloy.Globals.OS == "iphone") {
-		$.mapSearchButton.blur();
+		// $.mapSearchButton.blur();
 	} else {
 		Ti.UI.Android.hideSoftKeyboard();
 	}

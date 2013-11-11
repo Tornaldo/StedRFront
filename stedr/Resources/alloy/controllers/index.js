@@ -1,7 +1,4 @@
 function Controller() {
-    function hideKeyboard() {
-        "iphone" == Alloy.Globals.OS ? $.mapSearchButton.blur() : Ti.UI.Android.hideSoftKeyboard();
-    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -9,22 +6,12 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    var __defers = {};
     $.__views.mapWin = Ti.UI.createWindow({
         title: "Map",
         id: "mapWin",
         layout: "vertical"
     });
     $.__views.mapWin && $.addTopLevelView($.__views.mapWin);
-    $.__views.mapSearchButton = Ti.UI.createSearchBar({
-        backgroundColor: "#40B0D2",
-        id: "mapSearchButton",
-        showCancel: "true",
-        hintText: "Search...",
-        height: "10%"
-    });
-    $.__views.mapWin.add($.__views.mapSearchButton);
-    hideKeyboard ? $.__views.mapSearchButton.addEventListener("cancel", hideKeyboard) : __defers["$.__views.mapSearchButton!cancel!hideKeyboard"] = true;
     $.__views.mapView = Ti.UI.createView({
         id: "mapView",
         height: "90%"
@@ -74,24 +61,6 @@ function Controller() {
             "iphone" == Alloy.Globals.OS ? $.nav.openWindow(win) : win.open();
         }
     });
-    $.mapSearchButton.addEventListener("return", function() {
-        hideKeyboard();
-        var searchText = $.mapSearchButton.getValue();
-        var geocoder = new google.maps.Geocoder();
-        geocoder ? geocoder.geocode({
-            address: searchText
-        }, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) mapview.setLocation({
-                latitude: results[0].geometry.location.lat(),
-                longitude: results[0].geometry.location.lng(),
-                latitudeDelta: .1,
-                longitudeDelta: .1
-            }); else {
-                Ti.API.error(status);
-                Ti.API.info(JSON.stringify(results));
-            }
-        }) : alert("Google Maps Geocoder not supported");
-    });
     var wallCollection = Alloy.Collections.wall;
     wallCollection.fetch({
         success: function() {
@@ -125,7 +94,6 @@ function Controller() {
     $.mapWin.addEventListener("close", function() {
         $.destroy();
     });
-    __defers["$.__views.mapSearchButton!cancel!hideKeyboard"] && $.__views.mapSearchButton.addEventListener("cancel", hideKeyboard);
     _.extend($, exports);
 }
 
