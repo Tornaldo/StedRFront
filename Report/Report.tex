@@ -912,12 +912,12 @@ The customer has experience with SCRUM and suggested the methodology to be used.
 
 \chapter{Requirements} \label{chap:req}
 
-This chapter is a System Requirements Specification document, in the terms of practice recommended by IEEE 830 \cite{ieee830}, developed by the group based upon the customers requests.
+This chapter is a System Requirements Specification document in the terms of practice recommended by IEEE 830 \cite{ieee830}, developed by the group based upon the customers requests.
 
 \section{Introduction}
 
 \subsection{Purpose}
-The purpose of this \gls{srs} document is to provide documentation of requirements for the VirtualWall software system. It is therefore trying to collect and analyze the requirements. It serves as a description of what the customer is expecting the system to be like, it presents the system's features and functionalities.
+The purpose of this \gls{srs} document is to provide documentation of requirements for the VirtualWall software system. It is therefore trying to collect and analyze the requirements. The requirements formalization as presented is a result of a joint effort of the customer and the development team. It serves as a description of what customer is expecting the system to be like, it presents the systems features and functionalities.
 
 The intended audience of this document shall be:
 
@@ -930,20 +930,23 @@ The intended audience of this document shall be:
 Each part of the audience holds different stakes in the project, but all are interested in information contained within the \gls{srs}.
 
 \subsection{Scope}
-This secton declares the scope of this requirements document and the desired output of the project. It shall state which parts of the system shall be analyzed, designed and implemented and to what extent.
+This secton declares the scope of this requirements document and the desired output of the project. It shall state what parts of the system shall be analyzed, designed and implemented and to what extent.
 
 This \gls{srs} document deals with the project Virtual walls - walls that tell us stories. This project shall result in developing a tool for working with so called virtual walls, creating and sharing stories on them.
 
-As presented by the customer, the VirtualWall software system is going to be a complex system consisting of a number of subsystems including several content databases, a server backend and mobile application frontend.
+As presented by customer, the VirtualWall software system is going to be a complex system consisting of a number of subsystems including several content databases, a server backend and mobile application frontend.
 
 In the scope of this year's run of Customer Driven Project course, a prototype of a mobile application frontend and a basic server backend shall be developed.
+
+\subsection{Definitions, acronyms and abbreviations}
+All definitions, acronyms and abbreviations are listed in the glossary instead.
 
 \subsection{Overview}
 The rest of this \gls{srs} document describes the proposed product by means of its desired functionality, characteristics, constraints and perspectives. This general description can be found in section~\ref{sec:req_overall_description}. A description of the actual requirements is to be found in section~\ref{sec:req_specific_requirements}.
 
 \section{Overall description}\label{sec:req_overall_description}
 \subsection{Product perspective}
-As stated above, the whole system will consist of several subsystems such as the frontend, server backend and external content databases. This implies the use of client-server model.
+As stated above, the whole system will consist of several subsystems such as the frontend, server backend, own database and external content databases. This implies the use of client-server model.
 
 The components developed in this phase of the project are:
 
@@ -963,19 +966,21 @@ The following diagram shows the whole system and how the separate parts work tog
       \label{fig:req_overview}
 \end{figure}
 
+In the initial phase, the server will not be directly connected to any external content databases machine, the content from them would be presented as simple hyperlinks leading to the third party website (such as kulturminnesok.no, digitaltfortalt.no).
+
 \subsection{User Interfaces}
 Since the frontend of the whole system shall be developed in this project, the description of user interface shall be considerably stressed.
 
 We can characterize the nature of the system as crowdsourced (or edge-dominant, in general), as the content shall be generated and modified by users to some extent. Due to this, there is not going to be any backend for data entry, the only point where the system is exposed to human beings is the mobile application frontend.
 
-The key quality attribute, usability, relates tightly to user interfaces. For this reason, all usability-related requirements on user interface are listed in section \ref{sec:req_software_system_attributes} as quality attribute requirements.
+Our key quality attribute, usability, relates tightly to user interfaces. For this reason, all usability-related requirements on user interface are listed in section \ref{sec:req_software_system_attributes} as quality attribute requirements.
 
 \subsubsection{Mobile application (frontend)}\label{sec:req_webapplication_frontend}
-As the customer requests that the initial prototype application shall be developed for use on smartphones, typical usage of the system suggests that it will be used in field, which implies using the application on smartphones and tablets.
+As user requests that the initial prototype application shall be developed for use on tablets. Typical usage of the system suggests that it will be used in field, which implies using the application on smartphones and tablets.
 
-Both smartphones and tablets have some inherent characteristics that have to be respected when designing the user interface and the means of interacting with it.
+Both smartphones and tablet have some inherent characteristics that have to be respected when designing the user interface and the means of interacting with it.
 
-The screen sizes of current smartphones vary a lot, most phones have screen size from 3.5 inches (9 cm) up to 5.5 inches (14 cm). Screen sizes of tablets vary between values from 9 inches (22 cm) to 11.5 inches (29 cm). In addition, these devices can be used in either landscape or portrait mode.
+The screen sizes of current smartphones vary a lot, with the most phones with screen size from 3.5 inches (9 cm) up to 5.5 inches (14 cm). Screen sizes of tablets vary between values from 9 inches (22 cm) to 11.5 inches (29 cm). In addition, these devices can be used in either landscape or portrait mode.
 
 Such a diversity in screen sizes makes designing the user interface very challenging. On one hand, we want to maximize the screen usage even on large-screen devices, on the other hand, we must make the application usable even on devices with screen area up to 9 times smaller.
 
@@ -987,21 +992,21 @@ Another characteristic property of those devices is that their interaction mecha
 \end{enumerate}
 
 \subsection{Software interfaces}
-We imply that the server and the client interoperate and are developed to work with one another. The required interfaces and communication schemas is to be determined later on in section \ref{sec:arch_communicationinterfaces}.
+We imply that the server and the client interoperate and are developed to work with one another. The required interfaces and communication schema is to be determined later on in section \ref{sec:arch_communicationinterfaces}.
 
 \subsection{Communication interfaces}
 This section describes what we shall take into account when designing interfaces for communication between subsystems of our system. If there are any special characteristics of the environment that affect those interfaces, they should be stated here.
 
 Another inherent characteristic of mobile devices (smartphones, tablets, etc.) is the unreliability and speed of network connection. Since this application is a part of a client-server system, the communication link between those is critical.
 
-The main issues with mobile data networks are frequent interruption, big latency and small bitrate. Sometimes the connection is not available at all. This results in the data connection being slow and unreliable which has a great significance on the performance of the application and its usability. As developers of the mobile application, we need to take this into consideration.
+The main issues with mobile data networks are frequent interruption, big latency and small bitrate. Sometimes the connection can as well be unavailable at all. This results in the data connection being slow and unreliable which has a great significance on the performance of the application and its usability. As developers of the mobile application, we need to take this into consideration.
 
 There are several techniques how to deal with mentioned issues or at least mitigate their impact.
 
 \subsubsection{Unavailability of connection}\label{sec:req_unavailability_of_connection}
 To deal with frequent interruption and unavailability of connection, an off-line mode of the application could be implemented in the future, which would enable the user to work without a network connection (in a limited way).
 
-This was described by the customer to have a low priority requirement, not to be implemented in this phase.
+This was described by the customer as to be a low priority requirement, not to be implemented in this phase.
 
 \subsubsection{Small throughput}
 To deal with small throughput of the network, the updates of the content in the client application could be implemented using delta updating. This would mean only new and changed data are sent from the server, data that did not change are used from the local storage.
@@ -1017,7 +1022,7 @@ The key functionality expected in the frontend is management of virtual walls (c
 The key functionality of the server is to support the features of the client by storing the data in the database and retrieving it back. As said above, the content is stored in the system database. The server shall expose an API for accessing the items from database (walls, stories) for access from the frontend.
 
 \subsection{User characteristics} \label{sec:req_user_characteristics}
-As this app shall be accessible to the public, we can neither anticipate users' educational level, nor experience, nor technical expertise. We can however assume basic computer literacy.
+As this app shall be accessible to open public, we can neither anticipate users' educational level, nor experience, nor technical expertise. We can however assume basic computer literacy.
 
 Documentation from customer features a scenario how this application would be used in class in elementary school. We may anticipate that some of the users can be as young as 10 years for example.
 
@@ -1110,9 +1115,7 @@ As customer requested, the front end application shall be developed in order to 
 Quality attribute scenario to evaluate the system shall be determined in section \ref{sec:qatestscenarios}.
 
 \subsubsection{Usability}\label{sec:req_usability}
-From the description of typical usage (mentioned in \ref{sec:req_user_characteristics}) and characteristic problems listed in \ref{sec:req_webapplication_frontend}, we came up with several usability scenarios that shall evaluate the usability quality of the software system. As usability is a big concern in this project, usability scenarios and tests shall be included in the report under Test Procedures Specification. 
-
-% FIXME SIMON: once usability tests are prepared, put refs to them (link to Test Procedures Specification)
+From the description of typical usage (mentioned in \ref{sec:req_user_characteristics}) and characteristic problems listed in \ref{sec:req_webapplication_frontend}, we came up with several usability scenarios that shall evaluate the usability quality of the software system. As usability is a big concern in this project, usability scenarios and tests shall be included in the report under Test Procedures Specification.  % FIXME SIMON: once usability tests are prepared, put refs to them (link to Test Procedures Specification)
 
 These scenarios shall evaluate, whether the application suits the needs of the audience in the means of usability. These shall be derived from use cases and requirements.
 
@@ -1547,13 +1550,13 @@ Titanium Alloy functions as a adapter between the client application and the tar
 Software testing is any activity aimed at evaluating an attribute or capability of a program or system and determining that it meets its required results. \cite{pan}
 \end{quotation}
 
-There are many various approaches to testing. In this project, the group will perform a handful of them.
+There are many various approaches to testing. In our project, we will perform a handful of them.
 
 One of the approaches we are going to use is called \emph{black-box testing}. According to \cite{shinde}, this involves testing based on required functionality without knowing the implementation details and inner workings of the system. This tells us whether we implemented what we should have implemented.
 
 Another important testing approach used in this project is \emph{white-box testing}. According to \cite{shinde}, this involves testing correctness of implemented functionality with the knowledge of the internal logic. This tells us whether the implementation is correct and works as intended. One particular instance of \emph{white-box testing} is \emph{unit testing}. This means testing individual \emph{units} (i.e. classes, modules, components) by the developer itself.
 
-Since usability is one of the key quality requirements, we are going to perform \emph{usability tests}, as well. According to \cite{shinde}, these kinds of tests are checking the navigation of user in the system and its user friendliness.
+Since usability is one of our key quality requirements, we are going to perform \emph{usability tests}, as well. According to \cite{shinde}, these kinds of tests are checking the navigation of user in the system and its user friendliness.
 
 \section{Design of test plan}
 
@@ -1575,7 +1578,7 @@ The backend is the part of the system which retrieves the data from other servic
 The client is the part of the system that presents the data to the user and that directly interacts with the user.
 
 \subsection{Test items}
-The Following items shall be tested:
+Following items shall be tested:
 
 \begin{itemize}
     \item The source code of server subsystems will be tested.
@@ -1618,13 +1621,13 @@ The documents to be delivered shall include:
 \end{itemize}
 
 \subsection{Environmental needs}
-Backend subsystem shall be deployed on a server running JRE 1.6 and able to run Play Framework.
+Backend subsystem shall be deployed on a server running JRE 1.6 and able to run Play Framework!.
 
 Server computer needs to be connected to the Internet. Specified port shall be open for server to listen on and reachable from outer network (not blocked by a firewall, etc).
 
 Alternative setup is deploying the server to some cloud computing platform like Heroku, RedHat OpenShift, Google AppEngine, or similar. 
 
-Device to run the client needs to be equipped with Android or iOS mobile operating system. The device needs to be connected to the Internet.
+Device to run the client needs to be equipped Android or iOS mobile operating system. The device needs to be connected to the Internet.
 
 \subsection{Responsibles}
 
@@ -1807,9 +1810,9 @@ This level of tests is concerned about the functionality. Black box method shall
 
 \paragraph{Objective}
 
-This level of tests is usually run by the customer on a completed product or user to find out whether the product meets all the requirement defined and it can be used in production.
+This level of tests is usually ran by the customer on a completed product or user to find out whether the product meets all the requirement defined and it can be used in production.
 
-Tests of this level are defined beforehand with a set of scenarios so the vendors can run the tests themselves and find out whether the product is ready to be handed in to the customer and shipped. This is as well to ensure that a product that is known to not pass tests at the customer side is not handed in to the customer yet (to save the vendor from embarrassment and avoid waste of time).
+Tests of this level are defined beforehand with a set of scenarios so the vendors can ran the tests themselves and find out whether the product is ready to be handed in to the customer and shipped. This is as well to ensure that a product that is known to not pass tests at the customer side is not handed in to the customer yet (to save the vendor from embarrassment and avoid waste of time).
 
 \paragraph{Test Environment}
 
@@ -1978,7 +1981,7 @@ Test cases in \ref{tab:TCF2.2FE1}, \ref{tab:TCF2.2FE2}, \ref{tab:TCF3.2FE1}, \re
     TC Title              & Places map overview \\ \hline 
     TC Identification     & TC-F2.2-FE-1 \\ \hline 
     Requirement           & F2.2 \\ \hline 
-    Feature               & Frontend application shows a map overview with places represented by pins. \\ \hline 
+    Feature               & Frontend application shows a map overview with places represented as pins. \\ \hline 
     Preconditions         & \begin{enumerate}
                               \item Flickr is up.
                               \item There are some photos posted to the StedR group on Flickr that have any kind of
@@ -2736,7 +2739,7 @@ The following description is taken from the course compendium\cite[p. 47]{compen
 \begin{quotation}\noindent
 The assignment relates to the EU-IST project TAG CLOUD (www.tagcloudproject.eu). TAG CLOUD will develop innovative digital solutions with the aim to increase the engagement of people in culture and cultural heritage. The main aspects that will be investigated are: new interaction interfaces with cultural artifacts, user as a contributor and personalized information. In Norway, the focus is ``culture in the landscape'', i.e. the discovery of cultural memories that we meet when walking around in cities, in villages and in the nature.
 
-The goal of this assignment is to develop a tool to create and interact with ``virtual walls''. The idea stems from Væggen\footnote{Væggen is the danish word for ”Wall”.} in Copenhagen (http://vaeggen.copenhagen.dk/dk/). Væggen is a large multitouch screen allowing people to tell, share and experience stories. We would like to explore the concept of wall as means to discover and share cultural stories related to buildings and places. It is however not practical to install and maintain physical walls such as Væggen all around. Instead we propose a digital representation of walls, that we call virtual wall.
+The goal of this assignment is to develop a tool to create and interact with ``virtual walls''. The idea stems from Væggen\footnote{Væggen is the danish word for ``Wall''.} in Copenhagen (http://vaeggen.copenhagen.dk/dk/). Væggen is a large multitouch screen allowing people to tell, share and experience stories. We would like to explore the concept of wall as means to discover and share cultural stories related to buildings and places. It is however not practical to install and maintain physical walls such as Væggen all around. Instead we propose a digital representation of walls, that we call virtual wall. %FIXME link vaeggen
 
 The assignment will build upon interactive pictures for the realization of virtual walls. The tool that will be develop should include support for:
 \begin{itemize}
@@ -2750,7 +2753,7 @@ The tool should be available for PC, tablet and mobile allowing experience at ho
 
 The tool thinglink (http://www.thinglink.com) supports some of the proposed functionality, but we wish to go further. In particular, the dynamic generation of a wall is needed for the filtering of stories. Our ultimate goal is to connect the wall with the personalization back-end that will be developed in TAG-CLOUD allowing to provide recommendations to the users.
 
-More information: As an example, we have started to develop a draft wall for Nidarosdomen using thinglink (http://www.thinglink.com/scene/397385278152507392). A presentation is also available at https://www.dropbox.com/l/GjCOoSqHoAmMEGg6P0axxa
+More information: As an example, we have started to develop a draft wall for Nidarosdomen using thinglink (http://www.thinglink.com/scene/397385278152507392). A presentation is also available at https://www.dropbox.com/l/GjCOoSqHoAmMEGg6P0axxa %FIXME links
 
 Additional notes: All documentation (report and code comments) should be written in English. The results should be made open source.\cite[p. 47]{compendium}
 \end{quotation}
@@ -2760,8 +2763,8 @@ Additional notes: All documentation (report and code comments) should be written
 \centering
 \begin{tabular}{| l | l | l | l | l | l | l | l |}
     \hline
-    Group total         &             &             &             &             &             &             &                 \\ \hline                        
-    Activity/Period     & Phase 1     & Phase 2     & Phase  3    & Phase 4     & Phase 5     & Phase 6     & Activity sum    \\ \hline
+    Group total         &          &          &          &          &             &             &                 \\ \hline                        
+    Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum    \\ \hline
     Lectures/self study & 48:15    & 2:45     & 37:45    & 24:00    & 0           & 0           & 112:45       \\ \hline
     Admin               & 35:30    & 30:00    & 23:50    & 32:15    & 0           & 0           & 121:35       \\ \hline
     Planning            & 26:05    & 0:00     & 3:00     & 0:00     & 0           & 0           & 29:05        \\ \hline
@@ -2781,8 +2784,8 @@ Additional notes: All documentation (report and code comments) should be written
 \centering
 \begin{tabular}{| l | l | l | l | l | l | l | l |}
     \hline
-    Rogstad             &             &             &             &             &             &             &                 \\ \hline                        
-    Activity/Period     & Phase 1     & Phase 2     & Phase  3    & Phase 4     & Phase 5     & Phase 6     & Activity sum    \\ \hline
+    Rogstad             &          &          &          &          &             &             &                 \\ \hline                        
+    Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum    \\ \hline
     Lectures/self study & 12:15    & 0:00     & 14:00    & 4:00     & 0           & 0           & 30:15        \\ \hline
     Admin               & 13:45    & 8:45     & 6:45     & 7:45     & 0           & 0           & 37:00        \\ \hline
     Planning            & 0:00     & 0:00     & 0:00     & 0:00     & 0           & 0           & 0:00         \\ \hline
@@ -2802,8 +2805,8 @@ Additional notes: All documentation (report and code comments) should be written
 \centering
 \begin{tabular}{| l | l | l | l | l | l | l | l |}
     \hline
-    Frøystad            &             &             &             &             &             &             &                 \\ \hline            
-    Activity/Period     & Phase 1     & Phase 2     & Phase  3    & Phase 4     & Phase 5     & Phase 6     & Activity sum    \\ \hline
+    Frøystad            &          &          &          &          &             &             &                 \\ \hline            
+    Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum    \\ \hline
     Lectures/self study & 15:30    & 0:30     & 10:45    & 4:00     & 0           & 0           & 30:45        \\ \hline
     Admin               & 14:15    & 16:15    & 13:35    & 17:00    & 0           & 0           & 61:05        \\ \hline
     Planning            & 24:05    & 0:00     & 3:00     & 0:00     & 0           & 0           & 27:05        \\ \hline
@@ -2823,8 +2826,8 @@ Additional notes: All documentation (report and code comments) should be written
 \centering
 \begin{tabular}{| l | l | l | l | l | l | l | l |}
     \hline
-    Stastny             &             &             &             &             &             &             &                 \\ \hline          
-    Activity/Period     & Phase 1     & Phase 2     & Phase  3    & Phase 4     & Phase 5     & Phase 6     & Activity sum    \\ \hline
+    Stastny             &          &          &          &          &             &             &                 \\ \hline          
+    Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum    \\ \hline
     Lectures/self study & 8:15     & 0:00     & 2:00     & 4:00     & 0           & 0           & 14:15        \\ \hline
     Admin               & 4:45     & 3:30     & 3:30     & 4:00     & 0           & 0           & 15:45        \\ \hline
     Planning            & 0:00     & 0:00     & 0:00     & 0:00     & 0           & 0           & 0:00         \\ \hline
@@ -2844,8 +2847,8 @@ Additional notes: All documentation (report and code comments) should be written
 \centering
 \begin{tabular}{| l | l | l | l | l | l | l | l |}
     \hline
-    Nergård             &             &             &             &             &             &             &                 \\ \hline         
-    Activity/Period     & Phase 1     & Phase 2     & Phase  3    & Phase 4     & Phase 5     & Phase 6     & Activity sum    \\ \hline
+    Nergård             &          &          &          &          &             &             &                 \\ \hline         
+    Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum    \\ \hline
     Lectures/self study & 12:15    & 2:15     & 11:00    & 12:00    & 0           & 0           & 37:30        \\ \hline
     Admin               & 2:45     & 1:30     & 0:00     & 3:30     & 0           & 0           & 7:45         \\ \hline
     Planning            & 2:00     & 0:00     & 0:00     & 0:00     & 0           & 0           & 2:00         \\ \hline
@@ -2863,20 +2866,8 @@ Additional notes: All documentation (report and code comments) should be written
 
 \chapter{Documentation}\label{chap:documentation}
 \section{Introduction}
-This appendix presentes some documentation for a developer to get started with Stedr. For a more through documentation, the reader is adviced to visit the documentation websites of the frameworks used, Titanium Alloy (http://docs.appcelerator.com/titanium/3.0/) and Play! Framework (http://www.playframework.com/documentation/2.2.x/Home).
 
-\section{Server - Installation}
-Deploying the server can be done in multiple different ways.
-
-\subsection{Deploy on Heroku}
-Follow the instructions given at the following link:\\
-http://www.playframework.com/documentation/2.2.x/ProductionHeroku
-
-\subsection{Deploy on own server}
-Follow the instructions given at the following linke:\\
-http://www.playframework.com/documentation/2.2.x/Production
-
-\section{Coding standards for server}\label{sec:codeStandard}
+\section{Code standards for server}\label{sec:codeStandard}
 The project follows the coding guidelines of Play! Framework\cite{playCodingStandard}, which in turn relies heavily on Java Code Conventions\footnote{http://www.oracle.com/technetwork/java/codeconventions-150003.pdf}. The Play! Framework coding standard is included underneath.
 
 \begin{quotation}\noindent
@@ -2984,7 +2975,7 @@ var someFunction = function() {
 };
 \end{lstlisting}
 
-Global event listeners include those associated with Ti.App, Ti.Geolocation, Ti.Gesture, and so forth. The same problem is possible with non-global event listeners, like those you associate with a UI element. If that UI element remains valid in memory, any event listeners – and the objects they refer to – must also be kept in memory.
+Global event listeners include those associated with \texttt{Ti.App}, \texttt{Ti.Geolocation}, \texttt{Ti.Gesture}, and so forth. The same problem is possible with non-global event listeners, like those you associate with a UI element. If that UI element remains valid in memory, any event listeners – and the objects they refer to – must also be kept in memory.
 
 The above example is an anti-pattern that will eventually consume the app's available memory. It's important to note that this is a common anti-pattern that developers employ in browser-based environments too, where it causes the same result, so it is not unique to Titanium.
 
@@ -3198,6 +3189,32 @@ var SomeUIClass = function() {
 };
 \end{lstlisting}
 \end{quotation}
+
+\section{Server - Installation}
+Deploying the server can be done in multiple different ways. Here two will be presented.
+
+\subsection{Deploy on Heroku}
+Follow the instructions given at the following link:\\
+http://www.playframework.com/documentation/2.2.x/ProductionHeroku
+
+\subsection{Deploy on own server}
+Follow the instructions given at the following linke:\\
+http://www.playframework.com/documentation/2.2.x/Production
+
+\section{Client}
+Some short guides for compiling and installing the client.
+
+\subsection{Installation}
+WRITE ABOUT INSTALLATION
+
+\subsection{Compile for Android}
+TODO
+
+\subsection{Compile for iOS}
+TODO
+
+\subsection{Compile for normal browsers}
+TODO
 
 \chapter{Current Backlog}
 \begin{center}
@@ -3492,8 +3509,11 @@ instead. These were mentioned in:
   topics (user defined tags)
 \end{itemize}
 
-Another requirement was dropped as it was a duplicate of another. * F2.3
-System shall enable social interaction upon walls
+Another requirement was dropped as it was a duplicate of another:
+
+\begin{itemize}
+  \item F2.3 System shall enable social interaction upon walls
+\end{itemize}
 
 Requirement F3.1.1 was rewritten from \emph{System shall let registered
 users add story on a wall by clicking on a desired place on the wall} to
@@ -3526,7 +3546,7 @@ requirements concerning those are dropped:
 \end{itemize}
 
 Another suggestion was that stories shall be retrieved from
-\emph{Digitalt Fortalt} or \emph{Storify} or similar service. We
+Digitalt Fortalt, Storify or a similar service. We
 therefore cannot offer filtering upon attributes that are not present in
 the API of the service we use. Thus, we dropped the requirements:
 
@@ -3556,7 +3576,7 @@ themself. Thus we dropped some other requirements:
 \end{itemize}
 
 As we are not able to store the comments in our database, it was
-suggested to use \emph{Twitter} to let users comment on stories and drop
+suggested to use Twitter to let users comment on stories and drop
 commenting on walls completely:
 
 \begin{itemize}
@@ -3568,7 +3588,7 @@ commenting on walls completely:
 \end{itemize}
 
 The missing database brought up the problem where should we get the
-walls from. For this purpose \emph{Flickr} was suggested. This also
+walls from. For this purpose Flickr was suggested. This also
 means we do not store the walls anymore and we generate them on the fly,
 which implies dropping other requirements:
 
@@ -3594,7 +3614,7 @@ This change as well makes us call \emph{walls} with their new name
 
 In the following two weeks, the requirements were finalized and settled.
 
-Additional feature of showing photos for tags on \emph{Instagram} was
+Additional feature of showing photos for tags on Instagram was
 requested.
 
 \begin{itemize}
@@ -3606,7 +3626,7 @@ It was agreed that we shall use \emph{Flickr} group called
 \href{http://www.flickr.com/groups/2297124@N25/}{StedR} as a source of
 the \emph{places}. Each photo added to this group shall appear as a
 \emph{place} in our application on a place where it was geo-tagged on
-\emph{Flickr}.
+Flickr.
 
 As requirement F3.3.1 was the only child of its parent, we are
 renumbering it and calling it:
