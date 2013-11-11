@@ -6,9 +6,9 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    var __alloyId2 = [];
+    var __alloyId1 = [];
     $.__views.mediaScroller = Ti.UI.createScrollableView({
-        views: __alloyId2,
+        views: __alloyId1,
         id: "mediaScroller",
         showPagingControl: "true"
     });

@@ -34,9 +34,9 @@ function Controller() {
         layout: "vertical"
     });
     $.__views.stedrWall.add($.__views.wallPictureView);
-    var __alloyId3 = [];
+    var __alloyId2 = [];
     $.__views.mediaScrollerMainImage = Ti.UI.createScrollableView({
-        views: __alloyId3,
+        views: __alloyId2,
         id: "mediaScrollerMainImage",
         showPagingControl: "true",
         height: "95%"
@@ -71,6 +71,7 @@ function Controller() {
         backgroundColor: "#40B0D2",
         borderRadius: 4,
         backgroundImage: "none",
+        color: "white",
         font: {
             color: "white",
             fontFamily: "Helvetica",
@@ -89,6 +90,7 @@ function Controller() {
         borderRadius: 4,
         backgroundImage: "none",
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+        color: "white",
         font: {
             color: "white",
             fontFamily: "Helvetica",

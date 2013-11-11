@@ -1,6 +1,6 @@
 <Alloy>
 	<TabGroup>
-		<Tab id="storyTab" icon="images/digitaltfortaltlogo.png" backgroundColor="#8D8D8D" backgroundSelectedColor="#40B0D2">
+		<Tab id="storyTab" icon="images/digitaltfortaltlogo.png" onClick="changeLogo">
 			<Window class="container" layout="vertical" exitOnClose="true" navBarHidden="true">
 				<View id="mediaGalleryView" height="50%">
 					<!-- Story media -->

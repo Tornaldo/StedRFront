@@ -89,8 +89,9 @@ for ( i = 0; i < tags.length; i++) {
 	$.tagView.add(tag);
 }
 
+
 /*
- * Close listener
+ * Listeners
  */
 
 $.storyView.addEventListener('close', function() {

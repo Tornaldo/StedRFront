@@ -87,12 +87,7 @@ mapview.addEventListener('click', function(evt) {
 
 $.mapSearchButton.addEventListener('return', function(evt) {
 	hideKeyboard();
-	var searchText;
-	if(Alloy.Globals.OS == "iphone"){
-		searchText = $.mapSearchButton.getValue();
-	} else {
-		searchText = $.searchField.getValue();
-	}
+	var searchText = $.mapSearchButton.getValue();
 	if (OS_MOBILEWEB) {
 		var geocoder = new google.maps.Geocoder();
 		if (geocoder) {
@@ -193,8 +188,8 @@ wallCollection.fetch({
 	}
 });
 
-function hideKeyboard(){
-	if(Alloy.Globals.OS == "iphone"){
+function hideKeyboard() {
+	if (Alloy.Globals.OS == "iphone") {
 		$.mapSearchButton.blur();
 	} else {
 		Ti.UI.Android.hideSoftKeyboard();

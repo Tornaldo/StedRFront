@@ -1,21 +1,21 @@
 module.exports = [ {
     isClass: true,
-    priority: 10000.0042,
+    priority: 10000.0045,
     key: "container",
     style: {}
 }, {
     isClass: true,
-    priority: 10000.0043,
+    priority: 10000.0046,
     key: "twittertable",
     style: {}
 }, {
     isClass: true,
-    priority: 10000.0044,
+    priority: 10000.0047,
     key: "twitterStatus",
     style: {}
 }, {
     isClass: true,
-    priority: 10000.0045,
+    priority: 10000.0048,
     key: "twitterImage",
     style: {
         height: "50dp",
@@ -25,7 +25,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0046,
+    priority: 10000.0049,
     key: "nameView",
     style: {
         top: "10dp",
@@ -34,7 +34,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0047,
+    priority: 10000.005,
     key: "twitterName",
     style: {
         height: "22dp",
@@ -47,7 +47,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0048,
+    priority: 10000.0051,
     key: "screenName",
     style: {
         height: "22dp",
@@ -61,7 +61,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0049,
+    priority: 10000.0052,
     key: "created",
     style: {
         top: "32dp",
@@ -76,7 +76,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.005,
+    priority: 10000.0053,
     key: "twitterText",
     style: {
         top: "52dp",
