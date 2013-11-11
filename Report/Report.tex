@@ -1446,7 +1446,7 @@ Decimal degrees (DD) express latitude and longitude geographic coordinates as de
 This means New York City has a positive latitude and negative longitude, while Rio de Janeiro has both values negative and Tokyo (or most of the Europe) both values positive.
 
 \subsection{Stories}\label{storiesjson}
-Method \texttt{http://stedr.herokuapp.com/stories.json?placeId=10357336336} returns a collection of stories in radius of 50 meters from the Place identified by the passed \textit{placeId} (which is \emph{10357336336} in this case. The structure of the collection can be seen in the example below.
+Method \texttt{http://stedr.herokuapp.com/stories.json?placeId=10357336336} returns a collection of stories in radius of 50 meters from the Place identified by the passed \texttt{placeId} (which is \emph{10357336336} in this case. The structure of the collection can be seen in the example below.
 
 \begin{lstlisting}[frame=single]
 [
@@ -2241,19 +2241,19 @@ During this period only the most basic proof of concept was developed for the se
 
 To arrive at this proof of concept, some technological decisions had to be made. Bellow the reasoning behind them are explained.
 
-\textbf{\gls{xmlLabel} vs \gls{json}}\\
+\paragraph{\gls{xmlLabel} vs \gls{json}}
 \gls{xmlLabel} is a extensible markup language created by the World Wide Web Consortium (W3C). It is made to be both human and machine readable. It consists of a developer defined set of nested elements that may contain data or new elements.
 
 \gls{json} \cite{json} is based on two structures: a collection of name-value pairs, and an ordered list of values. The format is made to be human readable and easily parsed and created by computers. It is based on a subset of the JavaScript programming language, and because the customer has asked for HTML5 to be used for the app \gls{json} makes sense as that will be easier to use together with JavaScript than \gls{xmlLabel}.
 
-\textbf{\gls{rest} vs \gls{soap}}\\
+\paragraph{\gls{rest} vs \gls{soap}}
 \gls{rest} \cite{rest} is an architectural style that is stateless at its heart, which leads to better visibility, reliability, and scalability. \gls{rest} was developed in parallel with HTTP/1.1 and the largest system following this architectural style is the Internet (according to \cite{wikipedia:rest}). \gls{rest} is also a good match for data driven applications as the way you handle a \gls{rest} services is by utilizing the verbs GET, POST, DELETE, PUT, PATCH.
 
 \gls{soap} is more flexible than \gls{rest}, but also much more complex. While \gls{rest} is primarily data driven through resources, \gls{soap} is logic oriented through operations. \gls{soap} is also a better choice for making stateful web services. All communication with a \gls{soap} service happens through \gls{xmlLabel}.
 
 The simplicity of the \gls{rest} architectural style, and the fact that it allows the developer to choose the format of exchange makes this our preferred way to go.
 
-\textbf{Play vs Spring}\\
+\paragraph{Play vs Spring}
 Two of the well known frameworks when it comes to developing webservices in Java is Play! Framework and Spring. %FIXME link to websites
 
 Spring is a very extensive framework with support for quite a few protocols and services. The framework also does a lot of work not necessarily apparent to the developer without a thorough investigation into the documentation.
@@ -2262,7 +2262,7 @@ The Play! Framework is more of a core framework that does the basics, but leaves
 
 The extensive documentation and speed of development made us choose Play! Framework for the system.
 
-\textbf{MySQL vs Postgres}\\
+\paragraph{MySQL vs Postgres}
 The database system most known to the developers is MySQL as this has been used in several earlier courses. Both systems are highly capable relational databases with good coverage of features and excellent performance. There are, however, particularly one issue that separates them, and make one stand out as our database of choice.
 
 In April 2009 Oracle bought Sun \cite{sun}, and by that gained control of MySQL. Initially Oracle promised that MySQL would prevail and that it and its coming features would stay open source \cite{mysql}. The situation today shows that they have not honored that promise, and several different versions of MySQL are availiable \cite{mysqlproducts}. This serves to show that the future of MySQL is uncertain, and as such our choice falls on Postgres.
@@ -2285,7 +2285,8 @@ Investigation into best fitted client side framework will continue into the next
 \subsubsection{Interaction and user interface}
 When the sprint started it was quite unclear how the application would look and feel. Within this sprint there has been two iterations on the user interface.
 
-\textbf{Version one}\\
+\paragraph{Version one}
+
 First thing done was to come up with what kind of main functionality the application needed;
 
 \begin{itemize}
@@ -2296,7 +2297,7 @@ First thing done was to come up with what kind of main functionality the applica
 
 Another concern was about the definition of a wall and story, thus what kind of information did it need to display.
 
-\textit{Menu}\\
+\subparagraph{Menu}
 We saw two opportunities, a dedicated menu, typically the start up point for the application, and a more hidden menu, that we'll refer to as a side-menu. The dedicated menu is typically made up with buttons, where the user can access all top-level functions. It is easy and straightforward to implement, it is also well known for most users. A more elegant solution is the hidden side-menu, where the user can access the menu wherever he or she is in the application, with just a sliding gesture from right to left on the screen.
 
 \begin{figure}[H]
@@ -2308,7 +2309,7 @@ We saw two opportunities, a dedicated menu, typically the start up point for the
 
 The customer prefered the hidden side menu.
 
-\textit{Browsing walls}\\
+\subparagraph{Browsing walls}
 An important function is to let the user browse and find walls. The most obvious solutions, to use a map and/or a list, were discussed, but no solution was determined. 
 
 Another important function is to filter or sort the walls. In a list it is easy to sort the walls on, for instance, popularity or the distance to your location using GPS tracking. There were suggested to use some kind of temperature pins in a map, where the pins shows the user how popular the different places are by using colors. The user could also decide to only see the most popular places by excluding the more cold colored walls, as Figure~\ref{fig:phases_sprint1_uiVersionOneTempPings} shows. The temperature pins were just one of many suggestion on how to represent walls on a map, others where to use symbols or icons, one colored pins and images.
@@ -2322,7 +2323,7 @@ The customer wanted to focus more on the use of filtering on tags and metadata.
     \label{fig:phases_sprint1_uiVersionOneTempPings}
 \end{figure}
 
-\textit{Look at walls}
+\subparagraph{Look at walls}
 The main function of the application is to access a wall and browse user created information, that could be stories, pictures, links to other resources, etc.. Two possible solution were suggested; a wall that displayed both user created stories and information from multiple data sources as in Figure~\ref{fig:phases_sprint1_uiVersionOneSimpleWall}, for instance, Instagram, Wikipedia, YouTube, Twitter, Google, Flickr, etc., and a more simple version where the focus was on user created data, thus stories and pictures, as in Figure~\ref{fig:phases_sprint1_uiVersionOneMultipleDataSoruces}.
 
 The idea of using multiple data sources came from the danish mobile application, \emph{Kulturarv}, or \emph{Cultural Heritage} (both mentioned in \ref{sec:prestudy_existing_apps}), which blends data from a main database with other geo location data sources like Instagram, Flickr, Wikipedia and Twitter. The customer had not thought about the idea of using multiple data sources, and were therefore quite surprised by the solution. The group and customer agreed that the use of multiple data sources were out of the scope, and decided to focus on the more simple version. The customer liked the use of tabs, to navigate, within a wall.
@@ -2341,13 +2342,14 @@ The idea of using multiple data sources came from the danish mobile application,
     \label{fig:phases_sprint1_uiVersionOneMultipleDataSoruces}
 \end{figure}
 
-\textbf{Version two}\\
+\paragraph{Version two}
+
 In this iteration the focus was on how to filter walls on tags, how to switch between list or map browsing, how to create a wall and on the wall itself. 
 
-\textit{Filtering walls}\\
+\subparagraph{Filtering walls}
 The customer wanted the user to filter by tags, both on tags that was suggested to the user and tags that the user typed himself. A suggested solution is shown in Figure ~\ref{fig:phases_sprint1_uiVersionTwoAddFilter}. The customer found the solution satisfactory, but the user also needed to be able to filter on creators of walls. It was suggested to introduce the @-sign to filter on creators.
 
-\textit{List or map browsing}\\
+\subparagraph{List or map browsing}
 Three possible solutions were made, one with tabs, one with action buttons and one with a drop down menu (Figure ~\ref{fig:phases_sprint1_uiVersionTwoAccessListOrMap}). The customer dropped the whole proposal, and wanted just to use map when browsing walls.
 
 \begin{figure}[H]
@@ -2364,7 +2366,7 @@ Three possible solutions were made, one with tabs, one with action buttons and o
     \label{fig:phases_sprint1_uiVersionTwoAddFilter}
 \end{figure}
 
-\textit{Create wall}\\
+\subparagraph{Create wall}
 This function is very important, because it will define the the definition of a wall, thus the content of a wall. The customer wanted a more purified story-telling-wall, a wall that tells stories. The proposal was that a wall would consist of a title, a description, a set of tags, a gallery, stories and a location. The possibility to let everyone add content and to comment were also a part of the solution, as Figure ~\ref{fig:phases_sprint1_uiVersionTwoCreateWallDocument} shows.
 
 \begin{figure}[H]
@@ -2374,7 +2376,7 @@ This function is very important, because it will define the the definition of a 
     \label{fig:phases_sprint1_uiVersionTwoCreateWallDocument}
 \end{figure}
 
-\textit{The wall}\\
+\subparagraph{The wall}
 From version one we knew that the customer wanted a wall that was focused on the user created data, stories and images. A solution, the one in Figure ~\ref{fig:phases_sprint1_uiVersionTwoWallFunctions}, were suggested. The wall uses tabs for navigation, and the solution included two suggestions for displaying stories, a list and tiles. The customer liked the solution, and decided to use tiles to represent stories.
 
 \begin{figure}[H]
@@ -2413,7 +2415,7 @@ The server has seen development based upon what was done in sprint one, but the 
 \end{table}
 
 \subsection{S2: Requirements as scenarios}
-\textbf{Browse virtual walls}
+\paragraph{Browse virtual walls}
 \begin{enumerate}
     \item User goes to map view
     \item Client asks user for location
@@ -2423,7 +2425,7 @@ The server has seen development based upon what was done in sprint one, but the 
     \item The user might move around in the map by dragging it around
 \end{enumerate}
 
-\textbf{Open a virtual wall}
+\paragraph{Open a virtual wall}
 \begin{enumerate}
     \item User goes to walls view (that be map or list or whatever is decided)
     \item User navigates to wall of interest - see [wall browsing] Browse virtual walls
@@ -2441,7 +2443,7 @@ A story is defined by its existance on Digitalt Fortalt, and thus uses Digitalt 
 In this sprint the requirements for the overall workings of the system seemed to be somewhat stable so we designed a data model and implemented it on the server side. This turned out to be a wrong assumption later on.
 
 \subsubsection{Client}
-\textbf{Sync client}\\
+\paragraph{Sync client}
 Titanium Alloy is backend agnostic. This means that most of the code does not know, nor need to know, what kind of backend is running. This is accomplished by utilizing an abstraction layer in Alloy called Sync. Sync provides an unified API that can be implemented for each type of backend.\\
 The API has the following methods:
 
@@ -2468,7 +2470,7 @@ The API has the following methods:
 
 As the application makes use of \gls{rest} server, a backend supporting \gls{rest} was needed. Although a custom backend could have been created, it made more sense to reuse the implementation of others. The \texttt{napp.alloy.adapter.restapi}\footnote{https://github.com/viezel/napp.alloy.adapter.restapi} by Mads Møller was chosen due to its feature completeness and active development.
 
-\textbf{Models}\\
+\paragraph{Models}
 Models in Titanium Alloy build upon Backbone.js\footnote{http://backbonejs.org/} \cite{titaniumAlloyModel}. Therefor the documentation for Backbone.js is relevant in addition to the documentation from Titanium.
 
 A basic model looks like this:
@@ -2505,14 +2507,14 @@ exports.definition = {
 
 Before choosing Titanium as the platform to develop the client application with, a number of other frameworks were examined.
 
-\textbf{The M project}\\
+\paragraph{The M project}
 Initially “The M project” \footnote{http://www.the-m-project.org/} came out quite good in comparisons of frameworks for client side development for mobile phones. This was due to it being lightweight and what seemed like usable documentation. Its described caracteristica also matched quite good with what we was looking for. Especially the \gls{mvc} part and the native look and feel of the jQuery Mobile user interface. The MIT license was also very attractive, as it is compatible with the BSD license required for all code produced in this course.
 
 The reasons why The M project was not chosen in the end, surrounds two topics. First, the project has its own build system to help the developers develop more efficiently. Unfortunately this did not work, and produced unrunnable code. One could edit the files after each build in order to make them runnable, but 5 minutes extra per build to clean the code was just not acceptable.
 
 The second problem is of a more serious kind, both for this development team and for those that might follow at a later time. The documentation was vague at best and partly outdated.
 
-\textbf{Enyo}\\
+\paragraph{Enyo}
 Enyo\footnote{http://enyojs.com/} was developed by HP for WebOS\cite{enyoHistory} and is at this time sponsored by LG. It has a very interesting approach to development, one develops features in the app as separate reusable components and glue them together. In that way it feels much more natural to develop in Enyo, and the documentation is excellent. The license, Apache 2.0, is also very attractive as it is compatible with BSD.
 
 The problem with Enyo was that the requirements specified modifiability as one very important factor to take into account. While components can make the app itself modifiable, Enyo does not support \gls{mvc} in the components and as such one just moves the complexity one level down. When developing components we would still have to handle that lack of ability to structure the code in an efficient way.
@@ -2521,14 +2523,14 @@ Adding support for \gls{mvc}, or making it easy to use \gls{mvc} in combination 
 
 The reason Enyo was not selected is that the \gls{mvc} support has not yet stabilized, and the documentation is still a bit too thin on the matter.
 
-\textbf{Sencha Touch}\\
+\paragraph{Sencha Touch}
 Sencha Touch\footnote{http://www.sencha.com/products/touch/} has excellent documentation and a good community. The problem with Sencha is the incompatible license. Sencha uses the General Public License version 3, which is incompatible with the BSD license.\cite{flossLicense}
 
-\textbf{RhoMobile}\\
+\paragraph{RhoMobile}
 RhoMobile is developed by Motorola Solutions\footnote{http://www.motorolasolutions.com/US-EN/Business+Product+and+Services/Software+and+Applications/RhoMobile+Suite} to help developers develop software across their different handheld devices. They have also added support for the mobile platforms. This framework has support for developing enterprise applications and has an attractive license in MIT.
 The reason this framework was not chosen, was because it uses Ruby as well as JavaScript. It was decided that learning one new language would be enough work, if not another one should be added on top.
 
-\textbf{Titanium}\\
+\paragraph{Titanium}
 Appcelerator Titanium\footnote{http://www.appcelerator.com/titanium/} is a cross platform development framework for mobile and web. The development is done in JavaScript and \gls{xmlLabel}. It is licensed under the Apache Public License version 2. Titanium is a ``write once, adapt everywhere'' framework\cite{titaniumCrossMobile}. That does not mean that it cannot run everywhere without adaption, but that in order to look native it needs adaption. Titanium has an excellent base of documentation and a mature framework supporting easy use of the model view controller architectural pattern.
 
 Titanium was chosen because of its framework, its documentation and the huge community that surrounds it.
@@ -2612,7 +2614,7 @@ During Sprint 4 one person is allocated to fix any issues with the report, so th
 
 In Sprint 4, the group should also place an emphasis on testing, as very little has formally been done in that regard earlier in the process.
 
-\textbf{Allocation matrix}\\
+\paragraph{Allocation matrix}
 \begin{table}[H]
     \centering
     \begin{tabular}{| l | l | l | l |} \hline
@@ -2705,7 +2707,7 @@ In Sprint 4, the group should also place an emphasis on testing, as very little 
 \subsection{S4: Implementation}
 
 \subsubsection{Client}
-\textbf{Instagram}\\
+\paragraph{Instagram}
 Instagram API does not support fetching of several tags simultaneously.
 Instagram has a limit of 30 pictures to be shown per page. 
 Can be problematic, legally, to show all pictures without filtering by humans.
