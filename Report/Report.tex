@@ -47,6 +47,13 @@
 
 \begin{document}
 
+\newcommand{\fullprojectname}[0]{Virtual Walls - Walls that tell us stories}
+\newcommand{\shortprojectname}[0]{Virtual Walls}
+\newcommand{\systemname}[0]{StedR}
+\newcommand{\wallentitys}[0]{place}
+\newcommand{\wallentityp}[0]{places}
+\newcommand{\wallentitypcap}[0]{Places}
+
 \frontmatter
 
 \begin{titlepage}
@@ -62,7 +69,7 @@
         \rule{\linewidth}{0.5mm}
         \\[1cm]
         
-        \textbf{\LARGE Virtual Walls - Walls that tell us stories}
+        \textbf{\LARGE \fullprojectname}
         \\[1cm]
         
         \rule{\linewidth}{0.5mm}
@@ -168,7 +175,7 @@ The aim of this particular project was to develop a concept and a prototype that
 
 \mainmatter
 \chapter{Introduction}
-This report describes the planning and execution of the project ``Virtual Walls - Walls that tell us stories'' (later in this report only referred to as Virtual Walls or the system) on behalf of eTrøndelag and SINTEF ICT.
+This report describes the planning and execution of the project ``\fullprojectname'' (later in this report only referred to as Virtual Walls or the system) on behalf of eTrøndelag and SINTEF ICT.
 
 The assigned project is part of the course TDT4290 - Customer driven project at NTNU in 2013, and also an ongoing project at SINTEF ICT on behalf of eTrøndelag and the EU initiated project TAG-CLOUD.
 
@@ -188,7 +195,7 @@ This chapter will give an overview of how the work is to be structured and the m
 The project directive describes the background and mandate of the project. The name ``Project directive'' is mostly used in larger projects to provide general information about the project.
 
 \subsection{Project name}
-The customer has given the project the name ``Virtual Walls - walls that tells us stories''. The project will, in this report, be referred to as ``Virtual Walls'' or the system. The name is derived from ``Væggen'' in Copenhagen which was the inspiration of this project.
+The customer has given the project the name ``\fullprojectname''. The project will, in this report, be referred to as ``\shortprojectname'' or the system. The name is derived from ``Væggen'' in Copenhagen which was the inspiration of this project.
 
 \subsection{Project sponsor}
 The sponsor of the project is eTrøndelag together with SINTEF ICT.
@@ -345,7 +352,7 @@ His interests entails music, programming, martial arts, cooking, computer games,
 \subsection{Background for the project}
 Today, if you want information about cultural heritage you will have to access many different sources, and the information might be less than accessible. The joint European project TAG CLOUD aims to change this, and also bring together content provided by experts and individuals. TAG CLOUD is to develop innovative digital solutions to engage people in cultural heritage by making the information more accessible and involving the user in the content production.
 
-In connection with this project eTrøndelag has decided, together with SINTEF ICT, to explore the possibility of using Virtual Walls to spread information about cultural heritage in Trondheim.
+In connection with this project eTrøndelag has decided, together with SINTEF ICT, to explore the possibility of using \shortprojectname to spread information about cultural heritage in Trondheim.
 
 During the last 5 - 6 years, smart phones have become more and more common. In the later years mobile Internet has also become somewhat common. This has made this project possible, as the users do not need to carry an ordinary computer around.
 
@@ -460,7 +467,7 @@ The report is to be copied and bound in four copies no later than 20.11.2013. Pr
 Due: 21.11.2013\\
 Presentation for customer, advisor and censor. After the presentation, a copy of the report should be given to the customer and three copies should be delivered to the information desk at IDI. A PDF version should also be sent by email to anreala@idi.ntnu.no.
 
-All copies is to be accompanied with a CD that contain the implementation, documentation and a PDF version of the report. The content of this CD will be documented with a ``Readme.txt'' file, as specified in the compendium.
+All copies is to be accompanied with a CD that contain the implementation, documentation and a PDF version of the report. The content of this CD will be documented with a \texttt{Readme.txt} file, as specified in the compendium.
 
 \subsection{Gantt diagram}
 \begin{figure}[H]
@@ -473,7 +480,7 @@ All copies is to be accompanied with a CD that contain the implementation, docum
 \begin{table}[H]
 \centering
 \begin{tabular}{ l | r r r r r r }
-    Activity               & Planning    & Sprint 1  & Sprint 2  & Sprint 3  & Sprint 4  & Finalization    \\ \hline        
+    Activity                & Planning  & Sprint 1  & Sprint 2  & Sprint 3  & Sprint 4  & Finalization    \\ \hline        
     Lectures                & 60        & 4         & 4         & 4         & 4         & 4               \\ \hline
     Admin                   & 25        & 20        & 20        & 20        & 20        & 50              \\ \hline
     Planning                & 50        & 8         & 8         & 8         & 8         & 50              \\ \hline
@@ -499,7 +506,7 @@ All copies is to be accompanied with a CD that contain the implementation, docum
     Risk factor             & Group member having a full time job in addition to being 75 \% student      \\ \hline
     Consequences            & H: The quality and scope of the project might suffer                        \\ \hline
     Probability             & M                                                                           \\ \hline
-    Strategy and actions    & Monitor situation closely. Have clear assignments and agreements                 \\ \hline
+    Strategy and actions    & Monitor situation closely. Have clear assignments and agreements            \\ \hline
     Deadline                & Continuously                                                                \\ \hline
     Responsible             & Project leader                                                              \\ 
 \end{tabular}
@@ -512,7 +519,7 @@ All copies is to be accompanied with a CD that contain the implementation, docum
 \begin{tabular}{ l  p{11cm} }
     Id                      & R2                                                                          \\ \hline
     Activity                & All activities                                                              \\ \hline
-    Risk factor             & Getting sick                                                                     \\ \hline
+    Risk factor             & Getting sick                                                                \\ \hline
     Consequences            & H: The available work power might be reduced and tasks delayed.             \\ \hline
     Probability             & M                                                                           \\ \hline
     Strategy and actions    & All tasks to be entered into task management system. 
@@ -585,7 +592,7 @@ All copies is to be accompanied with a CD that contain the implementation, docum
     Id                      & R6                                                                          \\ \hline
     Activity                & Collaboration                                                               \\ \hline
     Risk factor             & Distributed work                                                            \\ \hline
-    Consequences            & H: Efficiency might lower and quality could be reduced                                 \\ \hline
+    Consequences            & H: Efficiency might lower and quality could be reduced                      \\ \hline
     Probability             & M                                                                           \\ \hline
     Strategy and actions    & Daily updates on the current work. Check each others work. Tasks with 
                               clear deadlines                                                             \\ \hline
@@ -917,7 +924,7 @@ This chapter is a System Requirements Specification document in the terms of pra
 \section{Introduction}
 
 \subsection{Purpose}
-The purpose of this \gls{srs} document is to provide documentation of requirements for the VirtualWall software system. It is therefore trying to collect and analyze the requirements. The requirements formalization as presented is a result of a joint effort of the customer and the development team. It serves as a description of what customer is expecting the system to be like, it presents the systems features and functionalities.
+The purpose of this \gls{srs} document is to provide documentation of requirements for the \systemname software system. It is therefore trying to collect and analyze the requirements. The requirements formalization as presented is a result of a joint effort of the customer and the development team. It serves as a description of what customer is expecting the system to be like, it presents the systems features and functionalities.
 
 The intended audience of this document shall be:
 
@@ -932,9 +939,9 @@ Each part of the audience holds different stakes in the project, but all are int
 \subsection{Scope}
 This secton declares the scope of this requirements document and the desired output of the project. It shall state what parts of the system shall be analyzed, designed and implemented and to what extent.
 
-This \gls{srs} document deals with the project Virtual walls - walls that tell us stories. This project shall result in developing a tool for working with so called virtual walls, creating and sharing stories on them.
+This \gls{srs} document deals with the project \fullprojectname. This project shall result in developing a tool for working with so called \wallentityp, creating and sharing stories on them. %FIXME
 
-As presented by customer, the VirtualWall software system is going to be a complex system consisting of a number of subsystems including several content databases, a server backend and mobile application frontend.
+As presented by customer, the \systemname software system is going to be a complex system consisting of a number of subsystems including several content databases, a server backend and mobile application frontend.
 
 In the scope of this year's run of Customer Driven Project course, a prototype of a mobile application frontend and a basic server backend shall be developed.
 
@@ -1016,10 +1023,10 @@ This issue is not to be addressed in this phase of the project and may be implem
 \subsection{Product functions}
 
 \subsubsection{Frontend}
-The key functionality expected in the frontend is management of virtual walls (creating, editing), stories on them (creating, editing) and social interaction (commenting, sharing).
+The key functionality expected in the frontend is management of \wallentityp (creating, editing), stories on them (creating, editing) and social interaction (commenting, sharing).
 
 \subsubsection{Backend}
-The key functionality of the server is to support the features of the client by storing the data in the database and retrieving it back. As said above, the content is stored in the system database. The server shall expose an API for accessing the items from database (walls, stories) for access from the frontend.
+The key functionality of the server is to support the features of the client by storing the data in the database and retrieving it back. As said above, the content is stored in the system database. The server shall expose an API for accessing the items from database (\wallentityp, stories) for access from the frontend.
 
 \subsection{User characteristics} \label{sec:req_user_characteristics}
 As this app shall be accessible to open public, we can neither anticipate users' educational level, nor experience, nor technical expertise. We can however assume basic computer literacy.
@@ -1042,13 +1049,13 @@ For this reason, customer suggests that the application will be developed in HTM
 \subsection{External interfaces}
 As the application developed is going to be a client/server where the client is a mobile/web application, we will use \gls{http} protocol for data exchange. Data transferred over \gls{http} in our case will be in \gls{json} format.
 
-\subsubsection{Virtual Wall Client/Server interface}
-VirtualWall client is a mobile that runs in a container similar to a web browser. Once the application is installed in the phone and open, data transfers with the web server can be done using \gls{ajax} to retrieve the data in \gls{json} format from the server.
+\subsubsection{\systemname Client/Server interface}
+\systemname client is a mobile that runs in a container similar to a web browser. Once the application is installed in the phone and open, data transfers with the web server can be done using \gls{ajax} to retrieve the data in \gls{json} format from the server.
 
 Format of the messages is presented in sections \ref{placesjson}, \ref{storiesjson} and \ref{imagesjson}.
 
 \subsubsection{Social networks}\label{sec:req_social_networks}
-Walls and stories shall be easily shared using social networks like Facebook or Twitter. Custom button for sharing/liking shall be available for each story or wall that user wants to like or share.
+\wallentitypcap and stories shall be easily shared using social networks like Facebook or Twitter. Custom button for sharing/liking shall be available for each story or \wallentitys that user wants to like or share.
 
 Sharing in this case means posting a link on user's social network profile.
 
@@ -1566,7 +1573,7 @@ The items and the form and content of the each test document is based on the IEE
 Let this test plan to be identified as ``VirtualWall\_TESTPLAN\_1''.
 
 \subsection{Introduction}
-The Virtual Wall software system consists of two subsystems:
+The \systemname software system consists of two subsystems:
 
 \begin{itemize}
     \item backend / server
@@ -2294,11 +2301,11 @@ First thing done was to come up with what kind of main functionality the applica
 
 \begin{itemize}
     \item Some kind of menu system, to navigate in the application
-    \item A function to browse walls
-    \item A way of displaying walls and stories
+    \item A function to browse \wallentityp
+    \item A way of displaying \wallentityp and stories
 \end{itemize}
 
-Another concern was about the definition of a wall and story, thus what kind of information did it need to display.
+Another concern was about the definition of a \wallentitys and story, thus what kind of information did it need to display.
 
 \subparagraph{Menu}
 We saw two opportunities, a dedicated menu, typically the start up point for the application, and a more hidden menu, that we'll refer to as a side-menu. The dedicated menu is typically made up with buttons, where the user can access all top-level functions. It is easy and straightforward to implement, it is also well known for most users. A more elegant solution is the hidden side-menu, where the user can access the menu wherever he or she is in the application, with just a sliding gesture from right to left on the screen.
@@ -2312,10 +2319,10 @@ We saw two opportunities, a dedicated menu, typically the start up point for the
 
 The customer prefered the hidden side menu.
 
-\subparagraph{Browsing walls}
-An important function is to let the user browse and find walls. The most obvious solutions, to use a map and/or a list, were discussed, but no solution was determined. 
+\subparagraph{Browsing \wallentityp}
+An important function is to let the user browse and find \wallentityp. The most obvious solutions, to use a map and/or a list, were discussed, but no solution was determined. 
 
-Another important function is to filter or sort the walls. In a list it is easy to sort the walls on, for instance, popularity or the distance to your location using GPS tracking. There were suggested to use some kind of temperature pins in a map, where the pins shows the user how popular the different places are by using colors. The user could also decide to only see the most popular places by excluding the more cold colored walls, as Figure~\ref{fig:phases_sprint1_uiVersionOneTempPings} shows. The temperature pins were just one of many suggestion on how to represent walls on a map, others where to use symbols or icons, one colored pins and images.
+Another important function is to filter or sort the \wallentityp. In a list it is easy to sort the \wallentityp on, for instance, popularity or the distance to your location using GPS tracking. There were suggested to use some kind of temperature pins in a map, where the pins shows the user how popular the different places are by using colors. The user could also decide to only see the most popular places by excluding the more cold colored \wallentityp, as Figure~\ref{fig:phases_sprint1_uiVersionOneTempPings} shows. The temperature pins were just one of many suggestion on how to represent \wallentityp on a map, others where to use symbols or icons, one colored pins and images.
 
 The customer wanted to focus more on the use of filtering on tags and metadata.
 
@@ -2326,10 +2333,10 @@ The customer wanted to focus more on the use of filtering on tags and metadata.
     \label{fig:phases_sprint1_uiVersionOneTempPings}
 \end{figure}
 
-\subparagraph{Look at walls}
-The main function of the application is to access a wall and browse user created information, that could be stories, pictures, links to other resources, etc.. Two possible solution were suggested; a wall that displayed both user created stories and information from multiple data sources as in Figure~\ref{fig:phases_sprint1_uiVersionOneSimpleWall}, for instance, Instagram, Wikipedia, YouTube, Twitter, Google, Flickr, etc., and a more simple version where the focus was on user created data, thus stories and pictures, as in Figure~\ref{fig:phases_sprint1_uiVersionOneMultipleDataSoruces}.
+\subparagraph{Look at \wallentityp}
+The main function of the application is to access a \wallentitys and browse user created information, that could be stories, pictures, links to other resources, etc.. Two possible solution were suggested; a \wallentitys that displayed both user created stories and information from multiple data sources as in Figure~\ref{fig:phases_sprint1_uiVersionOneSimpleWall}, for instance, Instagram, Wikipedia, YouTube, Twitter, Google, Flickr, etc., and a more simple version where the focus was on user created data, thus stories and pictures, as in Figure~\ref{fig:phases_sprint1_uiVersionOneMultipleDataSoruces}.
 
-The idea of using multiple data sources came from the danish mobile application, \emph{Kulturarv}, or \emph{Cultural Heritage} (both mentioned in \ref{sec:prestudy_existing_apps}), which blends data from a main database with other geo location data sources like Instagram, Flickr, Wikipedia and Twitter. The customer had not thought about the idea of using multiple data sources, and were therefore quite surprised by the solution. The group and customer agreed that the use of multiple data sources were out of the scope, and decided to focus on the more simple version. The customer liked the use of tabs, to navigate, within a wall.
+The idea of using multiple data sources came from the danish mobile application, \emph{Kulturarv}, or \emph{Cultural Heritage} (both mentioned in \ref{sec:prestudy_existing_apps}), which blends data from a main database with other geo location data sources like Instagram, Flickr, Wikipedia and Twitter. The customer had not thought about the idea of using multiple data sources, and were therefore quite surprised by the solution. The group and customer agreed that the use of multiple data sources were out of the scope, and decided to focus on the more simple version. The customer liked the use of tabs, to navigate, within a \wallentitys.
 
 \begin{figure}[H]
     \centering
@@ -2347,13 +2354,13 @@ The idea of using multiple data sources came from the danish mobile application,
 
 \paragraph{Version two}
 
-In this iteration the focus was on how to filter walls on tags, how to switch between list or map browsing, how to create a wall and on the wall itself. 
+In this iteration the focus was on how to filter \wallentityp on tags, how to switch between list or map browsing, how to create a \wallentitys and on the \wallentitys itself. 
 
-\subparagraph{Filtering walls}
-The customer wanted the user to filter by tags, both on tags that was suggested to the user and tags that the user typed himself. A suggested solution is shown in Figure ~\ref{fig:phases_sprint1_uiVersionTwoAddFilter}. The customer found the solution satisfactory, but the user also needed to be able to filter on creators of walls. It was suggested to introduce the @-sign to filter on creators.
+\subparagraph{Filtering \wallentityp}
+The customer wanted the user to filter by tags, both on tags that was suggested to the user and tags that the user typed himself. A suggested solution is shown in Figure ~\ref{fig:phases_sprint1_uiVersionTwoAddFilter}. The customer found the solution satisfactory, but the user also needed to be able to filter on creators of \wallentityp. It was suggested to introduce the @-sign to filter on creators.
 
 \subparagraph{List or map browsing}
-Three possible solutions were made, one with tabs, one with action buttons and one with a drop down menu (Figure ~\ref{fig:phases_sprint1_uiVersionTwoAccessListOrMap}). The customer dropped the whole proposal, and wanted just to use map when browsing walls.
+Three possible solutions were made, one with tabs, one with action buttons and one with a drop down menu (Figure ~\ref{fig:phases_sprint1_uiVersionTwoAccessListOrMap}). The customer dropped the whole proposal, and wanted just to use map when browsing \wallentityp.
 
 \begin{figure}[H]
     \centering
@@ -2369,23 +2376,23 @@ Three possible solutions were made, one with tabs, one with action buttons and o
     \label{fig:phases_sprint1_uiVersionTwoAddFilter}
 \end{figure}
 
-\subparagraph{Create wall}
-This function is very important, because it will define the the definition of a wall, thus the content of a wall. The customer wanted a more purified story-telling-wall, a wall that tells stories. The proposal was that a wall would consist of a title, a description, a set of tags, a gallery, stories and a location. The possibility to let everyone add content and to comment were also a part of the solution, as Figure ~\ref{fig:phases_sprint1_uiVersionTwoCreateWallDocument} shows.
+\subparagraph{Create \wallentitys}
+This function is very important, because it will define the the definition of a \wallentitys, thus the content of a \wallentitys. The customer wanted a more purified story-telling-wall, a \wallentitys that tells stories. The proposal was that a \wallentitys would consist of a title, a description, a set of tags, a gallery, stories and a location. The possibility to let everyone add content and to comment were also a part of the solution, as Figure ~\ref{fig:phases_sprint1_uiVersionTwoCreateWallDocument} shows.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Figures/Phases/Sprint1/createWallDocument.png}
-    \caption{Create wall}
+    \caption{Create \wallentitys}
     \label{fig:phases_sprint1_uiVersionTwoCreateWallDocument}
 \end{figure}
 
-\subparagraph{The wall}
-From version one we knew that the customer wanted a wall that was focused on the user created data, stories and images. A solution, the one in Figure ~\ref{fig:phases_sprint1_uiVersionTwoWallFunctions}, were suggested. The wall uses tabs for navigation, and the solution included two suggestions for displaying stories, a list and tiles. The customer liked the solution, and decided to use tiles to represent stories.
+\subparagraph{The \wallentitys}
+From version one we knew that the customer wanted a \wallentitys that was focused on the user created data, stories and images. A solution, the one in Figure ~\ref{fig:phases_sprint1_uiVersionTwoWallFunctions}, were suggested. The \wallentitys uses tabs for navigation, and the solution included two suggestions for displaying stories, a list and tiles. The customer liked the solution, and decided to use tiles to represent stories.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Figures/Phases/Sprint1/wallFunctions.png}
-    \caption{The wall}
+    \caption{The \wallentitys}
     \label{fig:phases_sprint1_uiVersionTwoWallFunctions}
 \end{figure}
 
@@ -2408,8 +2415,8 @@ The server has seen development based upon what was done in sprint one, but the 
         Item                                                                & Outcome         \\ \hline
         Define the concept of story                                         & Done            \\ \hline
         Define the main principles of UI                                    & Done            \\ \hline
-        Browse virtual walls                                                & Done in server  \\ \hline
-        Open a virtual wall                                                 & Done in server  \\ \hline
+        Browse \wallentityp                                                 & Done in server  \\ \hline
+        Open a \wallentitys                                                 & Done in server  \\ \hline
         Basic framework for app with support for communicating with server  & Done            \\ \hline
         Architecture                                                        & Partly done     \\ \hline
     \end{tabular}
@@ -2418,22 +2425,22 @@ The server has seen development based upon what was done in sprint one, but the 
 \end{table}
 
 \subsection{S2: Requirements as scenarios}
-\paragraph{Browse virtual walls}
+\paragraph{Browse \wallentityp}
 \begin{enumerate}
     \item User goes to map view
     \item Client asks user for location
     \item User write location or taps on fetch my location
     \item Map shows the users position
-    \item Walls are indicated on the map
+    \item \wallentitypcap are indicated on the map
     \item The user might move around in the map by dragging it around
 \end{enumerate}
 
-\paragraph{Open a virtual wall}
+\paragraph{Open a \wallentitys}
 \begin{enumerate}
-    \item User goes to walls view (that be map or list or whatever is decided)
-    \item User navigates to wall of interest - see [wall browsing] Browse virtual walls
-    \item User taps on desired wall
-    \item Client shows a new screen with the wall content
+    \item User goes to \wallentityp view (that be map or list or whatever is decided)
+    \item User navigates to a \wallentitys of interest - see [\wallentitys browsing] Browse \wallentityp
+    \item User taps on a desired \wallentitys
+    \item Client shows a new screen with the \wallentitys content
 \end{enumerate}
 
 \subsection{S2: Implementation}
@@ -2570,11 +2577,11 @@ The architecture is only partially done, this is due to the change in mobile fra
 
 \subsubsection{Server}
 
-Upon receiving changes proposed by customer, the data model was stashed and reworked to accommodate the proposed changes. As the concept of walls and stories finally settled down, we were able to implement API for retrieving walls based on geographic coordinates and to retrieve stories on walls.
+Upon receiving changes proposed by customer, the data model was stashed and reworked to accommodate the proposed changes. As the concept of \wallentityp and stories finally settled down, we were able to implement API for retrieving \wallentityp based on geographic coordinates and to retrieve stories on \wallentityp.
 
 As requested in the last batch of change requests from customer, stories shall be stored in an external database called \emph{Digitalt Fortalt}. This database provides an API for search which we call to retrieve the stories. Our application does not write any data to \emph{Digitalt Fortalt}, stories need to be created manually on their website.
 
-Walls on the other hand shall be stored in out system database. We now store each wall with its geographic coordinates in a database table and filter as described in \ref{sec:spr3_maps}. 
+\wallentitypcap on the other hand shall be stored in out system database. We now store each \wallentitys with its geographic coordinates in a database table and filter as described in \ref{sec:spr3_maps}. 
 
 Data stored in our database are retrieved by classes in the \texttt{models} package. The models are extending \texttt{play.db.ebean.Model} class and use standard \gls{jpa} annotations to indicate relationships between entities.
 
@@ -2582,11 +2589,11 @@ The data from \emph{Digitalt Fortalt} are retrieved from the API by classes in t
 
 \subsubsection{Map views, coordinates and projections} \label{sec:spr3_maps}
 
-One of the main features of the application is to show user location of various virtual walls on a map. Since we decided to use Titanium framework for the development of the mobile application, we are using its own map view (\texttt{Titanium.Map.View}) for the display of maps and locations of walls upon them.
+One of the main features of the application is to show user location of various \wallentityp on a map. Since we decided to use Titanium framework for the development of the mobile application, we are using its own map view (\texttt{Titanium.Map.View}) for the display of maps and locations of \wallentityp upon them.
 
-The database is now featuring just a few walls, but it is supposed to host much more of them in the future and it would not be optimal for the performance and operational reasons (such as costs of data transfers on mobile Internet) to fetch all the walls when user is using the application.
+The database is now featuring just a few \wallentityp, but it is supposed to host much more of them in the future and it would not be optimal for the performance and operational reasons (such as costs of data transfers on mobile Internet) to fetch all the \wallentityp when user is using the application.
 
-The user is only interested in walls he could actually see on the map, so we decided to take an approach where we fetch the data from the server while filtering it upon geographic coordinates. The map view supplies us with a geographical coordinates of the center of the displayed map and with west-to-east distance and noth-to-south distance. This makes it possible to compute the coordinates of the north-west (i.e. top-left) corner of the map view, and the south-east (i.e. bottom-right) corner of the map view. Then the application fetches the data from the server, asking it to filter only those walls, which have coordinates in the rectangle defined by those two corners.
+The user is only interested in \wallentityp he could actually see on the map, so we decided to take an approach where we fetch the data from the server while filtering it upon geographic coordinates. The map view supplies us with a geographical coordinates of the center of the displayed map and with west-to-east distance and noth-to-south distance. This makes it possible to compute the coordinates of the north-west (i.e. top-left) corner of the map view, and the south-east (i.e. bottom-right) corner of the map view. Then the application fetches the data from the server, asking it to filter only those \wallentityp, which have coordinates in the rectangle defined by those two corners.
 
 It is a well-known fact that planet Earth is not flat. For this reason, various map projections are used to transform the surface of Earth (3D) onto a plane (2D). Google Maps, which provide the map tiles for the map view, are using a variant of so called Mercator \footnote{Named after Flemish geographer and cartographer Gerardus Mercator, who firstly used it in 1569 for his map titled \emph{Nova et Aucta Orbis Terrae Descriptio ad Usum Navigantium Emendate Accommodata}, which is Latin for \emph{New and more complete representation of the terrestrial globe properly adapted for use in navigation}.} projection. This map projection was used in naval navigation for showing constant bearings (\emph{loxodromes}, also known as \emph{rhumb lines}) as straight lines on the map. \cite{progonos:mercator,radicalcartography} 
 
@@ -2597,7 +2604,7 @@ It is a well-known fact that planet Earth is not flat. For this reason, various 
     \label{fig:mercator}
 \end{figure}
 
-As seen in \ref{fig:mercator}, it is a cylindrical conformal projection, so it preserves local angles, but is unfit for use in high-latitudes as the map extends infinitely North and South (so called \emph{polar exaggeration}). This shall be fine for use until we need to add a wall for a location near to one of the geographic poles (which are stretched infinitely along the top and bottom edges of the map). This could be a problem is we want to add a wall for example for the Amundsen–Scott South Pole Station located just few meters from the geographical such pole and which would and stretch widely east to west. \cite{progonos:mercator,radicalcartography} 
+As seen in \ref{fig:mercator}, it is a cylindrical conformal projection, so it preserves local angles, but is unfit for use in high-latitudes as the map extends infinitely North and South (so called \emph{polar exaggeration}). This shall be fine for use until we need to add a \wallentitys for a location near to one of the geographic poles (which are stretched infinitely along the top and bottom edges of the map). This could be a problem is we want to add a wall for example for the Amundsen–Scott South Pole Station located just few meters from the geographical such pole and which would and stretch widely east to west. \cite{progonos:mercator,radicalcartography} 
 
 
 \subsection{S3: Test execution}
@@ -2646,21 +2653,21 @@ In Sprint 4, the group should also place an emphasis on testing, as very little 
         \hline
         Finish system architecture & Done\\
         \hline
-        Browse virtual walls - retrieve picture(s) from flickr & Done\\
+        Browse \wallentityp - retrieve picture(s) from flickr & Done\\
         \hline
-        Open a virtual wall & Done\\
+        Open a \wallentitys & Done\\
         \hline
-        Create virtual wall & Done\\
+        Create \wallentitys & Done\\
         \hline
         Open story & Done\\
         \hline
-        Add story to wall & \\
+        Add story to \wallentitys & \\
         \hline
         Filter stories by tags & \\ 
         \hline
-        Adding instagram information related to a wall  & \\
+        Adding instagram information related to a \wallentitys  & \\
         \hline
-        Retrieving instagram information related to a wall & \\
+        Retrieving instagram information related to a \wallentitys & \\
         \hline
         Add comment to a story & Done\\
         \hline
@@ -2670,38 +2677,38 @@ In Sprint 4, the group should also place an emphasis on testing, as very little 
 \end{table}
 
 \subsection{S4: Requirements as scenarios}
-\subsubsection{Create virtual wall}
+\subsubsection{Create a \wallentitys}
 \begin{enumerate}
 \item User goes to map view
 \item User taps on the add icon (a plus sign)
-\item System provides user with information about how to add a new wall
+\item System provides user with information about how to add a new \wallentitys
 \end{enumerate}
 
-\subsubsection{Add story to wall}
+\subsubsection{Add story to a \wallentitys}
 \begin{enumerate}
-\item User goes to story view on a wall
+\item User goes to story view on a \wallentitys
 \item User taps on the add icon (a plus sign)
 \item System provides user with information about how to add a new story
 \end{enumerate}
 
 \subsubsection{Filter stories by tags or author}
 \begin{enumerate}
-\item User goes to the story view of a wall
+\item User goes to the story view of a \wallentitys
 \item User pulls out tags panel and selects desired tags by browsing or searching
 \item Client fetches stories from server that matches the chosen tags
-\item Tags panel disappear and wall view is updated with only stories matching the tags
+\item Tags panel disappear and \wallentitys view is updated with only stories matching the tags
 \end{enumerate}
 
 \subsubsection{Browse stories}
 \begin{enumerate}
-\item User opens a wall
+\item User opens a \wallentitys
 \item User navigates to stories tab
 \item User navigates the tiles by dragging and tapping
 \end{enumerate}
 
 \subsubsection{Open story}
 \begin{enumerate}
-\item User navigates to a wall
+\item User navigates to a \wallentitys
 \item User browses stories
 \item User selects a desired story by tapping on it
 \item Client displays the story
@@ -2739,15 +2746,15 @@ The following description is taken from the course compendium\cite[p. 47]{compen
 \begin{quotation}\noindent
 The assignment relates to the EU-IST project TAG CLOUD (www.tagcloudproject.eu). TAG CLOUD will develop innovative digital solutions with the aim to increase the engagement of people in culture and cultural heritage. The main aspects that will be investigated are: new interaction interfaces with cultural artifacts, user as a contributor and personalized information. In Norway, the focus is ``culture in the landscape'', i.e. the discovery of cultural memories that we meet when walking around in cities, in villages and in the nature.
 
-The goal of this assignment is to develop a tool to create and interact with ``virtual walls''. The idea stems from Væggen\footnote{Væggen is the danish word for ``Wall''.} in Copenhagen (http://vaeggen.copenhagen.dk/dk/). Væggen is a large multitouch screen allowing people to tell, share and experience stories. We would like to explore the concept of wall as means to discover and share cultural stories related to buildings and places. It is however not practical to install and maintain physical walls such as Væggen all around. Instead we propose a digital representation of walls, that we call virtual wall. %FIXME link vaeggen
+The goal of this assignment is to develop a tool to create and interact with ``virtual walls''. The idea stems from Væggen\footnote{Væggen is the danish word for ``Wall''.} in Copenhagen (http://vaeggen.copenhagen.dk/dk/). Væggen is a large multitouch screen allowing people to tell, share and experience stories. We would like to explore the concept of wall as means to discover and share cultural stories related to buildings and places. It is however not practical to install and maintain physical walls such as Væggen all around. Instead we propose a digital representation of walls, that we call \wallentitys. %FIXME link vaeggen
 
-The assignment will build upon interactive pictures for the realization of virtual walls. The tool that will be develop should include support for:
+The assignment will build upon interactive pictures for the realization of \wallentityp. The tool that will be develop should include support for:
 \begin{itemize}
-    \item Managing virtual walls: creation/deletion; retrieval according to location, popularity, topics and other metadata (e.g. author)
+    \item Managing \wallentityp: creation/deletion; retrieval according to location, popularity, topics and other metadata (e.g. author)
     \item Managing stories: adding stories through a click on a specific place on the wall, filtering stories
 according to popularity, topics and other metadata (e.g. duration)
-    \item Social interaction: sharing walls (possibly stories) for editing, adding comments to walls and stories.
-    \item Promotion through social networks: sharing walls and stories through social networks (e.g. Facebook, Twitter)
+    \item Social interaction: sharing \wallentityp (possibly stories) for editing, adding comments to \wallentityp and stories.
+    \item Promotion through social networks: sharing \wallentityp and stories through social networks (e.g. Facebook, Twitter)
 \end{itemize}
 The tool should be available for PC, tablet and mobile allowing experience at home and on site. The assignment should specify a system architecture that fits this requirement and select technologies that simplify development on several platforms. The assignment will realized the tool for one device type, preferably tablet.
 
@@ -3245,61 +3252,61 @@ TODO
         \hline
         User permissions & 0\\
         \hline
-        Wall browsing & \\
+        \wallentitys browsing & \\
         \hline
-        Browse virtual walls - retrieve picture(s) from flickr & 10\\
+        Browse \wallentityp - retrieve picture(s) from flickr & 10\\
         \hline
-        Browse virtual walls - retrieve pictures from trondheimbilder.no & 2\\
+        Browse \wallentityp - retrieve pictures from trondheimbilder.no & 2\\
         \hline
         Format pictures to a postcard format (2x3?) & 6\\
         \hline
-        Filter walls by tags & 0\\
+        Filter \wallentityp by tags & 0\\
         \hline
-        Filter walls by popularity & 0\\
+        Filter \wallentityp by popularity & 0\\
         \hline    
-        Filter walls by location & 8\\
+        Filter \wallentityp by location & 8\\
         \hline
-        Filter walls by author & 2\\
+        Filter \wallentityp by author & 2\\
         \hline
-        Filter walls by institution & 0\\
+        Filter \wallentityp by institution & 0\\
         \hline
-        Filter walls by language & 2\\
+        Filter \wallentityp by language & 2\\
         \hline
-        Wall access & \\
+        \wallentitys access & \\
         \hline
-        Open a virtual wall & 10\\
+        Open a \wallentitys & 10\\
         \hline
         Count viewer & 0\\
         \hline
-        Like wall & 0\\
+        Like \wallentitys & 0\\
         \hline
-        Share wall on social networks & 0\\
+        Share \wallentitys on social networks & 0\\
         \hline
-        Add comment to a wall & 0\\
+        Add comment to a \wallentitys & 0\\
         \hline
-        Share wall comment on social networks & 0\\
+        Share \wallentitys comment on social networks & 0\\
         \hline
         Notify administrator (s) when a comment is added & 0\\
         \hline
         Report comment as spam & 0\\
         \hline
-        Let wall administrator remove a comment & 0\\
+        Let \wallentitys administrator remove a comment & 0\\
         \hline
-        Wall management & \\
+        \wallentitys management & \\
         \hline
-        Create virtual wall & 8\\
+        Create a \wallentitys & 8\\
         \hline
         Check if a description can be added to a picture in flickr & 10\\
         \hline
-        Delete virtual wall & 0\\
+        Delete a \wallentitys & 0\\
         \hline
-        Add contributor to wall & 0\\
+        Add contributor to \wallentitys & 0\\
         \hline
-        Remove contributor from wall & 0\\
+        Remove contributor from \wallentitys & 0\\
         \hline
-        Add administrator to wall & 0\\
+        Add administrator to \wallentitys & 0\\
         \hline
-        Remove administrator from wall & 0\\
+        Remove administrator from \wallentitys & 0\\
         \hline    
         Story browsing & \\
         \hline
@@ -3313,11 +3320,11 @@ TODO
         \hline
         Filter stories by tags & 7\\
         \hline    
-        Filter walls by author & 3\\
+        Filter \wallentityp by author & 3\\
         \hline
-        Filter walls by institution & 2\\
+        Filter \wallentityp by institution & 2\\
         \hline
-        Filter walls by language & 3\\
+        Filter \wallentityp by language & 3\\
         \hline
         Story access & \\
         \hline
@@ -3343,7 +3350,7 @@ TODO
         \hline
         Story management & \\
         \hline
-        Add story to wall & 8\\
+        Add story to \wallentitys & 8\\
         \hline
         Type - Hyperlink & 0\\
         \hline
@@ -3357,13 +3364,13 @@ TODO
         \hline
         Interface with other information sources & \\
         \hline
-        Adding twitter information related to a wall & 0\\
+        Adding twitter information related to a \wallentitys & 0\\
         \hline
-        Retrieving twitter information related to a wall    & 3\\
+        Retrieving twitter information related to a \wallentitys    & 3\\
         \hline
-        Adding instagram information related to a wall & 7\\
+        Adding instagram information related to a \wallentitys & 7\\
         \hline
-        Retrieving instagram information related to a wall & 7\\
+        Retrieving instagram information related to a \wallentitys & 7\\
         \hline
         \caption{Latest complete backlog.}\label{tab:appendix_backlog}
     \end{longtable}
@@ -3389,14 +3396,14 @@ The functional requirements as described in the document handed in as a
 project description by customer:
 
 \begin{itemize}
-  \item Managing virtual walls: creation \& deletion; retrieval according to
+  \item Managing \wallentityp: creation \& deletion; retrieval according to
   location, popularity, topics and other metadata (e.g.~author)
   \item Managing stories: adding stories through a click on a specific place
-  on the wall, filtering stories according to popularity, topics and
+  on the \wallentitys, filtering stories according to popularity, topics and
   other metadata (e.g.~duration)
-  \item Social interaction: sharing walls (possibly stories) for editing,
-  adding comments to walls and stories.
-  \item Promotion through social networks: sharing walls and stories through
+  \item Social interaction: sharing \wallentityp (possibly stories) for editing,
+  adding comments to \wallentityp and stories.
+  \item Promotion through social networks: sharing \wallentityp and stories through
   social networks (e.g.~Facebook, Twitter)
 \end{itemize}
 
@@ -3414,31 +3421,31 @@ non-functinal requirements from this iteration.
   \item F1.2.3 System shall let the group owner remove users from group.
 \end{itemize}
 
-\subsection{Functional: Walls}\label{functional-walls}
+\subsection{Functional: \wallentitypcap}\label{functional-walls}
 
 \begin{itemize}
-  \item F2.1 System shall enable management of virtual walls
-  \item F2.1.1 System shall let registered users create a virtual wall
+  \item F2.1 System shall enable management of virtual \wallentityp
+  \item F2.1.1 System shall let registered users create a \wallentitys
   \item F2.1.2 System shall let owner delete a virtual wall
-  \item F2.2 System shall let users retrieve and view walls
-  \item F2.2.1 System shall let users to filter walls by popularity
-  \item F2.2.2 System shall let users to filter walls by topics (user-defined
+  \item F2.2 System shall let users retrieve and view \wallentityp
+  \item F2.2.1 System shall let users to filter \wallentityp by popularity
+  \item F2.2.2 System shall let users to filter \wallentityp by topics (user-defined
   tags)
-  \item F2.2.3 System shall let users to filter walls by metadata
-  \item F2.2.4 System shall let users to filter walls by story authors
-  \item F2.3 System shall enable social interaction upon walls
-  \item F2.3.1 System shall let users edit walls collaboratively in groups
-  \item F2.3.2 System shall let registered users comment on walls
-  \item F2.4 System shall let users share wall over social networks (facebook,
+  \item F2.2.3 System shall let users to filter \wallentityp by metadata
+  \item F2.2.4 System shall let users to filter \wallentityp by story authors
+  \item F2.3 System shall enable social interaction upon \wallentityp
+  \item F2.3.1 System shall let users edit \wallentityp collaboratively in groups
+  \item F2.3.2 System shall let registered users comment on \wallentityp
+  \item F2.4 System shall let users share \wallentitys over social networks (facebook,
   twitter).
 \end{itemize}
 
 \subsection{Functional: Stories}\label{functional-stories}
 
 \begin{itemize}
-  \item F3.1 System shall enable management of stories on virtual walls
-  \item F3.1.1 System shall let registered users add story on a wall by
-  clicking on a desired place on the wall
+  \item F3.1 System shall enable management of stories on \wallentityp
+  \item F3.1.1 System shall let registered users add story on a \wallentitys by
+  clicking on a desired place on the \wallentitys
   \item F3.1.2 System shall enable the stories to contain text, hyperlinks,
   video, pictures, audio
   \item F3.2 System shall let users retrieve and view stories
@@ -3463,13 +3470,13 @@ this is a prototype of the application and it should be simple, rapidly
 developed and used rather as a proof of concept than production-ready.
 
 Customer also requested adding two functional requirements concerning
-walls and stories:
+\wallentityp and stories:
 
 \begin{itemize}
-  \item F2.1.3 System shall enable owner to add contributors to wall
+  \item F2.1.3 System shall enable owner to add contributors to \wallentitys
   \item F2.2.5 System shall get auto-fill suggestions when filtering upon
   topics (user defined tags)
-  \item F2.2.6 System shall show user a list of walls that feature his stories
+  \item F2.2.6 System shall show user a list of \wallentityp that feature his stories
   \item F3.2.4 System shall get auto-fill suggestions when filtering upon
   topics (user defined tags)
 \end{itemize}
@@ -3477,7 +3484,7 @@ walls and stories:
 \section{Changes - Iteration 2}\label{changes---iteration-2}
 
 Many issues raised when analysing the requirements concerning users and
-groups, the owner relationships between users, groups and walls.
+groups, the owner relationships between users, groups and \wallentityp.
 
 The original concept proposed was proven corrupt and inconsistent.
 Several requirements were dropped for this reason:
@@ -3487,7 +3494,7 @@ Several requirements were dropped for this reason:
   \item F1.2.1 System shall let registered users to create a group.
   \item F1.2.2 System shall let the group owner add users to group.
   \item F1.2.3 System shall let the group owner remove users from group.
-  \item F2.3.1 System shall let users edit walls collaboratively in groups
+  \item F2.3.1 System shall let users edit \wallentityp collaboratively in groups
 \end{itemize}
 
 Issues about spam, illegal and abusive content were raised. Thus new
@@ -3504,7 +3511,7 @@ Also, so called \emph{topics} are now simply refered to as \emph{tags}
 instead. These were mentioned in:
 
 \begin{itemize}
-  \item F2.2.2 System shall let users to filter walls by \ldots{}
+  \item F2.2.2 System shall let users to filter \wallentityp by \ldots{}
   \item F2.2.3 System shall get auto-fill suggestions when filtering upon
   topics (user defined tags)
 \end{itemize}
@@ -3512,13 +3519,13 @@ instead. These were mentioned in:
 Another requirement was dropped as it was a duplicate of another:
 
 \begin{itemize}
-  \item F2.3 System shall enable social interaction upon walls
+  \item F2.3 System shall enable social interaction upon \wallentityp
 \end{itemize}
 
 Requirement F3.1.1 was rewritten from \emph{System shall let registered
 users add story on a wall by clicking on a desired place on the wall} to
 more general \emph{System shall let registered users add story to a
-location} as a particular mechanism of adding walls is a concern of
+location} as a particular mechanism of adding \wallentityp is a concern of
 design and implementation and proven to be a subject of change.
 
 \section{Changes - Iteration 3}\label{changes---iteration-3}
@@ -3537,12 +3544,12 @@ requirements concerning those are dropped:
 
 \begin{itemize}
   \item F1.1 System shall let users to register an account within the system.
-  \item F2.1.2 System shall let owner delete a virtual wall
-  \item F2.1.3 System shall enable owner to add contributors to wall (their
-  stories for this location shall appear on the wall)
+  \item F2.1.2 System shall let owner delete a \wallentitys
+  \item F2.1.3 System shall enable owner to add contributors to \wallentitys (their
+  stories for this location shall appear on the \wallentitys)
   \item F2.2.5 System shall get auto-fill suggestions when filtering upon
   topics (user defined tags)
-  \item F2.2.6 System shall show user a list of walls that feature his stories
+  \item F2.2.6 System shall show user a list of \wallentityp that feature his stories
 \end{itemize}
 
 Another suggestion was that stories shall be retrieved from
@@ -3551,7 +3558,7 @@ therefore cannot offer filtering upon attributes that are not present in
 the API of the service we use. Thus, we dropped the requirements:
 
 \begin{itemize}
-  \item F2.2.1 System shall let users to filter walls by popularity
+  \item F2.2.1 System shall let users to filter \wallentityp by popularity
   \item F3.2.1 System shall let users to filter stories by popularity.
 \end{itemize}
 
@@ -3569,7 +3576,7 @@ only inform the user how to create the story, but the users must do this
 themself. Thus we dropped some other requirements:
 
 \begin{itemize}
-  \item F3.1 System shall enable management of stories on virtual walls
+  \item F3.1 System shall enable management of stories on \wallentityp
   \item F3.1.1 System shall let registered users add story to a location
   \item F3.1.2 System shall enable the stories to contain text, hyperlinks,
   video, pictures, audio
@@ -3577,10 +3584,10 @@ themself. Thus we dropped some other requirements:
 
 As we are not able to store the comments in our database, it was
 suggested to use Twitter to let users comment on stories and drop
-commenting on walls completely:
+commenting on \wallentityp completely:
 
 \begin{itemize}
-  \item F2.3.2 System shall let registered users comment on walls
+  \item F2.3.2 System shall let registered users comment on \wallentityp
   \item F3.3.2 System shall notify story author about new comment
   \item F3.3.3 System shall enable users to flag a comment as a spam
   \item F3.3.4 System shall notify story author about spam-flagged comment
@@ -3588,13 +3595,13 @@ commenting on walls completely:
 \end{itemize}
 
 The missing database brought up the problem where should we get the
-walls from. For this purpose Flickr was suggested. This also
-means we do not store the walls anymore and we generate them on the fly,
+\wallentityp from. For this purpose Flickr was suggested. This also
+means we do not store the \wallentityp anymore and we generate them on the fly,
 which implies dropping other requirements:
 
 \begin{itemize}
-  \item F2.1 System shall enable management of virtual walls
-  \item F2.1.1 System shall let registered users create a virtual wall
+  \item F2.1 System shall enable management of \wallentityp
+  \item F2.1.1 System shall let registered users create a \wallentitys
 \end{itemize}
 
 Another request was that the project name shall change from
@@ -3608,7 +3615,7 @@ om StedR? - Jacqueline Floch
 \end{quote}
 
 This change as well makes us call \emph{walls} with their new name
-\emph{places} instead. The rest of report is following this.
+\emph{places} instead. The rest of report is following this. %FIXME whole report changed
 
 \section{Changes - Iteration 4}\label{changes---iteration-4}
 
@@ -3635,4 +3642,4 @@ renumbering it and calling it:
   \item F3.3 System shall let users comment on stories
 \end{itemize}
 
-\end{document}s
+\end{document}
