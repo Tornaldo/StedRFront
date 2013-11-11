@@ -193,6 +193,14 @@ wallCollection.fetch({
 	}
 });
 
+function hideKeyboard(){
+	if(Alloy.Globals.OS == "iphone"){
+		$.mapSearchButton.blur();
+	} else {
+		Ti.UI.Android.hideSoftKeyboard();
+	}
+}
+
 $.mapWin.addEventListener('close', function() {
 	$.destroy();
 });

@@ -1,4 +1,7 @@
 function Controller() {
+    function hideKeyboard() {
+        "iphone" == Alloy.Globals.OS ? $.mapSearchButton.blur() : Ti.UI.Android.hideSoftKeyboard();
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -6,6 +9,7 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
+    var __defers = {};
     $.__views.mapWin = Ti.UI.createWindow({
         title: "Map",
         id: "mapWin",
@@ -14,11 +18,10 @@ function Controller() {
     $.__views.mapSearchButton = Ti.UI.createSearchBar({
         id: "mapSearchButton",
         showCancel: "true",
-        height: "10%",
-        top: "0",
-        zIndex: "9999"
+        hintText: "Search in map..."
     });
     $.__views.mapWin.add($.__views.mapSearchButton);
+    hideKeyboard ? $.__views.mapSearchButton.addEventListener("cancel", hideKeyboard) : __defers["$.__views.mapSearchButton!cancel!hideKeyboard"] = true;
     $.__views.mapView = Ti.UI.createView({
         id: "mapView",
         height: "90%"
@@ -153,6 +156,7 @@ function Controller() {
     $.mapWin.addEventListener("close", function() {
         $.destroy();
     });
+    __defers["$.__views.mapSearchButton!cancel!hideKeyboard"] && $.__views.mapSearchButton.addEventListener("cancel", hideKeyboard);
     _.extend($, exports);
 }
 

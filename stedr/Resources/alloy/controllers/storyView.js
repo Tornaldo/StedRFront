@@ -12,8 +12,8 @@ function Controller() {
     $.__views.__alloyId3 = Ti.UI.createWindow({
         backgroundColor: "white",
         layout: "vertical",
-        exitOnClose: "false",
-        navBarHidden: "false",
+        exitOnClose: "true",
+        navBarHidden: "true",
         id: "__alloyId3"
     });
     $.__views.mediaGalleryView = Ti.UI.createView({
@@ -96,7 +96,9 @@ function Controller() {
     });
     $.__views.storyView.addTab($.__views.storyTab);
     $.__views.twitterWin = Ti.UI.createWindow({
-        id: "twitterWin"
+        id: "twitterWin",
+        navBarHidden: "true",
+        exitOnClose: "true"
     });
     $.__views.twitterView = Ti.UI.createView({
         id: "twitterView"
