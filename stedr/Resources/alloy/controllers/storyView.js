@@ -1,16 +1,4 @@
 function Controller() {
-    function changeLogo() {
-        if ("android" == Alloy.Globals.OS) {
-            Ti.API.info($.storyTab.getActive());
-            if ($.storyTab.getActive()) {
-                $.storyTab.setIcon("twitterlogowhite.png");
-                $.commentTab.setIcon("digitaltfortaltlogo.png");
-            } else {
-                $.storyTab.setIcon("twitterlogo.png");
-                $.commentTab.setIcon("digitaltfortaltlogowhite.png");
-            }
-        }
-    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "storyView";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
