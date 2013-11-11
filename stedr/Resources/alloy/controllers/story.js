@@ -56,7 +56,8 @@ function Controller() {
         var storyViewController = Alloy.createController("storyView", {
             $model: storyCollection.get(e.source.id)
         });
-        storyViewController.getView().open();
+        var win = storyViewController.getView();
+        "iphone" == Alloy.Globals.OS ? Alloy.Globals.Nav.openWindow(win) : win.open();
     });
     $.story.addEventListener("close", function() {
         Ti.API.info("Destroying story: " + $model.get("title"));

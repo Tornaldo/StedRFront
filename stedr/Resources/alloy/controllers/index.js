@@ -1,4 +1,7 @@
 function Controller() {
+    function hideKeyboard() {
+        "iphone" == Alloy.Globals.OS ? $.mapSearchButton.blur() : Ti.UI.Android.hideSoftKeyboard();
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -6,13 +9,36 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
+    var __defers = {};
+    $.__views.mapWin = Ti.UI.createWindow({
+        title: "Map",
+        id: "mapWin",
+        layout: "vertical"
+    });
+    $.__views.mapSearchButton = Ti.UI.createSearchBar({
+        id: "mapSearchButton",
+        showCancel: "true",
+        hintText: "Search in map..."
+    });
+    $.__views.mapWin.add($.__views.mapSearchButton);
+    hideKeyboard ? $.__views.mapSearchButton.addEventListener("cancel", hideKeyboard) : __defers["$.__views.mapSearchButton!cancel!hideKeyboard"] = true;
+    $.__views.mapView = Ti.UI.createView({
+        id: "mapView",
+        height: "90%"
+    });
+    $.__views.mapWin.add($.__views.mapView);
+    $.__views.nav = Ti.UI.iOS.createNavigationWindow({
+        window: $.__views.mapWin,
+        id: "nav"
+    });
+    $.__views.nav && $.addTopLevelView($.__views.nav);
     exports.destroy = function() {};
     _.extend($, $.__views);
     if ("iphone" == Alloy.Globals.OS) {
-        Ti.API.info("AD");
+        Alloy.Globals.Nav = $.nav;
         $.nav.open();
     } else {
-        Ti.API.info("ASD");
+        Ti.API.info("starter ikke iphone");
         $.mapWin.open();
     }
     var MapModule;
@@ -35,7 +61,9 @@ function Controller() {
             longitudeDelta: .01
         }
     });
+    Ti.API.info("START MAP");
     $.mapView.add(mapview);
+    Ti.API.info("Add eventlisteners");
     mapview.addEventListener("click", function(evt) {
         Ti.API.info(evt.type);
         Ti.API.info(evt.clicksource);
@@ -48,8 +76,10 @@ function Controller() {
             "iphone" == Alloy.Globals.OS ? $.nav.openWindow(win) : win.open();
         }
     });
-    $.mapSearchButton.addEventListener("click", function() {
-        var searchText = $.searchField.getValue();
+    $.mapSearchButton.addEventListener("return", function() {
+        Ti.API.info("CLICK");
+        var searchText;
+        searchText = "iphone" == Alloy.Globals.OS ? $.mapSearchButton.getValue() : $.searchField.getValue();
         Ti.API.info("PHONE");
         var xhr = Titanium.Network.createHTTPClient();
         var url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + searchText + "&sensor=true&key=AIzaSyD7QIWz-xIs3WTWYR_0eaH_whi56NNE1sE";
@@ -126,6 +156,7 @@ function Controller() {
     $.mapWin.addEventListener("close", function() {
         $.destroy();
     });
+    __defers["$.__views.mapSearchButton!cancel!hideKeyboard"] && $.__views.mapSearchButton.addEventListener("cancel", hideKeyboard);
     _.extend($, exports);
 }
 

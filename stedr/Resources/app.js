@@ -1,8 +1,8 @@
 var Alloy = require("alloy"), _ = Alloy._, Backbone = Alloy.Backbone;
 
-Alloy.Globals.OS = "android";
+Alloy.Globals.OS = Ti.Platform.osname;
 
-"android" == Alloy.Globals.OS && (Alloy.Globals.Map = require("ti.map"));
+"android" == Alloy.Globals.OS ? Alloy.Globals.Map = require("ti.map") : Alloy.Globals.Nav;
 
 Alloy.Collections.wall = Alloy.createCollection("wall");
 

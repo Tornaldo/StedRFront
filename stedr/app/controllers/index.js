@@ -26,8 +26,10 @@
  */
 
 if (Alloy.Globals.OS == "iphone") {
+	Alloy.Globals.Nav = $.nav;
 	$.nav.open();
 } else {
+	Ti.API.info('starter ikke iphone');
 	$.mapWin.open();
 }
 
@@ -62,8 +64,9 @@ if (Alloy.Globals.OS == "android") {
 	});
 }
 
+Ti.API.info('START MAP');
 $.mapView.add(mapview);
-
+Ti.API.info('Add eventlisteners');
 mapview.addEventListener('click', function(evt) {
 	Ti.API.info(evt.type);
 	Ti.API.info(evt.clicksource);
@@ -82,8 +85,14 @@ mapview.addEventListener('click', function(evt) {
 	}
 });
 
-$.mapSearchButton.addEventListener('click', function(evt) {
-	var searchText = $.searchField.getValue();
+$.mapSearchButton.addEventListener('return', function(evt) {
+	Ti.API.info('CLICK');
+	var searchText;
+	if(Alloy.Globals.OS == "iphone"){
+		searchText = $.mapSearchButton.getValue();
+	} else {
+		searchText = $.searchField.getValue();
+	}
 	if (OS_MOBILEWEB) {
 		var geocoder = new google.maps.Geocoder();
 		if (geocoder) {
@@ -183,6 +192,14 @@ wallCollection.fetch({
 		Ti.API.error("woops");
 	}
 });
+
+function hideKeyboard(){
+	if(Alloy.Globals.OS == "iphone"){
+		$.mapSearchButton.blur();
+	} else {
+		Ti.UI.Android.hideSoftKeyboard();
+	}
+}
 
 $.mapWin.addEventListener('close', function() {
 	$.destroy();

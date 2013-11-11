@@ -1,7 +1,7 @@
 <Alloy>
 	<TabGroup>
 		<Tab id="storyTab" icon="images/digitaltfortaltlogo.png" backgroundColor="#8D8D8D" backgroundSelectedColor="#40B0D2">
-			<Window class="container" layout="vertical" exitOnClose="false" navBarHidden="false">
+			<Window class="container" layout="vertical" exitOnClose="true" navBarHidden="true">
 				<View id="mediaGalleryView" height="50%">
 					<!-- Story media -->
 				</View>
@@ -15,8 +15,8 @@
 			</Window>
 		</Tab>
 		<Tab id="commentTab" icon="images/twitterlogo.png" backgroundColor="#8D8D8D" backgroundSelectedColor="#40B0D2">
-			<Window id="twitterWin">
-				<View id="twitterView" ></View>
+			<Window id="twitterWin" navBarHidden="true" exitOnClose="true">
+				<View id="twitterView"></View>
 			</Window>
 		</Tab>
 	</TabGroup>

@@ -84,7 +84,6 @@ function fetchTwitter() {
 			$.twitterStatusesView.add(twitterRowController.getView());
 
 		} else {
-			Ti.API.info(reply.statuses[0].user.name);
 			Alloy.Collections.tweets.reset(reply.statuses);
 		}
 	}, true // this parameter required

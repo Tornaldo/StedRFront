@@ -1,7 +1,7 @@
 function WPATH(s) {
     var index = s.lastIndexOf("/");
     var path = -1 === index ? "tiflexigrid/" + s : s.substring(0, index) + "/tiflexigrid/" + s.substring(index + 1);
-    return true && 0 !== path.indexOf("/") ? "/" + path : path;
+    return path;
 }
 
 function Controller() {
@@ -121,19 +121,54 @@ function Controller() {
         overlay.animate({
             opacity: .7,
             duration: 200
-        }, function() {
+        });
+        var t = Titanium.UI.create2DMatrix();
+        t = t.scale(0);
+        var a = Titanium.UI.createAnimation();
+        a.transform = t;
+        a.duration = 200;
+        $.fgMain.add(topView);
+        topView.animate(a);
+        a.addEventListener("complete", function() {
             topView.visible = true;
-            $.fgMain.add(topView);
+            var t2 = Titanium.UI.create2DMatrix();
+            t2 = t2.scale(1.2);
+            topView.animate({
+                transform: t2,
+                duration: 200
+            }, function() {
+                var t4 = Titanium.UI.create2DMatrix();
+                t4 = t4.scale(1);
+                topView.animate({
+                    transform: t4,
+                    duration: 200
+                });
+            });
         });
         topView.addEventListener("click", function(e) {
             Ti.API.info(e.type);
             Ti.API.info(e.clicksource);
-            $.fgMain.remove(topView);
-            overlay.animate({
-                opacity: 0,
-                duration: 200
-            }, function() {
-                $.fgMain.remove(overlay);
+            var t3 = Titanium.UI.create2DMatrix();
+            t3 = t3.scale(1.2);
+            var a2 = Titanium.UI.createAnimation();
+            a2.transform = t3;
+            a2.duration = 200;
+            topView.animate(a2);
+            a2.addEventListener("complete", function() {
+                var t5 = Titanium.UI.create2DMatrix();
+                t5 = t5.scale(0);
+                topView.animate({
+                    transform: t5,
+                    duration: 200
+                }, function() {
+                    $.fgMain.remove(topView);
+                    overlay.animate({
+                        opacity: 0,
+                        duration: 200
+                    }, function() {
+                        $.fgMain.remove(overlay);
+                    });
+                });
             });
         });
     };

@@ -1,0 +1,8 @@
+<Alloy>
+	<NavigationWindow id="nav" platform="ios">
+		<Window title="Map" id="mapWin" layout="vertical">
+			<SearchBar id="mapSearchButton" showCancel="true" hintText="Search in map..." onCancel="hideKeyboard"></SearchBar>
+			<View id="mapView" height="90%"></View>
+		</Window>
+	</NavigationWindow>
+</Alloy>

@@ -13,24 +13,24 @@ function Controller() {
         id: "instagramView"
     });
     $.__views.instagramView && $.addTopLevelView($.__views.instagramView);
-    $.__views.__alloyId1 = Ti.UI.createScrollView({
+    $.__views.__alloyId0 = Ti.UI.createScrollView({
         layout: "vertical",
         backgroundColor: "#40B0D2",
-        id: "__alloyId1"
+        id: "__alloyId0"
     });
-    $.__views.instagramView.add($.__views.__alloyId1);
+    $.__views.instagramView.add($.__views.__alloyId0);
     $.__views.igView = Ti.UI.createView({
         id: "igView"
     });
-    $.__views.__alloyId1.add($.__views.igView);
+    $.__views.__alloyId0.add($.__views.igView);
     $.__views.userName = Ti.UI.createLabel({
         id: "userName"
     });
-    $.__views.__alloyId1.add($.__views.userName);
+    $.__views.__alloyId0.add($.__views.userName);
     $.__views.url = Ti.UI.createLabel({
         id: "url"
     });
-    $.__views.__alloyId1.add($.__views.url);
+    $.__views.__alloyId0.add($.__views.url);
     $.__views.igv = Alloy.createWidget("tiflexigrid", "widget", {
         id: "igv",
         __parentSymbol: $.__views.instagramView

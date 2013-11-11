@@ -9,24 +9,24 @@ function Controller() {
     $.__views.storyView = Ti.UI.createTabGroup({
         id: "storyView"
     });
-    $.__views.__alloyId4 = Ti.UI.createWindow({
+    $.__views.__alloyId3 = Ti.UI.createWindow({
         backgroundColor: "white",
         layout: "vertical",
-        exitOnClose: "false",
-        navBarHidden: "false",
-        id: "__alloyId4"
+        exitOnClose: "true",
+        navBarHidden: "true",
+        id: "__alloyId3"
     });
     $.__views.mediaGalleryView = Ti.UI.createView({
         id: "mediaGalleryView",
         height: "50%"
     });
-    $.__views.__alloyId4.add($.__views.mediaGalleryView);
-    $.__views.__alloyId5 = Ti.UI.createScrollView({
+    $.__views.__alloyId3.add($.__views.mediaGalleryView);
+    $.__views.__alloyId4 = Ti.UI.createScrollView({
         layout: "vertical",
         backgroundColor: "#40B0D2",
-        id: "__alloyId5"
+        id: "__alloyId4"
     });
-    $.__views.__alloyId4.add($.__views.__alloyId5);
+    $.__views.__alloyId3.add($.__views.__alloyId4);
     $.__views.storyTitle = Ti.UI.createLabel({
         color: "white",
         width: Ti.UI.SIZE,
@@ -39,7 +39,7 @@ function Controller() {
         },
         id: "storyTitle"
     });
-    $.__views.__alloyId5.add($.__views.storyTitle);
+    $.__views.__alloyId4.add($.__views.storyTitle);
     $.__views.subTitle = Ti.UI.createLabel({
         top: "10dp",
         color: "white",
@@ -53,7 +53,7 @@ function Controller() {
         },
         id: "subTitle"
     });
-    $.__views.__alloyId5.add($.__views.subTitle);
+    $.__views.__alloyId4.add($.__views.subTitle);
     $.__views.storyText = Ti.UI.createLabel({
         top: "10dp",
         color: "white",
@@ -67,7 +67,7 @@ function Controller() {
         },
         id: "storyText"
     });
-    $.__views.__alloyId5.add($.__views.storyText);
+    $.__views.__alloyId4.add($.__views.storyText);
     $.__views.storyAuthor = Ti.UI.createLabel({
         top: "10dp",
         color: "white",
@@ -81,14 +81,14 @@ function Controller() {
         },
         id: "storyAuthor"
     });
-    $.__views.__alloyId5.add($.__views.storyAuthor);
+    $.__views.__alloyId4.add($.__views.storyAuthor);
     $.__views.tagView = Ti.UI.createView({
         id: "tagView",
         layout: "horizontal"
     });
-    $.__views.__alloyId5.add($.__views.tagView);
+    $.__views.__alloyId4.add($.__views.tagView);
     $.__views.storyTab = Ti.UI.createTab({
-        window: $.__views.__alloyId4,
+        window: $.__views.__alloyId3,
         id: "storyTab",
         icon: "images/digitaltfortaltlogo.png",
         backgroundColor: "#8D8D8D",
@@ -96,7 +96,9 @@ function Controller() {
     });
     $.__views.storyView.addTab($.__views.storyTab);
     $.__views.twitterWin = Ti.UI.createWindow({
-        id: "twitterWin"
+        id: "twitterWin",
+        navBarHidden: "true",
+        exitOnClose: "true"
     });
     $.__views.twitterView = Ti.UI.createView({
         id: "twitterView"
