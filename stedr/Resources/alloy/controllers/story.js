@@ -30,7 +30,6 @@ function Controller() {
                     image: element.get("pictures")[0]
                 });
             });
-            Ti.API.info(Titanium.Platform.displayCaps.platformWidth);
             $.storyGrid.createGrid({
                 columns: 2,
                 space: 10,
@@ -44,8 +43,7 @@ function Controller() {
                 },
                 width: Titanium.Platform.displayCaps.platformWidth
             });
-            Ti.API.info("finish creating grid");
-            Ti.API.info($.story.getWidth() + " " + $.story.getHeight());
+            Ti.API.info("finish creating story grid");
         },
         error: function() {
             Ti.API.error("Could not load story");

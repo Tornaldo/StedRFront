@@ -1,5 +1,5 @@
 <Alloy>
-	<Window class="container" title="Pictures">
-		<Require type="widget" src="tiflexigrid" id="ig"/>
-	</Window>
+	<View class="container" title="Pictures">
+		<Require type="widget" src="tiflexigrid" id="instagramGrid"/>
+	</View>
 </Alloy>

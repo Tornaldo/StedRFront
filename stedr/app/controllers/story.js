@@ -39,7 +39,6 @@ storyCollection.fetch({
 				image : element.get('pictures')[0]
 			});
 		});
-		Ti.API.info(Titanium.Platform.displayCaps.platformWidth);
 		$.storyGrid.createGrid({
 			columns : 2, //NUMBER OF COLUMNS. DEFAULT IS 4.
 			space : 10, //SPACE BETWEEN EACH ELEMENT. DEFAULT IS 5.
@@ -53,8 +52,7 @@ storyCollection.fetch({
 			},
 			width : Titanium.Platform.displayCaps.platformWidth //OPTIONAL. SCREEN'S WIDTH TO ADJUST GRID.
 		});
-		Ti.API.info('finish creating grid');
-		Ti.API.info($.story.getWidth() +" "+ $.story.getHeight());
+		Ti.API.info('finish creating story grid');
 	},
 	error : function() {
 		Ti.API.error("Could not load story");
