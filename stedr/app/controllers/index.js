@@ -43,6 +43,7 @@ var mapview;
  * If Android, require the ti.map module, if not,
  * use the Titanium Map
  */
+
 if (Alloy.Globals.OS == "android") {
 	MapModule = require('ti.map');
 	mapview = MapModule.createView({

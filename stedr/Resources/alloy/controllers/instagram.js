@@ -2,28 +2,28 @@ function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "instagram";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
-    arguments[0] ? arguments[0]["$model"] : null;
+    var $model = arguments[0] ? arguments[0]["$model"] : null;
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.instagram = Ti.UI.createWindow({
+    $.__views.instagram = Ti.UI.createView({
         backgroundColor: "white",
         title: "Pictures",
         id: "instagram"
     });
     $.__views.instagram && $.addTopLevelView($.__views.instagram);
-    $.__views.ig = Alloy.createWidget("tiflexigrid", "widget", {
-        id: "ig",
+    $.__views.instagramGrid = Alloy.createWidget("tiflexigrid", "widget", {
+        id: "instagramGrid",
         __parentSymbol: $.__views.instagram
     });
-    $.__views.ig.setParent($.__views.instagram);
+    $.__views.instagramGrid.setParent($.__views.instagram);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var instagramItems = [];
     var instagramCollection = Alloy.Collections.instagram;
     instagramCollection.fetch({
         urlparams: {
-            tag: "nidarosdomen"
+            tag: $model.get("title")
         },
         success: function() {
             _.each(instagramCollection.models, function(element) {
@@ -33,7 +33,7 @@ function Controller() {
                 });
             });
             Ti.API.info(JSON.stringify(instagramCollection));
-            $.ig.createGrid({
+            $.instagramGrid.createGrid({
                 columns: 2,
                 space: 10,
                 data: instagramItems,
@@ -46,12 +46,13 @@ function Controller() {
                 },
                 width: Titanium.Platform.displayCaps.platformWidth
             });
+            Ti.API.info("finish creating instagram grid");
         },
         error: function() {
-            Ti.API.error("hmm - this is not good!");
+            Ti.API.error("Could not load instagram");
         }
     });
-    $.ig.on("click", function(e) {
+    $.instagramGrid.on("click", function(e) {
         Ti.API.info("Clicked: " + e.source.id);
         var instagramViewController = Alloy.createController("instagramView", {
             $model: instagramCollection.get(e.source.id)
@@ -60,7 +61,7 @@ function Controller() {
         instagramViewController.getView().open();
     });
     $.instagram.addEventListener("close", function() {
-        Ti.API.info("Destroying story: ");
+        Ti.API.info("Destroying story: " + $model.get("title"));
         $.destroy();
     });
     _.extend($, exports);

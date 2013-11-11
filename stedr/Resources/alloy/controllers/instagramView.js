@@ -6,54 +6,23 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.instagramView = Ti.UI.createWindow({
-        layout: "vertical",
-        exitOnClose: "false",
-        navBarHidden: "false",
+    $.__views.instagramView = Ti.UI.createView({
         id: "instagramView"
     });
     $.__views.instagramView && $.addTopLevelView($.__views.instagramView);
-    $.__views.__alloyId0 = Ti.UI.createScrollView({
-        layout: "vertical",
-        backgroundColor: "#40B0D2",
-        id: "__alloyId0"
+    $.__views.instagramPicture = Ti.UI.createImage({
+        id: "instagramPicture"
     });
-    $.__views.instagramView.add($.__views.__alloyId0);
-    $.__views.igView = Ti.UI.createView({
-        id: "igView"
-    });
-    $.__views.__alloyId0.add($.__views.igView);
+    $.__views.instagramView.add($.__views.instagramPicture);
     $.__views.userName = Ti.UI.createLabel({
         id: "userName"
     });
-    $.__views.__alloyId0.add($.__views.userName);
-    $.__views.url = Ti.UI.createLabel({
-        id: "url"
-    });
-    $.__views.__alloyId0.add($.__views.url);
-    $.__views.igv = Alloy.createWidget("tiflexigrid", "widget", {
-        id: "igv",
-        __parentSymbol: $.__views.instagramView
-    });
-    $.__views.igv.setParent($.__views.instagramView);
+    $.__views.instagramView.add($.__views.userName);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Ti.API.info("Hello");
-    Ti.API.info("Entering: ");
-    $.igv.createGrid({
-        columns: 1,
-        space: 10,
-        data: $model,
-        layout: "gallery",
-        params: {
-            padding: 5,
-            showTitle: true,
-            backgroundColor: "#FFFFFF",
-            gridColor: "#40B0D2"
-        },
-        width: Titanium.Platform.DisplayCaps.platformWidth
-    });
-    $.igView.addEventListener("close", function() {
+    $.userName.setText($model.get("fullName"));
+    $.url.setText($model.get("url"));
+    $.instagramView.addEventListener("close", function() {
         Ti.API.info("Destroying: ");
         $.destroy();
     });
