@@ -10,7 +10,7 @@
 					<Label id="subTitle"></Label>
 					<Label id="storyText"></Label>
 					<Label id="storyAuthor"></Label>
-					<View id="tagView" layout="horizontal"></View>
+					<View id="tagView" layout="vertical"></View>
 				</ScrollView>
 			</Window>
 		</Tab>

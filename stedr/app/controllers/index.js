@@ -86,7 +86,7 @@ mapview.addEventListener('click', function(evt) {
 });
 
 $.mapSearchButton.addEventListener('return', function(evt) {
-	Ti.API.info('CLICK');
+	hideKeyboard();
 	var searchText;
 	if(Alloy.Globals.OS == "iphone"){
 		searchText = $.mapSearchButton.getValue();

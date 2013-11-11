@@ -77,7 +77,7 @@ function Controller() {
         }
     });
     $.mapSearchButton.addEventListener("return", function() {
-        Ti.API.info("CLICK");
+        hideKeyboard();
         var searchText;
         searchText = "iphone" == Alloy.Globals.OS ? $.mapSearchButton.getValue() : $.searchField.getValue();
         Ti.API.info("PHONE");
