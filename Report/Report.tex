@@ -647,10 +647,10 @@ To manage this we set up meetings for the group. Once a week, we arranged a cust
 \subsection{Customer meeting}
 We held weekly meetings with the customer. The meeting day and time was scheduled on a weekly basis, and more or less bound to Tuesdays or Wednesdays. The goal with these meetings was to establish a common understanding on how the system should be, and find the right requirements to agree upon. To make sure we are in an understanding with the customer, we take notes and create minutes from the meeting. This is in turn sent back to the customer, who either approves them or brings back feedback on what was misunderstood for the next weeks meeting. If anything happened to be misunderstood, this will be detected and changed within a week, preventing major workloads on the wrong premise. In addition to the minutes, we used action points, which are activities the customer wants us to look into or complete before the next meeting. This could be creating time estimates of user tests, architecture overviews, UI suggestions and more.
 
-\subsection{Advisor meeting}
+\subsection{Advisor project meeting}
 Once a week, we met with the advisor to discuss how the project was coming along. If the team faced any problems with the project or the team which we could not manage solving by ourselves, this was the place to get assistance. This could be anything from lack of required knowledge to personal conflicts within the team. The meetings were also held to give the advisor an overview of our situation. Weekly status reports and timesheets were given to help the advisor keeping an overview of the progress of the project.
 
-\subsection{Group meeting}
+\subsection{Internal group meeting}
 At least once a week, we held group meetings. The goal with these meetings was to help synchronizing the group, updating all the members on what was done and what was to be done, raise important questions about further progress, or simply having a place to raise questions or concerns that does not fit other places. Although we simultaneously used a shared document where the team members wrote their progress and intended actions, the meetings ensured everyone was being a part of the update. Important decisions also benefited from having all team members come together on a solution, so no one feels left out of the process as well as smart solutions that otherwise might be overlooked is included.  In that regard, group meetings were held when as many as possible could attend.
 
 \section{Templates and procedures}
@@ -686,15 +686,15 @@ The most famous organization working with cultural heritage is UNESCO \cite{UNES
 
 There are seven listings in Norway that the UNESCO World Heritage Committee consider having outstanding universal value, that is;
 
-\begin{itemize}
-  \item Bryggen, Bergen
-  \item Urnes Stave Church, Luster in Sogn and Fjordane
-  \item Røros Mining Town and the Circumference, Røros in Sør-Trøndelag
-  \item Rock Art of Alta, Alta in Finnmark
-  \item Vegaøyan -- The Vega Archipelago, Vega in Helgeland
+\begin{enumerate}
+  \item Bryggen, Bergen, Hordaland
+  \item Urnes Stave Church, Luster, Sogn and Fjordane
+  \item Røros Mining Town and the Circumference, Røros, Sør-Trøndelag
+  \item Rock Art of Alta, Alta, Finnmark
+  \item Vegaøyan -- The Vega Archipelago, Vega, Helgeland
   \item Struve Geodetic Arc, multiple measuring points in several countries
-  \item West Norwegian Fjords - Geiranger and Nærøyfjord
-\end{itemize}
+  \item West Norwegian Fjords - Geiranger and Nærøyfjord, Møre and Romsdal, and Sogn and Fjordane
+\end{enumerate}
 
 These are really marvelous pieces of cultural heritage, but is that it? Does Norway have only seven sights that are considered as cultural heritage and worth a visit? Of course not, our scope is much broader than that. It is up to the users to decide what cultural heritage is.
 
@@ -862,7 +862,7 @@ All the applications we have looked at are great pieces of technology. It educat
 We see that every applications has their own advantages, and we hope that we can purify some of these and perhaps even come up with some new revolutionary features.
 
 
-\section{Work methodology}
+\section{Life cycle model}
 There are different ways of approaching a project. Two of the more commonly used methods are Waterfall and SCRUM.
 
 \subsection{Waterfall}
@@ -1276,7 +1276,7 @@ The retriever for places from Flickr has some additional functionality in order 
 \subsubsection{Development view}
 This view follows the description in section ~\ref{subsec:developmentViewDescription}
 
-DATABASE represents all the data. In this layer the work of structuring the data and figuring out the database design is also included.
+DATA STRUCTURE indicates where and in which format the data is to be stored.
 
 MODELS represents the classes that will be used to work with the database from the rest of the backend code. The models will abstract away the database, so that it can be changed in its entirety if needed without changing any other code.
 
@@ -1377,7 +1377,7 @@ The clients only communicate with the broker and Twitter.
 \end{figure}
 
 \section{Communication interfaces}\label{sec:arch_communicationinterfaces}
-Getting data from the server and by that, the services it consumes, is done by accessing given \glspl{url} and recieving \gls{json} as a return value.
+Getting data from the server and by that, the services it consumes, is done by accessing a given \glspl{url} and recieving \gls{json} as a return value.
 
 \subsection{Places}\label{placesjson}
 To access the places in the system, two options are availiable.
@@ -1540,7 +1540,15 @@ Returns a collection of stories like this:
 \end{lstlisting}
 
 \section{Architectural rationale}
+Use of the Client-Server pattern ensures clean separation between the display unit and the content provider, and also helps modifiability and speed of development by providing an uniform \gls{api}.
 
+By keeping coupeling to a minimum, the system becomes more testable and modifiable. This will help satisfy both the functional and non-functional requirements.
+
+The Broker pattern on the server increases modifiability even though it introduces a single point of failure, but that can be mitigated by running a replica server in production.
+
+Using the \gls{mvc} pasttern on the client provides a clean separation between logic and presentation which gives better structure to the code, increases modifiability and makes managing the code easier.
+
+Titanium Alloy functions as a adapter between the client application and the targeted devices, and helps portability by abstracting away platform specific code where needed.
 
 \chapter{Testing}
 
