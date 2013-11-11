@@ -26,6 +26,7 @@
  */
 
 if (Alloy.Globals.OS == "iphone") {
+	Alloy.Globals.Nav = $.nav;
 	$.nav.open();
 } else {
 	Ti.API.info('starter ikke iphone');
@@ -84,8 +85,14 @@ mapview.addEventListener('click', function(evt) {
 	}
 });
 
-$.mapSearchButton.addEventListener('click', function(evt) {
-	var searchText = $.searchField.getValue();
+$.mapSearchButton.addEventListener('return', function(evt) {
+	Ti.API.info('CLICK');
+	var searchText;
+	if(Alloy.Globals.OS == "iphone"){
+		searchText = $.mapSearchButton.getValue();
+	} else {
+		searchText = $.searchField.getValue();
+	}
 	if (OS_MOBILEWEB) {
 		var geocoder = new google.maps.Geocoder();
 		if (geocoder) {

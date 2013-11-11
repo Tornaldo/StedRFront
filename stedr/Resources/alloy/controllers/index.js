@@ -11,32 +11,30 @@ function Controller() {
         id: "mapWin",
         layout: "vertical"
     });
-    $.__views.mapWin && $.addTopLevelView($.__views.mapWin);
-    $.__views.__alloyId0 = Ti.UI.createView({
-        height: "10%",
-        layout: "horizontal",
-        id: "__alloyId0"
-    });
-    $.__views.mapWin.add($.__views.__alloyId0);
-    $.__views.searchField = Ti.UI.createTextField({
-        id: "searchField",
-        width: "80%",
-        hintText: "Search location"
-    });
-    $.__views.__alloyId0.add($.__views.searchField);
-    $.__views.mapSearchButton = Ti.UI.createButton({
+    $.__views.mapSearchButton = Ti.UI.createSearchBar({
         id: "mapSearchButton",
-        title: "Search"
+        showCancel: "true",
+        height: "10%",
+        top: "0",
+        zIndex: "9999"
     });
-    $.__views.__alloyId0.add($.__views.mapSearchButton);
+    $.__views.mapWin.add($.__views.mapSearchButton);
     $.__views.mapView = Ti.UI.createView({
         id: "mapView",
         height: "90%"
     });
     $.__views.mapWin.add($.__views.mapView);
+    $.__views.nav = Ti.UI.iOS.createNavigationWindow({
+        window: $.__views.mapWin,
+        id: "nav"
+    });
+    $.__views.nav && $.addTopLevelView($.__views.nav);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    if ("iphone" == Alloy.Globals.OS) $.nav.open(); else {
+    if ("iphone" == Alloy.Globals.OS) {
+        Alloy.Globals.Nav = $.nav;
+        $.nav.open();
+    } else {
         Ti.API.info("starter ikke iphone");
         $.mapWin.open();
     }
@@ -75,22 +73,52 @@ function Controller() {
             "iphone" == Alloy.Globals.OS ? $.nav.openWindow(win) : win.open();
         }
     });
-    $.mapSearchButton.addEventListener("click", function() {
-        var searchText = $.searchField.getValue();
-        var geocoder = new google.maps.Geocoder();
-        geocoder ? geocoder.geocode({
-            address: searchText
-        }, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) mapview.setLocation({
-                latitude: results[0].geometry.location.lat(),
-                longitude: results[0].geometry.location.lng(),
-                latitudeDelta: .1,
-                longitudeDelta: .1
-            }); else {
-                Ti.API.error(status);
-                Ti.API.info(JSON.stringify(results));
+    $.mapSearchButton.addEventListener("return", function() {
+        Ti.API.info("CLICK");
+        var searchText;
+        searchText = "iphone" == Alloy.Globals.OS ? $.mapSearchButton.getValue() : $.searchField.getValue();
+        Ti.API.info("PHONE");
+        var xhr = Titanium.Network.createHTTPClient();
+        var url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + searchText + "&sensor=true&key=AIzaSyD7QIWz-xIs3WTWYR_0eaH_whi56NNE1sE";
+        xhr.open("GET", url);
+        xhr.onload = function() {
+            var json = JSON.parse(this.responseText);
+            switch (json.status) {
+              case "OK":
+                Ti.API.info(JSON.stringify(json));
+                mapview.setLocation({
+                    latitude: json.results[0].geometry.location.lat,
+                    longitude: json.results[0].geometry.location.lng,
+                    latitudeDelta: .1,
+                    longitudeDelta: .1
+                });
+                break;
+
+              case "ZERO_RESULTS":
+                alert("No result for your search");
+                break;
+
+              case "OVER_QUERY_LIMIT":
+                alert("Sorry, the query limit is exceeded");
+                break;
+
+              case "REQUEST_DENIED":
+                alert("Sorry, your request was denied");
+                break;
+
+              case "INVALID_REQUEST":
+                alert("Sorry, your request is invalid");
+                break;
+
+              default:
+                alert("This is very strange! Do you have internet connection?");
             }
-        }) : alert("Google Maps Geocoder not supported");
+        };
+        xhr.onerror = function(e) {
+            alert("This is very strange! Do you have internet connection?");
+            Ti.API.error(e.error);
+        };
+        xhr.send();
     });
     var wallCollection = Alloy.Collections.wall;
     wallCollection.fetch({

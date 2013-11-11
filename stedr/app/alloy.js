@@ -42,6 +42,8 @@ Alloy.Globals.OS = Ti.Platform.osname;
 
 if(Alloy.Globals.OS == "android"){
 	Alloy.Globals.Map = require('ti.map');
+} else {
+	Alloy.Globals.Nav;
 }
 
 Alloy.Collections.wall = Alloy.createCollection('wall');

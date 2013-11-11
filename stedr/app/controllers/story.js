@@ -66,7 +66,12 @@ $.storyGrid.on('click', function(e) {
 	var storyViewController = Alloy.createController('storyView', {
 		"$model" : storyCollection.get(e.source.id)
 	});
-	storyViewController.getView().open();
+	var win = storyViewController.getView();
+		if (Alloy.Globals.OS == "iphone") {
+			Alloy.Globals.Nav.openWindow(win);
+		} else {
+			win.open();
+		}
 });
 
 $.story.addEventListener('close', function() {
