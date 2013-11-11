@@ -737,7 +737,7 @@ As you can see in Figure~\ref{fig:pre_kulturoversikt}, sights from all over Norw
       \label{fig:pre_kulturMoreInfo}
 \end{figure}
 
-Kulturminnesøk can be considered a partly edge dominant system\footnote{the term "edge dominant system" is explained in section~\ref{subsec:edge}}, since everyone can register and add their own cultural heritage sight. There is about 1500 sights that users have added. Users have added everything from swimming halls to archaeological memories. We call it just partly edge dominant, since only 1\% of the content is added by the public.
+Kulturminnesøk can be considered a partly edge dominant system\footnote{the term edge dominant system is explained in section~\ref{subsec:edge}}, since everyone can register and add their own cultural heritage sight. There is about 1500 sights that users have added. Users have added everything from swimming halls to archaeological memories. We call it just partly edge dominant, since only 1\% of the content is added by the public.
 
 \begin{figure}[H]
       \centering
@@ -746,7 +746,7 @@ Kulturminnesøk can be considered a partly edge dominant system\footnote{the ter
       \label{fig:pre_fortaltFrontPage}
 \end{figure}
 
-Another edge dominant cultural heritage system is "Digitalt fortalt", or "digitally told". Digitalt Fortalt is a website where users, cultural institutions or private persons can register and add stories related to cultural heritage. Users have added stories about everything from clothespins to protected buildings, and today there are over 3000 stories. 
+Another edge dominant cultural heritage system is ``Digitalt fortalt'' (norwegian for ``digitally told''). Digitalt Fortalt is a website where users, cultural institutions or private persons can register and add stories related to cultural heritage. Users have added stories about everything from clothespins to protected buildings, and today there are over 3000 stories. 
 
 To read a story you can either search, by pressing one of the popular tags or simply search from the search field, or browse on the front page, in last told stories, popular stories, last commented stories or among the most  read stories. If we search on ``Trondheim'' in the search field, we get 135 hits. The stories are placed in a grid system, and every story is represented in a little box, with a title, a picture (a play-sign if a sound is attached to the story), author and location. Some stories are also linked to a date or a period. The search result is shown in Figure~\ref{fig:pre_fortaltTrondheim}.
 
@@ -2267,7 +2267,7 @@ To arrive at this proof of concept, some technological decisions had to be made.
 \textbf{\gls{rest} vs \gls{soap}}\\
 \gls{rest} \cite{rest} is an architectural style that is stateless at its heart, which leads to better visibility, reliability, and scalability. \gls{rest} was developed in parallel with HTTP/1.1 and the largest system following this architectural style is the Internet (according to \cite{wikipedia:rest}). \gls{rest} is also a good match for data driven applications as the way you handle a \gls{rest} services is by utilizing the verbs GET, POST, DELETE, PUT, PATCH.
 
-\gls{soap} is much more flexible than \gls{rest}, but also much more complex. While \gls{rest} is primarily data driven through resources, \gls{soap} is logic oriented through operations. \gls{soap} is also a better choice for making stateful web services. All communication with a \gls{soap} service happens through \gls{xmlLabel}.
+\gls{soap} is more flexible than \gls{rest}, but also much more complex. While \gls{rest} is primarily data driven through resources, \gls{soap} is logic oriented through operations. \gls{soap} is also a better choice for making stateful web services. All communication with a \gls{soap} service happens through \gls{xmlLabel}.
 
 The simplicity of the \gls{rest} architectural style, and the fact that it allows the developer to choose the format of exchange makes this our preferred way to go.
 
@@ -2484,7 +2484,7 @@ The API has the following methods:
     \label{tab:phase_sprint2_model}
 \end{table}
 
-As the application makes use of \gls{rest} server, a backend supporting \gls{rest} was needed. Although a custom backend could have been created, it made more sense to reuse the implementation of others. The napp.alloy.adapter.restapi\footnote{https://github.com/viezel/napp.alloy.adapter.restapi} by Mads Møller was chosen due to its feature completeness and active development.
+As the application makes use of \gls{rest} server, a backend supporting \gls{rest} was needed. Although a custom backend could have been created, it made more sense to reuse the implementation of others. The \texttt{napp.alloy.adapter.restapi}\footnote{https://github.com/viezel/napp.alloy.adapter.restapi} by Mads Møller was chosen due to its feature completeness and active development.
 
 \textbf{Models}\\
 Models in Titanium Alloy build upon Backbone.js\footnote{http://backbonejs.org/} \cite{titaniumAlloyModel}. Therefor the documentation for Backbone.js is relevant in addition to the documentation from Titanium.
