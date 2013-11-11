@@ -1,6 +1,6 @@
 <Alloy>
-	<!-- <NavigationWindow id="nav" platform="ios"> -->
-		<Window title="Map" id="mapWin" layout="vertical">
+	<NavigationWindow id="nav" platform="ios">
+		<Window title="Map" id="mapWin" layout="vertical" onOpen="addMap">
 			<!-- On Android there are several issues with the current implementation of the searchbar; using textfield -->
 			<!-- <SearchBar id="geoSearch" showCancel="true" height="10%" top="0" zIndex="9999"></SearchBar> -->
 			<View height="10%" layout="horizontal">
@@ -9,5 +9,5 @@
 			</View>
 			<View id="mapView" height="90%"></View>
 		</Window>
-	<!-- </NavigationWindow> -->
+	</NavigationWindow>
 </Alloy>

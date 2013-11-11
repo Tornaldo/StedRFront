@@ -28,6 +28,7 @@
 if (Alloy.Globals.OS == "iphone") {
 	$.nav.open();
 } else {
+	Ti.API.info('starter ikke iphone');
 	$.mapWin.open();
 }
 
@@ -62,8 +63,9 @@ if (Alloy.Globals.OS == "android") {
 	});
 }
 
+Ti.API.info('START MAP');
 $.mapView.add(mapview);
-
+Ti.API.info('Add eventlisteners');
 mapview.addEventListener('click', function(evt) {
 	Ti.API.info(evt.type);
 	Ti.API.info(evt.clicksource);
