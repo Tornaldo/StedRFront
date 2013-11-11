@@ -110,7 +110,6 @@
         }
 }
 \end{tabular}
-\label{tab:partners_customer_jacqueline}
 \end{table}
         
 
@@ -913,12 +912,12 @@ The customer has experience with SCRUM and suggested the methodology to be used.
 
 \chapter{Requirements} \label{chap:req}
 
-This chapter is a System Requirements Specification document in the terms of practice recommended by IEEE 830 \cite{ieee830}, developed by the group based upon the customers requests.
+This chapter is a System Requirements Specification document, in the terms of practice recommended by IEEE 830 \cite{ieee830}, developed by the group based upon the customers requests.
 
 \section{Introduction}
 
 \subsection{Purpose}
-The purpose of this \gls{srs} document is to provide documentation of requirements for the VirtualWall software system. It is therefore trying to collect and analyze the requirements. The requirements formalization as presented is a result of a joint effort of the customer and the development team. It serves as a description of what customer is expecting the system to be like, it presents the systems features and functionalities.
+The purpose of this \gls{srs} document is to provide documentation of requirements for the VirtualWall software system. It is therefore trying to collect and analyze the requirements. It serves as a description of what the customer is expecting the system to be like, it presents the system's features and functionalities.
 
 The intended audience of this document shall be:
 
@@ -931,23 +930,20 @@ The intended audience of this document shall be:
 Each part of the audience holds different stakes in the project, but all are interested in information contained within the \gls{srs}.
 
 \subsection{Scope}
-This secton declares the scope of this requirements document and the desired output of the project. It shall state what parts of the system shall be analyzed, designed and implemented and to what extent.
+This secton declares the scope of this requirements document and the desired output of the project. It shall state which parts of the system shall be analyzed, designed and implemented and to what extent.
 
 This \gls{srs} document deals with the project Virtual walls - walls that tell us stories. This project shall result in developing a tool for working with so called virtual walls, creating and sharing stories on them.
 
-As presented by customer, the VirtualWall software system is going to be a complex system consisting of a number of subsystems including several content databases, a server backend and mobile application frontend.
+As presented by the customer, the VirtualWall software system is going to be a complex system consisting of a number of subsystems including several content databases, a server backend and mobile application frontend.
 
 In the scope of this year's run of Customer Driven Project course, a prototype of a mobile application frontend and a basic server backend shall be developed.
-
-\subsection{Definitions, acronyms and abbreviations}
-All definitions, acronyms and abbreviations are listed in the glossary instead.
 
 \subsection{Overview}
 The rest of this \gls{srs} document describes the proposed product by means of its desired functionality, characteristics, constraints and perspectives. This general description can be found in section~\ref{sec:req_overall_description}. A description of the actual requirements is to be found in section~\ref{sec:req_specific_requirements}.
 
 \section{Overall description}\label{sec:req_overall_description}
 \subsection{Product perspective}
-As stated above, the whole system will consist of several subsystems such as the frontend, server backend, own database and external content databases. This implies the use of client-server model.
+As stated above, the whole system will consist of several subsystems such as the frontend, server backend and external content databases. This implies the use of client-server model.
 
 The components developed in this phase of the project are:
 
@@ -967,21 +963,19 @@ The following diagram shows the whole system and how the separate parts work tog
       \label{fig:req_overview}
 \end{figure}
 
-In the initial phase, the server will not be directly connected to any external content databases machine, the content from them would be presented as simple hyperlinks leading to the third party website (such as kulturminnesok.no, digitaltfortalt.no).
-
 \subsection{User Interfaces}
 Since the frontend of the whole system shall be developed in this project, the description of user interface shall be considerably stressed.
 
 We can characterize the nature of the system as crowdsourced (or edge-dominant, in general), as the content shall be generated and modified by users to some extent. Due to this, there is not going to be any backend for data entry, the only point where the system is exposed to human beings is the mobile application frontend.
 
-Our key quality attribute, usability, relates tightly to user interfaces. For this reason, all usability-related requirements on user interface are listed in section \ref{sec:req_software_system_attributes} as quality attribute requirements.
+The key quality attribute, usability, relates tightly to user interfaces. For this reason, all usability-related requirements on user interface are listed in section \ref{sec:req_software_system_attributes} as quality attribute requirements.
 
 \subsubsection{Mobile application (frontend)}\label{sec:req_webapplication_frontend}
-As user requests that the initial prototype application shall be developed for use on tablets. Typical usage of the system suggests that it will be used in field, which implies using the application on smartphones and tablets.
+As the customer requests that the initial prototype application shall be developed for use on smartphones, typical usage of the system suggests that it will be used in field, which implies using the application on smartphones and tablets.
 
-Both smartphones and tablet have some inherent characteristics that have to be respected when designing the user interface and the means of interacting with it.
+Both smartphones and tablets have some inherent characteristics that have to be respected when designing the user interface and the means of interacting with it.
 
-The screen sizes of current smartphones vary a lot, with the most phones with screen size from 3.5 inches (9 cm) up to 5.5 inches (14 cm). Screen sizes of tablets vary between values from 9 inches (22 cm) to 11.5 inches (29 cm). In addition, these devices can be used in either landscape or portrait mode.
+The screen sizes of current smartphones vary a lot, most phones have screen size from 3.5 inches (9 cm) up to 5.5 inches (14 cm). Screen sizes of tablets vary between values from 9 inches (22 cm) to 11.5 inches (29 cm). In addition, these devices can be used in either landscape or portrait mode.
 
 Such a diversity in screen sizes makes designing the user interface very challenging. On one hand, we want to maximize the screen usage even on large-screen devices, on the other hand, we must make the application usable even on devices with screen area up to 9 times smaller.
 
@@ -993,21 +987,21 @@ Another characteristic property of those devices is that their interaction mecha
 \end{enumerate}
 
 \subsection{Software interfaces}
-We imply that the server and the client interoperate and are developed to work with one another. The required interfaces and communication schema is to be determined later on in section \ref{sec:arch_communicationinterfaces}.
+We imply that the server and the client interoperate and are developed to work with one another. The required interfaces and communication schemas is to be determined later on in section \ref{sec:arch_communicationinterfaces}.
 
 \subsection{Communication interfaces}
 This section describes what we shall take into account when designing interfaces for communication between subsystems of our system. If there are any special characteristics of the environment that affect those interfaces, they should be stated here.
 
 Another inherent characteristic of mobile devices (smartphones, tablets, etc.) is the unreliability and speed of network connection. Since this application is a part of a client-server system, the communication link between those is critical.
 
-The main issues with mobile data networks are frequent interruption, big latency and small bitrate. Sometimes the connection can as well be unavailable at all. This results in the data connection being slow and unreliable which has a great significance on the performance of the application and its usability. As developers of the mobile application, we need to take this into consideration.
+The main issues with mobile data networks are frequent interruption, big latency and small bitrate. Sometimes the connection is not available at all. This results in the data connection being slow and unreliable which has a great significance on the performance of the application and its usability. As developers of the mobile application, we need to take this into consideration.
 
 There are several techniques how to deal with mentioned issues or at least mitigate their impact.
 
 \subsubsection{Unavailability of connection}\label{sec:req_unavailability_of_connection}
 To deal with frequent interruption and unavailability of connection, an off-line mode of the application could be implemented in the future, which would enable the user to work without a network connection (in a limited way).
 
-This was described by the customer as to be a low priority requirement, not to be implemented in this phase.
+This was described by the customer to have a low priority requirement, not to be implemented in this phase.
 
 \subsubsection{Small throughput}
 To deal with small throughput of the network, the updates of the content in the client application could be implemented using delta updating. This would mean only new and changed data are sent from the server, data that did not change are used from the local storage.
@@ -1023,7 +1017,7 @@ The key functionality expected in the frontend is management of virtual walls (c
 The key functionality of the server is to support the features of the client by storing the data in the database and retrieving it back. As said above, the content is stored in the system database. The server shall expose an API for accessing the items from database (walls, stories) for access from the frontend.
 
 \subsection{User characteristics} \label{sec:req_user_characteristics}
-As this app shall be accessible to open public, we can neither anticipate users' educational level, nor experience, nor technical expertise. We can however assume basic computer literacy.
+As this app shall be accessible to the public, we can neither anticipate users' educational level, nor experience, nor technical expertise. We can however assume basic computer literacy.
 
 Documentation from customer features a scenario how this application would be used in class in elementary school. We may anticipate that some of the users can be as young as 10 years for example.
 
@@ -1116,7 +1110,9 @@ As customer requested, the front end application shall be developed in order to 
 Quality attribute scenario to evaluate the system shall be determined in section \ref{sec:qatestscenarios}.
 
 \subsubsection{Usability}\label{sec:req_usability}
-From the description of typical usage (mentioned in \ref{sec:req_user_characteristics}) and characteristic problems listed in \ref{sec:req_webapplication_frontend}, we came up with several usability scenarios that shall evaluate the usability quality of the software system. As usability is a big concern in this project, usability scenarios and tests shall be included in the report under Test Procedures Specification.  % FIXME SIMON: once usability tests are prepared, put refs to them (link to Test Procedures Specification)
+From the description of typical usage (mentioned in \ref{sec:req_user_characteristics}) and characteristic problems listed in \ref{sec:req_webapplication_frontend}, we came up with several usability scenarios that shall evaluate the usability quality of the software system. As usability is a big concern in this project, usability scenarios and tests shall be included in the report under Test Procedures Specification. 
+
+% FIXME SIMON: once usability tests are prepared, put refs to them (link to Test Procedures Specification)
 
 These scenarios shall evaluate, whether the application suits the needs of the audience in the means of usability. These shall be derived from use cases and requirements.
 
@@ -1390,12 +1386,9 @@ Getting data from the server and by that, the services it consumes, is done by a
 
 \subsection{Places}\label{placesjson}
 To access the places in the system, two options are availiable.
-If the objective is to get a hold of all places in the system, use the following address:
-\begin{lstlisting}[frame=single]
-/places.json
-\end{lstlisting}
+If the objective is to get a hold of all places in the system, use the \texttt{/places.json} method, which returns a collection of all the places.
 
-The places are returned as a \gls{json} document, as shown bellow.
+The structure of the collection can be seen in the example below.
 
 \begin{lstlisting}[frame=single]
 [
@@ -1429,11 +1422,10 @@ The places are returned as a \gls{json} document, as shown bellow.
 \end{lstlisting}
 
 \subsection{Places in area}
-If the objective is to get only the places in a given area on the map, use the following address: 
-\begin{lstlisting}[frame=single]
-/places_in_area.json?startLatitude=63.397&startLongitude=10.305
-&stopLatitude=63.454&stopLongitude=10.492
-\end{lstlisting}
+If the objective is to get only the places in a given area on the map, use the method with latitude and lingitude boundaries: \texttt{/places\_in\_area.json} with 4 parameters defining the bounding box as shown in figure~\ref{fig:arch_interface_map}: \texttt{startLatitude}, \texttt{startLongitude}, \texttt{stopLatitude} and \texttt{stopLongitude}.
+
+
+
 When used, the query arguments should be fitted for the use case. The API assumes a Mercator-projection map like the one Google Maps are using.
 
 Where startLongitude is the the latitude of the west (i.e. left) border of the bounding box, stopLongitude is the east (i.e. right) border, startLatitude is the south (i.e. bottom) border and stopLatitude is the north (i.e. top) border of the bounding box.
@@ -1454,13 +1446,7 @@ Decimal degrees (DD) express latitude and longitude geographic coordinates as de
 This means New York City has a positive latitude and negative longitude, while Rio de Janeiro has both values negative and Tokyo (or most of the Europe) both values positive.
 
 \subsection{Stories}\label{storiesjson}
-For getting stories in radius of 50 meters from the Place identified by the passed \textit{placeId}, invoke this \gls{url}:
-
-\begin{lstlisting}[frame=single]
-http://stedr.herokuapp.com/stories.json?placeId=10357336336
-\end{lstlisting}
-
-This will return a collection of stories that match the provided place id.
+Method \texttt{http://stedr.herokuapp.com/stories.json?placeId=10357336336} returns a collection of stories in radius of 50 meters from the Place identified by the passed \textit{placeId} (which is \emph{10357336336} in this case. The structure of the collection can be seen in the example below.
 
 \begin{lstlisting}[frame=single]
 [
@@ -1526,11 +1512,7 @@ This will return a collection of stories that match the provided place id.
 \end{lstlisting}
 
 \subsection{Images}\label{imagesjson}
-For getting images for a specified tag:
-\begin{lstlisting}[frame=single]
-/images.json?tag=nidaros
-\end{lstlisting}
-Returns a collection of stories like this:
+Method \texttt{/images.json?tag=nidaros} returns a collection of images for the specified tag (\emph{nidaros} in this case). The structure of the collection can be seen in the example below.
 \begin{lstlisting}[frame=single]
 [
     {
@@ -2879,8 +2861,20 @@ Additional notes: All documentation (report and code comments) should be written
 
 \chapter{Documentation}\label{chap:documentation}
 \section{Introduction}
+This appendix presentes some documentation for a developer to get started with Stedr. For a more through documentation, the reader is adviced to visit the documentation websites of the frameworks used, Titanium Alloy (http://docs.appcelerator.com/titanium/3.0/) and Play! Framework (http://www.playframework.com/documentation/2.2.x/Home).
 
-\section{Code standards for server}\label{sec:codeStandard}
+\section{Server - Installation}
+Deploying the server can be done in multiple different ways.
+
+\subsection{Deploy on Heroku}
+Follow the instructions given at the following link:\\
+http://www.playframework.com/documentation/2.2.x/ProductionHeroku
+
+\subsection{Deploy on own server}
+Follow the instructions given at the following linke:\\
+http://www.playframework.com/documentation/2.2.x/Production
+
+\section{Coding standards for server}\label{sec:codeStandard}
 The project follows the coding guidelines of Play! Framework\cite{playCodingStandard}, which in turn relies heavily on Java Code Conventions\footnote{http://www.oracle.com/technetwork/java/codeconventions-150003.pdf}. The Play! Framework coding standard is included underneath.
 
 \begin{quotation}\noindent
@@ -3202,32 +3196,6 @@ var SomeUIClass = function() {
 };
 \end{lstlisting}
 \end{quotation}
-
-\section{Server - Installation}
-Deploying the server can be done in multiple different ways. Here two will be presented.
-
-\subsection{Deploy on Heroku}
-Follow the instructions given at the following link:\\
-http://www.playframework.com/documentation/2.2.x/ProductionHeroku
-
-\subsection{Deploy on own server}
-Follow the instructions given at the following linke:\\
-http://www.playframework.com/documentation/2.2.x/Production
-
-\section{Client}
-Some short guides for compiling and installing the client.
-
-\subsection{Installation}
-WRITE ABOUT INSTALLATION
-
-\subsection{Compile for Android}
-TODO
-
-\subsection{Compile for iOS}
-TODO
-
-\subsection{Compile for normal browsers}
-TODO
 
 \chapter{Current Backlog}
 \begin{center}
