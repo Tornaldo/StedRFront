@@ -34,9 +34,9 @@ function Controller() {
         layout: "vertical"
     });
     $.__views.stedrWall.add($.__views.wallPictureView);
-    var __alloyId2 = [];
+    var __alloyId3 = [];
     $.__views.mediaScrollerMainImage = Ti.UI.createScrollableView({
-        views: __alloyId2,
+        views: __alloyId3,
         id: "mediaScrollerMainImage",
         showPagingControl: "true",
         height: "95%"
