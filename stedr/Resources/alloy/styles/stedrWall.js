@@ -1,13 +1,13 @@
 module.exports = [ {
     isClass: true,
-    priority: 10000.0019,
+    priority: 10000.0024,
     key: "container",
     style: {
         backgroundColor: "white"
     }
 }, {
     isId: true,
-    priority: 100000.002,
+    priority: 100000.0025,
     key: "pictureTab",
     style: {
         backgroundColor: "#8D8D8D",
@@ -25,7 +25,7 @@ module.exports = [ {
     }
 }, {
     isId: true,
-    priority: 100000.0021,
+    priority: 100000.0026,
     key: "storyTab",
     style: {
         left: "10%",
@@ -43,22 +43,22 @@ module.exports = [ {
     }
 }, {
     isId: true,
-    priority: 100000.0022,
+    priority: 100000.0027,
     key: "pictureGallery",
     style: {}
 }, {
     isId: true,
-    priority: 100000.0023,
+    priority: 100000.0028,
     key: "tabView",
     style: {}
 }, {
     isId: true,
-    priority: 100000.0024,
+    priority: 100000.0029,
     key: "storyAndPictureView",
     style: {}
 }, {
     isId: true,
-    priority: 100000.0025,
+    priority: 100000.003,
     key: "creditLabel",
     style: {
         color: "black",
@@ -71,7 +71,7 @@ module.exports = [ {
     }
 }, {
     isId: true,
-    priority: 100000.0026,
+    priority: 100000.0031,
     key: "storyOrPictureView",
     style: {}
 } ];
