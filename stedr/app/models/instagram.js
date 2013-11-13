@@ -28,14 +28,14 @@
 exports.definition = {
 	config : {
 		"columns" : {
-			"username" : "string",
-			"imageurl" : "string",
+			"fullName" : "string",
+			"url" : "string",
 		},
 		"URL" : "http://stedr.herokuapp.com/images.json",
 		"adapter" : {
 			"type" : "restapi",
 			"collection_name" : "instagram",
-			"idAttribute" : "title"
+			"idAttribute" : "url"
 		}
 	},
 	

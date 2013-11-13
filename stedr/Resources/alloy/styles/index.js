@@ -35,7 +35,7 @@ module.exports = [ {
 }, {
     isId: true,
     priority: 100000.0013,
-    key: "mapSearchButton",
+    key: "mapSearchBar",
     style: {
         backgroundColor: "#40B0D2"
     }

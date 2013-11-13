@@ -25,8 +25,12 @@
  *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-$.userName.setText($model.get('fullName'));
-$.url.setText($model.get('url'));
+Ti.API.info("Model: " +JSON.stringify($model.get('fullName')));
+$.pictureView.setWidth(Titanium.Platform.displayCaps.platformWidth);
+$.pictureView.setHeight(Titanium.Platform.displayCaps.platformWidth);
+$.instagramPicture.setImage($model.get('url'));
+$.userName.setText("@"+ $model.get('fullName'));
+
 
 $.instagramView.addEventListener('close', function() {
 	Ti.API.info("Destroying: "/* + $model.get('username')*/);

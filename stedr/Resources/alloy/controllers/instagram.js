@@ -20,10 +20,14 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var instagramItems = [];
+    var tag = $model.get("title");
+    tag = tag.replace(/[^a-å0-9\s]/gi, "");
+    tag = tag.replace(/[^a-å0-9]/gi, "_");
+    Ti.API.info(tag);
     var instagramCollection = Alloy.Collections.instagram;
     instagramCollection.fetch({
         urlparams: {
-            tag: $model.get("title")
+            tag: tag
         },
         success: function() {
             _.each(instagramCollection.models, function(element) {
@@ -53,11 +57,13 @@ function Controller() {
         }
     });
     $.instagramGrid.on("click", function(e) {
-        Ti.API.info("Clicked: " + e.source.id);
+        Ti.API.info("click");
+        Ti.API.info(e.source.strImage);
+        Ti.API.info(JSON.stringify(instagramCollection));
+        Ti.API.info(JSON.stringify(instagramCollection.get(e.source.strImage)));
         var instagramViewController = Alloy.createController("instagramView", {
-            $model: instagramCollection.get(e.source.id)
+            $model: instagramCollection.get(e.source.strImage)
         });
-        Ti.API.info(JSON.stringify(instagramCollection.get(e.source.id)));
         instagramViewController.getView().open();
     });
     $.instagram.addEventListener("close", function() {

@@ -1,6 +1,6 @@
 function Controller() {
     function hideKeyboard() {
-        "iphone" == Alloy.Globals.OS ? $.mapSearchButton.blur() : Ti.UI.Android.hideSoftKeyboard();
+        "iphone" == Alloy.Globals.OS || Ti.UI.Android.hideSoftKeyboard();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
@@ -16,15 +16,15 @@ function Controller() {
         layout: "vertical"
     });
     $.__views.mapWin && $.addTopLevelView($.__views.mapWin);
-    $.__views.mapSearchButton = Ti.UI.createSearchBar({
+    $.__views.mapSearchBar = Ti.UI.createSearchBar({
         backgroundColor: "#40B0D2",
-        id: "mapSearchButton",
+        id: "mapSearchBar",
         showCancel: "true",
         hintText: "Search...",
         height: "10%"
     });
-    $.__views.mapWin.add($.__views.mapSearchButton);
-    hideKeyboard ? $.__views.mapSearchButton.addEventListener("cancel", hideKeyboard) : __defers["$.__views.mapSearchButton!cancel!hideKeyboard"] = true;
+    $.__views.mapWin.add($.__views.mapSearchBar);
+    hideKeyboard ? $.__views.mapSearchBar.addEventListener("cancel", hideKeyboard) : __defers["$.__views.mapSearchBar!cancel!hideKeyboard"] = true;
     $.__views.mapView = Ti.UI.createView({
         id: "mapView",
         height: "90%"
@@ -74,23 +74,54 @@ function Controller() {
             "iphone" == Alloy.Globals.OS ? $.nav.openWindow(win) : win.open();
         }
     });
-    $.mapSearchButton.addEventListener("return", function() {
+    "android" == Alloy.Globals.OS && $.mapSearchBar.addEventListener("cancel", function() {
+        $.mapSearchBar.setValue("");
+    });
+    $.mapSearchBar.addEventListener("return", function() {
         hideKeyboard();
-        var searchText = $.mapSearchButton.getValue();
-        var geocoder = new google.maps.Geocoder();
-        geocoder ? geocoder.geocode({
-            address: searchText
-        }, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) mapview.setLocation({
-                latitude: results[0].geometry.location.lat(),
-                longitude: results[0].geometry.location.lng(),
-                latitudeDelta: .1,
-                longitudeDelta: .1
-            }); else {
-                Ti.API.error(status);
-                Ti.API.info(JSON.stringify(results));
+        var searchText = $.mapSearchBar.getValue();
+        Ti.API.info("PHONE");
+        var xhr = Titanium.Network.createHTTPClient();
+        var url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + searchText + "&sensor=true&key=AIzaSyD7QIWz-xIs3WTWYR_0eaH_whi56NNE1sE";
+        xhr.open("GET", url);
+        xhr.onload = function() {
+            var json = JSON.parse(this.responseText);
+            switch (json.status) {
+              case "OK":
+                Ti.API.info(JSON.stringify(json));
+                mapview.setLocation({
+                    latitude: json.results[0].geometry.location.lat,
+                    longitude: json.results[0].geometry.location.lng,
+                    latitudeDelta: .1,
+                    longitudeDelta: .1
+                });
+                break;
+
+              case "ZERO_RESULTS":
+                alert("No result for your search");
+                break;
+
+              case "OVER_QUERY_LIMIT":
+                alert("Sorry, the query limit is exceeded");
+                break;
+
+              case "REQUEST_DENIED":
+                alert("Sorry, your request was denied");
+                break;
+
+              case "INVALID_REQUEST":
+                alert("Sorry, your request is invalid");
+                break;
+
+              default:
+                alert("This is very strange! Do you have internet connection?");
             }
-        }) : alert("Google Maps Geocoder not supported");
+        };
+        xhr.onerror = function(e) {
+            alert("This is very strange! Do you have internet connection?");
+            Ti.API.error(e.error);
+        };
+        xhr.send();
     });
     var wallCollection = Alloy.Collections.wall;
     wallCollection.fetch({
@@ -125,7 +156,7 @@ function Controller() {
     $.mapWin.addEventListener("close", function() {
         $.destroy();
     });
-    __defers["$.__views.mapSearchButton!cancel!hideKeyboard"] && $.__views.mapSearchButton.addEventListener("cancel", hideKeyboard);
+    __defers["$.__views.mapSearchBar!cancel!hideKeyboard"] && $.__views.mapSearchBar.addEventListener("cancel", hideKeyboard);
     _.extend($, exports);
 }
 
