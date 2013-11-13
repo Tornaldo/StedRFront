@@ -45,7 +45,7 @@ function Controller() {
     $.instagramPicture.setImage($model.get("url"));
     $.userName.setText("@" + $model.get("fullName"));
     $.instagramView.addEventListener("close", function() {
-        Ti.API.info("Destroying: ");
+        Ti.API.info("Destroying instagramview");
         $.destroy();
     });
     _.extend($, exports);

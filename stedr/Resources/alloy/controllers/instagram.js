@@ -67,7 +67,7 @@ function Controller() {
         instagramViewController.getView().open();
     });
     $.instagram.addEventListener("close", function() {
-        Ti.API.info("Destroying story: " + $model.get("title"));
+        Ti.API.info("Destroying instagram");
         $.destroy();
     });
     _.extend($, exports);

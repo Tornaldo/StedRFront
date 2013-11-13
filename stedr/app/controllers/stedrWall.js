@@ -25,7 +25,7 @@
  *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-$.stedrWall.setTitle($model.get('title'));
+$.stedrWallWindow.setTitle($model.get('title'));
 
 $.mediaScrollerMainImage.addView(Ti.UI.createImageView({
 	image : $model.get('pictureUrl')
@@ -68,7 +68,22 @@ function changeView(evt) {
 	}
 }
 
-$.stedrWall.addEventListener('close', function() {
-	Ti.API.info("Destroying: " + $model.get('title'));
+// $.stedrWallWindow.addEventListener("open", function() {
+    // if (Ti.Platform.osname === "android") {
+        // if (!$.stedrWallWindow.activity) {
+            // Ti.API.error("Can't access action bar on a lightweight window.");
+        // } else {
+            // actionBar = $.stedrWallWindow.activity.actionBar;
+            // if (actionBar) {
+                // actionBar.onHomeIconItemSelected = function() {
+                    // Ti.API.info("Home icon clicked!");
+                // };
+            // }
+        // }
+    // }
+// });
+
+$.stedrWallWindow.addEventListener('close', function() {
+	Ti.API.info("Destroying stedrwall");
 	$.destroy();
 }); 

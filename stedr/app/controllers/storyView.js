@@ -94,7 +94,13 @@ for ( i = 0; i < tags.length; i++) {
  * Listeners
  */
 
-$.storyView.addEventListener('close', function() {
-	Ti.API.info("Destroying: " + $model.get('title'));
+$.hei.addEventListener('close', function() {
+	Ti.API.info("Destroying storyview");
+	mediaGalleryController = null;
+	twitterController = null;
+	var list = $.hei.children;
+	for (var q=0; q < list.length; q++) {
+	  Ti.API.info(list[q]);
+	};
 	$.destroy();
 }); 

@@ -112,6 +112,10 @@ function Controller() {
     };
     _.extend($, $.__views);
     Alloy.Collections.tweets.reset($model);
+    $.tableView.addEventListener("close", function() {
+        Ti.API.info("Destroying twitter row");
+        $.destroy();
+    });
     __defers["__alloyId6!click!showTweet"] && __alloyId6.addEventListener("click", showTweet);
     _.extend($, exports);
 }

@@ -6,8 +6,8 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.storyView = Ti.UI.createTabGroup({
-        id: "storyView"
+    $.__views.hei = Ti.UI.createTabGroup({
+        id: "hei"
     });
     $.__views.__alloyId2 = Ti.UI.createWindow({
         backgroundColor: "white",
@@ -95,7 +95,7 @@ function Controller() {
         window: $.__views.__alloyId2,
         id: "storyTab"
     });
-    $.__views.storyView.addTab($.__views.storyTab);
+    $.__views.hei.addTab($.__views.storyTab);
     $.__views.twitterWin = Ti.UI.createWindow({
         id: "twitterWin",
         navBarHidden: "true",
@@ -113,8 +113,8 @@ function Controller() {
         window: $.__views.twitterWin,
         id: "commentTab"
     });
-    $.__views.storyView.addTab($.__views.commentTab);
-    $.__views.storyView && $.addTopLevelView($.__views.storyView);
+    $.__views.hei.addTab($.__views.commentTab);
+    $.__views.hei && $.addTopLevelView($.__views.hei);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var mediaGalleryController = Alloy.createController("mediaGallery", {
@@ -160,8 +160,12 @@ function Controller() {
         });
         $.tagView.add(tag);
     }
-    $.storyView.addEventListener("close", function() {
-        Ti.API.info("Destroying: " + $model.get("title"));
+    $.hei.addEventListener("close", function() {
+        Ti.API.info("Destroying storyview");
+        mediaGalleryController = null;
+        twitterController = null;
+        var list = $.hei.children;
+        for (var q = 0; list.length > q; q++) Ti.API.info(list[q]);
         $.destroy();
     });
     _.extend($, exports);

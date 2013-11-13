@@ -33,6 +33,6 @@ $.userName.setText("@"+ $model.get('fullName'));
 
 
 $.instagramView.addEventListener('close', function() {
-	Ti.API.info("Destroying: "/* + $model.get('username')*/);
+	Ti.API.info("Destroying instagramview");
 	$.destroy();
 });

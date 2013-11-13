@@ -58,7 +58,7 @@ function Controller() {
         "iphone" == Alloy.Globals.OS ? Alloy.Globals.Nav.openWindow(win) : win.open();
     });
     $.story.addEventListener("close", function() {
-        Ti.API.info("Destroying story: " + $model.get("title"));
+        Ti.API.info("Destroying story");
         $.destroy();
     });
     _.extend($, exports);

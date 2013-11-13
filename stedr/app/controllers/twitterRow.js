@@ -43,3 +43,8 @@ function showTweet(evt){
 	Ti.API.info(evt.source);
 	Ti.API.info(JSON.stringify(evt.source));
 }
+
+$.tableView.addEventListener('close', function(){
+	Ti.API.info("Destroying twitter row");
+	$.destroy();
+});

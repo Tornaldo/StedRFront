@@ -124,6 +124,10 @@ function Controller() {
     $.refreshButton.addEventListener("click", function() {
         fetchTwitter();
     });
+    $.twitterView.addEventListener("close", function() {
+        Ti.API.info("Destroying twitter");
+        $.destroy();
+    });
     loadAccessToken = function(pService) {
         Ti.API.info("Loading access token for service [" + pService + "].");
         var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, pService + ".config");
