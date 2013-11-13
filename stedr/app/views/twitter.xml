@@ -4,6 +4,7 @@
 		<View id="twitterCharCounterAndButton" layout="horizontal" >
 			<Button id="tweetButton" title="Tweet!"></Button>
 			<Label id="charCounter" text="(0/140)"></Label>
+			<Button id="refreshButton" title="Refresh tweets"></Button>
 		</View>
 		<View id="twitterStatusesView"></View>
 	</View>

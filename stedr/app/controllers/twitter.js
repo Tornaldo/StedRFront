@@ -90,6 +90,11 @@ function fetchTwitter() {
 	);
 }
 
+$.refreshButton.addEventListener('click', function(e){
+	fetchTwitter();
+});
+
+
 function tweet() {
 	Ti.API.info("Trying to tweet");
 	var text = $.tweetText.getValue();
@@ -103,7 +108,6 @@ function tweet() {
 			if (reply.httpstatus == 200) {
 				$.tweetText.setValue(hashtag);
 				alert("You just tweeted :)");
-				fetchTwitter();
 			} else {
 				Ti.API.warn(reply.errors[0].message);
 				alert("Sorry, something went wrong");

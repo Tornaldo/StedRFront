@@ -35,6 +35,7 @@ module.exports = [ {
     priority: 100000.0047,
     key: "charCounter",
     style: {
+        left: "10dp",
         font: {
             fontFamily: "Helvetica",
             fontSize: "17sp",
@@ -45,6 +46,13 @@ module.exports = [ {
 }, {
     isId: true,
     priority: 100000.0048,
+    key: "refreshButton",
+    style: {
+        right: "10dp"
+    }
+}, {
+    isId: true,
+    priority: 100000.0049,
     key: "twitterStatusesView",
     style: {}
 } ];
