@@ -27,10 +27,17 @@
 
 var instagramItems = [];
 
+var tag = $model.get('title');
+tag = tag.replace(/[^a-z0-9\s]/gi, "");
+tag = tag.replace(/[^a-z0-9]/gi, "_");
+
+
+Ti.API.info(tag);
+
 var instagramCollection = Alloy.Collections.instagram;
 instagramCollection.fetch({
 	urlparams : {
-		"tag" : $model.get('title'),
+		"tag" : tag,
 	},
 	success : function() {
 		_.each(instagramCollection.models, function(element, index, list) {

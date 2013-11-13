@@ -41,7 +41,7 @@ var accessTokenSecret = null;
 var storyName = $model.get('title');
 storyName = storyName.replace(/[^a-z0-9\s]/gi, "");
 storyName = storyName.replace(/[^a-z0-9]/gi, "_");
-var hashtag = "#stedR_" + storyName;
+var hashtag = "#stedr_" + storyName;
 $.tweetText.setValue(hashtag);
 
 var bearerToken = Ti.App.Properties.getString('TwitterBearerToken', null);
