@@ -86,9 +86,21 @@ mapview.addEventListener('click', function(evt) {
 	}
 });
 
-$.mapSearchButton.addEventListener('return', function(evt) {
+$.mapSearchBar.addEventListener('return', function(evt) {
+	Ti.API.info('blur');
+});
+
+$.mapSearchBar.addEventListener('cancel', function(evt) {
+	Ti.API.info('cancel');
+});
+
+$.mapSearchBar.addEventListener('focus', function(evt) {
+	Ti.API.info('focus');
+});
+
+$.mapSearchBar.addEventListener('return', function(evt) {
 	hideKeyboard();
-	var searchText = $.mapSearchButton.getValue();
+	var searchText = $.mapSearchBar.getValue();
 	if (OS_MOBILEWEB) {
 		var geocoder = new google.maps.Geocoder();
 		if (geocoder) {
@@ -191,7 +203,7 @@ wallCollection.fetch({
 
 function hideKeyboard() {
 	if (Alloy.Globals.OS == "iphone") {
-		// $.mapSearchButton.blur();
+		// $.mapSearchBar.blur();
 	} else {
 		Ti.UI.Android.hideSoftKeyboard();
 	}

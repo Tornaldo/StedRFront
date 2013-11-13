@@ -16,15 +16,14 @@ function Controller() {
         layout: "vertical"
     });
     $.__views.mapWin && $.addTopLevelView($.__views.mapWin);
-    $.__views.mapSearchButton = Ti.UI.createSearchBar({
-        backgroundColor: "#40B0D2",
-        id: "mapSearchButton",
+    $.__views.mapSearchBar = Ti.UI.createSearchBar({
+        id: "mapSearchBar",
         showCancel: "true",
         hintText: "Search...",
         height: "10%"
     });
-    $.__views.mapWin.add($.__views.mapSearchButton);
-    hideKeyboard ? $.__views.mapSearchButton.addEventListener("cancel", hideKeyboard) : __defers["$.__views.mapSearchButton!cancel!hideKeyboard"] = true;
+    $.__views.mapWin.add($.__views.mapSearchBar);
+    hideKeyboard ? $.__views.mapSearchBar.addEventListener("cancel", hideKeyboard) : __defers["$.__views.mapSearchBar!cancel!hideKeyboard"] = true;
     $.__views.mapView = Ti.UI.createView({
         id: "mapView",
         height: "90%"
@@ -74,9 +73,18 @@ function Controller() {
             "iphone" == Alloy.Globals.OS ? $.nav.openWindow(win) : win.open();
         }
     });
-    $.mapSearchButton.addEventListener("return", function() {
+    $.mapSearchBar.addEventListener("return", function() {
+        Ti.API.info("blur");
+    });
+    $.mapSearchBar.addEventListener("cancel", function() {
+        Ti.API.info("cancel");
+    });
+    $.mapSearchBar.addEventListener("focus", function() {
+        Ti.API.info("focus");
+    });
+    $.mapSearchBar.addEventListener("return", function() {
         hideKeyboard();
-        var searchText = $.mapSearchButton.getValue();
+        var searchText = $.mapSearchBar.getValue();
         Ti.API.info("PHONE");
         var xhr = Titanium.Network.createHTTPClient();
         var url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + searchText + "&sensor=true&key=AIzaSyD7QIWz-xIs3WTWYR_0eaH_whi56NNE1sE";
@@ -153,7 +161,7 @@ function Controller() {
     $.mapWin.addEventListener("close", function() {
         $.destroy();
     });
-    __defers["$.__views.mapSearchButton!cancel!hideKeyboard"] && $.__views.mapSearchButton.addEventListener("cancel", hideKeyboard);
+    __defers["$.__views.mapSearchBar!cancel!hideKeyboard"] && $.__views.mapSearchBar.addEventListener("cancel", hideKeyboard);
     _.extend($, exports);
 }
 

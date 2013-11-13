@@ -1,6 +1,6 @@
 <Alloy>
 	<Window title="Map" id="mapWin" layout="vertical">
-		<SearchBar id="mapSearchButton" showCancel="true" hintText="Search..." onCancel="hideKeyboard" height="10%"></SearchBar>
+		<SearchBar id="mapSearchBar" showCancel="true" hintText="Search..." onCancel="hideKeyboard" height="10%"></SearchBar>
 		<View id="mapView" height="90%"></View>
 	</Window>
 </Alloy>

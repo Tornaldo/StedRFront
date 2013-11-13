@@ -21,8 +21,8 @@ function Controller() {
     _.extend($, $.__views);
     var instagramItems = [];
     var tag = $model.get("title");
-    tag = tag.replace(/[^a-z0-9\s]/gi, "");
-    tag = tag.replace(/[^a-z0-9]/gi, "_");
+    tag = tag.replace(/[^a-å0-9\s]/gi, "");
+    tag = tag.replace(/[^a-å0-9]/gi, "_");
     Ti.API.info(tag);
     var instagramCollection = Alloy.Collections.instagram;
     instagramCollection.fetch({
