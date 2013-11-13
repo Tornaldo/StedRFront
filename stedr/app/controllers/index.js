@@ -86,17 +86,11 @@ mapview.addEventListener('click', function(evt) {
 	}
 });
 
-$.mapSearchBar.addEventListener('return', function(evt) {
-	Ti.API.info('blur');
-});
-
-$.mapSearchBar.addEventListener('cancel', function(evt) {
-	Ti.API.info('cancel');
-});
-
-$.mapSearchBar.addEventListener('focus', function(evt) {
-	Ti.API.info('focus');
-});
+if (Alloy.Globals.OS == "android") {
+	$.mapSearchBar.addEventListener('cancel', function(evt) {
+		$.mapSearchBar.setValue("");
+	});
+}
 
 $.mapSearchBar.addEventListener('return', function(evt) {
 	hideKeyboard();

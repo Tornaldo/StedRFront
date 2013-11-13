@@ -17,6 +17,7 @@ function Controller() {
     });
     $.__views.mapWin && $.addTopLevelView($.__views.mapWin);
     $.__views.mapSearchBar = Ti.UI.createSearchBar({
+        backgroundColor: "#40B0D2",
         id: "mapSearchBar",
         showCancel: "true",
         hintText: "Search...",
@@ -73,14 +74,8 @@ function Controller() {
             "iphone" == Alloy.Globals.OS ? $.nav.openWindow(win) : win.open();
         }
     });
-    $.mapSearchBar.addEventListener("return", function() {
-        Ti.API.info("blur");
-    });
-    $.mapSearchBar.addEventListener("cancel", function() {
-        Ti.API.info("cancel");
-    });
-    $.mapSearchBar.addEventListener("focus", function() {
-        Ti.API.info("focus");
+    "android" == Alloy.Globals.OS && $.mapSearchBar.addEventListener("cancel", function() {
+        $.mapSearchBar.setValue("");
     });
     $.mapSearchBar.addEventListener("return", function() {
         hideKeyboard();
