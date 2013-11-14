@@ -27,12 +27,22 @@
 
 var instagramItems = [];
 
+var addImageId = "Add image";
+
+instagramItems.push({
+	title : addImageId,
+	image : "/images/addimage.png",
+});
+
 var tag = $model.get('title');
 tag = tag.replace(/[^a-å0-9\s]/gi, "");
 tag = tag.replace(/[^a-å0-9]/gi, "_");
 
-
-Ti.API.info(tag);
+var opts = {
+	title : "Instagram",
+	message : "Use Instagram to add images. Simply add the title of the place as a hashtag, eg. #"+ tag,
+	ok : "Ok",
+};
 
 var instagramCollection = Alloy.Collections.instagram;
 instagramCollection.fetch({
@@ -46,7 +56,6 @@ instagramCollection.fetch({
 				image : element.get('url')
 			});
 		});
-		Ti.API.info(JSON.stringify(instagramCollection));
 		$.instagramGrid.createGrid({
 			columns : 2, //NUMBER OF COLUMNS. DEFAULT IS 4.
 			space : 10, //SPACE BETWEEN EACH ELEMENT. DEFAULT IS 5.
@@ -69,14 +78,14 @@ instagramCollection.fetch({
 });
 
 $.instagramGrid.on('click', function(e) {
-	Ti.API.info("click");
-	Ti.API.info(e.source.strImage);
-	Ti.API.info(JSON.stringify(instagramCollection));
-	Ti.API.info(JSON.stringify(instagramCollection.get(e.source.strImage)));
-	var instagramViewController = Alloy.createController('instagramView', {
-		"$model" : instagramCollection.get(e.source.strImage)
-	});
-	instagramViewController.getView().open();
+	if (e.source.id == addImageId) {
+		var dialog = Ti.UI.createAlertDialog(opts).show();
+	} else {
+		var instagramViewController = Alloy.createController('instagramView', {
+			"$model" : instagramCollection.get(e.source.strImage)
+		});
+		instagramViewController.getView().open();
+	}
 });
 
 $.instagram.addEventListener('close', function() {

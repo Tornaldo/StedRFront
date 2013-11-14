@@ -68,21 +68,6 @@ function changeView(evt) {
 	}
 }
 
-// $.stedrWallWindow.addEventListener("open", function() {
-    // if (Ti.Platform.osname === "android") {
-        // if (!$.stedrWallWindow.activity) {
-            // Ti.API.error("Can't access action bar on a lightweight window.");
-        // } else {
-            // actionBar = $.stedrWallWindow.activity.actionBar;
-            // if (actionBar) {
-                // actionBar.onHomeIconItemSelected = function() {
-                    // Ti.API.info("Home icon clicked!");
-                // };
-            // }
-        // }
-    // }
-// });
-
 $.stedrWallWindow.addEventListener('close', function() {
 	Ti.API.info("Destroying stedrwall");
 	$.destroy();

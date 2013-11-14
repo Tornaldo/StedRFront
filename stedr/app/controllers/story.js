@@ -27,6 +27,19 @@
 
 var items = [];
 
+var addStoryId = "Add story";
+
+items.push({
+	title : addStoryId,
+	image : "/images/digitaltfortaltlogoplus.png"
+});
+
+var opts = {
+	title : "DigitaltFortalt",
+	message : "Visit www.digitaltfortalt.no to add stories",
+	ok : "Ok",
+};
+
 var storyCollection = Alloy.Collections.story;
 storyCollection.fetch({
 	urlparams : {
@@ -55,24 +68,28 @@ storyCollection.fetch({
 		Ti.API.info('finish creating story grid');
 	},
 	error : function() {
-		Ti.API.error("Could not load story");
+		Ti.API.error("Could not load stories");
 	}
 });
 
 $.storyGrid.on('click', function(e) {
 	Ti.API.info("Clicked: " + e.source.id);
-	var storyViewController = Alloy.createController('storyView', {
-		"$model" : storyCollection.get(e.source.id)
-	});
-	var win = storyViewController.getView();
+	if (e.source.id == addStoryId) {
+		var dialog = Ti.UI.createAlertDialog(opts).show();
+	} else {
+		var storyViewController = Alloy.createController('storyView', {
+			"$model" : storyCollection.get(e.source.id)
+		});
+		var win = storyViewController.getView();
 		if (Alloy.Globals.OS == "iphone") {
 			Alloy.Globals.Nav.openWindow(win);
 		} else {
 			win.open();
 		}
+	}
 });
 
 $.story.addEventListener('close', function() {
 	Ti.API.info("Destroying story");
 	$.destroy();
-}); 
+});

@@ -18,6 +18,16 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var items = [];
+    var addStoryId = "Add story";
+    items.push({
+        title: addStoryId,
+        image: "/images/digitaltfortaltlogoplus.png"
+    });
+    var opts = {
+        title: "DigitaltFortalt",
+        message: "Visit www.digitaltfortalt.no to add stories",
+        ok: "Ok"
+    };
     var storyCollection = Alloy.Collections.story;
     storyCollection.fetch({
         urlparams: {
@@ -30,32 +40,34 @@ function Controller() {
                     image: element.get("pictures")[0]
                 });
             });
-            $.storyGrid.createGrid({
-                columns: 2,
-                space: 10,
-                data: items,
-                layout: "gallery",
-                params: {
-                    padding: 5,
-                    showTitle: true,
-                    backgroundColor: "#FFFFFF",
-                    gridColor: "#40B0D2"
-                },
-                width: Titanium.Platform.displayCaps.platformWidth
-            });
             Ti.API.info("finish creating story grid");
         },
         error: function() {
-            Ti.API.error("Could not load story");
+            Ti.API.error("Could not load stories");
         }
+    });
+    $.storyGrid.createGrid({
+        columns: 2,
+        space: 10,
+        data: items,
+        layout: "gallery",
+        params: {
+            padding: 5,
+            showTitle: true,
+            backgroundColor: "#FFFFFF",
+            gridColor: "#40B0D2"
+        },
+        width: Titanium.Platform.displayCaps.platformWidth
     });
     $.storyGrid.on("click", function(e) {
         Ti.API.info("Clicked: " + e.source.id);
-        var storyViewController = Alloy.createController("storyView", {
-            $model: storyCollection.get(e.source.id)
-        });
-        var win = storyViewController.getView();
-        "iphone" == Alloy.Globals.OS ? Alloy.Globals.Nav.openWindow(win) : win.open();
+        if (e.source.id == addStoryId) Ti.UI.createAlertDialog(opts).show(); else {
+            var storyViewController = Alloy.createController("storyView", {
+                $model: storyCollection.get(e.source.id)
+            });
+            var win = storyViewController.getView();
+            "iphone" == Alloy.Globals.OS ? Alloy.Globals.Nav.openWindow(win) : win.open();
+        }
     });
     $.story.addEventListener("close", function() {
         Ti.API.info("Destroying story");
