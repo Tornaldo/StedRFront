@@ -40,24 +40,24 @@ function Controller() {
                     image: element.get("pictures")[0]
                 });
             });
+            $.storyGrid.createGrid({
+                columns: 2,
+                space: 10,
+                data: items,
+                layout: "gallery",
+                params: {
+                    padding: 5,
+                    showTitle: true,
+                    backgroundColor: "#FFFFFF",
+                    gridColor: "#40B0D2"
+                },
+                width: Titanium.Platform.displayCaps.platformWidth
+            });
             Ti.API.info("finish creating story grid");
         },
         error: function() {
             Ti.API.error("Could not load stories");
         }
-    });
-    $.storyGrid.createGrid({
-        columns: 2,
-        space: 10,
-        data: items,
-        layout: "gallery",
-        params: {
-            padding: 5,
-            showTitle: true,
-            backgroundColor: "#FFFFFF",
-            gridColor: "#40B0D2"
-        },
-        width: Titanium.Platform.displayCaps.platformWidth
     });
     $.storyGrid.on("click", function(e) {
         Ti.API.info("Clicked: " + e.source.id);
@@ -71,6 +71,9 @@ function Controller() {
     });
     $.story.addEventListener("close", function() {
         Ti.API.info("Destroying story");
+        items = null;
+        opts = null;
+        storyCollection.destroy();
         $.destroy();
     });
     _.extend($, exports);

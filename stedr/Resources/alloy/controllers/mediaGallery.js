@@ -24,7 +24,7 @@ function Controller() {
         });
         $.mediaScroller.addView(wallImage);
     }
-    Ti.Platform.displayCaps.platformHeight;
+    var deviceHeight = Ti.Platform.displayCaps.platformHeight;
     if (videoUrlList) for (i = 0; videoUrlList.length > i; i++) {
         var wallVideo1 = Ti.Media.createVideoPlayer({
             url: videoUrlList[i],
@@ -35,6 +35,9 @@ function Controller() {
     }
     $.mediaScroller.addEventListener("close", function() {
         Ti.API.info("Destroying gallery: " + $model.get("title"));
+        imageUrlList = null;
+        videoUrlList = null;
+        deviceHeight = null;
         $.destroy();
     });
     _.extend($, exports);

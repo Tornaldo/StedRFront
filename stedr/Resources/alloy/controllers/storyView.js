@@ -164,8 +164,6 @@ function Controller() {
         Ti.API.info("Destroying storyview");
         mediaGalleryController = null;
         twitterController = null;
-        var list = $.hei.children;
-        for (var q = 0; list.length > q; q++) Ti.API.info(list[q]);
         $.destroy();
     });
     _.extend($, exports);

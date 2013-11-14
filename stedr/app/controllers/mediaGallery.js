@@ -45,7 +45,6 @@ if (videoUrlList) {
 	for ( i = 0; i < videoUrlList.length; i++) {
 		var wallVideo1 = Ti.Media.createVideoPlayer({
 			url : videoUrlList[i],
-			// backgroundColor : 'blue',
 			mediaControlStyle : Ti.Media.VIDEO_CONTROL_DEFAULT,
 			// scalingMode : Titanium.Media.VIDEO_SCALING_ASPECT_FILL,
 			autoplay : true,
@@ -99,5 +98,8 @@ if (videoUrlList) {
 
 $.mediaScroller.addEventListener('close', function() {
 	Ti.API.info("Destroying gallery: " + $model.get('title'));
+	imageUrlList = null;
+	videoUrlList = null;
+	deviceHeight = null;
 	$.destroy();
 });

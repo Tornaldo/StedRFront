@@ -91,5 +91,8 @@ $.storyGrid.on('click', function(e) {
 
 $.story.addEventListener('close', function() {
 	Ti.API.info("Destroying story");
+	items = null;
+	opts = null;
+	storyCollection.destroy();
 	$.destroy();
 });

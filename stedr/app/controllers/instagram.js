@@ -90,6 +90,11 @@ $.instagramGrid.on('click', function(e) {
 
 $.instagram.addEventListener('close', function() {
 	Ti.API.info("Destroying instagram");
+	instagramItems = null;
+	addImageId = null;
+	tag = null;
+	opts = null;
+	instagramCollection.destroy();
 	$.destroy();
 });
 

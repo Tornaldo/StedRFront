@@ -204,5 +204,7 @@ function hideKeyboard() {
 }
 
 $.mapWin.addEventListener('close', function() {
+	wallCollection.destroy();
+	mapview.close();
 	$.destroy();
 });

@@ -135,6 +135,9 @@ function Controller() {
     });
     $.stedrWallWindow.addEventListener("close", function() {
         Ti.API.info("Destroying stedrwall");
+        storyGalleryController = null;
+        instagramController = null;
+        stedrWallWindow = null;
         $.destroy();
     });
     _.extend($, exports);

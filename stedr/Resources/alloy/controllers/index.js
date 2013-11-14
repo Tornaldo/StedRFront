@@ -154,6 +154,8 @@ function Controller() {
         }
     });
     $.mapWin.addEventListener("close", function() {
+        wallCollection.destroy();
+        mapview.close();
         $.destroy();
     });
     __defers["$.__views.mapSearchBar!cancel!hideKeyboard"] && $.__views.mapSearchBar.addEventListener("cancel", hideKeyboard);
