@@ -45,14 +45,15 @@
 			<uses-permission android:name="no.ntnu.stedr.permission.MAPS_RECEIVE"/>
 			<permission
 			android:name="no.ntnu.stedr.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
-			<application>
+			<application
+				android:debuggable="true">
 				<!-- Replace "PASTE YOUR GOOGLE MAPS API KEY HERE" with the Google API key you obtained -->
 				<meta-data
 				android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCjc2TQBE77zMrIgCZaRvq7wiEGrsGSW_s"/>
-			</application>
 			<supports-screens android:anyDensity="true"
 			android:largeScreens="true" android:normalScreens="true"
 			android:smallScreens="false" android:xlargeScreens="true"/>
+			</application>
 		</manifest>
 	</android>
 	<mobileweb>
