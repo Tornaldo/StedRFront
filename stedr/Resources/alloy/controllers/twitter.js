@@ -27,7 +27,6 @@ function Controller() {
             if (200 == reply.httpstatus) {
                 $.tweetText.setValue(hashtag);
                 alert("You just tweeted :)");
-                fetchTwitter();
             } else {
                 Ti.API.warn(reply.errors[0].message);
                 alert("Sorry, something went wrong");
@@ -77,6 +76,7 @@ function Controller() {
     });
     $.__views.twitterCharCounterAndButton.add($.__views.tweetButton);
     $.__views.charCounter = Ti.UI.createLabel({
+        left: "10dp",
         font: {
             fontFamily: "Helvetica",
             fontSize: "17sp",
@@ -87,6 +87,12 @@ function Controller() {
         text: "(0/140)"
     });
     $.__views.twitterCharCounterAndButton.add($.__views.charCounter);
+    $.__views.refreshButton = Ti.UI.createButton({
+        right: "10dp",
+        id: "refreshButton",
+        title: "Refresh tweets"
+    });
+    $.__views.twitterCharCounterAndButton.add($.__views.refreshButton);
     $.__views.twitterStatusesView = Ti.UI.createView({
         id: "twitterStatusesView"
     });
@@ -99,9 +105,9 @@ function Controller() {
     var accessToken = null;
     var accessTokenSecret = null;
     var storyName = $model.get("title");
-    storyName = storyName.replace(/[^a-z0-9\s]/gi, "");
-    storyName = storyName.replace(/[^a-z0-9]/gi, "_");
-    var hashtag = "#stedR_" + storyName;
+    storyName = storyName.replace(/[^a-å0-9\s]/gi, "");
+    storyName = storyName.replace(/[^a-å0-9]/gi, "_");
+    var hashtag = "#stedr_" + storyName;
     $.tweetText.setValue(hashtag);
     var bearerToken = Ti.App.Properties.getString("TwitterBearerToken", null);
     if (null == bearerToken) cb.__call("oauth2_token", {}, function(reply) {
@@ -115,6 +121,16 @@ function Controller() {
     }
     var twitterRowController;
     fetchTwitter();
+    $.refreshButton.addEventListener("click", function() {
+        fetchTwitter();
+    });
+    $.twitterView.addEventListener("close", function() {
+        Ti.API.info("Destroying twitter");
+        Codebird = null;
+        cp = null;
+        twitterRowController = null;
+        $.destroy();
+    });
     loadAccessToken = function(pService) {
         Ti.API.info("Loading access token for service [" + pService + "].");
         var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, pService + ".config");

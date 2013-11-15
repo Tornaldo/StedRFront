@@ -1,0 +1,23 @@
+".container": {
+	backgroundColor: '#40B0D2'
+}
+
+"#instagramPicture": {
+	width: "100%",
+	height: "100%"
+}
+
+"#pictureView":{
+	top: "10%"
+}
+
+"#userName": {
+	color : 'white',
+	font : {
+		color : 'white',
+		fontFamily : 'Helvetica',
+		fontSize : '15dp',
+		fontStyle : 'normal',
+		fontWeight : 'normal',
+	}
+}

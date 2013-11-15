@@ -20,10 +20,23 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var instagramItems = [];
+    var addImageId = "Add image";
+    instagramItems.push({
+        title: addImageId,
+        image: "/images/addimage.png"
+    });
+    var tag = $model.get("title");
+    tag = tag.replace(/[^a-å0-9\s]/gi, "");
+    tag = tag.replace(/[^a-å0-9]/gi, "_");
+    var opts = {
+        title: "Instagram",
+        message: "Use Instagram to add images. Simply add the title of the place as a hashtag, eg. #" + tag,
+        ok: "Ok"
+    };
     var instagramCollection = Alloy.Collections.instagram;
     instagramCollection.fetch({
         urlparams: {
-            tag: $model.get("title")
+            tag: tag
         },
         success: function() {
             _.each(instagramCollection.models, function(element) {
@@ -32,7 +45,6 @@ function Controller() {
                     image: element.get("url")
                 });
             });
-            Ti.API.info(JSON.stringify(instagramCollection));
             $.instagramGrid.createGrid({
                 columns: 2,
                 space: 10,
@@ -53,17 +65,20 @@ function Controller() {
         }
     });
     $.instagramGrid.on("click", function(e) {
-        Ti.API.info("click");
-        Ti.API.info(e.source.strImage);
-        Ti.API.info(JSON.stringify(instagramCollection));
-        Ti.API.info(JSON.stringify(instagramCollection.get(e.source.strImage)));
-        var instagramViewController = Alloy.createController("instagramView", {
-            $model: instagramCollection.get(e.source.strImage)
-        });
-        instagramViewController.getView().open();
+        if (e.source.id == addImageId) Ti.UI.createAlertDialog(opts).show(); else {
+            var instagramViewController = Alloy.createController("instagramView", {
+                $model: instagramCollection.get(e.source.strImage)
+            });
+            instagramViewController.getView().open();
+        }
     });
     $.instagram.addEventListener("close", function() {
-        Ti.API.info("Destroying story: " + $model.get("title"));
+        Ti.API.info("Destroying instagram");
+        instagramItems = null;
+        addImageId = null;
+        tag = null;
+        opts = null;
+        instagramCollection.destroy();
         $.destroy();
     });
     _.extend($, exports);

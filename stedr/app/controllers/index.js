@@ -86,9 +86,15 @@ mapview.addEventListener('click', function(evt) {
 	}
 });
 
-$.mapSearchButton.addEventListener('return', function(evt) {
+if (Alloy.Globals.OS == "android") {
+	$.mapSearchBar.addEventListener('cancel', function(evt) {
+		$.mapSearchBar.setValue("");
+	});
+}
+
+$.mapSearchBar.addEventListener('return', function(evt) {
 	hideKeyboard();
-	var searchText = $.mapSearchButton.getValue();
+	var searchText = $.mapSearchBar.getValue();
 	if (OS_MOBILEWEB) {
 		var geocoder = new google.maps.Geocoder();
 		if (geocoder) {
@@ -112,10 +118,12 @@ $.mapSearchButton.addEventListener('return', function(evt) {
 		}
 	} else {
 		Ti.API.info("PHONE");
-		var xhr = Titanium.Network.createHTTPClient();
+		var client = Titanium.Network.createHTTPClient();
 		var url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + searchText + "&sensor=true&key=AIzaSyD7QIWz-xIs3WTWYR_0eaH_whi56NNE1sE";
-		xhr.open('GET', url);
-		xhr.onload = function() {
+		client.open('GET', url);
+		client.setRequestHeader('Cache-Control', 'no-cache');
+		client.setRequestHeader('Cache-Control', 'no-store');
+		client.onload = function() {
 			var json = JSON.parse(this.responseText);
 			switch(json.status) {
 				case "OK":
@@ -144,11 +152,11 @@ $.mapSearchButton.addEventListener('return', function(evt) {
 					break;
 			}
 		};
-		xhr.onerror = function(e) {
+		client.onerror = function(e) {
 			alert("This is very strange! Do you have internet connection?");
 			Ti.API.error(e.error);
 		};
-		xhr.send();
+		client.send();
 	}
 });
 
@@ -191,12 +199,14 @@ wallCollection.fetch({
 
 function hideKeyboard() {
 	if (Alloy.Globals.OS == "iphone") {
-		// $.mapSearchButton.blur();
+		// $.mapSearchBar.blur();
 	} else {
 		Ti.UI.Android.hideSoftKeyboard();
 	}
 }
 
 $.mapWin.addEventListener('close', function() {
+	wallCollection.destroy();
+	mapview.close();
 	$.destroy();
 });

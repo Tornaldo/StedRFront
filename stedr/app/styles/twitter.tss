@@ -16,12 +16,16 @@
 "#tweetButton":{
 }
 "#charCounter":{
+	left: '10dp',
 	font: {
     fontFamily:'Helvetica',
 	    fontSize: '17sp',
 	    fontStyle: 'normal',
 	    fontWeight: 'normal',
     }
+}
+"#refreshButton":{
+	right: '10dp'
 }
 "#twitterStatusesView":{
 }

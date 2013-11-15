@@ -1,6 +1,8 @@
 <Alloy>
-	<Window>
-		<ImageView id="instagramPicture"></ImageView>
-		<Label id="userName" ></Label>
+	<Window class="container" layout="vertical" exitOnClose="false" navBarHidden="true">
+		<View id="pictureView">
+			<ImageView id="instagramPicture"></ImageView>
+		</View>
+		<Label id="userName"></Label>
 	</Window>
 </Alloy>

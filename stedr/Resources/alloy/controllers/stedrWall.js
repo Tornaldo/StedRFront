@@ -20,20 +20,21 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.stedrWall = Ti.UI.createWindow({
+    $.__views.stedrWallWindow = Ti.UI.createWindow({
         backgroundColor: "white",
+        id: "stedrWallWindow",
         layout: "vertical",
         exitOnClose: "false",
         navBarHidden: "false",
-        id: "stedrWall"
+        modal: "false"
     });
-    $.__views.stedrWall && $.addTopLevelView($.__views.stedrWall);
+    $.__views.stedrWallWindow && $.addTopLevelView($.__views.stedrWallWindow);
     $.__views.wallPictureView = Ti.UI.createView({
         id: "wallPictureView",
         height: "50%",
         layout: "vertical"
     });
-    $.__views.stedrWall.add($.__views.wallPictureView);
+    $.__views.stedrWallWindow.add($.__views.wallPictureView);
     var __alloyId1 = [];
     $.__views.mediaScrollerMainImage = Ti.UI.createScrollableView({
         views: __alloyId1,
@@ -59,7 +60,7 @@ function Controller() {
         layout: "vertical",
         height: "50%"
     });
-    $.__views.stedrWall.add($.__views.storyAndPictureView);
+    $.__views.stedrWallWindow.add($.__views.storyAndPictureView);
     $.__views.tabView = Ti.UI.createView({
         id: "tabView",
         layout: "horizontal",
@@ -111,7 +112,7 @@ function Controller() {
     $.__views.storyAndPictureView.add($.__views.storyOrPictureView);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.stedrWall.setTitle($model.get("title"));
+    $.stedrWallWindow.setTitle($model.get("title"));
     $.mediaScrollerMainImage.addView(Ti.UI.createImageView({
         image: $model.get("pictureUrl")
     }));
@@ -132,8 +133,13 @@ function Controller() {
     $.pictureTab.addEventListener("click", function() {
         changeView(2);
     });
-    $.stedrWall.addEventListener("close", function() {
-        Ti.API.info("Destroying: " + $model.get("title"));
+    $.stedrWallWindow.addEventListener("close", function() {
+        Ti.API.info("Destroying stedrwall");
+        storyGalleryController = null;
+        instagramController = null;
+        $.stedrWallWindow.remove($.wallPictureView);
+        $.stedrWallWindow.remove($.storyAndPictureView);
+        $.stedrWallWindow = null;
         $.destroy();
     });
     _.extend($, exports);

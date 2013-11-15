@@ -26,10 +26,13 @@
  */
 
 Ti.API.info("Model: " +JSON.stringify($model.get('fullName')));
-$.userName.setText($model.get('fullName'));
+$.pictureView.setWidth(Titanium.Platform.displayCaps.platformWidth);
+$.pictureView.setHeight(Titanium.Platform.displayCaps.platformWidth);
 $.instagramPicture.setImage($model.get('url'));
+$.userName.setText("@"+ $model.get('fullName'));
+
 
 $.instagramView.addEventListener('close', function() {
-	Ti.API.info("Destroying: "/* + $model.get('username')*/);
+	Ti.API.info("Destroying instagramview");
 	$.destroy();
 });

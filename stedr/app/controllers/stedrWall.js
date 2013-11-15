@@ -25,7 +25,7 @@
  *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-$.stedrWall.setTitle($model.get('title'));
+$.stedrWallWindow.setTitle($model.get('title'));
 
 $.mediaScrollerMainImage.addView(Ti.UI.createImageView({
 	image : $model.get('pictureUrl')
@@ -68,7 +68,12 @@ function changeView(evt) {
 	}
 }
 
-$.stedrWall.addEventListener('close', function() {
-	Ti.API.info("Destroying: " + $model.get('title'));
+$.stedrWallWindow.addEventListener('close', function() {
+	Ti.API.info("Destroying stedrwall");
+	storyGalleryController = null;
+	instagramController = null;
+	$.stedrWallWindow.remove($.wallPictureView);
+	$.stedrWallWindow.remove($.storyAndPictureView);
+	$.stedrWallWindow = null;
 	$.destroy();
 }); 

@@ -39,9 +39,9 @@ var accessTokenSecret = null;
  * the hashtag should be #stedR_'storyName'
  */
 var storyName = $model.get('title');
-storyName = storyName.replace(/[^a-z0-9\s]/gi, "");
-storyName = storyName.replace(/[^a-z0-9]/gi, "_");
-var hashtag = "#stedR_" + storyName;
+storyName = storyName.replace(/[^a-å0-9\s]/gi, "");
+storyName = storyName.replace(/[^a-å0-9]/gi, "_");
+var hashtag = "#stedr_" + storyName;
 $.tweetText.setValue(hashtag);
 
 var bearerToken = Ti.App.Properties.getString('TwitterBearerToken', null);
@@ -90,6 +90,11 @@ function fetchTwitter() {
 	);
 }
 
+$.refreshButton.addEventListener('click', function(e){
+	fetchTwitter();
+});
+
+
 function tweet() {
 	Ti.API.info("Trying to tweet");
 	var text = $.tweetText.getValue();
@@ -103,7 +108,6 @@ function tweet() {
 			if (reply.httpstatus == 200) {
 				$.tweetText.setValue(hashtag);
 				alert("You just tweeted :)");
-				fetchTwitter();
 			} else {
 				Ti.API.warn(reply.errors[0].message);
 				alert("Sorry, something went wrong");
@@ -119,6 +123,14 @@ function tweet() {
 function stringCounter(evt) {
 	$.charCounter.setText("(" + $.tweetText.getValue().length + "/140)");
 }
+
+$.twitterView.addEventListener('close', function() {
+	Ti.API.info("Destroying twitter");
+	Codebird = null;
+	cp = null;
+	twitterRowController = null;
+	$.destroy();
+}); 
 
 /*
 * Most of the following code is copy-pasted from a solution created by Rogichi (GitHub).
