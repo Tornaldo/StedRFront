@@ -15,11 +15,13 @@ function Controller() {
         id: "mapWin",
         layout: "vertical"
     });
+    $.__views.mapWin && $.addTopLevelView($.__views.mapWin);
     $.__views.mapSearchBar = Ti.UI.createSearchBar({
         backgroundColor: "#40B0D2",
         id: "mapSearchBar",
         showCancel: "true",
-        hintText: "Search..."
+        hintText: "Search...",
+        height: "10%"
     });
     $.__views.mapWin.add($.__views.mapSearchBar);
     hideKeyboard ? $.__views.mapSearchBar.addEventListener("cancel", hideKeyboard) : __defers["$.__views.mapSearchBar!cancel!hideKeyboard"] = true;
@@ -28,11 +30,6 @@ function Controller() {
         height: "90%"
     });
     $.__views.mapWin.add($.__views.mapView);
-    $.__views.nav = Ti.UI.iOS.createNavigationWindow({
-        window: $.__views.mapWin,
-        id: "nav"
-    });
-    $.__views.nav && $.addTopLevelView($.__views.nav);
     exports.destroy = function() {};
     _.extend($, $.__views);
     if ("iphone" == Alloy.Globals.OS) {
