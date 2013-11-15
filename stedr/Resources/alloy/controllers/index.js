@@ -1,6 +1,6 @@
 function Controller() {
     function hideKeyboard() {
-        "iphone" == Alloy.Globals.OS || Ti.UI.Android.hideSoftKeyboard();
+        "iphone" == Alloy.Globals.OS ? $.mapSearchBar.blur() : Ti.UI.Android.hideSoftKeyboard();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
@@ -77,7 +77,7 @@ function Controller() {
             "iphone" == Alloy.Globals.OS ? $.nav.openWindow(win) : win.open();
         }
     });
-    "android" == Alloy.Globals.OS && $.mapSearchBar.addEventListener("cancel", function() {
+    $.mapSearchBar.addEventListener("cancel", function() {
         $.mapSearchBar.setValue("");
     });
     $.mapSearchBar.addEventListener("return", function() {

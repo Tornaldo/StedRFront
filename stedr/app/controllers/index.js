@@ -86,11 +86,9 @@ mapview.addEventListener('click', function(evt) {
 	}
 });
 
-if (Alloy.Globals.OS == "android") {
-	$.mapSearchBar.addEventListener('cancel', function(evt) {
-		$.mapSearchBar.setValue("");
-	});
-}
+$.mapSearchBar.addEventListener('cancel', function(evt) {
+	$.mapSearchBar.setValue("");
+});
 
 $.mapSearchBar.addEventListener('return', function(evt) {
 	hideKeyboard();
@@ -199,7 +197,7 @@ wallCollection.fetch({
 
 function hideKeyboard() {
 	if (Alloy.Globals.OS == "iphone") {
-		// $.mapSearchBar.blur();
+		$.mapSearchBar.blur();
 	} else {
 		Ti.UI.Android.hideSoftKeyboard();
 	}
