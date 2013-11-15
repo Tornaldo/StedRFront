@@ -1,5 +1,1 @@
-module.exports = {
-    dependencies: {
-        tiflexigrid: "1.1"
-    }
-};
+module.exports={"dependencies":{"tiflexigrid":"1.1"}};

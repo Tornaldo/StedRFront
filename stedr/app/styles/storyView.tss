@@ -48,6 +48,7 @@
         fontWeight: 'normal',
     }
 }
+
 "#storyTab": {
 	activeIcon: "twitterlogowhite.png",
 	icon: "twitterlogo.png",
