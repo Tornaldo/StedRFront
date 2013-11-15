@@ -1,5 +1,5 @@
 <Alloy>
-	<Window class="container" layout="vertical" exitOnClose="false" navBarHidden="true">
+	<Window class="container" layout="vertical" exitOnClose="false" navBarHidden="false">
 		<View id="pictureView">
 			<ImageView id="instagramPicture"></ImageView>
 		</View>

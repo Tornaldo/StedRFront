@@ -1,5 +1,5 @@
 <Alloy>
-	<TabGroup id="hei">
+	<TabGroup>
 		<Tab id="storyTab" icon="images/digitaltfortaltlogo.png" >
 			<Window class="container" layout="vertical" exitOnClose="true" navBarHidden="true">
 				<View id="mediaGalleryView" height="50%">

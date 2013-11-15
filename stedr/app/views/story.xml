@@ -1,7 +1,5 @@
 <Alloy>
-	<Window>
-		<View class="container">
-			<Require type="widget" src="tiflexigrid" id="storyGrid"/>
-		</View>
-	</Window>
+	<View class="container">
+		<Require type="widget" src="tiflexigrid" id="storyGrid"/>
+	</View>
 </Alloy>

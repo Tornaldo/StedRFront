@@ -124,7 +124,6 @@ var NS_ALLOY = 'Alloy',
 	NS_TI_UI_MOBILEWEB = 'Ti.UI.MobileWeb';
 
 exports.IMPLICIT_NAMESPACES = {
-<<<<<<< HEAD
 	// Alloy
 	Collection: NS_ALLOY,
 	Model: NS_ALLOY,
@@ -188,48 +187,3 @@ exports.IMPLICIT_NAMESPACES = {
 	FooterView: 'Ti.UI.TableView',
 	Search: 'Ti.UI.TableView'
 };
-=======
-    Collection: NS_ALLOY,
-    Model: NS_ALLOY,
-    Module: NS_ALLOY,
-    Require: NS_ALLOY,
-    Widget: NS_ALLOY,
-    ButtonNames: NS_ALLOY_ABSTRACT,
-    ButtonName: NS_ALLOY_ABSTRACT,
-    BarItemTypes: NS_ALLOY_ABSTRACT,
-    BarItemType: NS_ALLOY_ABSTRACT,
-    CoverFlowImageTypes: NS_ALLOY_ABSTRACT,
-    CoverFlowImageType: NS_ALLOY_ABSTRACT,
-    FlexSpace: NS_ALLOY_ABSTRACT,
-    Images: NS_ALLOY_ABSTRACT,
-    Item: NS_ALLOY_ABSTRACT,
-    Items: NS_ALLOY_ABSTRACT,
-    ItemTemplate: NS_ALLOY_ABSTRACT,
-    Labels: NS_ALLOY_ABSTRACT,
-    Option: NS_ALLOY_ABSTRACT,
-    Options: NS_ALLOY_ABSTRACT,
-    Templates: NS_ALLOY_ABSTRACT,
-    Menu: NS_TI_ANDROID,
-    MenuItem: NS_TI_ANDROID,
-    Annotation: NS_TI_MAP,
-    VideoPlayer: NS_TI_MEDIA,
-    MusicPlayer: NS_TI_MEDIA,
-    AdView: NS_TI_UI_IOS,
-    CoverFlowView: NS_TI_UI_IOS,
-    NavigationWindow: NS_TI_UI_IOS,
-    TabbedBar: NS_TI_UI_IOS,
-    Toolbar: NS_TI_UI_IOS,
-    DocumentViewer: NS_TI_UI_IPAD,
-    Popover: NS_TI_UI_IPAD,
-    SplitWindow: NS_TI_UI_IPAD,
-    NavigationGroup: isTitanium && false ? NS_TI_UI_MOBILEWEB : NS_TI_UI_IPHONE,
-    StatusBar: NS_TI_UI_IPHONE,
-    LeftNavButton: "Ti.UI.Window",
-    RightNavButton: "Ti.UI.Window",
-    TitleControl: "Ti.UI.Window",
-    HeaderView: "Ti.UI.TableView",
-    HeaderPullView: "Ti.UI.TableView",
-    FooterView: "Ti.UI.TableView",
-    Search: "Ti.UI.TableView"
-};
->>>>>>> 43c6a1f7cc1941a2a7425bb6b775694f8cae97f7

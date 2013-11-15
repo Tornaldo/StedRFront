@@ -10,7 +10,7 @@ function Controller() {
         backgroundColor: "#40B0D2",
         layout: "vertical",
         exitOnClose: "false",
-        navBarHidden: "true",
+        navBarHidden: "false",
         id: "instagramView"
     });
     $.__views.instagramView && $.addTopLevelView($.__views.instagramView);
