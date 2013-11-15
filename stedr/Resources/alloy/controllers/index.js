@@ -81,10 +81,12 @@ function Controller() {
         hideKeyboard();
         var searchText = $.mapSearchBar.getValue();
         Ti.API.info("PHONE");
-        var xhr = Titanium.Network.createHTTPClient();
+        var client = Titanium.Network.createHTTPClient();
         var url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + searchText + "&sensor=true&key=AIzaSyD7QIWz-xIs3WTWYR_0eaH_whi56NNE1sE";
-        xhr.open("GET", url);
-        xhr.onload = function() {
+        client.open("GET", url);
+        client.setRequestHeader("Cache-Control", "no-cache");
+        client.setRequestHeader("Cache-Control", "no-store");
+        client.onload = function() {
             var json = JSON.parse(this.responseText);
             switch (json.status) {
               case "OK":
@@ -117,11 +119,11 @@ function Controller() {
                 alert("This is very strange! Do you have internet connection?");
             }
         };
-        xhr.onerror = function(e) {
+        client.onerror = function(e) {
             alert("This is very strange! Do you have internet connection?");
             Ti.API.error(e.error);
         };
-        xhr.send();
+        client.send();
     });
     var wallCollection = Alloy.Collections.wall;
     wallCollection.fetch({

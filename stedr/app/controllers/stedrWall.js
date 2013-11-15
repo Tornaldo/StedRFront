@@ -72,6 +72,8 @@ $.stedrWallWindow.addEventListener('close', function() {
 	Ti.API.info("Destroying stedrwall");
 	storyGalleryController = null;
 	instagramController = null;
-	stedrWallWindow = null;
+	$.stedrWallWindow.remove($.wallPictureView);
+	$.stedrWallWindow.remove($.storyAndPictureView);
+	$.stedrWallWindow = null;
 	$.destroy();
 }); 
