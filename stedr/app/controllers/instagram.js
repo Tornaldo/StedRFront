@@ -40,7 +40,7 @@ tag = tag.replace(/[^a-å0-9]/gi, "_");
 
 var opts = {
 	title : "Instagram",
-	message : "Use Instagram to add images. Simply add the title of the place as a hashtag, eg. #"+ tag,
+	message : "Use Instagram to add images. Simply add the title of the place as a hashtag, eg. #" + tag,
 	ok : "Ok",
 };
 
@@ -84,7 +84,12 @@ $.instagramGrid.on('click', function(e) {
 		var instagramViewController = Alloy.createController('instagramView', {
 			"$model" : instagramCollection.get(e.source.strImage)
 		});
-		instagramViewController.getView().open();
+		var instagramViewController = instagramViewController.getView();
+		if (Alloy.Globals.OS == "iphone") {
+			Alloy.Globals.Nav.openWindow(instagramViewController);
+		} else {
+			instagramViewController.open();
+		}
 	}
 });
 

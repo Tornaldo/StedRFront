@@ -69,7 +69,8 @@ function Controller() {
             var instagramViewController = Alloy.createController("instagramView", {
                 $model: instagramCollection.get(e.source.strImage)
             });
-            instagramViewController.getView().open();
+            var instagramViewController = instagramViewController.getView();
+            "iphone" == Alloy.Globals.OS ? Alloy.Globals.Nav.openWindow(instagramViewController) : instagramViewController.open();
         }
     });
     $.instagram.addEventListener("close", function() {

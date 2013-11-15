@@ -47,6 +47,7 @@ storyCollection.fetch({
 	},
 	success : function() {
 		_.each(storyCollection.models, function(element, index, list) {
+			Ti.API.info('STORY');
 			items.push({
 				title : element.get('title'),
 				image : element.get('pictures')[0]

@@ -1,6 +1,6 @@
 function Controller() {
     function hideKeyboard() {
-        "iphone" == Alloy.Globals.OS || Ti.UI.Android.hideSoftKeyboard();
+        "iphone" == Alloy.Globals.OS ? $.mapSearchBar.blur() : Ti.UI.Android.hideSoftKeyboard();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
@@ -15,16 +15,6 @@ function Controller() {
         id: "mapWin",
         layout: "vertical"
     });
-<<<<<<< HEAD
-    $.__views.mapSearchButton = Ti.UI.createSearchBar({
-        backgroundColor: "#40B0D2",
-        id: "mapSearchButton",
-        showCancel: "true",
-        hintText: "Search..."
-    });
-    $.__views.mapWin.add($.__views.mapSearchButton);
-    hideKeyboard ? $.__views.mapSearchButton.addEventListener("cancel", hideKeyboard) : __defers["$.__views.mapSearchButton!cancel!hideKeyboard"] = true;
-=======
     $.__views.mapWin && $.addTopLevelView($.__views.mapWin);
     $.__views.mapSearchBar = Ti.UI.createSearchBar({
         backgroundColor: "#40B0D2",
@@ -35,17 +25,11 @@ function Controller() {
     });
     $.__views.mapWin.add($.__views.mapSearchBar);
     hideKeyboard ? $.__views.mapSearchBar.addEventListener("cancel", hideKeyboard) : __defers["$.__views.mapSearchBar!cancel!hideKeyboard"] = true;
->>>>>>> 43c6a1f7cc1941a2a7425bb6b775694f8cae97f7
     $.__views.mapView = Ti.UI.createView({
         id: "mapView",
         height: "90%"
     });
     $.__views.mapWin.add($.__views.mapView);
-    $.__views.nav = Ti.UI.iOS.createNavigationWindow({
-        window: $.__views.mapWin,
-        id: "nav"
-    });
-    $.__views.nav && $.addTopLevelView($.__views.nav);
     exports.destroy = function() {};
     _.extend($, $.__views);
     if ("iphone" == Alloy.Globals.OS) {
@@ -90,17 +74,7 @@ function Controller() {
             "iphone" == Alloy.Globals.OS ? $.nav.openWindow(win) : win.open();
         }
     });
-<<<<<<< HEAD
-    $.mapSearchButton.addEventListener("return", function() {
-        hideKeyboard();
-        var searchText = $.mapSearchButton.getValue();
-        Ti.API.info("PHONE");
-        var xhr = Titanium.Network.createHTTPClient();
-        var url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + searchText + "&sensor=true&key=AIzaSyD7QIWz-xIs3WTWYR_0eaH_whi56NNE1sE";
-        xhr.open("GET", url);
-        xhr.onload = function() {
-=======
-    "android" == Alloy.Globals.OS && $.mapSearchBar.addEventListener("cancel", function() {
+    $.mapSearchBar.addEventListener("cancel", function() {
         $.mapSearchBar.setValue("");
     });
     $.mapSearchBar.addEventListener("return", function() {
@@ -113,7 +87,6 @@ function Controller() {
         client.setRequestHeader("Cache-Control", "no-cache");
         client.setRequestHeader("Cache-Control", "no-store");
         client.onload = function() {
->>>>>>> 43c6a1f7cc1941a2a7425bb6b775694f8cae97f7
             var json = JSON.parse(this.responseText);
             switch (json.status) {
               case "OK":
@@ -146,19 +119,11 @@ function Controller() {
                 alert("This is very strange! Do you have internet connection?");
             }
         };
-<<<<<<< HEAD
-        xhr.onerror = function(e) {
-            alert("This is very strange! Do you have internet connection?");
-            Ti.API.error(e.error);
-        };
-        xhr.send();
-=======
         client.onerror = function(e) {
             alert("This is very strange! Do you have internet connection?");
             Ti.API.error(e.error);
         };
         client.send();
->>>>>>> 43c6a1f7cc1941a2a7425bb6b775694f8cae97f7
     });
     var wallCollection = Alloy.Collections.wall;
     wallCollection.fetch({
@@ -195,11 +160,7 @@ function Controller() {
         mapview.close();
         $.destroy();
     });
-<<<<<<< HEAD
-    __defers["$.__views.mapSearchButton!cancel!hideKeyboard"] && $.__views.mapSearchButton.addEventListener("cancel", hideKeyboard);
-=======
     __defers["$.__views.mapSearchBar!cancel!hideKeyboard"] && $.__views.mapSearchBar.addEventListener("cancel", hideKeyboard);
->>>>>>> 43c6a1f7cc1941a2a7425bb6b775694f8cae97f7
     _.extend($, exports);
 }
 

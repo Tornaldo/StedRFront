@@ -6,19 +6,15 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.story = Ti.UI.createWindow({
+    $.__views.story = Ti.UI.createView({
         id: "story"
     });
     $.__views.story && $.addTopLevelView($.__views.story);
-    $.__views.__alloyId2 = Ti.UI.createView({
-        id: "__alloyId2"
-    });
-    $.__views.story.add($.__views.__alloyId2);
     $.__views.storyGrid = Alloy.createWidget("tiflexigrid", "widget", {
         id: "storyGrid",
-        __parentSymbol: $.__views.__alloyId2
+        __parentSymbol: $.__views.story
     });
-    $.__views.storyGrid.setParent($.__views.__alloyId2);
+    $.__views.storyGrid.setParent($.__views.story);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var items = [];
@@ -39,6 +35,7 @@ function Controller() {
         },
         success: function() {
             _.each(storyCollection.models, function(element) {
+                Ti.API.info("STORY");
                 items.push({
                     title: element.get("title"),
                     image: element.get("pictures")[0]

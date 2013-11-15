@@ -94,7 +94,7 @@ for ( i = 0; i < tags.length; i++) {
  * Listeners
  */
 
-$.hei.addEventListener('close', function() {
+$.storyView.addEventListener('close', function() {
 	Ti.API.info("Destroying storyview");
 	mediaGalleryController = null;
 	twitterController = null;
