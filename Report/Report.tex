@@ -2335,7 +2335,7 @@ The idea of using multiple data sources came from the Danish mobile application 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Figures/Phases/Sprint1/versiononeMultipleDataSourcesWall2.png}
-    \caption{Wall using multiple data sources, with slide gestures to navigate. Nidarosdomen is used as an example}
+    \caption{Place using multiple data sources, with slide gestures to navigate. Nidarosdomen is used as an example}
     \label{fig:phases_sprint1_uiVersionOneMultipleDataSoruces}
 \end{figure}
 
@@ -2364,7 +2364,7 @@ Three possible solutions were made, one with tabs, one with action buttons and o
 \end{figure}
 
 \subparagraph{Create \wallentitys}
-This function is very important, because it will define the the definition of a \wallentitys, thus the content of a \wallentitys. The customer wanted a more purified story-telling-wall, a \wallentitys that tells stories. The proposal was that a \wallentitys would consist of a title, a description, a set of tags, a gallery, stories and a location. The possibility to let everyone add content and to comment were also a part of the solution, as Figure ~\ref{fig:phases_sprint1_uiVersionTwoCreateWallDocument} shows.
+This function is very important, because it will define the the definition of a \wallentitys, thus the content of a \wallentitys. The customer wanted a more purified story-telling-place, a \wallentitys that tells stories. The proposal was that a \wallentitys would consist of a title, a description, a set of tags, a gallery, stories and a location. The possibility to let everyone add content and to comment were also a part of the solution, as Figure ~\ref{fig:phases_sprint1_uiVersionTwoCreateWallDocument} shows.
 
 \begin{figure}[H]
     \centering
@@ -2433,7 +2433,7 @@ The server has seen development based upon what was done in sprint one, but the 
 \subsection{S2: Implementation}
 
 \subsubsection{Definition of story}
-A story is defined by its existence on Digitalt Fortalt, and thus uses Digitalt Fortalts definition of a story.
+A story is defined by its existence on Digitalt Fortalt, and thus uses Digitalt Fortalt's definition of a story.
 
 \subsubsection{Server}
 
@@ -2734,15 +2734,15 @@ The following description is taken from the course compendium\cite[p. 47]{compen
 \begin{quotation}\noindent
 The assignment relates to the EU-IST project TAG CLOUD (www.tagcloudproject.eu). TAG CLOUD will develop innovative digital solutions with the aim to increase the engagement of people in culture and cultural heritage. The main aspects that will be investigated are: new interaction interfaces with cultural artefacts, user as a contributor and personalized information. In Norway, the focus is ``culture in the landscape'', i.e. the discovery of cultural memories that we meet when walking around in cities, in villages and in the nature.
 
-The goal of this assignment is to develop a tool to create and interact with ``virtual walls''. The idea stems from Væggen in Copenhagen. Væggen is a large multitouch screen allowing people to tell, share and experience stories. We would like to explore the concept of wall as means to discover and share cultural stories related to buildings and places. It is however not practical to install and maintain physical walls such as Væggen all around. Instead we propose a digital representation of walls, that we call \wallentitys.
+The goal of this assignment is to develop a tool to create and interact with ``virtual walls''. The idea stems from Væggen in Copenhagen. Væggen is a large multitouch screen allowing people to tell, share and experience stories. We would like to explore the concept of wall as means to discover and share cultural stories related to buildings and places. It is however not practical to install and maintain physical walls such as Væggen all around. Instead we propose a digital representation of walls, that we call ``virtual wall''.
 
-The assignment will build upon interactive pictures for the realization of \wallentityp. The tool that will be develop should include support for:
+The assignment will build upon interactive pictures for the realization of virtual walls. The tool that will be develop should include support for:
 \begin{itemize}
-    \item Managing \wallentityp: creation/deletion; retrieval according to location, popularity, topics and other metadata (e.g. author)
+    \item Managing virtual walls: creation/deletion; retrieval according to location, popularity, topics and other metadata (e.g. author)
     \item Managing stories: adding stories through a click on a specific place on the wall, filtering stories
 according to popularity, topics and other metadata (e.g. duration)
-    \item Social interaction: sharing \wallentityp (possibly stories) for editing, adding comments to \wallentityp and stories.
-    \item Promotion through social networks: sharing \wallentityp and stories through social networks (e.g. Facebook, Twitter)
+    \item Social interaction: sharing virtual walls (possibly stories) for editing, adding comments to virtual walls and stories.
+    \item Promotion through social networks: sharing virtual walls and stories through social networks (e.g. Facebook, Twitter)
 \end{itemize}
 The tool should be available for PC, tablet and mobile allowing experience at home and on site. The assignment should specify a system architecture that fits this requirement and select technologies that simplify development on several platforms. The assignment will realized the tool for one device type, preferably tablet.
 
@@ -2752,6 +2752,9 @@ More information: As an example, we have started to develop a draft wall for Nid
 
 Additional notes: All documentation (report and code comments) should be written in English. The results should be made open source.\cite[p. 47]{compendium}
 \end{quotation}
+
+For the rest of this report, we are going to use a slightly different terminology than the initial project description was using. The entities this system is going to work with are called ``\wallentityp'' instead of ``virtual walls'', as was suggested by customer later during the project.
+
 
 \chapter{Timesheets}
 \begin{table}[H]
