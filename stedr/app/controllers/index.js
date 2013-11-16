@@ -25,25 +25,28 @@
  *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/*
+ * If it is a iphone we need to open the NavigationWindow.
+ * We also save that opening NavigationWindow to a global variable
+ * Else, just open the ordinary Window
+ */
 if (Alloy.Globals.OS == "iphone") {
 	Alloy.Globals.Nav = $.nav;
 	$.nav.open();
 } else {
-	Ti.API.info('starter ikke iphone');
 	$.mapWin.open();
 }
 
 //Android Google Maps v2 module
 var MapModule;
 
-//The view to put the map
+//The view to show the map
 var mapview;
 
 /*
- * If Android, require the ti.map module, if not,
- * use the Titanium Map
+ * If Android, require the ti.map module (Google Maps v2)(not supported on android emulators), if not,
+ * use Titanium Map Module (Google Maps v1)
  */
-
 if (Alloy.Globals.OS == "android") {
 	MapModule = require('ti.map');
 	mapview = MapModule.createView({
@@ -65,9 +68,72 @@ if (Alloy.Globals.OS == "android") {
 	});
 }
 
-Ti.API.info('START MAP');
-$.mapView.add(mapview);
-Ti.API.info('Add eventlisteners');
+/*
+ * Add the created mapview inside the mapViewContainer
+ */
+$.mapViewContainer.add(mapview);
+
+/*
+ * Fetch all the walls/places
+ * For each place, add a mapAnnotation and add it to the mapview
+ * We need to create different annotations for android and ios, because
+ * of the differences in Google Map v1 and v2
+ */
+var wallCollection = Alloy.Collections.wall;
+wallCollection.fetch({
+	success : function() {
+		_.each(wallCollection.models, function(element, index, list) {
+			Ti.API.info("Making annotation for " + element.get('title'));
+			if (Alloy.Globals.OS == "android") {
+				var mapAnnotation = MapModule.createAnnotation({
+					title : element.get('title'),
+					latitude : element.get('latitude'),
+					longitude : element.get('longitude'),
+					rightView : Ti.UI.createImageView({
+						image : element.get('thumbnailUrl'),
+					}),
+
+					pincolor : MapModule.ANNOTATION_AZURE,
+					id : element.get('id'),
+				});
+			} else {
+				var mapAnnotation = Titanium.Map.createAnnotation({
+					title : element.get('title'),
+					latitude : element.get('latitude'),
+					longitude : element.get('longitude'),
+					rightView : Ti.UI.createImageView({
+						image : element.get('thumbnailUrl'),
+					}),
+
+					id : element.get('id'),
+				});
+			}
+			mapview.addAnnotation(mapAnnotation);
+		});
+	},
+	error : function() {
+		alert("Something went wrong fetching the walls");
+	}
+});
+
+/*
+ * A function to hide the software keybord.
+ */
+function hideKeyboard() {
+	if (Alloy.Globals.OS == "iphone") {
+		$.mapSearchBar.blur();
+	} else {
+		Ti.UI.Android.hideSoftKeyboard();
+	}
+}
+
+//ADD EVENT LISTENERS
+
+/*
+ * Handles click events on the annotations.
+ * Gets the model from the wallCollection, and
+ * adds it as a paramter for use in the stedrWallController
+ */
 mapview.addEventListener('click', function(evt) {
 	Ti.API.info(evt.type);
 	Ti.API.info(evt.clicksource);
@@ -86,10 +152,19 @@ mapview.addEventListener('click', function(evt) {
 	}
 });
 
+/*
+ * Handles click events on the back-button in the SearchBar.
+ * When clicked, remove the text in the textfield
+ */
 $.mapSearchBar.addEventListener('cancel', function(evt) {
 	$.mapSearchBar.setValue("");
 });
 
+/*
+ * Handles click events on the return button from the software keyboard
+ * If clicked, do a Google Place search, and set the location of the map
+ * to the result.
+ */
 $.mapSearchBar.addEventListener('return', function(evt) {
 	hideKeyboard();
 	var searchText = $.mapSearchBar.getValue();
@@ -151,58 +226,16 @@ $.mapSearchBar.addEventListener('return', function(evt) {
 			}
 		};
 		client.onerror = function(e) {
-			alert("This is very strange! Do you have internet connection?");
+			alert("Something went wrong searching for a place in Google Place");
 			Ti.API.error(e.error);
 		};
 		client.send();
 	}
 });
 
-var wallCollection = Alloy.Collections.wall;
-wallCollection.fetch({
-	success : function() {
-		_.each(wallCollection.models, function(element, index, list) {
-			Ti.API.info("Making annotation for " + element.get('title'));
-			if (Alloy.Globals.OS == "android") {
-				var mapAnnotation = MapModule.createAnnotation({
-					title : element.get('title'),
-					latitude : element.get('latitude'),
-					longitude : element.get('longitude'),
-					rightView : Ti.UI.createImageView({
-						image : element.get('thumbnailUrl'),
-					}),
-
-					pincolor : MapModule.ANNOTATION_AZURE,
-					id : element.get('id'),
-				});
-			} else {
-				var mapAnnotation = Titanium.Map.createAnnotation({
-					title : element.get('title'),
-					latitude : element.get('latitude'),
-					longitude : element.get('longitude'),
-					rightView : Ti.UI.createImageView({
-						image : element.get('thumbnailUrl'),
-					}),
-
-					id : element.get('id'),
-				});
-			}
-			mapview.addAnnotation(mapAnnotation);
-		});
-	},
-	error : function() {
-		Ti.API.error("woops");
-	}
-});
-
-function hideKeyboard() {
-	if (Alloy.Globals.OS == "iphone") {
-		$.mapSearchBar.blur();
-	} else {
-		Ti.UI.Android.hideSoftKeyboard();
-	}
-}
-
+/*
+ * Close event
+ */
 $.mapWin.addEventListener('close', function() {
 	wallCollection.destroy();
 	mapview.close();

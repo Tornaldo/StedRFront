@@ -1,6 +1,8 @@
+<!-- Index file for Android,
+Creates a SearchBar and a View for the map, inside the main Window -->
 <Alloy>
 	<Window title="Map" id="mapWin" layout="vertical">
 		<SearchBar id="mapSearchBar" showCancel="true" hintText="Search..." onCancel="hideKeyboard" height="10%"></SearchBar>
-		<View id="mapView" height="90%"></View>
+		<View id="mapViewContainer" height="90%"></View>
 	</Window>
 </Alloy>

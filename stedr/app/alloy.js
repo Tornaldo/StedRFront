@@ -37,19 +37,28 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 
-//It is resource intensive to check what platform we're on all the time, therfor;
+/*
+ * It is resource intensive to check what platform we're on all the time, therfor;
+ * Need a global variable to check whether it is iPhone or Android phone.
+ * The variable is typically used in a if-statement, followed by platform
+ * spesific code
+ */
 Alloy.Globals.OS = Ti.Platform.osname;
 
+
+/*
+ * Some platform specific code that we need in the very beginning.
+ */
 if(Alloy.Globals.OS == "android"){
 	Alloy.Globals.Map = require('ti.map');
 } else {
 	Alloy.Globals.Nav;
 }
 
+/*
+ * The collections that we need
+ */
 Alloy.Collections.wall = Alloy.createCollection('wall');
 Alloy.Collections.story = Alloy.createCollection('story');
 Alloy.Collections.instagram = Alloy.createCollection('instagram');
-
-Ti.UI.orientation = Ti.UI.PORTRAIT;
-
 Alloy.Collections.tweets = new Backbone.Collection();

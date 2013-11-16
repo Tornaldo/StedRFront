@@ -1,3 +1,6 @@
+<!-- Index file for iOS 
+Holds a SearchBar and a View for the map, inside the main Window.
+The main Window is surrounded by a Navigation Window to support Navigation in iOS-->
 <Alloy>
 	<NavigationWindow id="nav" platform="ios">
 		<Window title="Map" id="mapWin" layout="vertical">
