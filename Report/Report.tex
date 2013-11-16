@@ -38,8 +38,8 @@
 
 \lstset{
 	breaklines		= true,
-	numbers		= left,
-	postbreak		= \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}},
+	numbers		    = left,
+	postbreak		  = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}},
 	numberstyle		= \scriptsize
 }
 
@@ -923,7 +923,7 @@ This chapter is a System Requirements Specification document in the terms of pra
 \section{Introduction}
 
 \subsection{Purpose}
-The purpose of this \gls{srs} document is to provide documentation of requirements for the \systemname software system. It is therefore trying to collect and analyze the requirements. The requirements formalization as presented is a result of a joint effort of the customer and the development team. It serves as a description of what customer is expecting the system to be like, it presents the systems features and functionalities.
+The purpose of this \gls{srs} document is to provide documentation of requirements for the \systemname software system. It is therefore trying to collect and analyse the requirements. The requirements formalization as presented is a result of a joint effort of the customer and the development team. It serves as a description of what customer is expecting the system to be like, it presents the systems features and functionalities.
 
 The intended audience of this document shall be:
 
@@ -940,9 +940,9 @@ This section declares the scope of this requirements document and the desired ou
 
 This \gls{srs} document deals with the project \fullprojectname. This project shall result in developing a tool for working with so called \wallentityp, creating and sharing stories on them. %FIXME
 
-As presented by customer, the \systemname software system is going to be a system consisting of a number of subsystems including several content databases, a server backend and mobile application frontend.
+As presented by customer, the \systemname software system is going to consist of two subsystems - a server and a client application, and will retrieve data from external services.
 
-In the scope of this year's run of Customer Driven Project course, a prototype of a mobile application frontend and a basic server backend shall be developed.
+In the scope of this year's run of Customer Driven Project course, a prototype of a mobile application client and a basic server shall be developed.
 
 \subsection{Definitions, acronyms and abbreviations}
 All definitions, acronyms and abbreviations are listed in the glossary instead.
@@ -952,13 +952,13 @@ The rest of this \gls{srs} document describes the proposed product by means of i
 
 \section{Overall description}\label{sec:req_overall_description}
 \subsection{Product perspective}
-As stated above, the whole system will consist of several subsystems such as the frontend, server backend, own database and external content databases. This implies the use of client-server model.
+As stated above, the whole system will consist of a server and a client application. This implies use of the client-server model.
 
 The components developed in this phase of the project are:
 
 \begin{enumerate}
-  \item mobile/web application (frontend)
-  \item server (backend)
+  \item mobile/web application client
+  \item server
 \end{enumerate}
 
 The customer requires that the system shall be accessible from PCs, tablets and mobile phones (smartphones). The prototype shall be optimized for a tablet preferably.
@@ -977,11 +977,11 @@ In the initial phase, the server will not be directly connected to any external 
 \subsection{User Interfaces}
 Since the frontend of the whole system shall be developed in this project, the description of user interface shall be considerably stressed.
 
-We can characterize the nature of the system as crowdsourced (or edge-dominant, in general), as the content shall be generated and modified by users to some extent. Due to this, there is not going to be any backend for data entry, the only point where the system is exposed to human beings is the mobile application frontend.
+We can characterize the nature of the system as crowdsourced (or edge-dominant, in general), as the content shall be generated and modified by users to some extent. Due to this, there is not going to be any backend for data entry, the only point where the system is exposed to human beings is the mobile application client.
 
 Our key quality attribute, usability, relates tightly to user interfaces. For this reason, all usability-related requirements on user interface are listed in section \ref{sec:req_software_system_attributes} as quality attribute requirements.
 
-\subsubsection{Mobile application (frontend)}\label{sec:req_webapplication_frontend}
+\subsubsection{Mobile application client}\label{sec:req_webapplication_frontend}
 As user requests that the initial prototype application shall be developed for use on tablets. Typical usage of the system suggests that it will be used in field, which implies using the application on smartphones and tablets.
 
 Both smartphones and tablet have some inherent characteristics that have to be respected when designing the user interface and the means of interacting with it.
@@ -1021,11 +1021,11 @@ This issue is not to be addressed in this phase of the project and may be implem
 
 \subsection{Product functions}
 
-\subsubsection{Frontend}
-The key functionality expected in the frontend is management of \wallentityp (creating, editing), stories on them (creating, editing) and social interaction (commenting, sharing).
+\subsubsection{Client}
+The key functionality expected in the client is management of \wallentityp (creating, editing), stories on them (creating, editing) and social interaction (commenting, sharing).
 
-\subsubsection{Backend}
-The key functionality of the server is to support the features of the client by retrieving the data from external services. The server shall expose an API for accessing those items (\wallentityp, stories, images) for access from the frontend.
+\subsubsection{Server}
+The key functionality of the server is to support the features of the client by retrieving the data from external services. The server shall expose an API for accessing those items (\wallentityp, stories, images) for access from the client.
 
 \subsection{User characteristics} \label{sec:req_user_characteristics}
 As this app shall be accessible to open public, we can neither anticipate users' educational level, nor experience, nor technical expertise. We can however assume basic computer literacy.
@@ -1039,7 +1039,7 @@ See chapter \ref{sec:req_usability} for requirements on usability.
 This section lists the design constraints prescribed by the customer, such as use of specific languages, toolkits or frameworks.
 
 \subsubsection{HTML5 use}
-Since use on many different devices and platforms is expected and necessary, the customer requested that the frontend would be a mobile application. As the system is crowdsourced and heavily relies on users, it it necessary that it interacts very well with the users and is visually appealing. Also, for reasons stated in \ref{sec:req_unavailability_of_connection}, local storage is necessary to enable off-line mode (in the future). This implies the use of cutting-edge technologies for the development.
+Since use on many different devices and platforms is expected and necessary, the customer requested that the client would be a mobile application. As the system is crowdsourced and heavily relies on users, it it necessary that it interacts very well with the users and is visually appealing. Also, for reasons stated in \ref{sec:req_unavailability_of_connection}, local storage is necessary to enable off-line mode (in the future). This implies the use of cutting-edge technologies for the development.
 
 For this reason, customer suggests that the application will be developed in HTML5.
 
@@ -1127,7 +1127,7 @@ These scenarios shall evaluate, whether the application suits the needs of the a
 
 \section{Use cases}
 
-According to \cite{usecases}, a use case is a description of actions being performed with the software system. In our case, the use cases are indifferent from test cases of frontend functional requirements that are specified later on in section \ref{sec:fe-test-cases}. We decided not to duplicate the information within this report.
+According to \cite{usecases}, a use case is a description of actions being performed with the software system. In our case, the use cases are indifferent from test cases of client functional requirements that are specified later on in section \ref{sec:fe-test-cases}. We decided not to duplicate the information within this report.
 
 As there is just few requirements left after all the changes made, we are presenting all of them in just one use case diagram. Their textual description can be found in functional requirements tables above, in section \ref{sec:functionalreq}.
 
@@ -1225,7 +1225,7 @@ By keeping the state local, the complexity of state machines with multiple parti
 
 \section{Architecture and design patterns}
 
-The overall architecture for the whole system is client-server, where the handheld device or the web browser requests information from the server, which in turn returns it. The advantage of using client-server is that multiple devices might access the same information without needing to download an entire library every time someone updates some information. Using client-server instead of peer-to-peer simplifies keeping the integrity of the information and securing the users data.
+The overall architecture for the whole system is client-server, where the handheld device or the web browser requests information from the server, which in turn returns it. The advantage of using client-server architecture is that multiple devices might access the same information without needing to download an entire library every time someone updates some information. Using client-server instead of peer-to-peer simplifies keeping the integrity of the information and securing the users data.
 
 \subsection{Client}
 On the client, Model View Controller will be used in order to separate concerns and keep the code as clean as possible. By dividing user interface, data and logic in different blocks, we increase modifiability and maintainability as well as increasing the speed of development as subdividing tasks will be easier.
@@ -1244,7 +1244,7 @@ The server will be fully stateless which will help on scalability and availabili
 \subsubsection{Logical view}
 This view follows the description in section ~\ref{subsec:logicalViewDescription}
 
-The logical view is quite simple due to the fact that Play Framework is doing most of the heavy lifting. Each logical entity has its own controller/model pair that handles fetching, storing and modifying the relevant information.
+The logical view is quite simple due to the fact that Play Framework is doing most of the heavy lifting. Each logical entity has its own controller, retriever and model that together handle fetching the data.
 
 \begin{figure}[H]
       \centering
@@ -1284,11 +1284,12 @@ The retriever for places from Flickr has some additional functionality in order 
 \subsubsection{Development view}
 This view follows the description in section ~\ref{subsec:developmentViewDescription}
 
-DATA STRUCTURE indicates where and in which format the data is to be stored.
+CONTROLLERS represents the classes that handles the requests and returns data to the client.
 
-MODELS represents the classes that will be used to work with the database from the rest of the backend code. The models will abstract away the database, so that it can be changed in its entirety if needed without changing any other code.
+MODELS represents the classes that will be used for data transport and communication.
 
-CONTROLLERS represents the classes that handles the requests and returns data to the client or sends it to the model for storage in the database.
+RETREIEVERS represents the classes used to retrieve data from external services.
+
 
 \begin{figure}[H]
       \centering
@@ -1557,7 +1558,7 @@ Another important testing approach used in this project is \emph{white-box testi
 
 \section{Design of test plan}
 
-The form and content of this test document is based on the IEEE Standard 829 \cite{ieee829}. According to the definition of a test plan in the standard: ``The test plan prescribes the scope, approach, resources, and schedule of the testing activities. It identifies the items to be tested, the features to be tested, the testing tasks to be performed, the personnel responsible for each task, and the risks associated with the plan''.
+The form and content of this test document is based on the \emph{IEEE Standard 829} \cite{ieee829}. According to the definition of a test plan in the standard: ``The test plan prescribes the scope, approach, resources, and schedule of the testing activities. It identifies the items to be tested, the features to be tested, the testing tasks to be performed, the personnel responsible for each task, and the risks associated with the plan''.
 
 \subsection{Test plan identifier}
 Let this test plan to be identified as ``VirtualWall\_TESTPLAN\_1''.
@@ -1566,11 +1567,11 @@ Let this test plan to be identified as ``VirtualWall\_TESTPLAN\_1''.
 The \systemname software system consists of two subsystems:
 
 \begin{itemize}
-    \item backend / server
-    \item frontend / client (mobile / web application)
+    \item server
+    \item client (mobile application)
 \end{itemize}
 
-The backend is the part of the system which retrieves the data from other services and serves the frontend with the data on demand.
+The server is the part of the system which retrieves the data from other services and serves the client with the data on demand.
 
 The client is the part of the system that presents the data to the user and that directly interacts with the user.
 
@@ -1616,7 +1617,7 @@ The documents to be delivered shall include:
 \end{itemize}
 
 \subsection{Environmental needs}
-Backend subsystem shall be deployed on a server running JRE 1.6 and able to run Play Framework.
+Server subsystem shall be deployed on a server running JRE 1.6 and able to run Play Framework.
 
 Alternative setup is deploying the server to some cloud computing platform like \emph{Heroku}, \emph{RedHat OpenShift}, \emph{Google AppEngine}, or similar. 
 
@@ -1746,7 +1747,7 @@ This level of tests is concerned about testing the correctness of implementation
 
 \paragraph{Test Environment}
 
-To perform the tests in the unit level, we need to be able to run the unit within its subsystem. For testing units in the backend we obviously need the backend deployed on a server, etc.
+To perform the tests in the unit level, we need to be able to run the unit within its subsystem. For testing units in the server we obviously need the server to be deployed, etc.
 
 \paragraph{Completion Criteria}
 
@@ -1761,11 +1762,11 @@ This level of testing uses white-box testing since it is very important to know 
 
 \paragraph{Objective}
 
-This level of tests is concerned about integration of different subsystems, in this case the frontend and the backend. The purpose of tests in this level is to test the connection and cooperation of these two subsystems.
+This level of tests is concerned about integration of different subsystems, in this case the client and the server. The purpose of tests in this level is to test the connection and cooperation of these two subsystems.
 
 \paragraph{Test Environment}
 
-To perform the tests in the integration level, we need both the working backend deployed on a server and a smartphone with the frontend application.
+To perform the tests in the integration level, we need both the working server deployed, and a smartphone with the client application running.
 
 \paragraph{Completion Criteria}
 
@@ -1786,9 +1787,9 @@ These tests should verify whether each function is implemented correctly and doe
 
 \paragraph{Test environment}
 
-For testing functionality of the backend, it must obviously be deployed on the server and running.
+For testing functionality of the server, it must obviously be deployed and running.
 
-For testing the functionality of the frontend application, it must be running on a smartphone and connected to the Internet.
+For testing the functionality of the client application, it must be running on a smartphone and connected to the Internet.
 
 \paragraph{Completion criteria}
 
@@ -1811,7 +1812,7 @@ Tests of this level are defined beforehand with a set of scenarios so the vendor
 
 The test environment for this level should be as close as possible to the real-world like environment used in the production.
 
-In our case, this means we need both the working backend deployed on a server and a smartphone with the frontend application.
+In our case, this means we need both the working server deployed and a smartphone with the client application.
 
 
 \paragraph{Completion Criteria}
@@ -1840,7 +1841,7 @@ Test scenarios featured in this section are designed to test the quality attribu
     Source of stimulus   & Developer                                   \\ \hline
     Stimulus             & Integrate new external service              \\ \hline
     Environment          & Design time                                 \\ \hline
-    Artefact             & Backend                                     \\ \hline
+    Artefact             & Server                                      \\ \hline
     Response             & New feature added                           \\ \hline
     Response measure     & Done in 5 hours                             \\ \hline
   \end{tabular}
@@ -1854,7 +1855,7 @@ Test scenarios featured in this section are designed to test the quality attribu
     Source of stimulus   & Developer                                   \\ \hline
     Stimulus             & Build application for a new platform        \\ \hline
     Environment          & Design time                                 \\ \hline
-    Artefact             & Frontend                                    \\ \hline
+    Artefact             & Client                                      \\ \hline
     Response             & Application built                           \\ \hline
     Response measure     & Done in 5 hours                             \\ \hline
   \end{tabular}
@@ -1864,11 +1865,11 @@ Test scenarios featured in this section are designed to test the quality attribu
 
 \subsection{Functional requirements test cases}
 
-This system is featuring test cases testing the functional reuirements. These are divided into two groups by the subsystem they are testing, i.e. either backend or frontend.
+This system is featuring test cases testing the functional requirements. These are divided into two groups by the subsystem they are testing, i.e. either server or client.
+f
+\subsubsection{Server test cases}
 
-\subsubsection{Backend test cases}
-
-Test cases in \ref{tab:TCF2.2BE1}, \ref{tab:TCF3.2BE1} and \ref{tab:TCF4.1BE1} are testing the server backend part of the system. These are to be performed as white-box tests by the developers, so they can identify possible problems. This is not a function to be used directly by users.
+Test cases in \ref{tab:TCF2.2BE1}, \ref{tab:TCF3.2BE1} and \ref{tab:TCF4.1BE1} are testing the server server part of the system. These are to be performed as white-box tests by the developers, so they can identify possible problems. This is not a function to be used directly by users.
 
 \begin{table}
   \begin{tabular}{| p{3cm} | p{9.5cm} |} \hline 
@@ -1880,7 +1881,7 @@ Test cases in \ref{tab:TCF2.2BE1}, \ref{tab:TCF3.2BE1} and \ref{tab:TCF4.1BE1} a
                               \item Flickr is up.
                               \item There are some photos posted to the StedR group on Flickr that have any kind of
                                Creative Commons licence, set location and are public and visible through the Flickr API.
-                              \item Server backend is successfully deployed at \texttt{http://stedr.herokuapp.com}
+                              \item Server is successfully deployed at \texttt{http://stedr.herokuapp.com}
                             \end{enumerate} \\ \hline 
 
     Test description      & Manually check in browser whether the method returns the data as expected.
@@ -1913,7 +1914,7 @@ Test cases in \ref{tab:TCF2.2BE1}, \ref{tab:TCF3.2BE1} and \ref{tab:TCF4.1BE1} a
                               \item Flickr is up.
                               \item Digitalt Fortalt is up.
                               \item We have a placeId from the \texttt{places.json} file (for example \texttt{10671243644})
-                              \item Server backend is successfully deployed at \texttt{http://stedr.herokuapp.com}
+                              \item Server is successfully deployed at \texttt{http://stedr.herokuapp.com}
                             \end{enumerate} \\ \hline 
 
     Test description      & Manually check in browser whether the method returns the data as expected.
@@ -1943,7 +1944,7 @@ Test cases in \ref{tab:TCF2.2BE1}, \ref{tab:TCF3.2BE1} and \ref{tab:TCF4.1BE1} a
     Feature               & Server exposes a method for retrieving images for a particular tag in the specified JSON format. \\ \hline 
     Preconditions         & \begin{enumerate}
                               \item Instagram is up.
-                              \item Server backend is successfully deployed at \texttt{http://stedr.herokuapp.com}
+                              \item Server is successfully deployed at \texttt{http://stedr.herokuapp.com}
                             \end{enumerate} \\ \hline 
 
     Test description      & Manually check in browser whether the method returns the data as expected.
@@ -1965,28 +1966,28 @@ Test cases in \ref{tab:TCF2.2BE1}, \ref{tab:TCF3.2BE1} and \ref{tab:TCF4.1BE1} a
   \label{tab:TCF4.1BE1}
 \end{table}
 
-\subsubsection{Frontend test cases} \label{sec:fe-test-cases}
+\subsubsection{Client test cases} \label{sec:fe-test-cases}
 
-Test cases in \ref{tab:TCF2.2FE1}, \ref{tab:TCF2.2FE2}, \ref{tab:TCF3.2FE1}, \ref{tab:TCF3.2FE2}, \ref{tab:TCF3.3FE1} and \ref{tab:TCF4.1FE1} are testing the frontend part of the system. These are to be performed as black-box tests by testers, that do not need any special training or knowledge. These simulate how is the system going to be used in production, i.e. by real users.
+Test cases in \ref{tab:TCF2.2FE1}, \ref{tab:TCF2.2FE2}, \ref{tab:TCF3.2FE1}, \ref{tab:TCF3.2FE2}, \ref{tab:TCF3.3FE1} and \ref{tab:TCF4.1FE1} are testing the client part of the system. These are to be performed as black-box tests by testers, that do not need any special training or knowledge. These simulate how is the system going to be used in production, i.e. by real users.
 
 \begin{table}
   \begin{tabular}{| p{3cm} | p{9.5cm} |} \hline 
     TC Title              & Places map overview \\ \hline 
     TC Identification     & TC-F2.2-FE-1 \\ \hline 
     Requirement           & F2.2 \\ \hline 
-    Feature               & Frontend application shows a map overview with places represented as pins. \\ \hline 
+    Feature               & Client application shows a map overview with places represented as pins. \\ \hline 
     Preconditions         & \begin{enumerate}
                               \item Flickr is up.
                               \item There are some photos posted to the StedR group on Flickr that have any kind of
                                Creative Commons license, set location and are public and visible through the Flickr API.
-                              \item Server backend is successfully deployed at \texttt{http://stedr.herokuapp.com} and returns data in expected format.
-                              \item Frontend app is successfully installed. Device connected to the Internet.
+                              \item Server is successfully deployed at \texttt{http://stedr.herokuapp.com} and returns data in expected format.
+                              \item Client application is successfully installed. Device connected to the Internet.
                             \end{enumerate} \\ \hline 
 
     Test description      & See that the pins appear on the map in the application.
 
                             \begin{enumerate}
-                              \item Open the frontend app.
+                              \item Open the client application.
                               \item Watch out for coloured pins on the main map view.
                             \end{enumerate} \\ \hline 
     Expected result       & \begin{enumerate}
@@ -2007,19 +2008,19 @@ Test cases in \ref{tab:TCF2.2FE1}, \ref{tab:TCF2.2FE2}, \ref{tab:TCF3.2FE1}, \re
     TC Title              & View place details \\ \hline 
     TC Identification     & TC-F2.2-FE-2 \\ \hline 
     Requirement           & F2.2 \\ \hline 
-    Feature               & Frontend application shows detail of a place. \\ \hline 
+    Feature               & Client application shows detail of a place. \\ \hline 
     Preconditions         & \begin{enumerate}
                               \item Flickr is up.
                               \item There are some photos posted to the StedR group on Flickr that have any kind of
                                Creative Commons license, set location and are public and visible through the Flickr API.
-                              \item Server backend is successfully deployed at \texttt{http://stedr.herokuapp.com} and returns data in expected format.
-                              \item Frontend app is successfully installed. Device connected to the Internet.
+                              \item Server is successfully deployed at \texttt{http://stedr.herokuapp.com} and returns data in expected format.
+                              \item Client application is successfully installed. Device connected to the Internet.
                             \end{enumerate} \\ \hline 
 
     Test description      & See detail of a place (large picture, author, etc).
 
                             \begin{enumerate}
-                              \item Open the frontend app.
+                              \item Open the client application.
                               \item Watch out for coloured pins on the main map view.
                               \item Click on a pin. Bubble with place name and thumbnail appears.
                               \item Click on a bubble that appeared.
@@ -2042,20 +2043,20 @@ Test cases in \ref{tab:TCF2.2FE1}, \ref{tab:TCF2.2FE2}, \ref{tab:TCF3.2FE1}, \re
     TC Title              & View stories overview for a place \\ \hline 
     TC Identification     & TC-F3.2-FE-1 \\ \hline 
     Requirement           & F3.2 \\ \hline 
-    Feature               & Frontend application shows a list of stories for a place. \\ \hline 
+    Feature               & Client application shows a list of stories for a place. \\ \hline 
     Preconditions         & \begin{enumerate}
                               \item Flickr is up.
                               \item There are some photos posted to the StedR group on Flickr that have any kind of
                                Creative Commons license, set location and are public and visible through the Flickr API.
-                              \item Server backend is successfully deployed at \texttt{http://stedr.herokuapp.com} and returns data in expected format.
-                              \item Frontend app is successfully installed. Device connected to the Internet.
+                              \item Server is successfully deployed at \texttt{http://stedr.herokuapp.com} and returns data in expected format.
+                              \item Client app is successfully installed. Device connected to the Internet.
                               \item There are stories in Digitalt Fortalt related to the place.
                             \end{enumerate} \\ \hline 
 
     Test description      & See detail of a place (large picture, author, etc).
 
                             \begin{enumerate}
-                              \item Open the frontend app.
+                              \item Open the client application.
                               \item Watch out for coloured pins on the main map view.
                               \item Click on a pin. Bubble with place name and thumbnail appears.
                               \item Click on a bubble that appeared. Detail of place opens.
@@ -2079,20 +2080,20 @@ Test cases in \ref{tab:TCF2.2FE1}, \ref{tab:TCF2.2FE2}, \ref{tab:TCF3.2FE1}, \re
     TC Title              & View story detail \\ \hline 
     TC Identification     & TC-F3.2-FE-2 \\ \hline 
     Requirement           & F3.2 \\ \hline 
-    Feature               & Frontend application shows a detail of a story. \\ \hline 
+    Feature               & Client application shows a detail of a story. \\ \hline 
     Preconditions         & \begin{enumerate}
                               \item Flickr is up.
                               \item There are some photos posted to the StedR group on Flickr that have any kind of
                                Creative Commons license, set location and are public and visible through the Flickr API.
-                              \item Server backend is successfully deployed at \texttt{http://stedr.herokuapp.com} and returns data in expected format.
-                              \item Frontend app is successfully installed. Device connected to the Internet.
+                              \item Server is successfully deployed at \texttt{http://stedr.herokuapp.com} and returns data in expected format.
+                              \item Client application is successfully installed. Device connected to the Internet.
                               \item There are stories in Digitalt Fortalt related to the place.
                             \end{enumerate} \\ \hline 
 
     Test description      & See detail of a place (large picture, author, etc).
 
                             \begin{enumerate}
-                              \item Open the frontend app.
+                              \item Open the client application.
                               \item Watch out for coloured pins on the main map view.
                               \item Click on a pin. Bubble with place name and thumbnail appears.
                               \item Click on a bubble that appeared. Detail of place opens.
@@ -2117,20 +2118,20 @@ Test cases in \ref{tab:TCF2.2FE1}, \ref{tab:TCF2.2FE2}, \ref{tab:TCF3.2FE1}, \re
     TC Title              & Comment on story using Twitter \\ \hline 
     TC Identification     & TC-F3.3-FE-1 \\ \hline 
     Requirement           & F3.3 \\ \hline 
-    Feature               & Frontend application shows a detail of a story. \\ \hline 
+    Feature               & Client application shows a detail of a story. \\ \hline 
     Preconditions         & \begin{enumerate}
                               \item Flickr is up.
                               \item There are some photos posted to the StedR group on Flickr that have any kind of
                                Creative Commons license, set location and are public and visible through the Flickr API.
-                              \item Server backend is successfully deployed at \texttt{http://stedr.herokuapp.com} and returns data in expected format.
-                              \item Frontend app is successfully installed. Device connected to the Internet.
+                              \item Server is successfully deployed at \texttt{http://stedr.herokuapp.com} and returns data in expected format.
+                              \item Client application is successfully installed. Device connected to the Internet.
                               \item There are stories in Digitalt Fortalt related to the place.
                             \end{enumerate} \\ \hline 
 
     Test description      & See detail of a place (large picture, author, etc).
 
                             \begin{enumerate}
-                              \item Open the frontend app.
+                              \item Open the client application
                               \item Watch out for coloured pins on the main map view.
                               \item Click on a pin. Bubble with place name and thumbnail appears.
                               \item Click on a bubble that appeared. Detail of place opens.
@@ -2159,20 +2160,20 @@ Test cases in \ref{tab:TCF2.2FE1}, \ref{tab:TCF2.2FE2}, \ref{tab:TCF3.2FE1}, \re
     TC Title              & View pictures for a place \\ \hline 
     TC Identification     & TC-F4.1-FE-1 \\ \hline 
     Requirement           & F4.1 \\ \hline 
-    Feature               & Frontend application shows pictures for a place. \\ \hline 
+    Feature               & Client application shows pictures for a place. \\ \hline 
     Preconditions         & \begin{enumerate}
                               \item Flickr is up.
                               \item There are some photos posted to the StedR group on Flickr that have any kind of
                                Creative Commons license, set location and are public and visible through the Flickr API.
-                              \item Server backend is successfully deployed at \texttt{http://stedr.herokuapp.com} and returns data in expected format.
-                              \item Frontend app is successfully installed. Device connected to the Internet.
+                              \item Server is successfully deployed at \texttt{http://stedr.herokuapp.com} and returns data in expected format.
+                              \item Client application is successfully installed. Device connected to the Internet.
                               \item There are stories on Instagram related to the place. %FIXME related how?
                             \end{enumerate} \\ \hline 
 
     Test description      & See detail of a place (large picture, author, etc).
 
                             \begin{enumerate}
-                              \item Open the frontend app.
+                              \item Open the Client application.
                               \item Watch out for coloured pins on the main map view.
                               \item Click on a pin. Bubble with place name and thumbnail appears.
                               \item Click on a bubble that appeared. Detail of place opens.
@@ -2195,11 +2196,11 @@ Test cases in \ref{tab:TCF2.2FE1}, \ref{tab:TCF2.2FE2}, \ref{tab:TCF3.2FE1}, \re
 
 \subsection{Code inspection result}
 
-\subsubsection{Backend}
+\subsubsection{Server}
 
-Code inspection found the backend to be \emph{structured, clean, elegant, with no apparent race conditions.}.
+Code inspection found the server code to be \emph{structured, clean, elegant, with no apparent race conditions.}.
 
-\subsubsection{Frontend}
+\subsubsection{Client}
 
 %FIXME SIMON: perform inspection
 
@@ -2320,7 +2321,7 @@ The customer wanted to focus more on the use of filtering on tags and metadata.
 \end{figure}
 
 \subparagraph{Look at \wallentityp}
-The main function of the system is to access a \wallentitys and browse user created information, that could be stories, pictures, links to other resources, etc. Two possible solutions were suggested; a \wallentitys that displayed both user created stories and information from multiple data sources as in Figure~\ref{fig:phases_sprint1_uiVersionOneSimpleWall}, for instance, Instagram, Wikipedia, YouTube, Twitter, Google, Flickr, etc., and a more simple version where the focus was on user created data, thus stories and pictures, as in Figure~\ref{fig:phases_sprint1_uiVersionOneMultipleDataSoruces}. %FIXME system to frontend
+The main function of the client is to access a \wallentitys and browse user created information, that could be stories, pictures, links to other resources, etc. Two possible solutions were suggested; a \wallentitys that displayed both user created stories and information from multiple data sources as in Figure~\ref{fig:phases_sprint1_uiVersionOneSimpleWall}, for instance, Instagram, Wikipedia, YouTube, Twitter, Google, Flickr, etc., and a more simple version where the focus was on user created data, thus stories and pictures, as in Figure~\ref{fig:phases_sprint1_uiVersionOneMultipleDataSoruces}. 
 
 The idea of using multiple data sources came from the Danish mobile application Kulturarv (both mentioned in \ref{sec:prestudy_existing_apps}), which blends data from a main database with other geolocation data sources like Instagram, Flickr, Wikipedia and Twitter. The customer had not thought about the idea of using multiple data sources, and were therefore quite surprised by the solution. The group and customer agreed that the use of multiple data sources were out of the scope, and decided to focus on the more simple version. The customer liked the use of tabs for navigation within a \wallentitys.
 
@@ -2440,7 +2441,7 @@ In this sprint the requirements for the overall workings of the system seemed to
 
 \subsubsection{Client}
 \paragraph{Sync client}
-Titanium Alloy is backend agnostic. This means that most of the code does not know, nor need to know, what kind of backend is running. This is accomplished by utilizing an abstraction layer in Alloy called Sync. Sync provides an unified API that can be implemented for each type of backend.\\
+Titanium Alloy is server agnostic. This means that most of the code does not know, nor need to know, what kind of server is running. This is accomplished by utilizing an abstraction layer in Alloy called Sync. Sync provides an unified API that can be implemented for each type of server.\\
 The API has the following methods:
 
 \begin{table}[H]
@@ -2745,7 +2746,7 @@ according to popularity, topics and other metadata (e.g. duration)
 \end{itemize}
 The tool should be available for PC, tablet and mobile allowing experience at home and on site. The assignment should specify a system architecture that fits this requirement and select technologies that simplify development on several platforms. The assignment will realized the tool for one device type, preferably tablet.
 
-The tool thinglink (http://www.thinglink.com) supports some of the proposed functionality, but we wish to go further. In particular, the dynamic generation of a wall is needed for the filtering of stories. Our ultimate goal is to connect the wall with the personalization back-end that will be developed in TAG-CLOUD allowing to provide recommendations to the users.
+The tool thinglink (http://www.thinglink.com) supports some of the proposed functionality, but we wish to go further. In particular, the dynamic generation of a wall is needed for the filtering of stories. Our ultimate goal is to connect the wall with the personalization backend that will be developed in TAG-CLOUD allowing to provide recommendations to the users.
 
 More information: As an example, we have started to develop a draft wall for Nidarosdomen using thinglink (http://www.thinglink.com/scene/397385278152507392). A presentation is also available at https://www.dropbox.com/l/GjCOoSqHoAmMEGg6P0axxa %FIXME links
 
@@ -2757,8 +2758,8 @@ Additional notes: All documentation (report and code comments) should be written
 \centering
 \begin{tabular}{| l | l | l | l | l | l | l | l |}
     \hline
-    Group total         &          &          &          &          &             &             &                 \\ \hline                        
-    Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum    \\ \hline
+    Group total         &          &          &          &          &             &             &              \\ \hline                        
+    Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum \\ \hline
     Lectures/self study & 48:15    & 2:45     & 37:45    & 24:00    & 0           & 0           & 112:45       \\ \hline
     Admin               & 35:30    & 30:00    & 23:50    & 32:15    & 0           & 0           & 121:35       \\ \hline
     Planning            & 26:05    & 0:00     & 3:00     & 0:00     & 0           & 0           & 29:05        \\ \hline
@@ -2778,8 +2779,8 @@ Additional notes: All documentation (report and code comments) should be written
 \centering
 \begin{tabular}{| l | l | l | l | l | l | l | l |}
     \hline
-    Rogstad             &          &          &          &          &             &             &                 \\ \hline                        
-    Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum    \\ \hline
+    Rogstad             &          &          &          &          &             &             &              \\ \hline                        
+    Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum \\ \hline
     Lectures/self study & 12:15    & 0:00     & 14:00    & 4:00     & 0           & 0           & 30:15        \\ \hline
     Admin               & 13:45    & 8:45     & 6:45     & 7:45     & 0           & 0           & 37:00        \\ \hline
     Planning            & 0:00     & 0:00     & 0:00     & 0:00     & 0           & 0           & 0:00         \\ \hline
@@ -2799,8 +2800,8 @@ Additional notes: All documentation (report and code comments) should be written
 \centering
 \begin{tabular}{| l | l | l | l | l | l | l | l |}
     \hline
-    Frøystad            &          &          &          &          &             &             &                 \\ \hline            
-    Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum    \\ \hline
+    Frøystad            &          &          &          &          &             &             &              \\ \hline            
+    Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum \\ \hline
     Lectures/self study & 15:30    & 0:30     & 10:45    & 4:00     & 0           & 0           & 30:45        \\ \hline
     Admin               & 14:15    & 16:15    & 13:35    & 17:00    & 0           & 0           & 61:05        \\ \hline
     Planning            & 24:05    & 0:00     & 3:00     & 0:00     & 0           & 0           & 27:05        \\ \hline
@@ -2820,8 +2821,8 @@ Additional notes: All documentation (report and code comments) should be written
 \centering
 \begin{tabular}{| l | l | l | l | l | l | l | l |}
     \hline
-    Stastny             &          &          &          &          &             &             &                 \\ \hline          
-    Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum    \\ \hline
+    Stastny             &          &          &          &          &             &             &              \\ \hline          
+    Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum \\ \hline
     Lectures/self study & 8:15     & 0:00     & 2:00     & 4:00     & 0           & 0           & 14:15        \\ \hline
     Admin               & 4:45     & 3:30     & 3:30     & 4:00     & 0           & 0           & 15:45        \\ \hline
     Planning            & 0:00     & 0:00     & 0:00     & 0:00     & 0           & 0           & 0:00         \\ \hline
@@ -2841,8 +2842,8 @@ Additional notes: All documentation (report and code comments) should be written
 \centering
 \begin{tabular}{| l | l | l | l | l | l | l | l |}
     \hline
-    Nergård             &          &          &          &          &             &             &                 \\ \hline         
-    Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum    \\ \hline
+    Nergård             &          &          &          &          &             &             &              \\ \hline         
+    Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum \\ \hline
     Lectures/self study & 12:15    & 2:15     & 11:00    & 12:00    & 0           & 0           & 37:30        \\ \hline
     Admin               & 2:45     & 1:30     & 0:00     & 3:30     & 0           & 0           & 7:45         \\ \hline
     Planning            & 2:00     & 0:00     & 0:00     & 0:00     & 0           & 0           & 2:00         \\ \hline
@@ -2931,7 +2932,7 @@ try {
 \end{quotation}
 
 \section{Coding standard for client}
-The following coding standard for JavaScript is taken directly from Titaniums coding standard\cite{titaniumCodingStandard}.
+The following coding standard for JavaScript is taken directly from Titanium's coding standard\cite{titaniumCodingStandard}.
 
 \begin{quotation}\noindent
 \subsection{Avoid the global scope}
@@ -2969,7 +2970,7 @@ var someFunction = function() {
 };
 \end{lstlisting}
 
-Global event listeners include those associated with \texttt{Ti.App}, \texttt{Ti.Geolocation}, \texttt{Ti.Gesture}, and so forth. The same problem is possible with non-global event listeners, like those you associate with a UI element. If that UI element remains valid in memory, any event listeners – and the objects they refer to – must also be kept in memory.
+Global event listeners include those associated with \texttt{Ti.App}, \texttt{Ti.Geolocation}, \texttt{Ti.Gesture}, and so forth. The same problem is possible with non-global event listeners, like those you associate with a UI element. If that UI element remains valid in memory, any event listeners (and the objects they refer to) must also be kept in memory.
 
 The above example is an anti-pattern that will eventually consume the app's available memory. It's important to note that this is a common anti-pattern that developers employ in browser-based environments too, where it causes the same result, so it is not unique to Titanium.
 
@@ -3365,38 +3366,24 @@ TODO
 
 \chapter{Requirements evolution}\label{chap:req_history}
 
-During development of this project, we dealt with constant changes in
-requirements from the customer side. This certainly slowed down the
-development as we needed to rework some of the features as well as
-implemented some code that was not used in the the final product.
+During development of this project, we dealt with constant changes in requirements from the customer side. This certainly slowed down the development as we needed to rework some of the features as well as implemented some code that was not used in the the final product.
 
 \section{Original requirements}\label{original-requirements}
 
-The first draft of requirements was based on information we got from the
-project description supplied by the customer and from our first meeting.
+The first draft of requirements was based on information we got from the project description supplied by the customer and from our first meeting.
 
-Originally, the goal of the project was to develop a prototype backend
-server and a frontend application for one target device (tablet was
-suggested for this purpose).
+Originally, the goal of the project was to develop a prototype server and a client application for one target device (tablet was suggested for this purpose).
 
-The functional requirements as described in the document handed in as a
-project description by customer:
+The functional requirements as described in the document handed in as a project description by customer:
 
 \begin{itemize}
-  \item Managing \wallentityp: creation \& deletion; retrieval according to
-  location, popularity, topics and other metadata (e.g.~author)
-  \item Managing stories: adding stories through a click on a specific place
-  on the \wallentitys, filtering stories according to popularity, topics and
-  other metadata (e.g.~duration)
-  \item Social interaction: sharing \wallentityp (possibly stories) for editing,
-  adding comments to \wallentityp and stories.
-  \item Promotion through social networks: sharing \wallentityp and stories through
-  social networks (e.g.~Facebook, Twitter)
+  \item Managing \wallentityp: creation \& deletion; retrieval according to location, popularity, topics and other metadata (e.g.~author)
+  \item Managing stories: adding stories through a click on a specific place on the \wallentitys, filtering stories according to popularity, topics and other metadata (e.g.~duration)
+  \item Social interaction: sharing \wallentityp (possibly stories) for editing, adding comments to \wallentityp and stories.
+  \item Promotion through social networks: sharing \wallentityp and stories through social networks (e.g.~Facebook, Twitter)
 \end{itemize}
 
-From this description, we carried out first draft of our requirements
-document. The sections below state functional (grouped by topic) and
-non-functional requirements from this iteration.
+From this description, we carried out first draft of our requirements document. The sections below state functional (grouped by topic) and non-functional requirements from this iteration.
 
 \subsection{Functional: Users}\label{functional-users}
 
@@ -3416,65 +3403,51 @@ non-functional requirements from this iteration.
   \item F2.1.2 System shall let owner delete a \wallentitys
   \item F2.2 System shall let users retrieve and view \wallentityp
   \item F2.2.1 System shall let users to filter \wallentityp by popularity
-  \item F2.2.2 System shall let users to filter \wallentityp by topics (user-defined
-  tags)
+  \item F2.2.2 System shall let users to filter \wallentityp by topics (user-defined tags)
   \item F2.2.3 System shall let users to filter \wallentityp by metadata
   \item F2.2.4 System shall let users to filter \wallentityp by story authors
   \item F2.3 System shall enable social interaction upon \wallentityp
   \item F2.3.1 System shall let users edit \wallentityp collaboratively in groups
   \item F2.3.2 System shall let registered users comment on \wallentityp
-  \item F2.4 System shall let users share \wallentitys over social networks (facebook,
-  twitter).
+  \item F2.4 System shall let users share \wallentitys over social networks (facebook, twitter).
 \end{itemize}
 
 \subsection{Functional: Stories}\label{functional-stories}
 
 \begin{itemize}
   \item F3.1 System shall enable management of stories on \wallentityp
-  \item F3.1.1 System shall let registered users add story on a \wallentitys by
-  clicking on a desired place on the \wallentitys
-  \item F3.1.2 System shall enable the stories to contain text, hyperlinks,
-  video, pictures, audio
+  \item F3.1.1 System shall let registered users add story on a \wallentitys by clicking on a desired place on the \wallentitys
+  \item F3.1.2 System shall enable the stories to contain text, hyperlinks, video, pictures, audio
   \item F3.2 System shall let users retrieve and view stories
   \item F3.2.1 System shall let users to filter stories by popularity
-  \item F3.2.2 System shall let users to filter stories by topics (user
-  defined tags)
-  \item F3.2.3 System shall let users to filter stories by metadata (author,
-  media duration)
+  \item F3.2.2 System shall let users to filter stories by topics (user defined tags)
+  \item F3.2.3 System shall let users to filter stories by metadata (author, media duration)
   \item F3.3 System shall enable social interaction upon stories
   \item F3.3.1 System shall let users comment on stories
-  \item F3.4 System shall let users share stories over social networks
-  (facebook, twitter).
+  \item F3.4 System shall let users share stories over social networks (facebook, twitter).
 \end{itemize}
 
 \section{Changes - Iteration 1}\label{changes---iteration-1}
 
-After the first few meetings with the customer, some necessary changes
-were carried out.
+After the first few meetings with the customer, some necessary changes were carried out.
 
-Customer decided that offline mode does not need to be implemented as
-this is a prototype of the application and it should be simple, rapidly
-developed and used rather as a proof of concept than production-ready.
+Customer decided that offline mode does not need to be implemented as this is a prototype of the application and it should be simple, rapidly developed and used rather as a proof of concept than production-ready.
 
 Customer also requested adding two functional requirements concerning
 \wallentityp and stories:
 
 \begin{itemize}
   \item F2.1.3 System shall enable owner to add contributors to \wallentitys
-  \item F2.2.5 System shall get auto-fill suggestions when filtering upon
-  topics (user defined tags)
+  \item F2.2.5 System shall get auto-fill suggestions when filtering upon topics (user defined tags)
   \item F2.2.6 System shall show user a list of \wallentityp that feature his stories
-  \item F3.2.4 System shall get auto-fill suggestions when filtering upon
-  topics (user defined tags)
+  \item F3.2.4 System shall get auto-fill suggestions when filtering upon topics (user defined tags)
 \end{itemize}
 
 \section{Changes - Iteration 2}\label{changes---iteration-2}
 
-Many issues raised when analysing the requirements concerning users and
-groups, the owner relationships between users, groups and \wallentityp.
+Many issues raised when analysing the requirements concerning users and groups, the owner relationships between users, groups and \wallentityp.
 
-The original concept proposed was proven corrupt and inconsistent.
-Several requirements were dropped for this reason:
+The original concept proposed was proven corrupt and inconsistent. Several requirements were dropped for this reason:
 
 \begin{itemize}
   \item F1.2 System shall enable group management.
@@ -3484,8 +3457,7 @@ Several requirements were dropped for this reason:
   \item F2.3.1 System shall let users edit \wallentityp collaboratively in groups
 \end{itemize}
 
-Issues about spam, illegal and abusive content were raised. Thus new
-funtional requirements were introduced:
+Issues about spam, illegal and abusive content were raised. Thus new functional requirements were introduced:
 
 \begin{itemize}
   \item F3.3.2 System shall notify story author about new comment
@@ -3499,8 +3471,7 @@ instead. These were mentioned in:
 
 \begin{itemize}
   \item F2.2.2 System shall let users to filter \wallentityp by \ldots{}
-  \item F2.2.3 System shall get auto-fill suggestions when filtering upon
-  topics (user defined tags)
+  \item F2.2.3 System shall get auto-fill suggestions when filtering upon topics (user defined tags)
 \end{itemize}
 
 Another requirement was dropped as it was a duplicate of another:
@@ -3509,25 +3480,16 @@ Another requirement was dropped as it was a duplicate of another:
   \item F2.3 System shall enable social interaction upon \wallentityp
 \end{itemize}
 
-Requirement F3.1.1 was rewritten from \emph{System shall let registered
-users add story on a \wallentitys by clicking on a desired place on the \wallentitys} to
-more general \emph{System shall let registered users add story to a
-location} as a particular mechanism of adding \wallentityp is a concern of
-design and implementation and proven to be a subject of change.
+Requirement F3.1.1 was rewritten from \emph{System shall let registered users add story on a \wallentitys by clicking on a desired place on the \wallentitys} to more general \emph{System shall let registered users add story to a location} as a particular mechanism of adding \wallentityp is a concern of design and implementation and proven to be a subject of change.
 
 \section{Changes - Iteration 3}\label{changes---iteration-3}
 
 In an e-mail from customer from October 9, 2013, many crucial changes
 were requested.
 
-Customer came up with the idea, that there is not to be any internal
-database for this system and it should merely retrieve data from other
-systems' APIs, such as Digitalt Fortalt, Flickr.
+Customer came up with the idea, that there is not to be any internal database for this system and it should merely retrieve data from other systems' APIs, such as Digitalt Fortalt, Flickr.
 
-As system does not store any entities in its own database, it is not its
-concern to be in charge of access control. The concept of users and
-owner relationships is therefore abandoned and the rest of functional
-requirements concerning those are dropped:
+As system does not store any entities in its own database, it is not its concern to be in charge of access control. The concept of users and owner relationships is therefore abandoned and the rest of functional requirements concerning those are dropped:
 
 \begin{itemize}
   \item F1.1 System shall let users to register an account within the system.
@@ -3539,39 +3501,28 @@ requirements concerning those are dropped:
   \item F2.2.6 System shall show user a list of \wallentityp that feature his stories
 \end{itemize}
 
-Another suggestion was that stories shall be retrieved from
-Digitalt Fortalt, Storify or a similar service. We
-therefore cannot offer filtering upon attributes that are not present in
-the API of the service we use. Thus, we dropped the requirements:
+Another suggestion was that stories shall be retrieved from Digitalt Fortalt, Storify or a similar service. We therefore cannot offer filtering upon attributes that are not present in the API of the service we use. Thus, we dropped the requirements:
 
 \begin{itemize}
   \item F2.2.1 System shall let users to filter \wallentityp by popularity
   \item F3.2.1 System shall let users to filter stories by popularity.
 \end{itemize}
 
-Also, we are not able to get list of tags in the system a priori to
-getting the stories.
+Also, we are not able to get list of tags in the system a priori to getting the stories.
 
 \begin{itemize}
-  \item F3.2.3 System shall get auto-fill suggestions when filtering upon
-  topics (user defined tags)
+  \item F3.2.3 System shall get auto-fill suggestions when filtering upon topics (user defined tags)
 \end{itemize}
 
-Not storing stories in own database also means user is not going to
-create or edit stories inside our application. The application shall
-only inform the user how to create the story, but the users must do this
-themself. Thus we dropped some other requirements:
+Not storing stories in own database also means user is not going to create or edit stories inside our application. The application shall only inform the user how to create the story, but the users must do this themselves. Thus we dropped some other requirements:
 
 \begin{itemize}
   \item F3.1 System shall enable management of stories on \wallentityp
   \item F3.1.1 System shall let registered users add story to a location
-  \item F3.1.2 System shall enable the stories to contain text, hyperlinks,
-  video, pictures, audio
+  \item F3.1.2 System shall enable the stories to contain text, hyperlinks, video, pictures, audio
 \end{itemize}
 
-As we are not able to store the comments in our database, it was
-suggested to use Twitter to let users comment on stories and drop
-commenting on \wallentityp completely:
+As we are not able to store the comments in our database, it was suggested to use Twitter to let users comment on stories and drop commenting on \wallentityp completely:
 
 \begin{itemize}
   \item F2.3.2 System shall let registered users comment on \wallentityp
@@ -3581,48 +3532,35 @@ commenting on \wallentityp completely:
   \item F3.3.5 System shall enable story author to remove a comment
 \end{itemize}
 
-The missing database brought up the problem where should we get the
-\wallentityp from. For this purpose Flickr was suggested. This also
-means we do not store the \wallentityp any longer and we generate them on the fly,
-which implies dropping other requirements:
+The missing database brought up the problem where should we get the \wallentityp from. For this purpose Flickr was suggested. This also means we do not store the \wallentityp any longer and we generate them on the fly, which implies dropping other requirements:
 
 \begin{itemize}
   \item F2.1 System shall enable management of \wallentityp
   \item F2.1.1 System shall let registered users create a \wallentitys
 \end{itemize}
 
-Another request was that the project name shall change from
-\emph{Virtual Wall} to \emph{StedR}\footnote{Colloquial Norwegian word for ``places''.}. The reason is uncertainty of most people about what the
-term actually means.
+Another request was that the project name shall change from \emph{Virtual Wall} to \emph{StedR}\footnote{Colloquial Norwegian word for ``places''.}. The reason is uncertainty of most people about what the term actually means.
 
 \begin{quote}
-Jeg har merket at folk ikke forstår begrep Virtual Wall. Hva synes dere
-om StedR? - Jacqueline Floch
+Jeg har merket at folk ikke forstår begrep Virtual Wall. Hva synes dere om StedR? - Jacqueline Floch
 \end{quote}
 
-This change as well makes us call \emph{walls} with their new name
-\emph{places} instead. The rest of report is following this. %FIXME whole report changed
+This change as well makes us call \emph{walls} with their new name \emph{places} instead. The rest of report is following this. %FIXME whole report changed
 
 \section{Changes - Iteration 4}\label{changes---iteration-4}
 
 In the following two weeks, the requirements were finalized and settled.
 
-Additional feature of showing photos for tags on Instagram was
-requested.
+Additional feature of showing photos for tags on Instagram was requested.
 
 \begin{itemize}
   \item 4.1 System shall show images tagged with the tag of the particular
   place.
 \end{itemize}
 
-It was agreed that we shall use \emph{Flickr} group called
-\href{http://www.flickr.com/groups/2297124@N25/}{StedR} as a source of
-the ``places''. Each photo added to this group shall appear as a
-``place'' in our application on a place where it was geo-tagged on
-Flickr.
+It was agreed that we shall use \emph{Flickr} group called \href{http://www.flickr.com/groups/2297124@N25/}{StedR} as a source of the ``places''. Each photo added to this group shall appear as a ``place'' in our application on a place where it was geo-tagged on Flickr.
 
-As requirement F3.3.1 was the only child of its parent, we are
-renumbering it and calling it:
+As requirement F3.3.1 was the only child of its parent, we are renumbering it and calling it:
 
 \begin{itemize}
   \item F3.3 System shall let users comment on stories
