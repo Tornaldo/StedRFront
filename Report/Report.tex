@@ -324,7 +324,6 @@ He studied Software Engineering at the Czech Technical University, where he rece
 He has a background in backend development in Java-related technologies in his past and present occupations.
 
 In his spare time, he is an avid bookworm, traveller, and CouchSurfer.
-
 }
 \end{tabular}
 \label{tab:partners_group_simon}
@@ -351,7 +350,7 @@ His interests entails music, programming, martial arts, cooking, computer games,
 
 
 \subsection{Background for the project}
-Today, if you want information about cultural heritage you will have to access many different sources, and the information might be less than accessible. The joint European project TAG CLOUD aims to change this, and also bring together content provided by experts and individuals. TAG CLOUD is to develop innovative digital solutions to engage people in cultural heritage by making the information more accessible and involving the user in the content production.
+Today, if you want information about cultural heritage you will have to access many different sources, and the information might be less than accessible. The joint European project TAG CLOUD\footnote{www.tagcloudproject.eu} aims to change this, and also bring together content provided by experts and individuals. TAG CLOUD is to develop innovative digital solutions to engage people in cultural heritage by making the information more accessible and involving the user in the content production.
 
 In connection with this project eTrøndelag has decided, together with SINTEF ICT, to explore the possibility of using \shortprojectname to spread information about cultural heritage in Trondheim.
 
@@ -392,7 +391,7 @@ Email is used for communicating with both the customer and advisor. Within the g
 GitHub\cite{github} is a web-based hosting service for software development project that use the Git revision control system, which is a \gls{drcs}. Since Git is distributed every developer has their own local repository, independent of the centralized repository, this allows developers to work in offline mode and each of the local repositories acts as a backup. This was used during the implementation of the system.
 
 \subsubsection{Trello}
-Trello\cite{trello} is a free web-based project management application that uses the paradigm \emph{kanaban}\footnote{A Japanese word that roughly means ``card'' or ``signboard''.}, which is a method made famous by the car manufacturer Toyota in the 1980s for supply management. 
+\emph{Trello}\cite{trello} is a free web-based project management application that uses the paradigm \emph{kanaban}\footnote{A Japanese word that roughly means ``card'' or ``signboard''.}, which is a method made famous by the car manufacturer Toyota in the 1980s for supply management. 
 
 Kanaban is fairly simple, a project is represented by a board, the board contains lists, that corresponds to a workflow. Lists contains cards that represents tasks.
 
@@ -1042,7 +1041,7 @@ For this reason, customer suggests that the application will be developed in HTM
 \section{Specific requirements}\label{sec:req_specific_requirements}
 
 \subsection{External interfaces}
-As the application developed is going to be a client/server where the client is a mobile/web application, we will use \gls{http} protocol for data exchange. Data transferred over \gls{http} in our case will be in \gls{json} format.
+As the application developed is going to be of a client-server architecture, where the client is a mobile/web application, we will use \gls{http} protocol for data exchange. Data transferred over \gls{http} in our case will be in \gls{json} format.
 
 \subsubsection{\systemname Client/Server interface}
 \systemname client is a mobile that runs in a container similar to a web browser. Once the application is installed in the phone and open, data transfers with the web server can be done using \gls{ajax} to retrieve the data in \gls{json} format from the server.
@@ -1224,7 +1223,7 @@ On the client, Model View Controller will be used in order to separate concerns 
 Appcelerator Titanium will be used as an adapter to different platforms, such as Android, iOS or a normal web browser.
 
 \subsection{Server}
-The server will be a stateless \gls{rest} services built on Play Framework. This gives a simple client-server approach where the server consists of some simple layers.
+The server will be a stateless \gls{rest} services built on \emph{Play Framework}\footnote{http://www.playframework.com/}. This gives a simple client-server approach where the server consists of some simple layers.
 
 The server will be fully stateless which will help on scalability and availability as well as simplifying modifiability. It will also act as an broker, and therefore follow the broker pattern.
 
@@ -1378,10 +1377,10 @@ The clients only communicate with the broker and Twitter.
 \end{figure}
 
 \section{Communication interfaces}\label{sec:arch_communicationinterfaces}
-Getting data from the server and by that, the services it consumes, is done by accessing a given \glspl{url} and recieving \gls{json} as a return value.
+Getting data from the server and by that, the services it consumes, is done by accessing a given \glspl{url} and receiving \gls{json} as a return value.
 
 \subsection{Places}\label{placesjson}
-To access the places in the system, two options are availiable.
+To access the places in the system, two options are available.
 If the objective is to get a hold of all places in the system, use the \texttt{/places.json} method, which returns a collection of all the places. The structure of the collection can be seen in the example below.
 
 \begin{lstlisting}[frame=single]
@@ -1416,7 +1415,7 @@ If the objective is to get a hold of all places in the system, use the \texttt{/
 \end{lstlisting}
 
 \subsection{Places in an area}
-If the objective is to get only the places in a given area on the map, use the method with latitude and lingitude boundaries: \texttt{/places\_in\_area.json} with 4 parameters defining the bounding box as shown in figure~\ref{fig:arch_interface_map}: \texttt{startLatitude}, \texttt{startLongitude}, \texttt{stopLatitude} and \texttt{stopLongitude}.
+If the objective is to get only the places in a given area on the map, use the method with latitude and longitude boundaries: \texttt{/places\_in\_area.json} with 4 parameters defining the bounding box as shown in figure~\ref{fig:arch_interface_map}: \texttt{startLatitude}, \texttt{startLongitude}, \texttt{stopLatitude} and \texttt{stopLongitude}.
 
 
 
@@ -1871,7 +1870,7 @@ To arrive at this proof of concept, some technological decisions had to be made.
 The simplicity of the \gls{rest} architectural style, and the fact that it allows the developer to choose the format of exchange makes this our preferred way to go.
 
 \paragraph{Play vs Spring}
-Two of the well known frameworks when it comes to developing webservices in Java is Play Framework and Spring. %FIXME link to websites
+Two of the well known frameworks when it comes to developing webservices in Java is Play Framework and \emph{Spring}\footnote{http://projects.spring.io/spring-framework/}.
 
 Spring is a very extensive framework with support for several protocols and services. The framework also does a lot of work not necessarily apparent to the developer without a thorough investigation into the documentation.
 
@@ -1880,14 +1879,14 @@ The Play Framework is more of a core framework that does the basics, but leaves 
 The extensive documentation and speed of development made us choose Play Framework for the system.
 
 \paragraph{MySQL vs Postgres}
-The database system most known to the developers is MySQL as this has been used in several earlier courses. Both systems are highly capable relational databases with good coverage of features and excellent performance. There are, however, particularly one issue that separates them, and make one stand out as our database of choice.
+The database system most known to the developers is \emph{MySQL}\footnote{http://www.mysql.com/} as this has been used in several earlier courses. Both systems are highly capable relational databases with good coverage of features and excellent performance. There are, however, particularly one issue that separates them, and make one stand out as our database of choice.
 
 In April 2009 Oracle bought Sun \cite{sun}, and by that gained control of MySQL. Initially Oracle promised that MySQL would prevail and that it and its coming features would stay open source \cite{mysql}. The situation today shows that they have not honoured that promise, and several different versions of MySQL are available \cite{mysqlproducts}. This serves to show that the future of MySQL is uncertain, and as such our choice falls on Postgres.
 
 \subsubsection{Client}
 The client requested use of HTML5 on the client side, so that the prototype could be tested by the whole of the test group without having to hand out phones of a specific type, but rather let the test objects use their own devices.
 
-When it comes to real cross platform HTML5 apps, that is to say no need for native code at all, Apache Cordova is a very useful project. Apache Cordova is what was earlier known as PhoneGap \cite{phonegap}. The code was contributed to The Apache Software Foundation in 2011, at the same time Adobe acquired PhoneGaps creators Nitobi.
+When it comes to real cross platform HTML5 apps, that is to say no need for native code at all, \emph{Apache Cordova}\footnote{http://cordova.apache.org/} is a very useful project. Apache Cordova is what was earlier known as \emph{PhoneGap}\footnote{http://phonegap.com/}.\cite{phonegap} The code was contributed to The Apache Software Foundation in 2011, at the same time Adobe acquired PhoneGaps creators Nitobi.
 
 The way Cordova works is that it exposes native interfaces through JavaScript libraries, so that local web clients might use native features like gyroscope, accelerometer, etc. When the application is built using web technologies, it is compiled into a native webcontainer. In order to do this, one needs to have access to the platform one compiles for. For Android, you need the Android SDK. For iOS, you need an Apple computer and Xcode. For Blackberry you need WebWorks SDK.
 
@@ -2088,7 +2087,7 @@ The API has the following methods:
 As the application makes use of \gls{rest} server, a backend supporting \gls{rest} was needed. Although a custom backend could have been created, it made more sense to reuse the implementation of others. The \texttt{napp.alloy.adapter.restapi}\footnote{https://github.com/viezel/napp.alloy.adapter.restapi} by Mads Møller was chosen due to its feature completeness and active development.
 
 \paragraph{Models}
-Models in Titanium Alloy build upon Backbone.js\footnote{http://backbonejs.org/} \cite{titaniumAlloyModel}. Therefor the documentation for Backbone.js is relevant in addition to the documentation from Titanium.
+Models in Titanium Alloy build upon Backbone.js\footnote{http://backbonejs.org/} \cite{titaniumAlloyModel}. Therefore the documentation for Backbone.js is relevant in addition to the documentation from Titanium.
 
 A basic model looks like this:
 \begin{lstlisting}[frame=single]
@@ -2125,28 +2124,29 @@ exports.definition = {
 Before choosing Titanium as the platform to develop the client application with, a number of other frameworks were examined.
 
 \paragraph{The M project}
-Initially “The M project” \footnote{http://www.the-m-project.org/} came out quite good in comparisons of frameworks for client side development for mobile phones. This was due to it being lightweight and what seemed like usable documentation. Its described caracteristica also matched quite good with what we was looking for. Especially the \gls{mvc} part and the native look and feel of the jQuery Mobile user interface. The MIT license was also very attractive, as it is compatible with the BSD license required for all code produced in this course.
+Initially “The M project” \footnote{http://www.the-m-project.org/} came out quite good in comparisons of frameworks for client side development for mobile phones. This was due to it being lightweight and what seemed like usable documentation. Its described characteristics also matched quite good with what we was looking for. Especially the \gls{mvc} part and the native look and feel of the jQuery Mobile user interface. The MIT license was also very attractive, as it is compatible with the BSD license required for all code produced in this course.
 
-The reasons why The M project was not chosen in the end, surrounds two topics. First, the project has its own build system to help the developers develop more efficiently. Unfortunately this did not work, and produced unrunnable code. One could edit the files after each build in order to make them runnable, but 5 minutes extra per build to clean the code was just not acceptable.
+The reasons why The M project was not chosen in the end, surrounds two topics. First, the project has its own build system to help the developers develop more efficiently. Unfortunately this did not work, and produced code that could not run. One could edit the files after each build in order to make them runnable, but 5 minutes extra per build to clean the code was just not acceptable.
 
 The second problem is of a more serious kind, both for this development team and for those that might follow at a later time. The documentation was vague at best and partly outdated.
 
 \paragraph{Enyo}
-Enyo\footnote{http://enyojs.com/} was developed by HP for WebOS\cite{enyoHistory} and is at this time sponsored by LG. It has a very interesting approach to development, one develops features in the app as separate reusable components and glue them together. In that way it feels much more natural to develop in Enyo, and the documentation is excellent. The license, Apache 2.0, is also very attractive as it is compatible with BSD.
+\emph{Enyo}\footnote{http://enyojs.com/} was developed by HP for WebOS and is at this time sponsored by LG.\cite{enyoHistory} It has a very interesting approach to development, one develops features in the app as separate reusable components and glue them together. In that way it feels much more natural to develop in Enyo, and the documentation is excellent. The license, Apache 2.0, is also very attractive as it is compatible with BSD.
 
 The problem with Enyo was that the requirements specified modifiability as one very important factor to take into account. While components can make the app itself modifiable, Enyo does not support \gls{mvc} in the components and as such one just moves the complexity one level down. When developing components we would still have to handle that lack of ability to structure the code in an efficient way.
 
 Adding support for \gls{mvc}, or making it easy to use \gls{mvc} in combination with the rest of the framework, is an ongoing effort at Enyo.
 
 \paragraph{Sencha Touch}
-Sencha Touch\footnote{http://www.sencha.com/products/touch/} has excellent documentation and a good community. The problem with Sencha is the incompatible license. Sencha uses the General Public License version 3, which is incompatible with the BSD license.\cite{flossLicense}
+\emph{Sencha Touch}\footnote{http://www.sencha.com/products/touch/} has excellent documentation and a good community. The problem with Sencha is the incompatible license. Sencha uses the General Public License version 3, which is incompatible with the BSD license.\cite{flossLicense}
 
 \paragraph{RhoMobile}
-RhoMobile is developed by Motorola Solutions\footnote{http://www.motorolasolutions.com/US-EN/Business+Product+and+Services/Software+and+Applications/RhoMobile+Suite} to help developers develop software across their different handheld devices. They have also added support for the mobile platforms. This framework has support for developing enterprise applications and has an attractive license in MIT.
+\emph{RhoMobile} is developed by Motorola Solutions\footnote{http://www.motorolasolutions.com/US-EN/Business+Product+and+Services/Software+and+Applications/RhoMobile+Suite} to help developers develop software across their different handheld devices. They have also added support for the mobile platforms. This framework has support for developing enterprise applications and has an attractive license in MIT.
+
 The reason this framework was not chosen, was because it uses Ruby as well as JavaScript. It was decided that learning one new language would be enough work, if not another one should be added on top.
 
 \paragraph{Titanium}
-Appcelerator Titanium\footnote{http://www.appcelerator.com/titanium/} is a cross platform development framework for mobile and web. The development is done in JavaScript and \gls{xmlLabel}. It is licensed under the Apache Public License version 2. Titanium is a ``write once, adapt everywhere'' framework\cite{titaniumCrossMobile}. That does not mean that it cannot run everywhere without adaptation, but that in order to look native it needs adaptation. Titanium has an excellent base of documentation and a mature framework supporting easy use of the model view controller architectural pattern.
+\emph{Appcelerator Titanium}\footnote{http://www.appcelerator.com/titanium/} is a cross platform development framework for mobile and web. The development is done in JavaScript and \gls{xmlLabel}. It is licensed under the Apache Public License version 2. Titanium is a ``write once, adapt everywhere'' framework.\cite{titaniumCrossMobile} That does not mean that it cannot run everywhere without adaptation, but that in order to look native it needs adaptation. Titanium has an excellent base of documentation and a mature framework supporting easy use of the model view controller architectural pattern.
 
 Titanium was chosen because of its framework, its documentation and the huge community that surrounds it.
 
@@ -2219,7 +2219,7 @@ As seen in \ref{fig:mercator}, it is a cylindrical conformal projection, so it p
 \section{Fifth phase: Sprint 4}
 
 \subsection{S4: Sprint planning}
-The project plan states that there are to be 4 sprints, and that the last one (Sprint 4) will start on October 23rd. and last until November 11th. This leaves two weeks for finalizing the report and a presentation.
+The project plan states that there are to be 4 sprints, and that the last one (Sprint 4) will start on October 23rd, and last until November 11th. This leaves two weeks for finalizing the report and a presentation.
 
 Ideally this would be the preferred route, but due to the projects current status some changes needs to be made. Four persons working 50 hours or more each on making finishing touches on a document and a presentation is quite extensive, given the fact that the system still needs quite some work.
 
@@ -2352,7 +2352,7 @@ To be written
 The following description is taken from the course compendium\cite[p. 47]{compendium}.
 
 \begin{quotation}\noindent
-The assignment relates to the EU-IST project TAG CLOUD (www.tagcloudproject.eu). TAG CLOUD will develop innovative digital solutions with the aim to increase the engagement of people in culture and cultural heritage. The main aspects that will be investigated are: new interaction interfaces with cultural artefacts, user as a contributor and personalized information. In Norway, the focus is ``culture in the landscape'', i.e. the discovery of cultural memories that we meet when walking around in cities, in villages and in the nature.
+The assignment relates to the EU-IST project TAG CLOUD. TAG CLOUD will develop innovative digital solutions with the aim to increase the engagement of people in culture and cultural heritage. The main aspects that will be investigated are: new interaction interfaces with cultural artefacts, user as a contributor and personalized information. In Norway, the focus is ``culture in the landscape'', i.e. the discovery of cultural memories that we meet when walking around in cities, in villages and in the nature.
 
 The goal of this assignment is to develop a tool to create and interact with ``virtual walls''. The idea stems from Væggen in Copenhagen. Væggen is a large multitouch screen allowing people to tell, share and experience stories. We would like to explore the concept of wall as means to discover and share cultural stories related to buildings and places. It is however not practical to install and maintain physical walls such as Væggen all around. Instead we propose a digital representation of walls, that we call ``virtual wall''.
 
@@ -2366,9 +2366,9 @@ according to popularity, topics and other metadata (e.g. duration)
 \end{itemize}
 The tool should be available for PC, tablet and mobile allowing experience at home and on site. The assignment should specify a system architecture that fits this requirement and select technologies that simplify development on several platforms. The assignment will realized the tool for one device type, preferably tablet.
 
-The tool thinglink (http://www.thinglink.com) supports some of the proposed functionality, but we wish to go further. In particular, the dynamic generation of a wall is needed for the filtering of stories. Our ultimate goal is to connect the wall with the personalization backend that will be developed in TAG-CLOUD allowing to provide recommendations to the users.
+The tool \emph{thinglink}\footnote{http://www.thinglink.com} supports some of the proposed functionality, but we wish to go further. In particular, the dynamic generation of a wall is needed for the filtering of stories. Our ultimate goal is to connect the wall with the personalization backend that will be developed in TAG-CLOUD allowing to provide recommendations to the users.
 
-More information: As an example, we have started to develop a draft wall for Nidarosdomen using thinglink (http://www.thinglink.com/scene/397385278152507392). A presentation is also available at https://www.dropbox.com/l/GjCOoSqHoAmMEGg6P0axxa %FIXME links
+More information: As an example, we have started to develop a draft wall for Nidarosdomen using thinglink\footnote{http://www.thinglink.com/scene/397385278152507392}. A presentation is also available at https://www.dropbox.com/l/GjCOoSqHoAmMEGg6P0axxa.
 
 Additional notes: All documentation (report and code comments) should be written in English. The results should be made open source.\cite[p. 47]{compendium}
 \end{quotation}
@@ -3168,7 +3168,7 @@ Another request was that the project name shall change from \emph{Virtual Wall} 
 Jeg har merket at folk ikke forstår begrep Virtual Wall. Hva synes dere om StedR? - Jacqueline Floch
 \end{quote}
 
-This change as well makes us call \emph{walls} with their new name \emph{places} instead. The rest of report is following this. %FIXME whole report changed
+This change as well makes us call \emph{walls} with their new name \emph{places} instead. The whole report was rewritten to reflect this change and be more readable.
 
 \section{Changes - Iteration 4}\label{changes---iteration-4}
 
@@ -3181,7 +3181,7 @@ Additional feature of showing photos for tags on Instagram was requested.
   place.
 \end{itemize}
 
-It was agreed that we shall use \emph{Flickr} group called \href{http://www.flickr.com/groups/2297124@N25/}{StedR} as a source of the ``places''. Each photo added to this group shall appear as a ``place'' in our application on a place where it was geo-tagged on Flickr.
+It was agreed that we shall use \emph{Flickr} group called \emph{StedR}\footnote{http://www.flickr.com/groups/2297124@N25/} as a source of the ``places''. Each photo added to this group shall appear as a ``place'' in our application on a place where it was geo-tagged on Flickr.
 
 As requirement F3.3.1 was the only child of its parent, we are renumbering it and calling it:
 
