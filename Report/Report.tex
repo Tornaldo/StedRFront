@@ -379,7 +379,7 @@ The group chose to use Google Docs because every group member has used it on pre
 \LaTeX~\cite{latex} is a document markup language and document preparation system for the \TeX~typesetting program. \LaTeX~enables the writer to make large, professional looking documents with table of content, placing of pictures and diagrams, cross-references, making tables, etc. taken care of by the software. 
 
 \subsubsection{Dropbox}
-Dropbox\cite{dropbox} is a file hosting service that offers cloud storage and file synchronization, much like Google Drive. The group uses only Dropbox as an collaboration tool with the customer, as in sharing files, etc..
+\footnote{Dropbox}\cite{dropbox} is a file hosting service that offers cloud storage and file synchronization, much like Google Drive. The group uses only Dropbox as an collaboration tool with the customer, as in sharing files, etc..
 
 \subsubsection{Facebook}
 \emph{Facebook} is an online social networking service used by 1 110 million users worldwide\cite{facebook}. The group uses a private group, ``TDT4290 - CDP - Virtual Wall'', for everything from planning meetings, having scrum stand ups to discuss about the project.
@@ -391,7 +391,7 @@ Email is used for communicating with both the customer and advisor. Within the g
 GitHub\cite{github} is a web-based hosting service for software development project that use the Git revision control system, which is a \gls{drcs}. Since Git is distributed every developer has their own local repository, independent of the centralized repository, this allows developers to work in offline mode and each of the local repositories acts as a backup. This was used during the implementation of the system.
 
 \subsubsection{Trello}
-\emph{Trello}\cite{trello} is a free web-based project management application that uses the paradigm \emph{kanaban}\footnote{A Japanese word that roughly means ``card'' or ``signboard''.}, which is a method made famous by the car manufacturer Toyota in the 1980s for supply management. 
+\emph{Trello}\footnote{https://trello.com/} is a free web-based project management application that uses the paradigm \emph{kanaban}\footnote{A Japanese word that roughly means ``card'' or ``signboard''.}, which is a method made famous by the car manufacturer Toyota in the 1980s for supply management. 
 
 Kanaban is fairly simple, a project is represented by a board, the board contains lists, that corresponds to a workflow. Lists contains cards that represents tasks.
 
@@ -644,7 +644,7 @@ Having a group with widely different time schedules, we quickly figured out that
 \subsubsection{For work sharing}
 To handle sharing of individual works, a shared google disk was used. The access was only given to the group members, as this was not the platform we used to share files with the customer and advisor. The google disk was structured into several subfolders. Any document that is to be shared with externals, that being customer or advisor, is first stored in the respective customer and advisor folders, edited if needed, and approved by the group before they are sent to the externals in the selected way of communication. Files to be shared within the group had it's own folders as well. Lastly, each member has a private folder to note down hours spent or to store files not ready to be fully shared yet.
 
-To share documents with externals, the group has taken use of dropbox and mail. Documents that has been approved by the group is sent either by mail or added to the shared dropbox folder where the externals can access them.
+To share documents with externals, the group has taken use of Dropbox and e-mail. Documents that has been approved by the group is sent either by mail or added to the shared Dropbox folder where the externals can access them.
 
 \subsubsection{For communication}
 To create a channel for communication within the group and externally, several steps were taken. Our main communication tool internally was a facebook project group. Here, internal messages, meeting reminders, questions and answers with more was posted. We also agreed using a mailing list in addition for more short-time updates, like meetings being cancelled. This was seen as a necessary step after an unfortunate experience were not everyone noticed the cancellation message in time.
@@ -818,7 +818,7 @@ After using Kultruminnesøk in the web browser we discovered that they also had 
 \end{figure}
 
 \subsection{Kulturarv app}
-\emph{Kulturarv}\footnote{Danish for ``cultural heritage''.} is a Danish cultural heritage mobile application. It is very similar to the Kultursøk mobile application, it has both a map function, Figure~\ref{fig:pre_kulturArvAppMap}, and a augmented reality function, Figure~\ref{fig:pre_kulturArvAppMap},  to show the user where to find protected and preservation-worthy buildings. It uses the Danish \emph{Fredede og Bevaringsværdige Bygninger}\footnote{Danish for ``Protected and Preservation-worthy Buildings''.} (FBB), web service, which appears to be quite similar to the Askeladden database. It sounds like the Danish Kulturarv and Kultursøk is pretty much the same thing, but Kulturarv has one more important functions, which makes it much better; Kulturarv blends the media from FBB and other geolocation data sources like \emph{Instagram}, \emph{Flickr}, Wikipedia and Twitter. Unfortunately, we are not able to test the application because it seems to only work if you are physically in Denmark, but we have the impression of how it works through Kulturarv's homepage \cite{Kulturarv}. It is also worth  mentioning that the application is an open-source project released under the GNU GPL v3 license. %FIXME
+\emph{Kulturarv}\footnote{Danish for ``cultural heritage''.} is a Danish cultural heritage mobile application. It is very similar to the Kultursøk mobile application, it has both a map function, Figure~\ref{fig:pre_kulturArvAppMap}, and a augmented reality function, Figure~\ref{fig:pre_kulturArvAppMap},  to show the user where to find protected and preservation-worthy buildings. It uses the Danish \emph{Fredede og Bevaringsværdige Bygninger}\footnote{Danish for ``Protected and Preservation-worthy Buildings''.} (FBB), web service, which appears to be quite similar to the Askeladden database. It sounds like the Danish Kulturarv and Kultursøk is pretty much the same thing, but Kulturarv has one more important functions, which makes it much better; Kulturarv blends the media from FBB and other geolocation data sources like \emph{Instagram}, \emph{Flickr}, Wikipedia and Twitter. Unfortunately, we are not able to test the application because it seems to only work if you are physically in Denmark, but we have the impression of how it works through Kulturarv's homepage \cite{Kulturarv}. It is also worth  mentioning that the application is an open-source project released under the GNU GPL v3 license.
 
 \begin{figure}[H]
       \centering
@@ -937,7 +937,7 @@ Each part of the audience holds different stakes in the project, but all are int
 \subsection{Scope}
 This section declares the scope of this requirements document and the desired output of the project. It shall state what parts of the system shall be analysed, designed and implemented and to what extent.
 
-This \gls{srs} document deals with the project \fullprojectname. This project shall result in developing a tool for working with so called \wallentityp, creating and sharing stories on them. %FIXME
+This \gls{srs} document deals with the project \fullprojectname. This project shall result in developing a system for working with so called \wallentityp, creating and sharing stories on them.
 
 As presented by customer, the \systemname software system is going to consist of two subsystems - a server and a client application, and will retrieve data from external services.
 
@@ -2771,9 +2771,7 @@ myapp.ui = function() {
 \end{lstlisting}
 
 \subsection{Classical-based patterns}
-In general, Appcelerator does not recommend classical-inheritance based models because JavaScript is not a class-based language. For an in-depth look at inheritance patterns in JavaScript, we recommend you read Douglas Crockford's \emph{Protypal Inheritance in JavaScript and Classical Inheritance in JavaScript articles}.
-
-% FIXME there should be a reference to the book
+In general, Appcelerator does not recommend classical-inheritance based models because JavaScript is not a class-based language. For an in-depth look at inheritance patterns in JavaScript, we recommend you read Douglas Crockford's articles on inheritance \cite{classicalinheritance,protypalinheritance}.
 
 Classical inheritance is familiar for programmers coming from Java and other class-based languages. They rightly claim that this pattern enforces discipline and logically structured code that is generally easy to read, debug, and document. However, it's our belief that such a pattern confuses the idea of classes and objects in JavaScript, forces the programmer to define his or her own inheritance rules, and is slower to implement in a rapid-prototype setting.
 
