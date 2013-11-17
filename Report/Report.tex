@@ -2310,6 +2310,11 @@ Can be problematic, legally, to show all pictures without filtering by humans.
 
 \subsubsection{Server}
 
+Method \texttt{/images.json} was implemented to retrieve tagged pictures of instagram. This method is using \texttt{tags/X/media/recent} method on the Instagram API, which returns a list of images tagged with a specified tag. Instagram API returns \gls{json} feed only, therefore we needed to use a Google library called \emph{GSON}\footnote{https://code.google.com/p/google-gson/} to process it and retrieve information that is interesting for the users of our system.
+
+Due to problems with loading time when querying Flickr, we added local in-JVM caching of fetched data using \texttt{Cache} from Google Guava library. Using time eviction, we are able to cache items for a specified time interval. This makes it possible to speed up the loading, since Flickr is only queried for details on data that is new or out of date.
+
+
 \subsection{S4: Test execution}
 To be written
 \subsection{S4: Review}
