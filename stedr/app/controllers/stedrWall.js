@@ -25,27 +25,36 @@
  *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+//Sets the title of the Window
 $.stedrWallWindow.setTitle($model.get('title'));
 
+//Adds the image to the mediaScroller
 $.mediaScrollerMainImage.addView(Ti.UI.createImageView({
 	image : $model.get('pictureUrl')
 }));
 
+//Sets the creditlabel
 $.creditLabel.setText("FOTO: " + $model.get('ownerName'));
 
-Ti.API.info("Starting storygallery: " + $model.get('title'));
+/*
+ * storyGalleryController, the controller to the storytab
+ * instagramController, the controller to the picturetab
+ */
 var storyGalleryController = Alloy.createController('story', {
 	"$model" : $model
 });
-
-Ti.API.info("Starting instagramgallery: " + $model.get('title'));
 var instagramController = Alloy.createController('instagram', {
 	"$model" : $model,
 });
-
 $.storyOrPictureView.add(instagramController.getView());
 $.storyOrPictureView.add(storyGalleryController.getView());
 
+/*
+ * Logic for the tab bar:
+ * Add listeners to the buttons,
+ * make them call changeView(evt) every time they are clicked.
+ * Change view, hides and displays the content.
+ */
 $.storyTab.addEventListener('click', function() {
 	changeView(1);
 });

@@ -1,4 +1,5 @@
 <Alloy>
+	<!-- Uses to tiflexigrid widget to create tiles -->
 	<View class="container">
 		<Require type="widget" src="tiflexigrid" id="storyGrid"/>
 	</View>

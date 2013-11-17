@@ -29,6 +29,7 @@ var instagramItems = [];
 
 var addImageId = "Add image";
 
+//Push the plus sign (the tile that tells where to add images).
 instagramItems.push({
 	title : addImageId,
 	image : "/images/addimage.png",
@@ -44,6 +45,7 @@ var opts = {
 	ok : "Ok",
 };
 
+//Fetch the images associated with the tag
 var instagramCollection = Alloy.Collections.instagram;
 instagramCollection.fetch({
 	urlparams : {
@@ -77,6 +79,7 @@ instagramCollection.fetch({
 	}
 });
 
+//When clicked, open the instagramView
 $.instagramGrid.on('click', function(e) {
 	if (e.source.id == addImageId) {
 		var dialog = Ti.UI.createAlertDialog(opts).show();
