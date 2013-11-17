@@ -979,8 +979,6 @@ Since the frontend of the whole system shall be developed in this project, the d
 
 We can characterize the nature of the system as crowdsourced (or edge-dominant, in general), as the content shall be generated and modified by users to some extent. Due to this, there is not going to be any backend for data entry, the only point where the system is exposed to human beings is the mobile application client.
 
-Our key quality attribute, usability, relates tightly to user interfaces. For this reason, all usability-related requirements on user interface are listed in section \ref{sec:req_software_system_attributes} as quality attribute requirements.
-
 \subsubsection{Mobile application client}\label{sec:req_webapplication_frontend}
 As user requests that the initial prototype application shall be developed for use on tablets. Typical usage of the system suggests that it will be used in field, which implies using the application on smartphones and tablets.
 
@@ -994,7 +992,7 @@ Another characteristic property of such devices is that their interaction mechan
 
 \begin{enumerate}
   \item These devices are generally missing a mouse, and thus a mouse cursor. Direct pointing is done by using finger upon touchscreen. This is however less precise, so the user interface must be accustomed to that.
-  \item Devices usually miss a hardware keyboard. This is surrogated by having a software keyboard on-screen. This however takes up some of the valuable screen real estate. This kind of keyboard is additionally not as usable as a real hardware one, so the user is not tempted to use it as much., therefore use of any hotkeys is out of question.
+  \item Devices usually miss a hardware keyboard. This is surrogated by having a software keyboard on-screen. This however takes up some of the valuable screen real estate. This kind of keyboard is additionally not as usable as a real hardware one, so the user is not tempted to use it as much., therefore use of any key shortcuts is out of question.
 \end{enumerate}
 
 \subsection{Software interfaces}
@@ -1031,8 +1029,6 @@ The key functionality of the server is to support the features of the client by 
 As this app shall be accessible to open public, we can neither anticipate users' educational level, nor experience, nor technical expertise. We can however assume basic computer literacy.
 
 The documentation from the customer features a scenario how this application would be used in class in elementary school. We may anticipate that some of the users can be as young as 10 years for example.
-
-See chapter \ref{sec:req_usability} for requirements on usability.
 
 \subsection{Constraints}
 
@@ -1120,13 +1116,8 @@ As the customer requested, the front end application shall be developed in order
 
 Quality attribute scenario to evaluate the system shall be determined in section \ref{sec:qatestscenarios}.
 
-\subsubsection{Usability}\label{sec:req_usability}
-From the description of typical usage (mentioned in \ref{sec:req_user_characteristics}) and characteristic problems listed in \ref{sec:req_webapplication_frontend}, we came up with several usability scenarios that shall evaluate the usability quality of the software system. As usability is a big concern in this project, usability scenarios and tests shall be included in the report under Test Procedures Specification.  % FIXME SIMON: once usability tests are prepared, put refs to them (link to Test Procedures Specification)
-
-These scenarios shall evaluate, whether the application suits the needs of the audience in the means of usability. These shall be derived from use cases and requirements.
 
 \section{Use cases}
-
 According to \cite{usecases}, a use case is a description of actions being performed with the software system. In our case, the use cases are indifferent from test cases of client functional requirements that are specified later on in section \ref{sec:fe-test-cases}. We decided not to duplicate the information within this report.
 
 As there is just few requirements left after all the changes made, we are presenting all of them in just one use case diagram. Their textual description can be found in functional requirements tables above, in section \ref{sec:functionalreq}.
@@ -1158,7 +1149,7 @@ Quality requirement: Modifiability
 
 \subsection{Division between logic and presentation}
 Division between logic and presentation makes the system more modular and modifiable.\\
-Quality requirement: Usability, Modifiability
+Quality requirement: Modifiability
 
 \subsection{Short development time}
 Given the relatively short duration of this project, the architecture should make for fast development, while not sacrificing quality.
@@ -1642,8 +1633,7 @@ Table \ref{tab:test_plan_tasks_allocation} maps responsibilities to roles in the
                             & test leader                   \\ \hline
         
         Test execution      & white-box testers             \\
-                            & black-box testers             \\
-                            & usability testers             \\ \hline
+                            & black-box testers             \\ \hline
         
         Test evaluation     & test leader                   \\ \hline
     \end{tabular}
@@ -1672,8 +1662,6 @@ Table \ref{tab:test_plan_roles_allocation} maps roles in testing to the members 
                             & Simon Stastny                 \\ \hline
 
         Black-box Testers   & TBD                           \\ \hline %FIXME SIMON: determine black-box testers
-
-        Usability Testers   & TBD                           \\ \hline %FIXME SIMON: determine usability testers
     \end{tabular}
     \caption{Roles allocation for testing tasks.}
     \label{tab:test_plan_roles_allocation}
@@ -1684,7 +1672,7 @@ For blackbox testing, the test responsible needs to be instructed about the syst
 
 For code inspection, the person performing it must have a detailed knowledge about the inner workings of the system to be able to discover possible problems and/or draw up improvements of the current solution.
 
-For usability testing, the tester shall have (in the direction of this system) no further knowledge than what is expected to be a minimum knowledge needed for the end user to use the software . This typically includes user knowledge of computer, smartphone or tablet, operations and interaction with the device (direct pointing, keyboard, or some characteristic touch gestures). Tester especially should not have an a priori knowledge about the system workflow, since this is something a typical end user will not have.
+
 \subsection{Schedule}
 
 Table \ref{tab:test_plan_schedule} lists tasks and maps them to people responsible for them and dates due to which they should be finished. 
@@ -1696,9 +1684,7 @@ Table \ref{tab:test_plan_schedule} lists tasks and maps them to people responsib
         Task                                & Responsible             & Due date       \\ \hline
         Design test cases for system tests  & Simon Stastny           & 2013-11-06     \\ \hline
         Design quality attribute test cases & Simon Stastny           & 2013-11-05     \\ \hline
-        Design usability tests              & TBD                     & TBD            \\ \hline
         Perform black-box tests             & TBD                     & 2013-11-18     \\ \hline
-        Perform usability tests             & TBD                     & TBD            \\ \hline
         Perform code inspection (server)    & Christian Frøystad      & 2013-11-05     \\ \hline
         Perform code inspection (client)    & TBD                     & TBD            \\ \hline
     \end{tabular}
@@ -1711,7 +1697,6 @@ Table \ref{tab:test_plan_schedule} lists tasks and maps them to people responsib
 In case the functional requirements are subject to future changes, the design of black box tests may get delayed to absorb the changes in the requirements specification. The black box test design can only be as much finished as the functional requirement specification is.
 
 \subsection{Risks and contingencies}
-
 As far as we are aware, there are no risks related to testing but those mentioned in \ref{sec:project_risk_assessment} as general risks for this project.
 
 \subsection{Approvals}
@@ -1725,9 +1710,7 @@ Table \ref{tab:test_plan_approvals} lists approvals of completed tasks.
         Task                                & Approved by             & Date           \\ \hline
         Design test cases for system tests  & Simon Stastny           &                \\ \hline
         Design quality attribute test cases & Simon Stastny           & 2013-11-04     \\ \hline
-        Design usability tests              &                         &                \\ \hline
         Perform black-box tests             &                         &                \\ \hline
-        Perform usability tests             &                         &                \\ \hline
         Perform code inspection (server)    & Christian Frøystad      & 2013-11-03     \\ \hline
         Perform code inspection (client)    &                         &                \\ \hline
     \end{tabular}
@@ -1742,87 +1725,69 @@ Table \ref{tab:test_plan_approvals} lists approvals of completed tasks.
 \subsection{Unit test level}
 
 \paragraph{Objective}
-
 This level of tests is concerned about testing the correctness of implementation of individual unit (class, module, subsystem) in the system.
 
 \paragraph{Test Environment}
-
 To perform the tests in the unit level, we need to be able to run the unit within its subsystem. For testing units in the server we obviously need the server to be deployed, etc.
 
 \paragraph{Completion Criteria}
-
 The unit level testing is completed when all unit tests are completed.
 
 \paragraph{Type of Test}
-
 This level of testing uses white-box testing since it is very important to know the application logic.
 
 
 \subsection{Integration test level}
 
 \paragraph{Objective}
-
 This level of tests is concerned about integration of different subsystems, in this case the client and the server. The purpose of tests in this level is to test the connection and cooperation of these two subsystems.
 
 \paragraph{Test Environment}
-
 To perform the tests in the integration level, we need both the working server deployed, and a smartphone with the client application running.
 
 \paragraph{Completion Criteria}
-
 The integration level testing is completed when each test is either performed or unable to be started due to unmet preconditions.
 
 \paragraph{Type of Test}
-
 For this level of testing, the white-box testing is to be used to find possible problems only the developers might be aware of, such as corner cases in input, etc.
 
 
 \subsubsection{System Test Level}
 
 \paragraph{Objective}
-
 This level of tests is concerned whether the system meets the functional and technical requirements as described in chapter~\ref{chap:req}.
 
 These tests should verify whether each function is implemented correctly and does what it is supposed to do.
 
 \paragraph{Test environment}
-
 For testing functionality of the server, it must obviously be deployed and running.
 
 For testing the functionality of the client application, it must be running on a smartphone and connected to the Internet.
 
 \paragraph{Completion criteria}
-
 The system level testing is completed when each test is either performed or unable to be started due to unmet preconditions.
 
 \paragraph{Type of test}
-
 This level of tests is concerned about the functionality. Black box method shall be used, for it is not essential to know the logic of the application code. 
 
 
 \subsubsection{User Acceptance Test Level}
 
 \paragraph{Objective}
-
 This level of tests is usually ran by the customer on a completed product or user to find out whether the product meets all the requirement defined and it can be used in production.
 
 Tests of this level are defined beforehand with a set of scenarios so the vendors can ran the tests themselves and find out whether the product is ready to be handed in to the customer and shipped. This is as well to ensure that a product that is known to not pass tests at the customer side is not handed in to the customer yet (to save the vendor from embarrassment and avoid waste of time).
 
 \paragraph{Test Environment}
-
 The test environment for this level should be as close as possible to the real-world like environment used in the production.
 
 In our case, this means we need both the working server deployed and a smartphone with the client application.
 
-
 \paragraph{Completion Criteria}
-
 The user acceptance level testing is completed when each test is either performed or unable to be started due to unmet preconditions. This as well implies pass or fail result of the test respectively.
 
-
 \paragraph{Type of Test}
-
-Tests in this level shall be performed as black-box tests and usability tests. Note that we are testing real-world like usage of the system where the user is supposed to know nothing about the system and his satisfaction is very important.
+Tests in this level shall be performed as black-box tests. Note that we are testing real-world like usage of the system where the user is supposed to know nothing about the system.
 
 
 \section{Test cases} \label{sec:test_cases}
