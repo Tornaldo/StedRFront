@@ -1105,12 +1105,12 @@ The functional requirements are organized according to object categories. The te
 \subsection{Quality attributes}\label{sec:req_software_system_attributes}
 In this section, we describe several quality attributes this system shall have. The quality attributes are representing the non-functional requirements on the system.
 
-\subsubsection{Maintainability}
+\subsubsection{Maintainability}\label{sec:req_software_system_attributes_maintainability}
 The customer stated that the system shall be well documented and easily extensible and modifiable. These concerns are related to the quality attribute of maintainability.
 
 The customer requests that the project documentation shall include description of all interfaces, architectural description and sequence diagrams to illustrate how does the system work.
 
-\subsubsection{Portability}
+\subsubsection{Portability}\label{sec:req_software_system_attributes_portability}
 As the customer requested, the front end application shall be developed in order to be working on various devices, ranging from small smartphones to desktop stations.
 
 Quality attribute scenario to evaluate the system shall be determined in section \ref{sec:qatestscenarios}.
@@ -1140,15 +1140,15 @@ In the following the document, the items listed below have been used as the main
 
 \subsection{Maintainability} 
 A maintainable code base makes for a developable code base. Achieving a maintainable base will make development easier in the short run and maintenance less expensive in the long run. It will also be easier for other teams to continue the development upon the same code base.\\
-Quality requirement: Modifiability
+Quality requirement: Modifiability (section~\ref{sec:req_software_system_attributes_maintainability}).
 
 \subsection{Portability}
 The customer requested that the system should be usable on different smartphone platforms and also on a normal computer. As such portability is key in order to lighten the workload required to achieve this goal.\\
-Quality requirement: Modifiability
+Quality requirement: Modifiability (section~\ref{sec:req_software_system_attributes_maintainability}).
 
 \subsection{Division between logic and presentation}
 Division between logic and presentation makes the system more modular and modifiable.\\
-Quality requirement: Modifiability
+Quality requirement: Modifiability (section~\ref{sec:req_software_system_attributes_maintainability}).
 
 \subsection{Short development time}
 Given the relatively short duration of this project, the architecture should make for fast development, while not sacrificing quality.
@@ -1683,15 +1683,13 @@ Table \ref{tab:test_plan_schedule} lists tasks and maps them to people responsib
         Task                                & Responsible             & Due date       \\ \hline
         Design test cases for system tests  & Simon Stastny           & 2013-11-06     \\ \hline
         Design quality attribute test cases & Simon Stastny           & 2013-11-05     \\ \hline
-        Perform black-box tests             & TBD                     & 2013-11-18     \\ \hline
+        Perform black-box tests             & FIXME                   & 2013-11-18     \\ \hline
         Perform code inspection (server)    & Christian Frøystad      & 2013-11-05     \\ \hline
-        Perform code inspection (client)    & TBD                     & TBD            \\ \hline
+        Perform code inspection (client)    & FIXME                   & 2013-11-18     \\ \hline
     \end{tabular}
     \caption{Test tasks schedule}
     \label{tab:test_plan_schedule}
 \end{table}
-
-% FIXME SIMON: fill in table
 
 In case the functional requirements are subject to future changes, the design of black box tests may get delayed to absorb the changes in the requirements specification. The black box test design can only be as much finished as the functional requirement specification is.
 
@@ -1707,17 +1705,15 @@ Table \ref{tab:test_plan_approvals} lists approvals of completed tasks.
     \begin{tabular}{| l | l | l |}
         \hline
         Task                                & Approved by             & Date           \\ \hline
-        Design test cases for system tests  & Simon Stastny           &                \\ \hline
+        Design test cases for system tests  & Simon Stastny           & 2013-11-09     \\ \hline
         Design quality attribute test cases & Simon Stastny           & 2013-11-04     \\ \hline
-        Perform black-box tests             &                         &                \\ \hline
+        Perform black-box tests             & FIXME                   & FIXME          \\ \hline
         Perform code inspection (server)    & Christian Frøystad      & 2013-11-03     \\ \hline
-        Perform code inspection (client)    &                         &                \\ \hline
+        Perform code inspection (client)    & FIXME                   & FIXME          \\ \hline
     \end{tabular}
     \caption{Test tasks approvals}
     \label{tab:test_plan_approvals}
 \end{table}
-
-% FIXME SIMON: fill in approvals
 
 \section{Test levels}\label{sec:testlevels}
 
