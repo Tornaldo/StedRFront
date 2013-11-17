@@ -1,4 +1,5 @@
 <Alloy>
+	<!-- a simple window for displaying a image and a label -->
 	<Window class="container" layout="vertical" exitOnClose="false" navBarHidden="false">
 		<View id="pictureView">
 			<ImageView id="instagramPicture"></ImageView>

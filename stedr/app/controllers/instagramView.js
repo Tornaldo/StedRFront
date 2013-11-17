@@ -25,6 +25,7 @@
  *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+//Setting up data
 Ti.API.info("Model: " +JSON.stringify($model.get('fullName')));
 $.pictureView.setWidth(Titanium.Platform.displayCaps.platformWidth);
 $.pictureView.setHeight(Titanium.Platform.displayCaps.platformWidth);
