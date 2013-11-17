@@ -36,7 +36,7 @@ var accessTokenSecret = null;
 
 /*
  * String concatenating and removing of whitespaces and spcial characters,
- * the hashtag should be #stedR_'storyName'
+ * the hashtag should be #stedr_'storyName'
  */
 var storyName = $model.get('title');
 storyName = storyName.replace(/[^a-å0-9\s]/gi, "");
@@ -61,8 +61,7 @@ var twitterRowController;
 fetchTwitter();
 
 /*
- * Fetch "count" twitter statuses with q as the given tag
- * Ti.App.fireEvent('updateTwitterTable', reply.statuses);
+ * Fetch #"count" twitter statuses with q as the given tag
  */
 
 function fetchTwitter() {

@@ -29,6 +29,7 @@ var items = [];
 
 var addStoryId = "Add story";
 
+//Push the plus sign (the tile that tells where to add stories).
 items.push({
 	title : addStoryId,
 	image : "/images/digitaltfortaltlogoplus.png"
@@ -40,6 +41,7 @@ var opts = {
 	ok : "Ok",
 };
 
+//Fetch the stories associated with the wall
 var storyCollection = Alloy.Collections.story;
 storyCollection.fetch({
 	urlparams : {
@@ -47,7 +49,6 @@ storyCollection.fetch({
 	},
 	success : function() {
 		_.each(storyCollection.models, function(element, index, list) {
-			Ti.API.info('STORY');
 			items.push({
 				title : element.get('title'),
 				image : element.get('pictures')[0]
@@ -73,6 +74,7 @@ storyCollection.fetch({
 	}
 });
 
+//When clicked, open the storyView
 $.storyGrid.on('click', function(e) {
 	Ti.API.info("Clicked: " + e.source.id);
 	if (e.source.id == addStoryId) {
