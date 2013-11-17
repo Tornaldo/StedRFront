@@ -2662,14 +2662,14 @@ Branching in code is useful when your code will be mostly the same across platfo
 Using platform-specific JS files is likely to be most useful when your code is mostly different across platforms. This removes long if...then blocks from your main code. Separating platform-specific code reduces the chances of an error that comes from accidentally using the wrong platform's API or property. However, you'll have to remember to apply changes and fixes to each of the platform-specific files. So this approach could increase your work rather than reduce it. 
 
 \subsection{Don't store sensitive data in non-JavaScript files}
-Your JavaScript files are minified and obfuscated when you build for distribution. Depending on your target platform, they will be further processed and packaged into the compiled or ``object-field'' files of your app. However, images, \gls{json} files, SQLite databases, and other files not named with a .js extension are simply packaged as-is with your app's files.
+Your JavaScript files are minimized and obfuscated when you build for distribution. Depending on your target platform, they will be further processed and packaged into the compiled or ``object-field'' files of your app. However, images, \gls{json} files, SQLite databases, and other files not named with a .js extension are simply packaged as-is with your app's files.
 
 APK and IPA files are essentially Zip files. Their contents can be revealed by any Zip-decompressor. Thus, your non-JavaScript files are accessible to the curious.
 
 You should not include sensitive data in non-JS files. Simply renaming files with a .js extension is not a suitable alternative. Such files might not be supported on device. And, the Titanium build process removes them from the final build.
 Set local variables to avoid calling native methods
 
-Each time you request the value of a device-related property, Titanium has to query the operating system for the value. For example, if you read from Ti.Platform.osname or Ti.Platform.displayCaps.platformHeight, Titanium must take a ``trip across the bridge'' to request the value from the operating system. Doing so takes a few cycles and if used too frequently could possibly slow your program. Something like the following would be more efficient: %TCMOS scare quotes
+Each time you request the value of a device-related property, Titanium has to query the operating system for the value. For example, if you read from \texttt{Ti.Platform.osname} or \texttt{Ti.Platform.displayCaps.platformHeight}, Titanium must take a ``trip across the bridge'' to request the value from the operating system. Doing so takes a few cycles and if used too frequently could possibly slow your program. Something like the following would be more efficient: %TCMOS scare quotes
 
 \begin{lstlisting}[frame=single]
 var isAndroid = (Ti.Platform.osname=='android') ? true : false;
