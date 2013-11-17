@@ -685,7 +685,7 @@ All code will be tracked with git and checked in continuously in order to ensure
 \label{chap:preliminary_study}
 
 \section{Current situation}
-Cultural Heritage is the legacy of physical artefacts and non physical attributes of a group or society that are inherited from past generations. According to \cite{CiD:culturalheritage}, cultural Heritage can be divided into three main categories; tangible culture, intangible culture and natural heritage. The system will mainly focus on the ``culture in the landscape'', i.e. the discovery of cultural memories that we meet when walking around in cities, in villages and in the nature.
+Cultural Heritage is the legacy of physical artefacts and non physical attributes of a group or society that are inherited from past generations. According to \cite{CiD:culturalheritage}, cultural heritage can be divided into three main categories; tangible culture, intangible culture and natural heritage. The system will mainly focus on the ``culture in the landscape'', i.e. the discovery of cultural memories that we meet when walking around in cities, in villages and in the nature.
 
 An important aspect in cultural heritage is preservation, the task to preserve and protect buildings, objects, landscapes and other important cultural artefacts. One concern is to physically protect these artefacts, but another important aspect is to educate today's generation and help them discover and learn about our cultural heritage to both enrich and preserve our legacy for future generations.
 
@@ -966,12 +966,12 @@ The following diagram shows the whole system and how the separate parts work tog
 
 \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{Figures/Architecture/deploymentView.jpg}
+      \includegraphics[width=0.5\textwidth]{Figures/Architecture/deploymentView.jpg}
       \caption{Overview of interaction}
       \label{fig:req_overview}
 \end{figure}
 
-In the initial phase, the server will not be directly connected to any external content databases machine, the content from them would be presented as simple hyperlinks leading to the third party website (such as kulturminnesok.no, digitaltfortalt.no).
+In the initial phase, the server will not be directly connected to any external content databases machine, the content from them would be presented as simple hyperlinks leading to the third party website (such as kulturminnesok.no, digitaltfortalt.no). This content will be retrieved using services APIs or crawling websites.
 
 \subsection{User Interfaces}
 Since the frontend of the whole system shall be developed in this project, the description of user interface shall be considerably stressed.
@@ -979,7 +979,7 @@ Since the frontend of the whole system shall be developed in this project, the d
 We can characterize the nature of the system as crowdsourced (or edge-dominant, in general), as the content shall be generated and modified by users to some extent. Due to this, there is not going to be any backend for data entry, the only point where the system is exposed to human beings is the mobile application client.
 
 \subsubsection{Mobile application client}\label{sec:req_webapplication_frontend}
-As user requests that the initial prototype application shall be developed for use on tablets. Typical usage of the system suggests that it will be used in field, which implies using the application on smartphones and tablets.
+As user requests that the initial prototype application shall be developed for use on mobile phones. Typical usage of the system suggests that it will be used in field, which implies using the application on smartphones and tablets.
 
 Both smartphones and tablet have some inherent characteristics that have to be respected when designing the user interface and the means of interacting with it.
 
@@ -1063,11 +1063,11 @@ The functional requirements are organized according to object categories. The te
 \begin{tabular}{ l  p{11cm} l }
     ID       & Description                                                                                              & Test level            \\ \hline
     F2.2     & System shall let users filter and view places                                                            & All                   \\ \hline
-    F2.2.2   & System shall let users to filter places by tags                                                          & System, Unit, UAT     \\ \hline
-    F2.2.3   & System shall let users to filter places by metadata (location)                                           & System, Unit, UAT     \\ \hline
-    F2.2.4   & System shall let users to filter places by story authors                                                 & System, Unit, UAT     \\ \hline
+    F2.2.2   & System shall let users to filter places by tags                                                          & System, Unit     \\ \hline
+    F2.2.3   & System shall let users to filter places by metadata (location)                                           & System, Unit     \\ \hline
+    F2.2.4   & System shall let users to filter places by story authors                                                 & System, Unit     \\ \hline
     F2.4     & System shall let users like and share places over social networks (facebook, twitter). 
-               See \ref{sec:req_social_networks} for details                                                            & System, Unit, UAT     \\ 
+               See \ref{sec:req_social_networks} for details                                                            & System, Unit     \\ 
 \end{tabular}
 \caption{Walls}
 \label{tab:req_walls}
@@ -1080,11 +1080,11 @@ The functional requirements are organized according to object categories. The te
 \begin{tabular}{ l  p{11cm} l }
     ID       & Description                                                                                              & Test level            \\ \hline
     F3.2     & System shall let users filter and view stories from a particular places                                  & All                   \\ \hline
-    F3.2.2   & System shall let users to filter stories by tags on a particular places                                  & System, Unit, UAT     \\ \hline
-    F3.2.4   & System shall let users to filter stories by metadata (author, media duration) on a particular places     & System, Unit, UAT     \\ \hline
-    F3.3     & System shall let users comment on stories                                                                & System, Unit, UAT     \\ \hline
+    F3.2.2   & System shall let users to filter stories by tags on a particular places                                  & System, Unit     \\ \hline
+    F3.2.4   & System shall let users to filter stories by metadata (author, media duration) on a particular places     & System, Unit     \\ \hline
+    F3.3     & System shall let users comment on stories                                                                & System, Unit     \\ \hline
     F3.4     & System shall let users like and share stories over social networks (facebook, twitter). 
-               See \ref{sec:req_social_networks} for details                                                            & System, Unit, UAT     \\
+               See \ref{sec:req_social_networks} for details                                                            & System, Unit     \\
     \end{tabular}
 \caption{Stories}
 \label{tab:req_stories}
@@ -1768,25 +1768,6 @@ The system level testing is completed when each test is either performed or unab
 
 \paragraph{Type of test}
 This level of tests is concerned about the functionality. Black box method shall be used, for it is not essential to know the logic of the application code. 
-
-
-\subsubsection{User Acceptance Test Level}
-
-\paragraph{Objective}
-This level of tests is usually ran by the customer on a completed product or user to find out whether the product meets all the requirement defined and it can be used in production.
-
-Tests of this level are defined beforehand with a set of scenarios so the vendors can ran the tests themselves and find out whether the product is ready to be handed in to the customer and shipped. This is as well to ensure that a product that is known to not pass tests at the customer side is not handed in to the customer yet (to save the vendor from embarrassment and avoid waste of time).
-
-\paragraph{Test Environment}
-The test environment for this level should be as close as possible to the real-world like environment used in the production.
-
-In our case, this means we need both the working server deployed and a smartphone with the client application.
-
-\paragraph{Completion Criteria}
-The user acceptance level testing is completed when each test is either performed or unable to be started due to unmet preconditions. This as well implies pass or fail result of the test respectively.
-
-\paragraph{Type of Test}
-Tests in this level shall be performed as black-box tests. Note that we are testing real-world like usage of the system where the user is supposed to know nothing about the system.
 
 
 \section{Test cases} \label{sec:test_cases}
