@@ -2264,17 +2264,17 @@ In Sprint 4, the group should also place an emphasis on testing, as very little 
         \hline
         Open a \wallentitys & Done\\
         \hline
-        Create \wallentitys & Done\\
+        Create \wallentitys & Not done\\
         \hline
         Open story & Done\\
         \hline
-        Add story to \wallentitys & \\
+        Add story to \wallentitys & Done\\
         \hline
-        Filter stories by tags & \\ 
+        Filter stories by tags & Not done\\ 
         \hline
-        Adding instagram information related to a \wallentitys  & \\
+        Adding instagram information related to a \wallentitys  & Not done\\
         \hline
-        Retrieving instagram information related to a \wallentitys & \\
+        Retrieving instagram information related to a \wallentitys & Done\\
         \hline
         Add comment to a story & Done\\
         \hline
@@ -2325,23 +2325,48 @@ In Sprint 4, the group should also place an emphasis on testing, as very little 
 
 \subsubsection{Client}
 \paragraph{Instagram}
-Instagram API does not support fetching of several tags simultaneously.
-Instagram has a limit of 30 pictures to be shown per page. 
-Can be problematic, legally, to show all pictures without filtering by humans.
+The Instagram \gls{api} supports several ways of fetching information from the database. It filters by users, media, location, tag and several other forms by choice. For the project, a way to find pictures with the associated tag as well as showing them is the goal, so filtering by tags is the natural choice. To access the Instagram \gls{api} one need an access token which can mainly be acquired by either logging into an Instagram account, or registering the application for a developer license. 
+
+To fetch pictures by tag from Instagram, the group chose to use the most recent uploads from Instagram. An \gls{url} request is sent from the server with the format:
+\texttt{https://api.instagram.com/v1/tags/TAG\_HERE/media/recent?access\_token=YOUR\_ACCESS\_TOKEN}
+
+Originally, places were to be defined as \#stedr \#place\_name. However, the Instagram \gls{api} does not support fetching of more than one tag at the time, which made this approach troublesome. The group had two choices, either configure the server to do several queries and return the results that matched all the tags, or to redefine the tag standard to \#stedr\_place\_name. Having the situation that the result would differ very little, the group chose the latter to reduce complexity on the implementation and increase performance. 
+
+The Instagram \gls{api} also has a max limit of 30 pictures being shown at the time. It has not been given a high priority to get more pictures than this, so the current version will only display 30 instagram images per place. However, in the event that more results is to be shown, a pagination is required on the server side and some extra functionality on the client side.
+
+Another problem with fetching pictures from Instagram is the lack of control of the content that is automatically fetched. Some sort of disclaimer should be in place, or alternatively an employee controlling the images. This might turn out to be hard or impossible concerning how many pictures that potentially could be posted.
+
+\textbf{Comments}\\
+To handle commenting in the application we could either make one from scratch, or implement a finished system. We researched some existing systems.
+
+\paragraph{Facebook}
+Facebook \footnote{https://www.facebook.com} is a versatile site, it is used for a magnitude of activities. Status updates, private and public messaging, pictures, videos and games are some of the functions it supports. The source of our interest for facebook lies in the commenting of stories. 
+
+Facebook has a widely used system for this that should be possible to implement without much trouble, and was thus one strong candidate for handling comments.
+
+\paragraph{Twitter}
+Twitter \footnote{https://www.twitter.com} is a popular social networking site that allows people from all over the world writing or reading short messages, also known as tweets. Twitter also supports pictures and videos, though the major use of the network consists of the tweets. Each tweet is limited to 140 signs and can contain several elements, like including other usernames, written in the form @username, any desirable tags, written in the form \#tag\_here, or simply plain text. 
+
+Twitter has a large community, with over 230 million monthly active users and 500 million tweets sent per day\cite{aboutTwitter}. Being this popular is important for the choice of system to handle commenting. The commenting system should by all intentions encourage users to use it.
+
+The choice of system to handle commenting fell to Twitter due to it’s popularity and simplicity as a short message system. Twitter’s API supports fetching tweets by tags, which will be an important part of the system. Even though facebook has a larger community, the fact that Twitter is specialized on short messages made it a more fitting tool to handle comments.
+
+\paragraph{Codebird}
+To implement Twitter we used a Twitter library called Codebird. This has a lot of the required functionality implemented, and was implemented successfully with some alterations to suit the app. Included in the implementation is a oauth login function to Twitter. You can also read related tweets as well as creating your own.
 
 \subsubsection{Server}
 
+\paragraph{Instagram}
 Method \texttt{/images.json} was implemented to retrieve tagged pictures of instagram. This method is using \texttt{tags/X/media/recent} method on the Instagram API, which returns a list of images tagged with a specified tag. Instagram API returns \gls{json} feed only, therefore we needed to use a Google library called \emph{GSON}\footnote{https://code.google.com/p/google-gson/} to process it and retrieve information that is interesting for the users of our system.
 
 Due to problems with loading time when querying Flickr, we added local in-JVM caching of fetched data using \texttt{Cache} from Google Guava library. Using time eviction, we are able to cache items for a specified time interval. This makes it possible to speed up the loading, since Flickr is only queried for details on data that is new or out of date.
 
 
 \subsection{S4: Test execution}
-To be written
+Only functional testing was done for this sprint as development went on. No systematic testing was executed.
+
 \subsection{S4: Review}
-To be written
-\subsection{S4: Phase evaluation}
-To be written
+We were unable to finish all the goals for the sprint. We have yet to find a good way to implement the functionality of adding pictures to Instagram from the app. Twitter and Instagram was otherwise successfully implemented, so most of the goals were reached.
 
 \section{Last phase: Finalization}
 To be written
