@@ -1,13 +1,13 @@
 module.exports = [ {
     isClass: true,
-    priority: 10000.0035,
+    priority: 10000.0041,
     key: "container",
     style: {
         backgroundColor: "white"
     }
 }, {
     isId: true,
-    priority: 100000.0036,
+    priority: 100000.0042,
     key: "storyTitle",
     style: {
         color: "white",
@@ -22,7 +22,7 @@ module.exports = [ {
     }
 }, {
     isId: true,
-    priority: 100000.0037,
+    priority: 100000.0043,
     key: "subTitle",
     style: {
         top: "10dp",
@@ -38,7 +38,7 @@ module.exports = [ {
     }
 }, {
     isId: true,
-    priority: 100000.0038,
+    priority: 100000.0044,
     key: "storyText",
     style: {
         top: "10dp",
@@ -54,7 +54,7 @@ module.exports = [ {
     }
 }, {
     isId: true,
-    priority: 100000.0039,
+    priority: 100000.0045,
     key: "storyAuthor",
     style: {
         top: "10dp",
@@ -70,7 +70,7 @@ module.exports = [ {
     }
 }, {
     isId: true,
-    priority: 100000.004,
+    priority: 100000.0046,
     key: "storyTab",
     style: {
         activeIcon: "twitterlogowhite.png",
@@ -80,7 +80,7 @@ module.exports = [ {
     }
 }, {
     isId: true,
-    priority: 100000.0041,
+    priority: 100000.0047,
     key: "commentTab",
     style: {
         activeIcon: "digitaltfortaltlogowhite.png",

@@ -2126,7 +2126,7 @@ exports.definition = {
 Before choosing Titanium as the platform to develop the client application with, a number of other frameworks were examined.
 
 \paragraph{The M project}
-Initially “The M project” \footnote{http://www.the-m-project.org/} came out quite good in comparisons of frameworks for client side development for mobile phones. This was due to it being lightweight and what seemed like usable documentation. Its described characteristics also matched quite good with what we was looking for. Especially the \gls{mvc} part and the native look and feel of the jQuery Mobile user interface. The MIT license was also very attractive, as it is compatible with the BSD license required for all code produced in this course.
+Initially \emph{The M project}\footnote{http://www.the-m-project.org/} came out quite good in comparisons of frameworks for client side development for mobile phones. This was due to it being lightweight and what seemed like usable documentation. Its described characteristics also matched quite good with what we was looking for. Especially the \gls{mvc} part and the native look and feel of the jQuery Mobile user interface. The MIT license was also very attractive, as it is compatible with the BSD license required for all code produced in this course.
 
 The reasons why The M project was not chosen in the end, surrounds two topics. First, the project has its own build system to help the developers develop more efficiently. Unfortunately this did not work, and produced code that could not run. One could edit the files after each build in order to make them runnable, but 5 minutes extra per build to clean the code was just not acceptable.
 
@@ -2372,17 +2372,25 @@ We were unable to finish all the goals for the sprint. We have yet to find a goo
 To be written
 
 \chapter{Technical problems}\label{chap:technical_problems}
-During the execution of this project, the group has met quite some challanges. This chapter aims to give the reader insight in some of them.
+During the execution of this project, the group has met quite some challenges. This chapter aims to give the reader insight in some of them.
 
-- Flickr geo api
-- Digitalt Fortalt api
-- cross platform mobile development
-- 
+\section{Flickr API}
+Flickr API proven to be slower and less stable than expected. Method \texttt{flickr.groups.pools.getPhotos} which is used to fetch the pictures from the group on Flickr runs fine itself, but subsequent calls of \texttt{flickr.photos.getInfo} for each of the pictures are way too slow (around 1 second each call).
+
+These methods do not support any geo-based filtering and thus we get to retrieve all the picture without regards to their location. This would cause serious problems in case this application gets popular as we would be loading pictures the user is not really interested in since they can be hundreds of miles away from the portion of the map he is viewing.
+
+This causes initial loading of the pictures to take a terribly long time. We introduced time-evicted caching prevents this from happening in every call, but the items still need to be refreshed every one hour (new items loaded immediately), guaranteeing that the problem still appears.
+
+We suggest to make calls for the picture details in parallel instead of sequential. If given enough threads to process, this can speed up the time to load the items to about one second for all instead of one second each.
+
+
+\section{Cross platform mobile development}
+%FIXME Odd
 
 \chapter{Evaluation}
-The group has experienced some problems related to working together as a team. In the beginning the amount of work placed into the project varied vastly from one group member to another. The group sat down and discussed the matter, and after that discussion most of the group worked good and more evenly together. One of the helping factors was that the group decided to meet up from 15:30 to 21:00 each monday and wednesday to work together. This time was agreed upon as one of the group members was fully occupied with his day job during the days.
+The group has experienced some problems related to working together as a team. In the beginning the amount of work placed into the project varied vastly from one group member to another. The group sat down and discussed the matter, and after that discussion most of the group worked good and more evenly together. One of the helping factors was that the group decided to meet up from 15:30 to 21:00 each Monday and Wednesday to work together. This time was agreed upon as one of the group members was fully occupied with his day job during the days.
 
-Even though the group as a whole improved a lot after the abovementioned discussion, one group member has seen limited improvements. This rest of the group tried to help him improve by assigning him small and manageable tasks with clear deadlines, and offering to help if it was needed. Regardless of this, the group saw very limited improvements, and at the end of the project he disappeared for a week without notice or answering any of the groups attempts to contact him. The group member was reported to the course staff as the group was not successful in improving his participation.
+Even though the group as a whole improved a lot after the above mentioned discussion, one group member has seen limited improvements. This rest of the group tried to help him improve by assigning him small and manageable tasks with clear deadlines, and offering to help if it was needed. Regardless of this, the group saw very limited improvements, and at the end of the project he disappeared for a week without notice or answering any of the groups attempts to contact him. The group member was reported to the course staff as the group was not successful in improving his participation.
 
 In the beginning of the project, the group divided the roles between themselves. This was done in an arbitrary fashion. As a result of this, the group member with the least participation, was appointed project leader. At some point before the middle of the project, the secretary stepped up and assumed the project leader role as well by lazy consensus, due to the responsibilities of the project leader not being taken care of. In retrospect it is clear that the roles should either be assigned in a more thought through fashion, or the group should have been more active as a whole in ensuring that each member assigned to a role fulfilled the responsibilities of it.
 
@@ -2390,7 +2398,7 @@ The group early on decided that approaching the project with SCRUM was desirable
 
 The project task was more open ended then the group had expected, and substantially more time than planned was needed to figure out what the system should actually be and how it should work. That being said, it has been very interesting and educational to be part of the whole process and working with the customers that are very experienced in their fields.
 
-Communication with the customer was mostly unproblematic, particullary because weekly meetings were held between the group and the customer. This was helpful in catching problems relatively early on. Some problems did surface, however. It became clear that the personalities of the customer and one of the group members did not go well together. This did lead to some heated discussions, that could have been avoided if the group had become aware of this matter earlier. This serves to show the group the importance of being able to identify different personalities and invoke the required actions to mitigate potential problems that might arise.
+Communication with the customer was mostly unproblematic, particularly because weekly meetings were held between the group and the customer. This was helpful in catching problems relatively early on. Some problems did surface, however. It became clear that the personalities of the customer and one of the group members did not go well together. This did lead to some heated discussions, that could have been avoided if the group had become aware of this matter earlier. This serves to show the group the importance of being able to identify different personalities and invoke the required actions to mitigate potential problems that might arise.
 
 During the weekly meeting with the advisor the group received valuable feedback on how to handle the work and the documentation. The advisor was also helpful in reading through the report multiple times during the project. All suggestions made by the advisor was implemented and helped the group writing a better report as well as giving a better insight in how a professional report should be written and structured.
 

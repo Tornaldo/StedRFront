@@ -126,9 +126,6 @@ function Controller() {
     });
     $.twitterView.addEventListener("close", function() {
         Ti.API.info("Destroying twitter");
-        Codebird = null;
-        cp = null;
-        twitterRowController = null;
         $.destroy();
     });
     loadAccessToken = function(pService) {

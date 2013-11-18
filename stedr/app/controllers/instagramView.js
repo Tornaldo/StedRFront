@@ -26,11 +26,18 @@
  */
 
 //Setting up data
-Ti.API.info("Model: " +JSON.stringify($model.get('fullName')));
+Ti.API.info("Fullname: " + $model.get('fullName'));
+Ti.API.info("Likes: " + $model.get('likesCount'));
+Ti.API.info("Comments: " + $model.get('commentCount'));
+Ti.API.info("Caption: " + $model.get('caption'));
 $.pictureView.setWidth(Titanium.Platform.displayCaps.platformWidth);
 $.pictureView.setHeight(Titanium.Platform.displayCaps.platformWidth);
-$.instagramPicture.setImage($model.get('url'));
 $.userName.setText("@"+ $model.get('fullName'));
+$.instagramPicture.setImage($model.get('url'));
+$.numberoflikeslabel.setText($model.get('likesCount')+ " likes");
+$.numberofcommentslabel.setText($model.get('commentCount')+ " comments");
+$.caption.setText($model.get('caption'));
+
 
 
 $.instagramView.addEventListener('close', function() {

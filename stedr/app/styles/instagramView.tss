@@ -12,6 +12,7 @@
 }
 
 "#userName": {
+	left : "15dp",
 	color : 'white',
 	font : {
 		color : 'white',
@@ -20,4 +21,46 @@
 		fontStyle : 'normal',
 		fontWeight : 'normal',
 	}
+}
+"#likesicon":{
+	left : "15dp",
+}
+"#numberoflikeslabel": {
+	left : "15dp",
+	color : 'white',
+	font : {
+		color : 'white',
+		fontFamily : 'Helvetica',
+		fontSize : '15dp',
+		fontStyle : 'normal',
+		fontWeight : 'normal',
+	}
+}
+"#commentsicon": {
+	left : "15dp",
+}
+"#numberofcommentslabel": {
+	left : "15dp",
+	color : 'white',
+	font : {
+		color : 'white',
+		fontFamily : 'Helvetica',
+		fontSize : '15dp',
+		fontStyle : 'normal',
+		fontWeight : 'normal',
+	}
+}
+"#caption":{
+	left : "15dp",
+	color : 'white',
+	font : {
+		color : 'white',
+		fontFamily : 'Helvetica',
+		fontSize : '15dp',
+		fontStyle : 'normal',
+		fontWeight : 'normal',
+	}
+}
+"#hei":{
+	height : "20dp"
 }
