@@ -2879,12 +2879,8 @@ http://www.playframework.com/documentation/2.2.x/Production
 \section{Client}
 Some short guides for compiling and installing the client.
 
-\subsection{Installation}
-WRITE ABOUT INSTALLATION
-FIXME
-
 \subsection{Compile for Android}
-To compile the project for Android, you need to follow these steps:
+To compile the project for Android, you need to follow these steps after you have installed Android SDK and followed the guide in Titanium Studio to activate it:
 
 \begin{itemize}
     \item Start Titanium Studio and open the project
@@ -2900,12 +2896,23 @@ To compile the project for Android, you need to follow these steps:
 \end{figure}
 
 \subsection{Compile for iOS}
-TODO
-FIXME
+To compile the project for iOS, you need to follow these steps on a Apple computer, after you have the guide in Titanium Studio to activate XCode:
+
+\begin{itemize}
+    \item Start Titanium Studio and open the project
+    \item Activate the project by clicking on it's name
+    \item Click on the run icon shown in figure~\ref{fig:appendix_documentation_compile} and select iPhone Device
+\end{itemize}
 
 \subsection{Compile for normal browsers}
-TODO
-FIXME
+To compile the project for normal browsers, you need to follow these steps:
+
+\begin{itemize}
+    \item If you run the server on the same computer, you need to disable web security for your webkit browser of choise. For Google Chrome, you do this by navigating to the folder Chrome is installed and start it with the following command line argument: \texttt{--disable-web-security}
+    \item Start Titanium Studio and open the project
+    \item Activate the project by clicking on it's name
+    \item Click on the run icon shown in figure~\ref{fig:appendix_documentation_compile} and select Mobile Web Preview in Browser
+\end{itemize}
 
 \chapter{Current Backlog}
 \begin{center}
