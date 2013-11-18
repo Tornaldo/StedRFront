@@ -1687,7 +1687,10 @@ Table \ref{tab:test_plan_roles_allocation} maps roles in testing to the members 
                             & Knut Nergård                  \\
                             & Simon Stastny                 \\ \hline
 
-        Black-box Testers   & TBD                           \\ \hline %FIXME SIMON: determine black-box testers
+        Black-box Testers   & Christian Frøystad            \\
+                            & Odd Fredrik Rogstad           \\
+                            & Knut Nergård                  \\
+                            & Simon Stastny                 \\ \hline
     \end{tabular}
     \caption{Roles allocation for testing tasks.}
     \label{tab:test_plan_roles_allocation}
@@ -1817,6 +1820,8 @@ Test cases in \ref{tab:TCF2.2FE1}, \ref{tab:TCF2.2FE2}, \ref{tab:TCF3.2FE1}, \re
 
 \section{Test results and evaluation}
 
+Tests results are attached in appendix~\ref{appendix:testresults}.
+
 \subsection{Code inspection result}
 
 \subsubsection{Server}
@@ -1825,7 +1830,7 @@ Code inspection found the server code to be \emph{structured, clean, elegant, wi
 
 \subsubsection{Client}
 
-%FIXME SIMON: perform inspection
+%FIXME perform inspection
 
 \chapter{Phases}
 This chapter aims to document the progress of the project, but also give valuable background for decisions taken and documentation for developing against the system.
@@ -2598,7 +2603,7 @@ For the rest of this report, we are going to use a slightly different terminolog
     Period sum          & 177:45   & 90:15    & 137:50   & 232:15   & 0           & 0           & 638:05       \\ \hline
 \end{tabular}
 \caption{Time sheet for group as total}
-\label{tab:appendix_timesheets_group}
+\label{tab:appendix_timesheets_active}
 \end{table}
 
 Being only three active members, the group was expected to reach a total of 975 hours.
@@ -3331,6 +3336,7 @@ As requirement F3.3.1 was the only child of its parent, we are renumbering it an
   \item F3.3 System shall let users comment on stories
 \end{itemize}
 
+
 \chapter{Test cases}\label{appendix:testcases}
 
 \begin{table}[H]
@@ -3343,7 +3349,7 @@ As requirement F3.3.1 was the only child of its parent, we are renumbering it an
     Response             & New feature added                           \\ \hline
     Response measure     & Done in 5 hours                             \\ \hline
   \end{tabular}
-  \caption{Quality Attribute Scenario 1}
+  \caption{Quality Attribute Scenario 1 - QAS1}
   \label{tab:TC_qas_newservice}
 \end{table}
 
@@ -3678,5 +3684,141 @@ As requirement F3.3.1 was the only child of its parent, we are renumbering it an
   \label{tab:TCF4.1FE1}
 \end{table}
 
+
+\chapter{Test results}\label{appendix:testresults}  
+
+This appendix lists final results of tests.
+
+% --------- quality attributes
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & Integrate new external service            \\ \hline 
+    TC Identification & Quality Attribute Scenario 1              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-10-23                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           & Integrated Flickr for images retrieval
+                        in about 4 hours.                         \\
+  \hline 
+\end{tabular}\end{center}
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & Build application for a new platform      \\ \hline 
+    TC Identification & Quality Attribute Scenario 2              \\ \hline 
+    Tester            & Odd Fredrik Rogstad                       \\ \hline 
+    Date              & 2013-11-07                                \\ \hline 
+    Result            & \textbf{Fail}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           & Started implementing the app for iOS when the application where about 90\% done. The implementation took about 20 hours. In theory, the app should work on both android and iOS without the need of any changes, but in practice it was quite a lot we had to do. For instance, the navigation on Android, considering how to get back to the previous window, is typically done by pressing the built in hardware back-button. On iOS there isn't any hardware button that is dedicated to the go-back-function, so one needs to implement a navigation bar. Additionally to the navigation bar, there were several other user interface objects that didn't work on iOS, for example the Titanium Map module for Google Maps v2. Most of the problems regarding the differences between Android and iOS were solved by making platform specific code, typically in a \texttt{if-else statements; if(Ti.Platform.osname == “android”)\{Android code\} else \{iOS code\}}.                                          \\
+  \hline 
+\end{tabular}\end{center}
+
+
+
+% --------- server
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & Places.json server method                 \\ \hline 
+    TC Identification & TC-F2.2-BE-1                              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-11-18                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           &                                           \\
+  \hline 
+\end{tabular}\end{center}
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & Stories.json server method                \\ \hline 
+    TC Identification & TC-F3.2-BE-1                              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-11-18                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           &                                           \\
+  \hline 
+\end{tabular}\end{center}
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & Images.json server method                 \\ \hline 
+    TC Identification & TC-F4.1-BE-1                              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-11-18                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           &                                           \\
+  \hline 
+\end{tabular}\end{center}
+
+% --------- client
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & Places map overview                       \\ \hline 
+    TC Identification & TC-F2.2-FE-1                              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-11-18                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           &                                           \\
+  \hline 
+\end{tabular}\end{center}
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & View place details                        \\ \hline 
+    TC Identification & TC-F2.2-FE-2                              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-11-18                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           &                                           \\
+  \hline 
+\end{tabular}\end{center}
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & View stories overview for a place         \\ \hline 
+    TC Identification & TC-F3.2-FE-1                              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-11-18                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           &                                           \\
+  \hline 
+\end{tabular}\end{center}
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & View story detail                         \\ \hline 
+    TC Identification & TC-F3.2-FE-2                              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-11-18                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           & Video controls are not visible and user
+                        has no clear means of stopping the 
+                        video playback.                           \\
+  \hline 
+\end{tabular}\end{center}
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & Comment on story using Twitter            \\ \hline 
+    TC Identification & TC-F3.3-FE-1                              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-11-18                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           &                                           \\
+  \hline 
+\end{tabular}\end{center}
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & View pictures for a place                 \\ \hline 
+    TC Identification & TC-F4.1-FE-1                              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-11-18                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           &                                           \\
+  \hline 
+\end{tabular}\end{center}
 
 \end{document}
