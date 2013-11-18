@@ -1,4 +1,5 @@
 <Alloy>
+	<!-- This is the view that holds two tabs; one for content from digitalt fortalt, and the other for twitter -->
 	<TabGroup>
 		<Tab id="storyTab" icon="images/digitaltfortaltlogo.png" >
 			<Window class="container" layout="vertical" exitOnClose="true" navBarHidden="true">

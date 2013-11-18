@@ -27,7 +27,7 @@
 
 /*
  * Add media gallery for the images and videos from Digitalt Fortalt,
- * inn mediaGelleryView
+ * in mediaGelleryView
  */
 var mediaGalleryController = Alloy.createController('mediaGallery', {
 	"$model" : $model
@@ -35,7 +35,7 @@ var mediaGalleryController = Alloy.createController('mediaGallery', {
 $.mediaGalleryView.add(mediaGalleryController.getView());
 
 /*
- * Add twitter controller in twitterView
+ * Add twitter view in twitterView
  */
 var twitterController = Alloy.createController('twitter', {
 	"$model" : $model
@@ -43,7 +43,7 @@ var twitterController = Alloy.createController('twitter', {
 $.twitterView.add(twitterController.getView());
 
 /*
- * Set the text labels
+ * Set the text labels (in the story tab)
  */
 
 $.storyTitle.setText($model.get('title'));
@@ -55,9 +55,7 @@ $.storyAuthor.setText("Author: "+ $model.get('author'));
  * Make tags from Digitalt Fortalt,
  * add them in tagView
  */
-
 var tags = $model.get('tags');
-
 var tagStart = Ti.UI.createLabel({
 	text : "Tags: ",
 	width : Ti.UI.SIZE,
@@ -93,7 +91,6 @@ for ( i = 0; i < tags.length; i++) {
 /*
  * Listeners
  */
-
 $.storyView.addEventListener('close', function() {
 	Ti.API.info("Destroying storyview");
 	mediaGalleryController = null;
