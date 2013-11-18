@@ -2347,12 +2347,18 @@ To be written
 To be written
 
 \chapter{Technical problems}\label{chap:technical_problems}
-During the execution of this project, the group has met quite some challanges. This chapter aims to give the reader insight in some of them.
+During the execution of this project, the group has met quite some challenges. This chapter aims to give the reader insight in some of them.
 
-- Flickr geo api
-- Digitalt Fortalt api
-- cross platform mobile development
-- 
+\section{Flickr API}
+Flickr API proven to be slower and less stable than expected. Method \texttt{flickr.groups.pools.getPhotos} which is used to fetch the pictures from the group on Flickr runs fine itself, but subsequent calls of \texttt{flickr.photos.getInfo} for each of the pictures are way too slow (around 1 second each call).
+
+This causes initial loading of the pictures to take a terribly long time. We introduced time-evicted caching prevents this from happening in every call, but the items still need to be refreshed every one hour (new items loaded immediately), guaranteeing that the problem still appears.
+
+We suggest to make calls for the picture details in parallel and not one after another. If given enough threads to process, this can speed up the time to load the items to almost one second for all instead of one second each.
+
+
+\section{Cross platform mobile development}
+%FIXME Odd
 
 \chapter{Evaluation}
 The group has experienced some problems related to working together as a team. In the beginning the amount of work placed into the project varied vastly from one group member to another. The group sat down and discussed the matter, and after that discussion most of the group worked good and more evenly together. One of the helping factors was that the group decided to meet up from 15:30 to 21:00 each monday and wednesday to work together. This time was agreed upon as one of the group members was fully occupied with his day job during the days.
