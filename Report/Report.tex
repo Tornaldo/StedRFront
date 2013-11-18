@@ -2172,15 +2172,38 @@ The architecture is only partially done, this is due to the change in mobile fra
     \centering
     \begin{tabular}{| l | l |} \hline
         Item                                                                & Outcome         \\ \hline
-
+        Browse virtual walls & Done\\ \hline
+        Open virtual walls & Partly done\\ \hline
+        Open stories & Done\\ \hline
+        Create walls & Done\\ \hline
+        Browse stories & Done\\ \hline
+        Format pictures to large format & Done\\ \hline
+        Flickr API & Done in server\\ \hline
     \end{tabular}
     \caption{Backlog for sprint 3.}
     \label{tab:phase_sprint3_backlog}
 \end{table}
 
-\subsection{S3: Requirements as scenarios}
-
 \subsection{S3: Implementation}
+
+\subsubsection{Client}
+One of the first things to do with the app was adding places to the map. To get this done, we used Flickr as a base to store pictures of the places.
+
+\paragraph{Flickr}
+Flickr \footnote{https://www.flickr.com} is a social network designed for sharing and hosting pictures or videos with friends, family predefined groups or other. Flickr focuses on maintaining a high quality over the items that are stored there instead of the usual neglect of quality over quantity. Pictures stored on Flickr can contain coordinates as to where the picture was taken. 
+
+As Flickr focuses on quality pictures and at the same time is fairly popular, this makes the site a good candidate to store and get the front page pictures of the places. The way the groups are made up also makes it easier to filter pictures we want for the app. 
+
+The choice fell to use Flickr as a base for the places. A specific group for the project was created, where the front page pictures is to be stored. Every picture stored in the group is made into a separate place with the help of the coordinates attached to the pictures, and these coordinates are in turn used to place them on the map.
+
+\paragraph{Google Map - view}
+The first meeting the user will have with the user interface, apart from the Titanium load-up screen, is the google map. This works almost exactly like the browser version of the google map. You can drag the map in all directions, and zoom in or out on areas of choice. On the map, several pins appear. At startup, the app queries the server for all places, and places all the results on the map with the help of the stored coordinates every picture should contain. By clicking any of the pins, a text field with the name of the place and a thumbnail of the picture of the place will appear above the pin. Clicking this field or picture will take the user to a new view of the place. Clicking anywhere else will remove the field and thumbnail again so that the user is back to the basic map with pins.
+
+\paragraph{Place - view}
+If the thumbnail or text field in the map view is clicked, a new view over the place associated with the pin is opened. The top half of the screen in the place view is the main picture of the place. The second half is a gallery view of the stories affiliated with this place. In the opening of this view, a server query for all stories within a preset radius around the coordinate of the place is sent to digitalt fortalt, and the results are filtered, sent back and shown in the gallery. The gallery is scrollable, but only the bottom half of the screen is used at any time for this purpose, meaning the main picture of the place will always occupy the top half of the screen. Every picture in the gallery represents one story. By clicking one of the pictures, the user opens a new view of the story associated with the picture.
+
+\paragraph{Story - view}
+If a picture in the story gallery is clicked, the story view is opened. The top half of the screen is used for showing the pictures of the story, starting with the one shown in the place gallery, while the bottom half is used for the story itself. Much like the gallery in place view, the story is scrollable, but the top half is always occupied by the picture.
 
 \subsubsection{Server}
 
@@ -2215,8 +2238,12 @@ As seen in \ref{fig:mercator}, it is a cylindrical conformal projection, so it p
 
 
 \subsection{S3: Test execution}
+Only functional testing was done for this sprint as development went on. No systematic testing was executed.
+
 \subsection{S3: Review}
-\subsection{S3: Phase evaluation}
+The group were again unable to finish all the requirements of the sprint. There were simply not time left to implement the Twitter comments in time. The main reason for this was caused by the unfamiliarity with the coding language of choice and the platform used, making everything take a little more time than expected.
+
+The rest of the requirements were implemented successfully on both server and client.
 
 \section{Fifth phase: Sprint 4}
 
