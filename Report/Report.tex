@@ -59,24 +59,29 @@
 \begin{titlepage}
     \color{white}
     \begin{center}
-        
+        ~
         % \textbf{\textsc{\Large Norwegian University of Science and Technology}}
-        % \\[1.5cm]
+        \\[-2.5cm]
+
+        \includegraphics[width=0.5\textwidth]{images/ntnu_logo}
         
-        \textsc{\Large TDT4290 Customer Driven Project, IDI, NTNU}
+        \\[0.4cm]
+        \textsc{\Large TDT4290 Customer Driven Project
+        \\
+        Department of Computer and Information Science}
         \\[0.5cm]
         
         \rule{\linewidth}{0.5mm}
         \\[1cm]
         
         \textbf{\LARGE \fullprojectname}
-        \\[1cm]
+        \\[0.8cm]
         
         \rule{\linewidth}{0.5mm}
         \\[1.0cm]
         
         \Large{  \today}
-        \\[1.5cm]
+        \\[1.3cm]
 
 \begin{table}[H]
 \centering
@@ -126,7 +131,7 @@
 %        \begin{figure}[hb]
  %           \begin{minipage}[b]{0.45\linewidth}
 %                \centering
-%                \includegraphics[width=\textwidth]{images/ntnu_logo}
+                
 %            \end{minipage}
 %            \hspace{0.5cm}
 %            \begin{minipage}[b]{0.45\linewidth}
@@ -2038,7 +2043,7 @@ In this sprint the requirements for the overall workings of the system seemed to
 
 \subsubsection{Client}
 \paragraph{Sync client}
-Titanium Alloy is server agnostic. This means that most of the code does not know, nor need to know, what kind of server is running. This is accomplished by utilizing an abstraction layer in Alloy called Sync. Sync provides an unified API that can be implemented for each type of server.\\
+Titanium Alloy is backend agnostic. This means that most of the code does not know, nor need to know, what kind of server is running. This is accomplished by utilizing an abstraction layer in Alloy called Sync. Sync provides an unified API that can be implemented for each type of server.\\
 The API has the following methods:
 
 \begin{table}[H]
