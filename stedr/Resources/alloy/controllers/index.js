@@ -25,20 +25,17 @@ function Controller() {
     });
     $.__views.mapWin.add($.__views.mapSearchBar);
     hideKeyboard ? $.__views.mapSearchBar.addEventListener("cancel", hideKeyboard) : __defers["$.__views.mapSearchBar!cancel!hideKeyboard"] = true;
-    $.__views.mapView = Ti.UI.createView({
-        id: "mapView",
+    $.__views.mapViewContainer = Ti.UI.createView({
+        id: "mapViewContainer",
         height: "90%"
     });
-    $.__views.mapWin.add($.__views.mapView);
+    $.__views.mapWin.add($.__views.mapViewContainer);
     exports.destroy = function() {};
     _.extend($, $.__views);
     if ("iphone" == Alloy.Globals.OS) {
         Alloy.Globals.Nav = $.nav;
         $.nav.open();
-    } else {
-        Ti.API.info("starter ikke iphone");
-        $.mapWin.open();
-    }
+    } else $.mapWin.open();
     var MapModule;
     var mapview;
     if ("android" == Alloy.Globals.OS) {
@@ -59,9 +56,37 @@ function Controller() {
             longitudeDelta: .01
         }
     });
-    Ti.API.info("START MAP");
-    $.mapView.add(mapview);
-    Ti.API.info("Add eventlisteners");
+    $.mapViewContainer.add(mapview);
+    var wallCollection = Alloy.Collections.wall;
+    wallCollection.fetch({
+        success: function() {
+            _.each(wallCollection.models, function(element) {
+                Ti.API.info("Making annotation for " + element.get("title"));
+                if ("android" == Alloy.Globals.OS) var mapAnnotation = MapModule.createAnnotation({
+                    title: element.get("title"),
+                    latitude: element.get("latitude"),
+                    longitude: element.get("longitude"),
+                    rightView: Ti.UI.createImageView({
+                        image: element.get("thumbnailUrl")
+                    }),
+                    pincolor: MapModule.ANNOTATION_AZURE,
+                    id: element.get("id")
+                }); else var mapAnnotation = Titanium.Map.createAnnotation({
+                    title: element.get("title"),
+                    latitude: element.get("latitude"),
+                    longitude: element.get("longitude"),
+                    rightView: Ti.UI.createImageView({
+                        image: element.get("thumbnailUrl")
+                    }),
+                    id: element.get("id")
+                });
+                mapview.addAnnotation(mapAnnotation);
+            });
+        },
+        error: function() {
+            alert("Something went wrong fetching the walls");
+        }
+    });
     mapview.addEventListener("click", function(evt) {
         Ti.API.info(evt.type);
         Ti.API.info(evt.clicksource);
@@ -120,40 +145,10 @@ function Controller() {
             }
         };
         client.onerror = function(e) {
-            alert("This is very strange! Do you have internet connection?");
+            alert("Something went wrong searching for a place in Google Place");
             Ti.API.error(e.error);
         };
         client.send();
-    });
-    var wallCollection = Alloy.Collections.wall;
-    wallCollection.fetch({
-        success: function() {
-            _.each(wallCollection.models, function(element) {
-                Ti.API.info("Making annotation for " + element.get("title"));
-                if ("android" == Alloy.Globals.OS) var mapAnnotation = MapModule.createAnnotation({
-                    title: element.get("title"),
-                    latitude: element.get("latitude"),
-                    longitude: element.get("longitude"),
-                    rightView: Ti.UI.createImageView({
-                        image: element.get("thumbnailUrl")
-                    }),
-                    pincolor: MapModule.ANNOTATION_AZURE,
-                    id: element.get("id")
-                }); else var mapAnnotation = Titanium.Map.createAnnotation({
-                    title: element.get("title"),
-                    latitude: element.get("latitude"),
-                    longitude: element.get("longitude"),
-                    rightView: Ti.UI.createImageView({
-                        image: element.get("thumbnailUrl")
-                    }),
-                    id: element.get("id")
-                });
-                mapview.addAnnotation(mapAnnotation);
-            });
-        },
-        error: function() {
-            Ti.API.error("woops");
-        }
     });
     $.mapWin.addEventListener("close", function() {
         wallCollection.destroy();

@@ -117,11 +117,9 @@ function Controller() {
         image: $model.get("pictureUrl")
     }));
     $.creditLabel.setText("FOTO: " + $model.get("ownerName"));
-    Ti.API.info("Starting storygallery: " + $model.get("title"));
     var storyGalleryController = Alloy.createController("story", {
         $model: $model
     });
-    Ti.API.info("Starting instagramgallery: " + $model.get("title"));
     var instagramController = Alloy.createController("instagram", {
         $model: $model
     });

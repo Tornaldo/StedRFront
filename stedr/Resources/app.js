@@ -10,8 +10,6 @@ Alloy.Collections.story = Alloy.createCollection("story");
 
 Alloy.Collections.instagram = Alloy.createCollection("instagram");
 
-Ti.UI.orientation = Ti.UI.PORTRAIT;
-
 Alloy.Collections.tweets = new Backbone.Collection();
 
 Alloy.createController("index");
