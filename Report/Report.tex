@@ -640,7 +640,9 @@ The test leader is responsible for the activities around testing. This includes 
 The project manager is responsible for keeping the project on track. He should know the status of the project at any time, and know what has to be done to make progress. He ensures that everyone in the team has something to do and keeps track of the hours spent from the individuals in the team. Finally he is responsible for keeping a positive work environment in the team, working to solve conflicts if they may arise.
 
 \section{Quality Assurance}
-Quality assurance is an important part of any project. Without any sort of standards and routines, the collaboration of the group will suffer major setbacks once you need to combine the individual works in the group to the final product, as well as general confusion and/or uncertainty. To ensure our product turns out the best possible way and that the organization was pleasing, we started early setting up rules for communication within the group as well as external communication with customer and supervisor. Routines of the method of work was set up, and standardized templates were created.
+Quality assurance is one of those elements that is important to get going early on in the project. Lack of routines and standards may work fine in the beginning, but as the project progresses and different workloads needs to be increasingly intertwined, the differences in methods chosen will increase the complexity of combining workloads. This will hurt the efficiency and may possibly lower the quality of the product. The lack of quality assurance might also create confusion or insecurity within the group and with external parties attached to the project.
+
+To create the product the best possible way, both the production and the organizational structure should be considered. To create a stable work environment within the group as well as creating good interaction with the customer and advisor, the group started early with setting up rules for communication. These rules were both for communication within the group, and the communication between the group, customer and advisor. The group also created routines for the method of work, dates of meetings, and standardized templates to be used throughout the project.
 
 \subsection{Work routines}
 Having a group with widely different time schedules, we quickly figured out that a more decentralized work structure would be in order. By doing this, we further increased the importance of good routines for work sharing and communication, as the group meetings were scarce and errors or misunderstandings might exist for a prolonged time if they first surfaced.
@@ -1685,7 +1687,10 @@ Table \ref{tab:test_plan_roles_allocation} maps roles in testing to the members 
                             & Knut Nergård                  \\
                             & Simon Stastny                 \\ \hline
 
-        Black-box Testers   & TBD                           \\ \hline %FIXME SIMON: determine black-box testers
+        Black-box Testers   & Christian Frøystad            \\
+                            & Odd Fredrik Rogstad           \\
+                            & Knut Nergård                  \\
+                            & Simon Stastny                 \\ \hline
     \end{tabular}
     \caption{Roles allocation for testing tasks.}
     \label{tab:test_plan_roles_allocation}
@@ -1815,6 +1820,8 @@ Test cases in \ref{tab:TCF2.2FE1}, \ref{tab:TCF2.2FE2}, \ref{tab:TCF3.2FE1}, \re
 
 \section{Test results and evaluation}
 
+Tests results are attached in appendix~\ref{appendix:testresults}.
+
 \subsection{Code inspection result}
 
 \subsubsection{Server}
@@ -1823,7 +1830,7 @@ Code inspection found the server code to be \emph{structured, clean, elegant, wi
 
 \subsubsection{Client}
 
-%FIXME SIMON: perform inspection
+%FIXME perform inspection
 
 \chapter{Phases}
 This chapter aims to document the progress of the project, but also give valuable background for decisions taken and documentation for developing against the system.
@@ -2172,15 +2179,38 @@ The architecture is only partially done, this is due to the change in mobile fra
     \centering
     \begin{tabular}{| l | l |} \hline
         Item                                                                & Outcome         \\ \hline
-
+        Browse virtual walls & Done\\ \hline
+        Open virtual walls & Partly done\\ \hline
+        Open stories & Done\\ \hline
+        Create walls & Done\\ \hline
+        Browse stories & Done\\ \hline
+        Format pictures to large format & Done\\ \hline
+        Flickr API & Done in server\\ \hline
     \end{tabular}
     \caption{Backlog for sprint 3.}
     \label{tab:phase_sprint3_backlog}
 \end{table}
 
-\subsection{S3: Requirements as scenarios}
-
 \subsection{S3: Implementation}
+
+\subsubsection{Client}
+One of the first things to do with the app was adding places to the map. To get this done, we used Flickr as a base to store pictures of the places.
+
+\paragraph{Flickr}
+Flickr \footnote{https://www.flickr.com} is a social network designed for sharing and hosting pictures or videos with friends, family predefined groups or other. Flickr focuses on maintaining a high quality over the items that are stored there instead of the usual neglect of quality over quantity. Pictures stored on Flickr can contain coordinates as to where the picture was taken. 
+
+As Flickr focuses on quality pictures and at the same time is fairly popular, this makes the site a good candidate to store and get the front page pictures of the places. The way the groups are made up also makes it easier to filter pictures we want for the app. 
+
+The choice fell to use Flickr as a base for the places. A specific group for the project was created, where the front page pictures is to be stored. Every picture stored in the group is made into a separate place with the help of the coordinates attached to the pictures, and these coordinates are in turn used to place them on the map.
+
+\paragraph{Google Map - view}
+The first meeting the user will have with the user interface, apart from the Titanium load-up screen, is the google map. This works almost exactly like the browser version of the google map. You can drag the map in all directions, and zoom in or out on areas of choice. On the map, several pins appear. At startup, the app queries the server for all places, and places all the results on the map with the help of the stored coordinates every picture should contain. By clicking any of the pins, a text field with the name of the place and a thumbnail of the picture of the place will appear above the pin. Clicking this field or picture will take the user to a new view of the place. Clicking anywhere else will remove the field and thumbnail again so that the user is back to the basic map with pins.
+
+\paragraph{Place - view}
+If the thumbnail or text field in the map view is clicked, a new view over the place associated with the pin is opened. The top half of the screen in the place view is the main picture of the place. The second half is a gallery view of the stories affiliated with this place. In the opening of this view, a server query for all stories within a preset radius around the coordinate of the place is sent to digitalt fortalt, and the results are filtered, sent back and shown in the gallery. The gallery is scrollable, but only the bottom half of the screen is used at any time for this purpose, meaning the main picture of the place will always occupy the top half of the screen. Every picture in the gallery represents one story. By clicking one of the pictures, the user opens a new view of the story associated with the picture.
+
+\paragraph{Story - view}
+If a picture in the story gallery is clicked, the story view is opened. The top half of the screen is used for showing the pictures of the story, starting with the one shown in the place gallery, while the bottom half is used for the story itself. Much like the gallery in place view, the story is scrollable, but the top half is always occupied by the picture.
 
 \subsubsection{Server}
 
@@ -2215,8 +2245,12 @@ As seen in \ref{fig:mercator}, it is a cylindrical conformal projection, so it p
 
 
 \subsection{S3: Test execution}
+Only functional testing was done for this sprint as development went on. No systematic testing was executed.
+
 \subsection{S3: Review}
-\subsection{S3: Phase evaluation}
+The group were again unable to finish all the requirements of the sprint. There were simply not time left to implement the Twitter comments in time. The main reason for this was caused by the unfamiliarity with the coding language of choice and the platform used, making everything take a little more time than expected.
+
+The rest of the requirements were implemented successfully on both server and client.
 
 \section{Fifth phase: Sprint 4}
 
@@ -2264,17 +2298,17 @@ In Sprint 4, the group should also place an emphasis on testing, as very little 
         \hline
         Open a \wallentitys & Done\\
         \hline
-        Create \wallentitys & Done\\
+        Create \wallentitys & Not done\\
         \hline
         Open story & Done\\
         \hline
-        Add story to \wallentitys & \\
+        Add story to \wallentitys & Done\\
         \hline
-        Filter stories by tags & \\ 
+        Filter stories by tags & Not done\\ 
         \hline
-        Adding instagram information related to a \wallentitys  & \\
+        Adding instagram information related to a \wallentitys  & Not done\\
         \hline
-        Retrieving instagram information related to a \wallentitys & \\
+        Retrieving instagram information related to a \wallentitys & Done\\
         \hline
         Add comment to a story & Done\\
         \hline
@@ -2325,23 +2359,48 @@ In Sprint 4, the group should also place an emphasis on testing, as very little 
 
 \subsubsection{Client}
 \paragraph{Instagram}
-Instagram API does not support fetching of several tags simultaneously.
-Instagram has a limit of 30 pictures to be shown per page. 
-Can be problematic, legally, to show all pictures without filtering by humans.
+The Instagram \gls{api} supports several ways of fetching information from the database. It filters by users, media, location, tag and several other forms by choice. For the project, a way to find pictures with the associated tag as well as showing them is the goal, so filtering by tags is the natural choice. To access the Instagram \gls{api} one need an access token which can mainly be acquired by either logging into an Instagram account, or registering the application for a developer license. 
+
+To fetch pictures by tag from Instagram, the group chose to use the most recent uploads from Instagram. An \gls{url} request is sent from the server with the format:
+\texttt{https://api.instagram.com/v1/tags/TAG\_HERE/media/recent?access\_token=YOUR\_ACCESS\_TOKEN}
+
+Originally, places were to be defined as \#stedr \#place\_name. However, the Instagram \gls{api} does not support fetching of more than one tag at the time, which made this approach troublesome. The group had two choices, either configure the server to do several queries and return the results that matched all the tags, or to redefine the tag standard to \#stedr\_place\_name. Having the situation that the result would differ very little, the group chose the latter to reduce complexity on the implementation and increase performance. 
+
+The Instagram \gls{api} also has a max limit of 30 pictures being shown at the time. It has not been given a high priority to get more pictures than this, so the current version will only display 30 instagram images per place. However, in the event that more results is to be shown, a pagination is required on the server side and some extra functionality on the client side.
+
+Another problem with fetching pictures from Instagram is the lack of control of the content that is automatically fetched. Some sort of disclaimer should be in place, or alternatively an employee controlling the images. This might turn out to be hard or impossible concerning how many pictures that potentially could be posted.
+
+\textbf{Comments}\\
+To handle commenting in the application we could either make one from scratch, or implement a finished system. We researched some existing systems.
+
+\paragraph{Facebook}
+Facebook \footnote{https://www.facebook.com} is a versatile site, it is used for a magnitude of activities. Status updates, private and public messaging, pictures, videos and games are some of the functions it supports. The source of our interest for facebook lies in the commenting of stories. 
+
+Facebook has a widely used system for this that should be possible to implement without much trouble, and was thus one strong candidate for handling comments.
+
+\paragraph{Twitter}
+Twitter \footnote{https://www.twitter.com} is a popular social networking site that allows people from all over the world writing or reading short messages, also known as tweets. Twitter also supports pictures and videos, though the major use of the network consists of the tweets. Each tweet is limited to 140 signs and can contain several elements, like including other usernames, written in the form @username, any desirable tags, written in the form \#tag\_here, or simply plain text. 
+
+Twitter has a large community, with over 230 million monthly active users and 500 million tweets sent per day\cite{aboutTwitter}. Being this popular is important for the choice of system to handle commenting. The commenting system should by all intentions encourage users to use it.
+
+The choice of system to handle commenting fell to Twitter due to it’s popularity and simplicity as a short message system. Twitter’s API supports fetching tweets by tags, which will be an important part of the system. Even though facebook has a larger community, the fact that Twitter is specialized on short messages made it a more fitting tool to handle comments.
+
+\paragraph{Codebird}
+To implement Twitter we used a Twitter library called Codebird. This has a lot of the required functionality implemented, and was implemented successfully with some alterations to suit the app. Included in the implementation is a oauth login function to Twitter. You can also read related tweets as well as creating your own.
 
 \subsubsection{Server}
 
+\paragraph{Instagram}
 Method \texttt{/images.json} was implemented to retrieve tagged pictures of instagram. This method is using \texttt{tags/X/media/recent} method on the Instagram API, which returns a list of images tagged with a specified tag. Instagram API returns \gls{json} feed only, therefore we needed to use a Google library called \emph{GSON}\footnote{https://code.google.com/p/google-gson/} to process it and retrieve information that is interesting for the users of our system.
 
 Due to problems with loading time when querying Flickr, we added local in-JVM caching of fetched data using \texttt{Cache} from Google Guava library. Using time eviction, we are able to cache items for a specified time interval. This makes it possible to speed up the loading, since Flickr is only queried for details on data that is new or out of date.
 
 
 \subsection{S4: Test execution}
-To be written
+Only functional testing was done for this sprint as development went on. No systematic testing was executed.
+
 \subsection{S4: Review}
-To be written
-\subsection{S4: Phase evaluation}
-To be written
+We were unable to finish all the goals for the sprint. We have yet to find a good way to implement the functionality of adding pictures to Instagram from the app. Twitter and Instagram was otherwise successfully implemented, so most of the goals were reached.
 
 \section{Last phase: Finalization}
 To be written
@@ -2544,7 +2603,7 @@ For the rest of this report, we are going to use a slightly different terminolog
     Period sum          & 177:45   & 90:15    & 137:50   & 232:15   & 0           & 0           & 638:05       \\ \hline
 \end{tabular}
 \caption{Time sheet for group as total}
-\label{tab:appendix_timesheets_group}
+\label{tab:appendix_timesheets_active}
 \end{table}
 
 Being only three active members, the group was expected to reach a total of 975 hours.
@@ -3277,6 +3336,7 @@ As requirement F3.3.1 was the only child of its parent, we are renumbering it an
   \item F3.3 System shall let users comment on stories
 \end{itemize}
 
+
 \chapter{Test cases}\label{appendix:testcases}
 
 \begin{table}[H]
@@ -3289,7 +3349,7 @@ As requirement F3.3.1 was the only child of its parent, we are renumbering it an
     Response             & New feature added                           \\ \hline
     Response measure     & Done in 5 hours                             \\ \hline
   \end{tabular}
-  \caption{Quality Attribute Scenario 1}
+  \caption{Quality Attribute Scenario 1 - QAS1}
   \label{tab:TC_qas_newservice}
 \end{table}
 
@@ -3624,5 +3684,141 @@ As requirement F3.3.1 was the only child of its parent, we are renumbering it an
   \label{tab:TCF4.1FE1}
 \end{table}
 
+
+\chapter{Test results}\label{appendix:testresults}  
+
+This appendix lists final results of tests.
+
+% --------- quality attributes
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & Integrate new external service            \\ \hline 
+    TC Identification & Quality Attribute Scenario 1              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-10-23                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           & Integrated Flickr for images retrieval
+                        in about 4 hours.                         \\
+  \hline 
+\end{tabular}\end{center}
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & Build application for a new platform      \\ \hline 
+    TC Identification & Quality Attribute Scenario 2              \\ \hline 
+    Tester            & Odd Fredrik Rogstad                       \\ \hline 
+    Date              & 2013-11-07                                \\ \hline 
+    Result            & \textbf{Fail}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           & Started implementing the app for iOS when the application where about 90\% done. The implementation took about 20 hours. In theory, the app should work on both android and iOS without the need of any changes, but in practice it was quite a lot we had to do. For instance, the navigation on Android, considering how to get back to the previous window, is typically done by pressing the built in hardware back-button. On iOS there isn't any hardware button that is dedicated to the go-back-function, so one needs to implement a navigation bar. Additionally to the navigation bar, there were several other user interface objects that didn't work on iOS, for example the Titanium Map module for Google Maps v2. Most of the problems regarding the differences between Android and iOS were solved by making platform specific code, typically in a \texttt{if-else statements; if(Ti.Platform.osname == “android”)\{Android code\} else \{iOS code\}}.                                          \\
+  \hline 
+\end{tabular}\end{center}
+
+
+
+% --------- server
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & Places.json server method                 \\ \hline 
+    TC Identification & TC-F2.2-BE-1                              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-11-18                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           &                                           \\
+  \hline 
+\end{tabular}\end{center}
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & Stories.json server method                \\ \hline 
+    TC Identification & TC-F3.2-BE-1                              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-11-18                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           &                                           \\
+  \hline 
+\end{tabular}\end{center}
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & Images.json server method                 \\ \hline 
+    TC Identification & TC-F4.1-BE-1                              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-11-18                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           &                                           \\
+  \hline 
+\end{tabular}\end{center}
+
+% --------- client
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & Places map overview                       \\ \hline 
+    TC Identification & TC-F2.2-FE-1                              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-11-18                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           &                                           \\
+  \hline 
+\end{tabular}\end{center}
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & View place details                        \\ \hline 
+    TC Identification & TC-F2.2-FE-2                              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-11-18                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           &                                           \\
+  \hline 
+\end{tabular}\end{center}
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & View stories overview for a place         \\ \hline 
+    TC Identification & TC-F3.2-FE-1                              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-11-18                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           &                                           \\
+  \hline 
+\end{tabular}\end{center}
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & View story detail                         \\ \hline 
+    TC Identification & TC-F3.2-FE-2                              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-11-18                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           & Video controls are not visible and user
+                        has no clear means of stopping the 
+                        video playback.                           \\
+  \hline 
+\end{tabular}\end{center}
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & Comment on story using Twitter            \\ \hline 
+    TC Identification & TC-F3.3-FE-1                              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-11-18                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           &                                           \\
+  \hline 
+\end{tabular}\end{center}
+
+\begin{center}\begin{tabular}{| l | p{11cm} |} \hline
+    TC Title          & View pictures for a place                 \\ \hline 
+    TC Identification & TC-F4.1-FE-1                              \\ \hline 
+    Tester            & Simon Stastny                             \\ \hline 
+    Date              & 2013-11-18                                \\ \hline 
+    Result            & \textbf{Pass}                             \\ \hline 
+    Defect            & ---                                       \\ \hline 
+    Comment           &                                           \\
+  \hline 
+\end{tabular}\end{center}
 
 \end{document}
