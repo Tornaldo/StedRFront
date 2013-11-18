@@ -30,9 +30,17 @@ function Controller() {
     tag = tag.replace(/[^a-å0-9]/gi, "_");
     var opts = {
         title: "Instagram",
-        message: "Use Instagram to add images. Simply add the title of the place as a hashtag, eg. #" + tag,
-        ok: "Ok"
+        message: "Use Instagram to add images. Simply add the title of the place as a hashtag, for this place use #" + tag + ". Press add to clipboard to add tag to phone clipboard",
+        buttonNames: [ "Ok", "Add to Clipboard" ],
+        ok: 0
     };
+    var dialog = Ti.UI.createAlertDialog(opts);
+    dialog.addEventListener("click", function(e) {
+        if (1 == e.index) {
+            Ti.UI.Clipboard.setText("#" + tag);
+            alert("You added #" + tag + " to your clipboard");
+        }
+    });
     var instagramCollection = Alloy.Collections.instagram;
     instagramCollection.fetch({
         urlparams: {
@@ -65,7 +73,7 @@ function Controller() {
         }
     });
     $.instagramGrid.on("click", function(e) {
-        if (e.source.id == addImageId) Ti.UI.createAlertDialog(opts).show(); else {
+        if (e.source.id == addImageId) dialog.show(); else {
             var instagramViewController = Alloy.createController("instagramView", {
                 $model: instagramCollection.get(e.source.strImage)
             });
