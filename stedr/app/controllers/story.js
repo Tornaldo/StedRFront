@@ -37,9 +37,18 @@ items.push({
 
 var opts = {
 	title : "DigitaltFortalt",
-	message : "Visit www.digitaltfortalt.no to add stories",
-	ok : "Ok",
+	message : "Visit www.digitaltfortalt.no to add stories. Press visit for a more detailed explanation",
+	buttonNames: ["Ok", "Visit"],
+	ok: 0,
 };
+
+var dialog = Ti.UI.createAlertDialog(opts);
+
+dialog.addEventListener('click', function(e){
+	if (e.index == 1){
+      Ti.Platform.openURL("http://digitaltfortalt.no/things/creating-stories-for-stedr/H-DF/DF.5043?state_id=&query=floch&js=1&search_context=1&count=2&pos=0");
+    }
+});
 
 //Fetch the stories associated with the wall
 var storyCollection = Alloy.Collections.story;
@@ -78,7 +87,7 @@ storyCollection.fetch({
 $.storyGrid.on('click', function(e) {
 	Ti.API.info("Clicked: " + e.source.id);
 	if (e.source.id == addStoryId) {
-		var dialog = Ti.UI.createAlertDialog(opts).show();
+		dialog.show();
 	} else {
 		var storyViewController = Alloy.createController('storyView', {
 			"$model" : storyCollection.get(e.source.id)

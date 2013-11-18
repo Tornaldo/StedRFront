@@ -88,11 +88,6 @@ function Controller() {
         transform.text = transform.text;
         return transform;
     }
-    function showTweet(evt) {
-        Ti.API.info(evt);
-        Ti.API.info(evt.source);
-        Ti.API.info(JSON.stringify(evt.source));
-    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "twitterRow";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
