@@ -25,6 +25,7 @@ module.exports = [ {
     priority: 100000.002,
     key: "userName",
     style: {
+        left: "15dp",
         color: "white",
         font: {
             color: "white",
@@ -33,5 +34,71 @@ module.exports = [ {
             fontStyle: "normal",
             fontWeight: "normal"
         }
+    }
+}, {
+    isId: true,
+    priority: 100000.0021,
+    key: "likesicon",
+    style: {
+        left: "15dp"
+    }
+}, {
+    isId: true,
+    priority: 100000.0022,
+    key: "numberoflikeslabel",
+    style: {
+        left: "15dp",
+        color: "white",
+        font: {
+            color: "white",
+            fontFamily: "Helvetica",
+            fontSize: "15dp",
+            fontStyle: "normal",
+            fontWeight: "normal"
+        }
+    }
+}, {
+    isId: true,
+    priority: 100000.0023,
+    key: "commentsicon",
+    style: {
+        left: "15dp"
+    }
+}, {
+    isId: true,
+    priority: 100000.0024,
+    key: "numberofcommentslabel",
+    style: {
+        left: "15dp",
+        color: "white",
+        font: {
+            color: "white",
+            fontFamily: "Helvetica",
+            fontSize: "15dp",
+            fontStyle: "normal",
+            fontWeight: "normal"
+        }
+    }
+}, {
+    isId: true,
+    priority: 100000.0025,
+    key: "caption",
+    style: {
+        left: "15dp",
+        color: "white",
+        font: {
+            color: "white",
+            fontFamily: "Helvetica",
+            fontSize: "15dp",
+            fontStyle: "normal",
+            fontWeight: "normal"
+        }
+    }
+}, {
+    isId: true,
+    priority: 100000.0026,
+    key: "hei",
+    style: {
+        height: "20dp"
     }
 } ];

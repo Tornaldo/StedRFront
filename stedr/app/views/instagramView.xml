@@ -5,5 +5,14 @@
 			<ImageView id="instagramPicture"></ImageView>
 		</View>
 		<Label id="userName"></Label>
+		<View id="hei" layout="horizontal">
+			<ImageView id="likesicon" image="/images/instagramlikesicon.png"></ImageView>
+			<Label id="numberoflikeslabel"></Label>
+			<ImageView id="commentsicon" image="/images/instagramcommentsicon.png"></ImageView>
+			<Label id="numberofcommentslabel"></Label>
+		</View>
+		<View id="hei2">
+			<Label id="caption"></Label>
+		</View>
 	</Window>
 </Alloy>

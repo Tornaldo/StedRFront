@@ -2,7 +2,11 @@ exports.definition = {
     config: {
         columns: {
             fullName: "string",
-            url: "string"
+            url: "string",
+            tags: "string",
+            commentCount: "int",
+            caption: "string",
+            likesCount: "int"
         },
         URL: "http://stedr.herokuapp.com/images.json",
         adapter: {

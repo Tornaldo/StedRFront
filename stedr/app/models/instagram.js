@@ -30,6 +30,10 @@ exports.definition = {
 		"columns" : {
 			"fullName" : "string",
 			"url" : "string",
+			"tags" : "string",
+			"commentCount" : "int",
+			"caption" : "string",
+			"likesCount" : "int"
 		},
 		"URL" : "http://stedr.herokuapp.com/images.json",
 		"adapter" : {
