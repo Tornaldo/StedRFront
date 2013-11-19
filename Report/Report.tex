@@ -338,7 +338,7 @@ In his spare time, he is an avid bookworm, traveller, and CouchSurfer.
 \begin{tabular}{ p{7cm} p{7cm} }
 \parbox{7cm}{
 \begin{figure}[H]
-      \includegraphics[width=0.4\textwidth]{Figures/Person.png}
+      \includegraphics[width=0.4\textwidth]{Figures/knut.jpg}
       \label{fig:partners_group_knut}
 \end{figure}
 \textbf{Knut Nergård}\\
@@ -1715,7 +1715,7 @@ Table \ref{tab:test_plan_schedule} lists tasks and maps them to people responsib
         Design quality attribute test cases & Simon Stastny           & 2013-11-05     \\ \hline
         Perform black-box tests             & FIXME                   & 2013-11-18     \\ \hline
         Perform code inspection (server)    & Christian Frøystad      & 2013-11-05     \\ \hline
-        Perform code inspection (client)    & FIXME                   & 2013-11-18     \\ \hline
+        Perform code inspection (client)    & Christian Frøystad and Simon Stastny                   & 2013-11-18     \\ \hline
     \end{tabular}
     \caption{Test tasks schedule}
     \label{tab:test_plan_schedule}
@@ -1739,7 +1739,7 @@ Table \ref{tab:test_plan_approvals} lists approvals of completed tasks.
         Design quality attribute test cases & Simon Stastny           & 2013-11-04     \\ \hline
         Perform black-box tests             & FIXME                   & FIXME          \\ \hline
         Perform code inspection (server)    & Christian Frøystad      & 2013-11-03     \\ \hline
-        Perform code inspection (client)    & FIXME                   & FIXME          \\ \hline
+        Perform code inspection (client)    & Christian Frøystad and Simon Stastny                   & 2013-11-18          \\ \hline
     \end{tabular}
     \caption{Test tasks approvals}
     \label{tab:test_plan_approvals}
@@ -1829,8 +1829,10 @@ Tests results are attached in appendix~\ref{appendix:testresults}.
 Code inspection found the server code to be \emph{structured, clean, elegant, with no apparent race conditions.}.
 
 \subsubsection{Client}
+The code is acceptable when it comes to clarity and the comments helps explain what is not obvious. Some problems arise from the fact that Titanium calls native code from the JavaScript, which seems to give some memory leaks because they are not destroyed correctly.
 
-%FIXME perform inspection
+Some commented out code was found, which was removed.
+With those remarks, the code passes code review.
 
 \chapter{Phases}
 This chapter aims to document the progress of the project, but also give valuable background for decisions taken and documentation for developing against the system.
@@ -2419,8 +2421,15 @@ We suggest to make calls for the picture details in parallel instead of sequenti
 
 
 \section{Cross platform mobile development}
-%FIXME Odd
+The group started implementing the app for iOS when the application was about 90~\% done. The implementation took about 20 hours. In theory, the app should work on both android and iOS without the need for any changes, but in practice it was quite a lot that needed to be done. For instance, the navigation on Android, considering how to get back to the previous window, is typically done by pressing the built in hardware back-button. On iOS there isn’t any hardware button that is dedicated to the go-back-function, so one needs to implement a navigation bar. Additionally to the navigation bar, there were several other user interface objects that didn’t work on iOS, for example the Titanium Map module for Google Maps v2. Most of the problems regarding the differences between Andorid and iOS were solved by making platform specific code, typically in a if-else statement:
 
+\begin{lstlisting}[frame=single]
+if(Ti.Platform.osname == "android" ) {
+    Android code
+} else {
+    iOS code
+}
+\end{lstlisting}
 \chapter{Evaluation}
 The group has experienced some problems related to working together as a team. In the beginning the amount of work placed into the project varied vastly from one group member to another. The group sat down and discussed the matter, and after that discussion most of the group worked good and more evenly together. One of the helping factors was that the group decided to meet up from 15:30 to 21:00 each Monday and Wednesday to work together. This time was agreed upon as one of the group members was fully occupied with his day job during the days.
 
@@ -2445,7 +2454,18 @@ The group did not manage to accomplish all the goals we wanted to, but a fully f
 Regardless of some problems, the course has been interesting and very educational on multiple levels. Not so much on a technical level, but very much so on group dynamics, report writing, customer interaction, psychology and project administration.
 
 \chapter{Conclusion}
+This report has given the reader insight in the current situation for people wanting to get hold of information relating to cultural heritage and how this might be quite cumbersome. 
 
+The report has also provided the reader with some ideas of how this situation might be improved, as well as a concrete solution in the form of a prototype utilizing user generated content from Flickr, Digitalt Fortalt, Instagram and Twitter.
+
+In the future more solutions similar to the one presented in this report are likely to surface, as this is a field actively explored by multiple parties all over Europe.
+On the conference Digital Heritage 2013 a workshop with the title “W 302 - User-generated content in museums \& memory institutions”. The description contained the following paragraph:
+
+\begin{quotation}\noindent
+User-generated content has become part and parcel of the mainstream Internet experience. Services like YouTube, Flickr or the Wikipedia provide platforms that encourage, enable and build on the creation of millions of users. Today, museums and memory institutions actively explore the inherent potential of user-generated content both to collect and share content with and from their audiences but also as a new tool for museum mediation.\cite{digitalHeritage}
+\end{quotation}
+
+If all this information could one day be unified in APIs, there would be little limitations on the applications to be developed in the future. One might see someone developing games based on cultural heritage, combine cultural heritage with devices like Google Glass or create educational software to be used at different levels in the education system.
 
 \bibliography{bibliography}
 
@@ -2481,41 +2501,41 @@ For the rest of this report, we are going to use a slightly different terminolog
 \chapter{Timesheets}
 \begin{table}[H]
 \centering
-\begin{tabular}{| l | l | l | l | l | l | l | l |}
+\begin{tabular}{| l | r | r | r | r | r | r | r |}
     \hline
     Group total         &          &          &          &          &             &             &              \\ \hline                        
     Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum \\ \hline
-    Lectures/self study & 48:15    & 2:45     & 37:45    & 24:00    & 0           & 0           & 112:45       \\ \hline
-    Admin               & 35:30    & 30:00    & 23:50    & 32:15    & 0           & 0           & 121:35       \\ \hline
-    Planning            & 26:05    & 0:00     & 3:00     & 0:00     & 0           & 0           & 29:05        \\ \hline
-    Pre-study           & 45:10    & 23:30    & 29:15    & 17:30    & 0           & 0           & 115:25       \\ \hline
-    Requirements        & 16:30    & 4:30     & 0:00     & 1:30     & 0           & 0           & 22:30        \\ \hline
-    Implementation      & 0:00     & 0:50     & 10:30    & 140:10   & 0           & 0           & 151:30       \\ \hline
-    Design              & 3:45     & 23:10    & 9:00     & 5:00     & 0           & 0           & 40:55        \\ \hline
-    Testing             & 0:00     & 0:00     & 10:00    & 0:00     & 0           & 0           & 10:00        \\ \hline
-    Documentation       & 2:30     & 5:30     & 14:30    & 11:50    & 0           & 0           & 34:20        \\ \hline
-    Period sum          & 177:45   & 90:15    & 137:50   & 232:15   & 0           & 0           & 638:05       \\ \hline
+    Lectures/self study & 48 & 2 & 37 & 24 & 19 & 8 & 140\\ \hline
+    Admin & 35 & 30 & 23 & 32 & 21 & 73 & 216\\ \hline
+    Planning & 26 & 0 & 3 & 0 & 0 & 0 & 30\\ \hline
+    Pre-study & 45 & 23 & 29 & 17 & 1 & 11 & 128\\ \hline
+    Requirements & 16 & 4 & 0 & 1 & 16 & 0 & 39\\ \hline
+    Implementation & 0 & 0 & 10 & 140 & 107 & 18 & 277\\ \hline
+    Design & 3 & 23 & 9 & 5 & 5 & 2 & 47\\ \hline
+    Testing & 0 & 0 & 10 & 0 & 19 & 1 & 30\\ \hline
+    Documentation & 2 & 5 & 14 & 11 & 34 & 98 & 167\\ \hline
+    Period sum & 177 & 90 & 137 & 232 & 225 & 214 & 1078\\ \hline
 \end{tabular}
-\caption{Time sheet for group as total}
+\caption{Time sheet for group as total, should have amounted to 1300 hours total}
 \label{tab:appendix_timesheets_group}
 \end{table}
 
 \begin{table}[H]
 \centering
-\begin{tabular}{| l | l | l | l | l | l | l | l |}
+\begin{tabular}{| l | r | r | r | r | r | r | r |}
     \hline
-    Rogstad             &          &          &          &          &             &             &              \\ \hline                        
-    Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum \\ \hline
-    Lectures/self study & 12:15    & 0:00     & 14:00    & 4:00     & 0           & 0           & 30:15        \\ \hline
-    Admin               & 13:45    & 8:45     & 6:45     & 7:45     & 0           & 0           & 37:00        \\ \hline
-    Planning            & 0:00     & 0:00     & 0:00     & 0:00     & 0           & 0           & 0:00         \\ \hline
-    Pre-study           & 21:00    & 17:45    & 16:15    & 2:00     & 0           & 0           & 57:00        \\ \hline
-    Requirements        & 0:00     & 0:00     & 0:00     & 0:00     & 0           & 0           & 0:00         \\ \hline
-    Implementation      & 0:00     & 0:00     & 0:00     & 52:15    & 0           & 0           & 52:15        \\ \hline
-    Design              & 0:00     & 0:00     & 0:00     & 0:00     & 0           & 0           & 0:00         \\ \hline
-    Testing             & 0:00     & 0:00     & 0:00     & 0:00     & 0           & 0           & 0:00         \\ \hline
-    Documentation       & 0:00     & 0:00     & 0:00     & 0:00     & 0           & 0           & 0:00         \\ \hline
-    Period sum          & 47:00    & 26:30    & 37:00    & 66:00    & 0           & 0           & 176:30       \\ \hline
+    Rogstad             &          &          &          &          &             &             &              \\ \hline   
+    Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum \\ \hline                     
+    Lectures/self study & 12 & 0 & 14 & 4 & 0 & 0 & 30\\ \hline                        
+    Admin & 13 & 8 & 6 & 7 & 10 & 18 & 66\\ \hline                        
+    Planning & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ \hline                        
+    Pre-study & 21 & 17 & 16 & 2 & 0 & 0 & 57\\ \hline                        
+    Requirements & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ \hline                        
+    Implementation & 0 & 0 & 0 & 52 & 74 & 18 & 145\\ \hline                        
+    Design & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ \hline                        
+    Testing & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ \hline                        
+    Documentation & 0 & 0 & 0 & 0 & 0 & 2 & 2\\ \hline                        
+    Period sum & 47 & 26 & 37 & 66 & 85 & 39 & 301\\ \hline                        
 \end{tabular}
 \caption{Time sheet for Odd Fredrik Rogstad}
 \label{tab:appendix_timesheets_odd}
@@ -2523,20 +2543,20 @@ For the rest of this report, we are going to use a slightly different terminolog
 
 \begin{table}[H]
 \centering
-\begin{tabular}{| l | l | l | l | l | l | l | l |}
+\begin{tabular}{| l | r | r | r | r | r | r | r |}
     \hline
     Frøystad            &          &          &          &          &             &             &              \\ \hline            
     Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum \\ \hline
-    Lectures/self study & 15:30    & 0:30     & 10:45    & 4:00     & 0           & 0           & 30:45        \\ \hline
-    Admin               & 14:15    & 16:15    & 13:35    & 17:00    & 0           & 0           & 61:05        \\ \hline
-    Planning            & 24:05    & 0:00     & 3:00     & 0:00     & 0           & 0           & 27:05        \\ \hline
-    Pre-study           & 11:40    & 3:30     & 10:00    & 5:00     & 0           & 0           & 30:10        \\ \hline
-    Requirements        & 0:00     & 0:00     & 0:00     & 0:00     & 0           & 0           & 0:00         \\ \hline
-    Implementation      & 0:00     & 0:50     & 2:00     & 12:55    & 0           & 0           & 15:45        \\ \hline
-    Design              & 3:45     & 23:10    & 8:00     & 4:00     & 0           & 0           & 38:55        \\ \hline
-    Testing             & 0:00     & 0:00     & 0:00     & 0:00     & 0           & 0           & 0:00         \\ \hline
-    Documentation       & 0:00     & 0:00     & 0:00     & 7:50     & 0           & 0           & 7:50         \\ \hline
-    Period sum          & 69:15    & 44:15    & 47:20    & 50:45    & 0           & 0           & 211:35       \\ \hline
+    Lectures/self study & 15 & 0 & 10 & 4 & 0 & 2 & 33\\ \hline
+    Admin & 14 & 16 & 13 & 17 & 6 & 30 & 98\\ \hline
+    Planning & 24 & 0 & 3 & 0 & 0 & 0 & 28\\ \hline
+    Pre-study & 11 & 3 & 10 & 5 & 0 & 0 & 30\\ \hline
+    Requirements & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ \hline
+    Implementation & 0 & 0 & 2 & 12 & 0 & 0 & 15\\ \hline
+    Design & 3 & 23 & 8 & 4 & 5 & 2 & 45\\ \hline
+    Testing & 0 & 0 & 0 & 0 & 0 & 1 & 1\\ \hline
+    Documentation & 0 & 0 & 0 & 7 & 13 & 46 & 67\\ \hline
+    Period sum & 69 & 44 & 47 & 50 & 25 & 82 & 319\\ \hline
 \end{tabular}
 \caption{Time sheet for Christian Frøystad}
 \label{tab:appendix_timesheets_christian}
@@ -2544,20 +2564,20 @@ For the rest of this report, we are going to use a slightly different terminolog
 
 \begin{table}[H]
 \centering
-\begin{tabular}{| l | l | l | l | l | l | l | l |}
+\begin{tabular}{| l | r | r | r | r | r | r | r |}
     \hline
     Stastny             &          &          &          &          &             &             &              \\ \hline          
     Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum \\ \hline
-    Lectures/self study & 8:15     & 0:00     & 2:00     & 4:00     & 0           & 0           & 14:15        \\ \hline
-    Admin               & 4:45     & 3:30     & 3:30     & 4:00     & 0           & 0           & 15:45        \\ \hline
-    Planning            & 0:00     & 0:00     & 0:00     & 0:00     & 0           & 0           & 0:00         \\ \hline
-    Pre-study           & 7:30     & 0:00     & 0:00     & 1:00     & 0           & 0           & 8:30         \\ \hline
-    Requirements        & 16:30    & 4:30     & 0:00     & 1:30     & 0           & 0           & 22:30        \\ \hline
-    Implementation      & 0:00     & 0:00     & 7:00     & 65:30    & 0           & 0           & 72:30        \\ \hline
-    Design              & 0:00     & 0:00     & 0:00     & 0:00     & 0           & 0           & 0:00         \\ \hline
-    Testing             & 0:00     & 0:00     & 10:00    & 0:00     & 0           & 0           & 10:00        \\ \hline
-    Documentation       & 0:00     & 0:00     & 14:30    & 4:00     & 0           & 0           & 18:30        \\ \hline
-    Period sum          & 37:00    & 8:00     & 37:00    & 80:00    & 0           & 0           & 162:00       \\ \hline
+    Lectures/self study & 8 & 0 & 2 & 4 & 0 & 0 & 14\\ \hline          
+    Admin & 4 & 3 & 3 & 4 & 0 & 10 & 26\\ \hline          
+    Planning & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ \hline          
+    Pre-study & 7 & 0 & 0 & 1 & 0 & 0 & 8\\ \hline          
+    Requirements & 16 & 4 & 0 & 1 & 16 & 0 & 39\\ \hline          
+    Implementation & 0 & 0 & 7 & 65 & 9 & 0 & 82\\ \hline          
+    Design & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ \hline          
+    Testing & 0 & 0 & 10 & 0 & 19 & 0 & 29\\ \hline          
+    Documentation & 0 & 0 & 14 & 4 & 21 & 29 & 69\\ \hline          
+    Period sum & 37 & 8 & 37 & 80 & 66 & 40 & 268\\ \hline          
 \end{tabular}
 \caption{Time sheet for Simon Stastny}
 \label{tab:appendix_timesheets_simon}
@@ -2565,20 +2585,20 @@ For the rest of this report, we are going to use a slightly different terminolog
 
 \begin{table}[H]
 \centering
-\begin{tabular}{| l | l | l | l | l | l | l | l |}
+\begin{tabular}{| l | r | r | r | r | r | r | r |}
     \hline
     Nergård             &          &          &          &          &             &             &              \\ \hline         
     Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum \\ \hline
-    Lectures/self study & 12:15    & 2:15     & 11:00    & 12:00    & 0           & 0           & 37:30        \\ \hline
-    Admin               & 2:45     & 1:30     & 0:00     & 3:30     & 0           & 0           & 7:45         \\ \hline
-    Planning            & 2:00     & 0:00     & 0:00     & 0:00     & 0           & 0           & 2:00         \\ \hline
-    Pre-study           & 5:00     & 2:15     & 3:00     & 9:30     & 0           & 0           & 19:45        \\ \hline
-    Requirements        & 0:00     & 0:00     & 0:00     & 0:00     & 0           & 0           & 0:00         \\ \hline
-    Implementation      & 0:00     & 0:00     & 1:30     & 9:30     & 0           & 0           & 11:00        \\ \hline
-    Design              & 0:00     & 0:00     & 1:00     & 1:00     & 0           & 0           & 2:00         \\ \hline
-    Testing             & 0:00     & 0:00     & 0:00     & 0:00     & 0           & 0           & 0:00         \\ \hline
-    Documentation       & 2:30     & 5:30     & 0:00     & 0:00     & 0           & 0           & 8:00         \\ \hline
-    Period sum          & 24:30    & 11:30    & 16:30    & 35:30    & 0           & 0           & 88:00        \\ \hline
+    Lectures/self study & 12 & 2 & 11 & 12 & 19 & 6 & 63\\ \hline         
+    Admin & 2 & 1 & 0 & 3 & 3 & 14 & 26\\ \hline         
+    Planning & 2 & 0 & 0 & 0 & 0 & 0 & 2\\ \hline         
+    Pre-study & 5 & 2 & 3 & 9 & 1 & 11 & 32\\ \hline         
+    Requirements & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ \hline         
+    Implementation & 0 & 0 & 1 & 9 & 23 & 0 & 34\\ \hline         
+    Design & 0 & 0 & 1 & 1 & 0 & 0 & 2\\ \hline         
+    Testing & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ \hline         
+    Documentation & 2 & 5 & 0 & 0 & 0 & 21 & 29\\ \hline         
+    Period sum & 24 & 11 & 16 & 35 & 48 & 53 & 189\\ \hline         
 \end{tabular}
 \caption{Time sheet for Knut Nergård}
 \label{tab:appendix_timesheets_knut}
@@ -2587,22 +2607,22 @@ For the rest of this report, we are going to use a slightly different terminolog
 \section{Overview of hours spent by active part of the group}\label{sec:active_time_table}
 \begin{table}[H]
 \centering
-\begin{tabular}{| l | l | l | l | l | l | l | l |}
+\begin{tabular}{| l | r | r | r | r | r | r | r |}
     \hline
-    Group total         &          &          &          &          &             &             &              \\ \hline                        
+    Active group         &          &          &          &          &             &             &              \\ \hline                        
     Activity/Period     & Phase 1  & Phase 2  & Phase  3 & Phase 4  & Phase 5     & Phase 6     & Activity sum \\ \hline
-    Lectures/self study & 48:15    & 2:45     & 37:45    & 24:00    & 0           & 0           & 112:45       \\ \hline
-    Admin               & 35:30    & 30:00    & 23:50    & 32:15    & 0           & 0           & 121:35       \\ \hline
-    Planning            & 26:05    & 0:00     & 3:00     & 0:00     & 0           & 0           & 29:05        \\ \hline
-    Pre-study           & 45:10    & 23:30    & 29:15    & 17:30    & 0           & 0           & 115:25       \\ \hline
-    Requirements        & 16:30    & 4:30     & 0:00     & 1:30     & 0           & 0           & 22:30        \\ \hline
-    Implementation      & 0:00     & 0:50     & 10:30    & 140:10   & 0           & 0           & 151:30       \\ \hline
-    Design              & 3:45     & 23:10    & 9:00     & 5:00     & 0           & 0           & 40:55        \\ \hline
-    Testing             & 0:00     & 0:00     & 10:00    & 0:00     & 0           & 0           & 10:00        \\ \hline
-    Documentation       & 2:30     & 5:30     & 14:30    & 11:50    & 0           & 0           & 34:20        \\ \hline
-    Period sum          & 177:45   & 90:15    & 137:50   & 232:15   & 0           & 0           & 638:05       \\ \hline
+    Lectures/self study & 36 & 0 & 26 & 12 & 0 & 2 & 77\\ \hline                        
+    Admin & 32 & 28 & 23 & 28 & 17 & 59 & 190\\ \hline                        
+    Planning & 24 & 0 & 3 & 0 & 0 & 0 & 28\\ \hline                        
+    Pre-study & 40 & 21 & 26 & 8 & 0 & 0 & 96\\ \hline                        
+    Requirements & 16 & 4 & 0 & 1 & 16 & 0 & 39\\ \hline                        
+    Implementation & 0 & 0 & 9 & 130 & 84 & 18 & 243\\ \hline                        
+    Design & 3 & 23 & 8 & 4 & 5 & 2 & 45\\ \hline                        
+    Testing & 0 & 0 & 10 & 0 & 19 & 1 & 30\\ \hline                        
+    Documentation & 0 & 0 & 14 & 11 & 34 & 77 & 138\\ \hline                        
+    Period sum & 153 & 78 & 121 & 196 & 177 & 161 & 888\\ \hline                        
 \end{tabular}
-\caption{Time sheet for group as total}
+\caption{Time sheet for the active part of the group. It should amount to 975 hours total}
 \label{tab:appendix_timesheets_active}
 \end{table}
 
