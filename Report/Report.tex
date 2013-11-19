@@ -2070,6 +2070,26 @@ A story is defined by its existence on Digitalt Fortalt, and thus uses Digitalt 
 In this sprint the requirements for the overall workings of the system seemed to be somewhat stable so we designed a data model and implemented it on the server side. This turned out to be a wrong assumption later on.
 
 \subsubsection{Client}
+\paragraph{User interface - version three}
+Figure~\ref{fig:phases_sprint2_uiVersionThreeViewWal} shows the solution presented to the customer. The wall consists of two views, that could be accessed with the tab at the top. The first view to appear when entering a wall is the welcoming view, with the main picture and some information (info about the wall, comments and share options) at the bottom, another view to present the stories. The customers response was good, but wanted a more compact design, more focus on story and image browsing. The customer also wanted to use colors from the Tag Cloud project (light blue and gray).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/Phases/Sprint2/wallFunctionsCompact.png}
+    \caption{View a place}
+    \label{fig:phases_sprint2_uiVersionThreeViewWal}
+\end{figure}
+
+\paragraph{User interface - version four}
+Figure~\ref{fig:phases_sprint2_uiVersionFourViewWall} became the final final solution. A clean view, with the main picture at the top with tabs underneath to quickly browse stories and pictures. It was also decided to use tiles to present pictures from Instagram as well. The main picture could also easily be changed to a media gallery, to present several pictures and/or videos. In addition, views to represent stories were also discussed, and the user should simply press the tiles to access it.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/Phases/Sprint2/wallView.png}
+    \caption{View a place}
+    \label{fig:phases_sprint2_uiVersionFourViewWall}
+\end{figure}
+
 \paragraph{Sync client}
 Titanium Alloy is backend agnostic. This means that most of the code does not know, nor need to know, what kind of server is running. This is accomplished by utilizing an abstraction layer in Alloy called Sync. Sync provides an unified API that can be implemented for each type of server.\\
 The API has the following methods:
