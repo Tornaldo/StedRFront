@@ -1067,8 +1067,8 @@ The functional requirements are organized according to object categories. The te
 \begin{table}[H]
 \centering
 \begin{tabular}{ l  p{11cm} l }
-    ID       & Description                                                                                              & Test level            \\ \hline
-    F2.2     & System shall let users filter and view places                                                            & All                   \\ \hline
+    ID       & Description                                                                                              & Test level       \\ \hline
+    F2.2     & System shall let users filter and view places                                                            & All              \\ \hline
     F2.2.2   & System shall let users to filter places by tags                                                          & System, Unit     \\ \hline
     F2.2.3   & System shall let users to filter places by metadata (location)                                           & System, Unit     \\ \hline
     F2.2.4   & System shall let users to filter places by story authors                                                 & System, Unit     \\ \hline
@@ -1084,8 +1084,8 @@ The functional requirements are organized according to object categories. The te
 \begin{table}[H]
 \centering
 \begin{tabular}{ l  p{11cm} l }
-    ID       & Description                                                                                              & Test level            \\ \hline
-    F3.2     & System shall let users filter and view stories from a particular places                                  & All                   \\ \hline
+    ID       & Description                                                                                              & Test level       \\ \hline
+    F3.2     & System shall let users filter and view stories from a particular places                                  & All              \\ \hline
     F3.2.2   & System shall let users to filter stories by tags on a particular places                                  & System, Unit     \\ \hline
     F3.2.4   & System shall let users to filter stories by metadata (author, media duration) on a particular places     & System, Unit     \\ \hline
     F3.3     & System shall let users comment on stories                                                                & System, Unit     \\ \hline
@@ -1101,8 +1101,8 @@ The functional requirements are organized according to object categories. The te
 \begin{table}[H]
 \centering
 \begin{tabular}{ l  p{11cm} l }
-    ID       & Description                                                                                              & Test level            \\ \hline
-    F4.1     & System shall show images tagged with the tag of the particular place.                                    & All                   \\
+    ID       & Description                                                                                              & Test level       \\ \hline
+    F4.1     & System shall show images tagged with the tag of the particular place.                                    & All              \\
     \end{tabular}
 \caption{Stories}
 \label{tab:req_images}
@@ -1612,7 +1612,7 @@ This part describes the approach taken to perform testing tasks in this project.
 
 The overall approach is to perform a system test of all features listed under section~\ref{sec:test_plan_features_tested} using tests cases specified in section~\ref{sec:test_cases}.
 
-During the development, the source code shall be tested using unit tests prepared by developers themselves. This simplifies the integration by making problems to be found early.
+During the development, it is a good practice to perform unit testing by developers themselves. This simplifies the integration by making problems to be found early. This was however not prioritized and now unit test were developed in this project.
 
 The produced source code of both subsystems shall be tested using black-box testing. This enables us to abstract from the source code and only focus on the output and outcomes of steps, and compare this with the expected results. These tests are going to be based on test cases specified below and will be performed by black-box testers.
 
