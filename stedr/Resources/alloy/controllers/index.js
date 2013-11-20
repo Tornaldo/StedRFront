@@ -15,13 +15,11 @@ function Controller() {
         id: "mapWin",
         layout: "vertical"
     });
-    $.__views.mapWin && $.addTopLevelView($.__views.mapWin);
     $.__views.mapSearchBar = Ti.UI.createSearchBar({
         backgroundColor: "#40B0D2",
         id: "mapSearchBar",
         showCancel: "true",
-        hintText: "Search...",
-        height: "10%"
+        hintText: "Search..."
     });
     $.__views.mapWin.add($.__views.mapSearchBar);
     hideKeyboard ? $.__views.mapSearchBar.addEventListener("cancel", hideKeyboard) : __defers["$.__views.mapSearchBar!cancel!hideKeyboard"] = true;
@@ -30,9 +28,15 @@ function Controller() {
         height: "90%"
     });
     $.__views.mapWin.add($.__views.mapViewContainer);
+    $.__views.nav = Ti.UI.iOS.createNavigationWindow({
+        window: $.__views.mapWin,
+        id: "nav"
+    });
+    $.__views.nav && $.addTopLevelView($.__views.nav);
     exports.destroy = function() {};
     _.extend($, $.__views);
     if ("iphone" == Alloy.Globals.OS) {
+        Ti.API.info("HI");
         Alloy.Globals.Nav = $.nav;
         $.nav.open();
     } else $.mapWin.open();
@@ -90,7 +94,7 @@ function Controller() {
     mapview.addEventListener("click", function(evt) {
         Ti.API.info(evt.type);
         Ti.API.info(evt.clicksource);
-        if ("infoWindow" == evt.clicksource || "leftPane" == evt.clicksource || "title" == evt.clicksource || "rightPane" == evt.clicksource) {
+        if ("infoWindow" == evt.clicksource || "leftPane" == evt.clicksource || "title" == evt.clicksource || "rightPane" == evt.clicksource || "leftView" == evt.clicksource || "rightView" == evt.clicksource) {
             Ti.API.info("Trying to enter: " + wallCollection.get(evt.annotation.id).get("title"));
             var stedrWallController = Alloy.createController("stedrWall", {
                 $model: wallCollection.get(evt.annotation.id)
