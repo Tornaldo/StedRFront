@@ -23,5 +23,6 @@
 }
 
 "#mapSearchBar": {
-	backgroundColor: '#40B0D2'
+	backgroundColor: '#40B0D2',
+	font:  {fontFamily: 'AppIcons', fontSize:'14pt' }
 }

@@ -43,6 +43,10 @@
  * The variable is typically used in a if-statement, followed by platform
  * spesific code
  */
+
+//Font awesome
+var icons = require('/icons');
+
 Alloy.Globals.OS = Ti.Platform.osname;
 
 

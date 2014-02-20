@@ -157,6 +157,9 @@ mapview.addEventListener('click', function(evt) {
  * Handles click events on the back-button in the SearchBar.
  * When clicked, remove the text in the textfield
  */
+
+$.mapSearchBar.hintText = icons.search_alt;
+
 $.mapSearchBar.addEventListener('cancel', function(evt) {
 	$.mapSearchBar.setValue("");
 });
