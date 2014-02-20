@@ -25,6 +25,8 @@
  *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
+// Dette er en commit test
+
 exports.definition = {
 	config : {
 		"columns" : {
