@@ -44,7 +44,7 @@
  * spesific code
  */
 
-//Font awesome
+//Font awesome icons
 var icons = require('/icons');
 
 Alloy.Globals.OS = Ti.Platform.osname;
