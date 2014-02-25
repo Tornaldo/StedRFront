@@ -2,7 +2,8 @@
 Creates a SearchBar and a View for the map, inside the main Window -->
 <Alloy>
 	<Window title="Map" id="mapWin" layout="vertical" navBarHidden="true">
+		<!-- <Require type="widget" src="com.drawermenu.widget" id="drawermenu" height= "10%" /> -->
 		<SearchBar id="mapSearchBar" showCancel="true" onCancel="hideKeyboard" height="10%"></SearchBar>
 		<View id="mapViewContainer" height="90%"></View>
 	</Window>
-</Alloy>
+</Alloy> 

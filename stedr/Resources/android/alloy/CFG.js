@@ -1,1 +1,1 @@
-module.exports={"dependencies":{"tiflexigrid":"1.1"}};
+module.exports={"dependencies":{"tiflexigrid":"1.1","com.drawermenu.widget":"1.0"}};

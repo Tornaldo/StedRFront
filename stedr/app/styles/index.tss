@@ -1,5 +1,6 @@
 ".container": {
-	backgroundColor:"white"
+	backgroundColor:"white",
+	exitOnClose: true
 },
 "Label": {
 	width: Ti.UI.SIZE,
@@ -24,5 +25,5 @@
 
 "#mapSearchBar": {
 	backgroundColor: '#40B0D2',
-	font:  {fontFamily: 'AppIcons', fontSize:'14pt' }
+	font:  {fontFamily: 'AppIcons', fontSize:'14pt', height: "10%" }
 }

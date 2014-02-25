@@ -1,0 +1,1 @@
+module.exports = [{"isId":true,"priority":100000.0027,"key":"mainView","style":{layout:"vertical",backgroundColor:"#cacaca",}},{"isId":true,"priority":100000.0028,"key":"mainTopBar","style":{width:Ti.UI.FILL,height:"10%",backgroundColor:"#5B96B2",layout:"horizontal",}},{"isId":true,"priority":100000.0029,"key":"menuButton","style":{width:Ti.UI.FILL,height:Ti.UI.FILL,}}];

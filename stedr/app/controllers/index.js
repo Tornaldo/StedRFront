@@ -30,6 +30,7 @@
  * We also save that opening NavigationWindow to a global variable
  * Else, just open the ordinary Window
  */
+
 if (Alloy.Globals.OS == "iphone") {
 	Ti.API.info("HI");
 	Alloy.Globals.Nav = $.nav;
@@ -245,3 +246,5 @@ $.mapWin.addEventListener('close', function() {
 	mapview.close();
 	$.destroy();
 });
+
+

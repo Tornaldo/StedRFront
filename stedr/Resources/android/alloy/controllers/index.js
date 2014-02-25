@@ -21,7 +21,8 @@ function Controller() {
         backgroundColor: "#40B0D2",
         font: {
             fontFamily: "AppIcons",
-            fontSize: "14pt"
+            fontSize: "14pt",
+            height: "10%"
         },
         id: "mapSearchBar",
         showCancel: "true",
@@ -101,7 +102,7 @@ function Controller() {
                 $model: wallCollection.get(evt.annotation.id)
             });
             var win = stedrWallController.getView();
-            "iphone" == Alloy.Globals.OS ? $.nav.openWindow(win) : win.open();
+            "iphone" == Alloy.Globals.OS ? $.nav.openWindow(win) : slider.open();
         }
     });
     $.mapSearchBar.hintText = icons.search_alt;
